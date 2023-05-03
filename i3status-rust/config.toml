@@ -1,0 +1,54 @@
+icons_format = "{icon}"
+
+[theme]
+theme = "srcery"
+[theme.overrides]
+idle_bg = "#000000"
+idle_fg = "#ffffff"
+
+[icons]
+icons = "material-nf"
+[icons.overrides]
+bat = ["|E|", "|_|", "|=|", "|F|"]
+bat_charging = "|^| "
+
+[[block]]
+block = "music"
+format = " $icon $volume_icon $combo $play $next| "
+seek_step_secs = 10
+[[block.click]]
+button = "up"
+action = "volume_up"
+[[block.click]]
+button = "down"
+action = "volume_down"
+[[block.click]]
+button = "forward"
+action = "seek_forward"
+[[block.click]]
+button = "back"
+action = "seek_backward"
+
+
+[[block]]
+block = "net"
+format = " $icon {$speed_up $speed_down |Wired connection} "
+
+[[block]]
+block = "cpu"
+
+[[block]]
+block = "memory"
+format = " $icon $mem_used_percents.eng(w:2) "
+
+[[block]]
+block = "sound"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "time"
+interval = 5
+format = " $timestamp.datetime(f:'%m/%d/%y  %R') "
+
