@@ -1,1 +1,4 @@
-# i3
+# Dependencies
+```
+yay -S
+```
