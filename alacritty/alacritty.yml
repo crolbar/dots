@@ -9,7 +9,7 @@ window:
 
   decorations: none
 
-  opacity: 0.0
+  opacity: 0.5
   dynamic_title: true
 
   history: 10000
@@ -29,6 +29,9 @@ cursor:
 live_config_reload: true
 
 colors:
+  primary:
+    background: '#000000'
+    foreground: '#ffffff'
   normal:
     black:   '#000000'
     red:     '#cc0403'
@@ -48,4 +51,5 @@ colors:
     magenta: '#fd28ff'
     cyan:    '#14ffff'
     white:   '#ffffff'
+
 

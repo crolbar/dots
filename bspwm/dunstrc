@@ -1,4 +1,4 @@
-#config created by crolbar
+# crolbar
 [global]
     monitor = 0
     follow = mouse
@@ -22,7 +22,7 @@
     horizontal_padding = 12
     text_icon_padding = 0
     frame_width = 3
-    frame_color = "#6600CC"
+    frame_color = "#A7A4E0"
     gap_size = 0
     separator_color = frame
     sort = yes
@@ -42,7 +42,7 @@
     icon_position = left
     min_icon_size = 42
     max_icon_size = 128
-    icon_path = /usr/share/icons/Papirus/16x16/
+    icon_path = /usr/share/icons/Papirus-Dark/16x16/
     sticky_history = yes
     history_length = 20
     dmenu = /usr/bin/dmenu -p dunst:

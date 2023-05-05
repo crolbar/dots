@@ -1,11 +1,11 @@
 #! /bin/sh
-# - crolbar
-
+# crolbar
 
 bspc monitor -d 1 2 3 4 5
 
 bspc config border_width         2
-bspc config window_gap          10
+bspc config window_gap          8
+bspc config focused_border_color '#A7A4E0'
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
@@ -13,29 +13,19 @@ bspc config gapless_monocle      true
 bspc config single_monocle       true
 
 bspc config focus_follows_pointer true
-
-
-
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
+bspc config pointer_follows_focus false
+bspc config pointer_motion_interval 5
 
 processes=("picom" "polybar" "sxhkd" "dunst")
-
 for process in "${processes[@]}"; do
   if pidof -q "$process"; then
     pkill -x "$process" > /dev/null; sleep 0.1
   fi
 done
 
-picom &
-
-pgrep -x sxhkd > /dev/null || sxhkd &
-
-dunst &
-
-polybar &
-
+picom --config "$HOME"/.config/bspwm/picom.conf &
+sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
+dunst -config "$HOME"/.config/bspwm/dunstrc &
+polybar -c "$HOME"/.config/bspwm/config.ini&
+feh --bg-fill /home/kubo/Downloads/yo.jpg
 nm-applet &
