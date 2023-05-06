@@ -1,62 +1,49 @@
+#! /bin/sh
 # crolbar
 
-# terminal emulator
-super + x
-	alacritty 
-
-# program launcher
-super + r
-	dmenu_run -nb black -sb '#6600CC'
-
-# file explorer
-super + e
-	thunar
-
-# browser
-super + b
-	firefox
-
-# bspwm hotkeys
+# Apps
+super + {x,r,e,b}
+	{alacritty, \
+	dmenu_run -nb black -sb '#6600CC', \
+	thunar, \
+	firefox}
 
 # quit/restart bspwm
 super + ctrl + {q,r}
 	bspc {quit,wm -r}
 
 # close 
-super + shift +  q
-	bspc node -{c}
-
-# alternate between the tiled and monocle layout
-super + z
-	bspc desktop -l next
+super + shift +  {q,r}
+	bspc node {-c,@/ --rotate 90}
 
 # set the window state
 super + {d,shift + space,f}
 	bspc node -t {tiled,floating,fullscreen}
 
-# focus the node in the given direction
+# focus,switch the node in the given direction
 super + {_,shift + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
 
-# focus the last desktop
-super + grave
-	bspc desktop -f last
+# focus the last desktop,node and switch between tiled/monocle
+{super,alt} + {Tab,z}
+	bspc {desktop,node} {-f last,-l next}
 
-# focus the last node
-alt + Tab
-	bspc node -f last
+# change focus on main desktop
+super + {1-5}
+	bspc desktop -f '^{6-9,10}'
 
-# focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d } '^{1-9,10}'
+# change focus on second desktop
+super + ctrl {1-5}
+	bspc desktop -f '^{1-5}'
 
-# preselect the direction
-super + shift + {a,s,w,d}
-	bspc node -p {west,south,north,east}
+# sent a node to selected desktop
+super + shift + {1-9,0}
+	bspc node -d '^{6-9,10,1-5}'
 
-# cancel the preselection for the focused node
-super + ctrl + space
-	bspc node -p cancel
+# preselect spawn direction
+super + ctrl + {a,s,w,d,space}
+	bspc node -p {west,south,north,east,cancel}
 
-
-
+# power off,reboot,log out,lock
+super + ctrl + alt + shift + {p,r,q,s,l}
+	{sudo systemctl poweroff,sudo systemctl reboot,bspc quit,i3lock -c 000000 && sudo systemctl suspend,i3lock -c 000000}

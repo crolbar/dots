@@ -1,6 +1,8 @@
 #! /bin/sh
 # crolbar
-bspc monitor -d 1 2 3 4 5
+
+bspc monitor DP-2 -d 1 2 3 4 5
+bspc monitor DP-0 -d 1 2 3 4 5 
 
 bspc config border_width         2
 bspc config window_gap          8
@@ -26,6 +28,7 @@ done
 picom --config "$HOME"/.config/bspwm/picom.conf &
 sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
 dunst -config "$HOME"/.config/bspwm/dunstrc &
-polybar -c "$HOME"/.config/bspwm/config.ini&
-feh --bg-fill "$HOME"/.config/bspwm/wallpapers/wall1.jpg
+polybar DP-2 -c "$HOME"/.config/bspwm/config.ini &
+polybar DP-0 -c "$HOME"/.config/bspwm/config.ini &
+feh --bg-fill "$HOME"/.config/bspwm/wallpapers/wall1.jpg &
 nm-applet &

@@ -3,9 +3,8 @@ import:
   - ~/.config/alacritty/fonts.yml
   
 window:
-  padding:
-    x: 15
-    y: 15
+ 
+      
 
   decorations: none
 
