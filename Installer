@@ -4,7 +4,7 @@ mkfs.ext4 /dev/sda2
 mount /dev/sda2 /mnt
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
-pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanger 
+pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager
 genfstab -U -p /mnt >> /mnt/etc/fstab 
 arch-chroot /mnt
 systemctl enable NetworkManager
