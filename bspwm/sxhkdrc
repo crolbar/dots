@@ -46,4 +46,4 @@ super + ctrl + {a,s,w,d,space}
 
 # power off,reboot,log out,lock
 super + ctrl + alt + shift + {p,r,q,s,l}
-	{sudo systemctl poweroff,sudo systemctl reboot,bspc quit,i3lock -c 000000 && sudo systemctl suspend,i3lock -c 000000}
+	{sudo systemctl poweroff,sudo systemctl reboot,bspc quit,physlock -d && sudo systemctl suspend,physlock -d}
