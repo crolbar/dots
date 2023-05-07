@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+mkfs.ext4 /dev/sda1
+mkfs.ext4 /dev/sda2
+mount /dev/sda2 /mnt
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot
+pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanger 
+genfstab -U -p /mnt >> /mnt/etc/fstab 
+arch-chroot /mnt
+systemctl enable NetworkManager
+grub-install /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
+echo LANG="C.UTF-8" > /etc/locale.conf
+locale-gen
+echo kubo > /etc/hostname
+ln -sf /usr/share/zoneinfo/Europe/Sofia > /etc/localtime 
+passwd
