@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+systemctl enable NetworkManager
+grub-install /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
+echo LANG="C.UTF-8" > /etc/locale.conf
+locale-gen
+echo kubo > /etc/hostname
+ln -sf /usr/share/zoneinfo/Europe/Sofia > /etc/localtime 
+useradd -mg wheel kubo
+passwd
