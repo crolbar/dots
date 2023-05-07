@@ -3,7 +3,7 @@
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 yay -S --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio zsh pavucontrol neofetch alacritty ttf-roboto papirus-icon-theme xclip polkit-gnome materia-theme lxappearance network-manager-applet xfce4-power-manager nerd-fonts-complete-starship thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly
 systemctl enable ly.service
-git clone https://github.com/crolbar/bspwm && cd bspwm
+cd ..
 cp -R bspwm $HOME/.config/
 cp -R alacritty $HOME/.config/
 cp -R neofetch $HOME/.config/
