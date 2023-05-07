@@ -41,7 +41,7 @@ bindkey ';5C' forward-word
 bindkey ';5D' backward-word 
 
 # prompt
-PROMPT='%B%F{blue}󰣇%f%b  %B%F{magenta}%n%f%b %B%F{red}%~%f%b${vcs_info_msg_0_}%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}%f%b '
+PROMPT='%B%F{blue}󰣇%f%b  %B%F{magenta}%n%f%b %B%F{red}%~%f%b${vcs_info_msg_0_}%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}%f%b '
 # alias
 alias stopx="pkill -15 Xorg"
 alias sleepy='i3lock -c 000000 && sudo systemctl suspend'
