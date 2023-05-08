@@ -9,3 +9,4 @@ echo kubo > /etc/hostname
 ln -sf /usr/share/zoneinfo/Europe/Sofia > /etc/localtime 
 useradd -mg wheel kubo
 passwd
+passwd kubo

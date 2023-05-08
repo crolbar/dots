@@ -6,4 +6,5 @@ mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager
 genfstab -U -p /mnt >> /mnt/etc/fstab 
+cp -R /root/bspwm /mnt/bspwm
 arch-chroot /mnt
