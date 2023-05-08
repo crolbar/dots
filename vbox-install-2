@@ -8,5 +8,6 @@ locale-gen
 echo kubo > /etc/hostname
 ln -sf /usr/share/zoneinfo/Europe/Sofia > /etc/localtime 
 useradd -mg wheel kubo
+echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
 passwd
 passwd kubo
