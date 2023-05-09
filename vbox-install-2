@@ -12,3 +12,4 @@ useradd -mg wheel kubo
 echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
 passwd
 passwd kubo
+cp -R /bspwm /home/kubo
