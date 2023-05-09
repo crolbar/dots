@@ -28,6 +28,6 @@ sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
 dunst -config "$HOME"/.config/bspwm/dunstrc &
 polybar DP-2 -c "$HOME"/.config/bspwm/config.ini &
 polybar DP-0 -c "$HOME"/.config/bspwm/config.ini &
-feh --bg-fill "$HOME"/.config/bspwm/wallpapers/wall1.jpg &
+#feh --bg-fill "$HOME"/.config/bspwm/wallpapers/wall1.jpg &
 nm-applet &
 
