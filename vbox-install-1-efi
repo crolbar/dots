@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-mkfs.fat -F32 /dev/sda1
+mkfs.fat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda2
 mount /dev/sda2 /mnt
 mount -m /dev/sda1 /mnt/boot/efi
