@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 mkfs.fat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda2
+mkswap /dev/sda3
+swapon /dev/sda3
 mount /dev/sda2 /mnt
 mount -m /dev/sda1 /mnt/boot/efi
 pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager efibootmgr
