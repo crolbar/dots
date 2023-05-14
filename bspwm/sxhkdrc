@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/bash
 # crolbar
 
 # Apps
@@ -28,17 +28,25 @@ super + {_,shift + }{Left,Down,Up,Right}
 {super,alt} + {Tab,z}
 	bspc {desktop,node} {-f last,-l next}
 
-# change focus on main desktop
-super + {1-5}
-	bspc desktop -f '^{6-9,10}'
+# send the selected node to the given desktop
+super + shift +{1-6}
+    desktop={1-6}; \
+	bspc node -d "$\{desktop\}.local"  
+	for mon_id in $(bspc query -N -n); do \
+        bspc node "$\{mon_id\}:focused#$\{desktop\}.local" -d; \
+    done
 
-# change focus on second desktop
-super + ctrl {1-5}
-	bspc desktop -f '^{1-5}'
+# focus on the selected desktop on the selected monitor
+super + {1-6}
+    desktop={1-6}; \
+	bspc desktop "$\{desktop\}.local" -f 
+	for mon_id in $(bspc query -M -m); do \
+        bspc desktop "$\{mon_id\}:focused#$\{desktop\}.local" -f; \
+    done
 
-# sent a node to selected desktop
-super + shift + {1-9,0}
-	bspc node -d '^{6-9,10,1-5}'
+
+
+
 
 # preselect spawn direction
 super + ctrl + {a,s,w,d,space}

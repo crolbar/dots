@@ -1,8 +1,12 @@
 #! /bin/sh
 # crolbar
 
-bspc monitor DP-2 -d 1 2 3 4 5
-bspc monitor DP-0 -d 1 2 3 4 5 
+i=1
+for monitor in $(bspc query -M); do
+bspc monitor $monitor \
+        -d {1,2,3,4,5,6}
+    let i++
+done
 
 bspc config border_width         2
 bspc config window_gap          8
@@ -28,6 +32,6 @@ sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
 dunst -config "$HOME"/.config/bspwm/dunstrc &
 polybar DP-2 -c "$HOME"/.config/bspwm/config.ini &
 polybar DP-0 -c "$HOME"/.config/bspwm/config.ini &
-#feh --bg-fill "$HOME"/.config/bspwm/wallpapers/wall1.jpg &
+feh --bg-fill "$HOME"/.config/bspwm/wallpapers/wall2.png &
 nm-applet &
-
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
