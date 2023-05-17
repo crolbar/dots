@@ -50,4 +50,16 @@ then
     exit
 fi
 genfstab -U -p /mnt >> /mnt/etc/fstab 
-
+systemctl enable NetworkManager
+grub-install /dev/$drive
+grub-mkconfig -o /boot/grub/grub.cfg
+echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
+echo LANG="C.UTF-8" > /etc/locale.conf
+locale-gen
+echo arch > /etc/hostname
+ln -sf /usr/share/zoneinfo/Europe/Sofia /etc/localtime 
+useradd -mg wheel kubo
+echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
+passwd
+passwd kubo
+umount -R /mnt
