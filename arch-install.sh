@@ -62,4 +62,5 @@ arch-chroot /mnt useradd -mg wheel kubo
 arch-chroot /mnt echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
 arch-chroot /mnt passwd
 arch-chroot /mnt passwd kubo
-arch-chroot /mnt umount -R /mnt
+umount -R /mnt
+echo "you can reboot now"
