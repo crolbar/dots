@@ -27,11 +27,11 @@ then
     parted /dev/$drive set 1 boot on
     parted /dev/$drive mkpart primary linux-swap 128MiB 8GiB
     parted /dev/$drive mkpart primary ext4 8GiB 100%
-    mkfs.fat -F32 /dev/sda1
-    mkswap /dev/sda2
-    mkfs.ext4 /dev/sda3 
-    mount /dev/sda3 /mnt
-    mount -m /dev/sda1 /mnt/boot/efi
+    mkfs.fat -F32 /dev/$drive
+    mkswap /dev/$drive
+    mkfs.ext4 /dev/$drive
+    mount /dev/$drive /mnt
+    mount -m /dev/$drive /mnt/boot/efi
     pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager efibootmgr
  elif [[ $ef == bios ]];
 then
@@ -40,11 +40,11 @@ then
     parted /dev/$drive set 1 boot on
     parted /dev/$drive mkpart primary linux-swap 128MiB 8GiB
     parted /dev/$drive mkpart primary ext4 8GiB 100%
-    mkfs.ext4 /dev/sda1
-    mkswap /dev/sda2
-    mkfs.ext4 /dev/sda3
-    mount /dev/sda3 /mnt
-    mount -m /dev/sda1 /mnt/boot
+    mkfs.ext4 /dev/$drive
+    mkswap /dev/$drive
+    mkfs.ext4 /dev/$drive
+    mount /dev/$drive /mnt
+    mount -m /dev/$drive /mnt/boot
     pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager
  else 
     exit
