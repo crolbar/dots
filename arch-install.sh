@@ -2,7 +2,7 @@
 lsblk
 echo  
 echo "enter drive you want to install arch on:"
-echo "example /dev/sda"
+echo "example sda"
 read  drive
 echo "EVERYTHING ON DRIVE $drive WILL BE ERASED ARE YOU SHURE YOU WANT TO CONTINUE? [Y/n]"
 read confirmation
@@ -22,17 +22,17 @@ read ef
 echo $ef
 if [[ $ef == efi ]] || [[ $ef == uefi ]]; 
 then
-    parted $drive mklabel gpt
-    parted $drive mkpart ESP fat32 1MiB 129MiB
-    parted $drive set 1 boot on
-    parted $drive mkpart primary linux-swap 129MiB 8.2GiB
-    parted $drive mkpart primary ext4 8.2GiB 100%
+    parted /dev/$drive mklabel gpt
+    parted /dev/$drive mkpart ESP fat32 0% 128MiB
+    parted /dev/$drive set 1 boot on
+    parted /dev/$drive mkpart primary linux-swap 128MiB 8GiB
+    parted /dev/$drive mkpart primary ext4 8GiB 100%
  elif [[ $ef == bios ]];
 then
-    parted $drive mklabel msdos
-    parted $drive mkpart primary ext4 1MiB 129MiB
-    parted $drive set 1 boot on
-    parted $drive mkpart primary ext4 129MiB 100%
+    parted /dev/$drive mklabel msdos
+    parted /dev/$drive mkpart primary ext4 1MiB 129MiB
+    parted /dev/$drive set 1 boot on
+    parted /dev/$drive mkpart primary ext4 129MiB 100%
  else 
     exit
 fi
