@@ -74,12 +74,13 @@ then
     arch-chroot -u $user /mnt /bin/bash -c "yay -S --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio zsh pavucontrol neofetch alacritty lsd ttf-jetbrains-mono-nerd ttf-font-awesome ttf-roboto papirus-icon-theme xclip polkit-gnome materia-theme lxappearance network-manager-applet xfce4-power-manager nerd-fonts-complete-starship thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly"
     arch-chroot -u $user /mnt /bin/bash -c "sudo systemctl enable ly.service"
     arch-chroot -u $user /mnt /bin/bash -c "cd /home/$user && \
-    git clone https://github.com/crolbar/bspwm && cd bspwm && \
+    git clone https://github.com/crolbar/bspwm && \
+     cd bspwm && \
      cp -R bspwm /home/$user/.config/ && \
      cp -R alacritty /home/$user/.config/ && \
-     neofetch /home/$user/.config/ && \
-     zsh /home/$user/.config/ && \
-     .zshrc /home/$user/"
+     cp -R neofetch /home/$user/.config/ && \
+     cp -R zsh /home/$user/.config/ && \
+     cp .zshrc /home/$user/"
 elif [[confirmation2 == no ]];
 then
     echo 
