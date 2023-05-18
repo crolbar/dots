@@ -6,7 +6,6 @@ echo "example sda"
 read  drive
 echo "EVERYTHING ON DRIVE $drive WILL BE ERASED ARE YOU SHURE YOU WANT TO CONTINUE? [Y/n]"
 read confirmation
-echo $confirmation
 if [[ $confirmation == y ]] || [[ $confirmation == yes ]]; 
 then
     echo 
@@ -19,7 +18,10 @@ fi
 echo "choose if you want to use efi or bios"
 echo "example: efi"
 read ef
-echo $ef
+echo "Chose the name of the host"
+read host
+echo "Chose the name of the root user"
+read user
 if [[ $ef == efi ]] || [[ $ef == uefi ]]; 
 then
     parted /dev/$drive mklabel gpt
@@ -49,10 +51,6 @@ then
  else 
     exit
 fi
-echo "Chose the name of the host"
-read host
-echo "Chose the name of the root user"
-read user
 genfstab -U -p /mnt >> /mnt/etc/fstab 
 arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
 arch-chroot /mnt /bin/bash -c "grub-install /dev/$drive"
