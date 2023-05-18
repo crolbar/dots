@@ -69,11 +69,11 @@ echo "do you want to use my bspwm config yes/no"
 read confirmation2
 if [[ $confirmation2 == y ]] || [[ $confirmation2 == yes ]];
 then
-    arch-chroot /mnt /bin/bash -c "su $user && pacman -Syy git"
-    arch-chroot /mnt /bin/bash -c "su $user && cd && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
-    arch-chroot /mnt /bin/bash -c "su $user && yay -S --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio zsh pavucontrol neofetch alacritty lsd ttf-jetbrains-mono-nerd ttf-font-awesome ttf-roboto papirus-icon-theme xclip polkit-gnome materia-theme lxappearance network-manager-applet xfce4-power-manager nerd-fonts-complete-starship thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly"
-    arch-chroot /mnt /bin/bash -c "su $user && systemctl enable ly.service"
-    arch-chroot /mnt /bin/bash -c "su $user && cd && \
+    arch-chroot -u $user /mnt /bin/bash -c "sudo pacman -Syy git"
+    arch-chroot -u $user /mnt /bin/bash -c "sudo git clone https://aur.archlinux.org/yay.git /home/$user/ && cd /home/$user && sudo chown -R $user:users ./yay && cd yay && makepkg -si"
+    arch-chroot -u $user /mnt /bin/bash -c "yay -S --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio zsh pavucontrol neofetch alacritty lsd ttf-jetbrains-mono-nerd ttf-font-awesome ttf-roboto papirus-icon-theme xclip polkit-gnome materia-theme lxappearance network-manager-applet xfce4-power-manager nerd-fonts-complete-starship thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly"
+    arch-chroot -u $user /mnt /bin/bash -c "sudo systemctl enable ly.service"
+    arch-chroot -u $user /mnt /bin/bash -c "cd /home/$user && \
     git clone https://github.com/crolbar/bspwm && cd bspwm && \
      cp -R bspwm /home/$user/.config/ && \
      cp -R alacritty /home/$user/.config/ && \
