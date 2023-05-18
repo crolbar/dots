@@ -69,16 +69,17 @@ echo "do you want to use my bspwm config yes/no"
 read confirmation2
 if [[ $confirmation2 == y ]] || [[ $confirmation2 == yes ]];
 then
-    arch-chroot /mnt /bin/bash -c "pacman -Syy git"
-    arch-chroot /mnt /bin/bash -c "git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
-    arch-chroot /mnt /bin/bash -c "yay -S --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio zsh pavucontrol neofetch alacritty lsd ttf-jetbrains-mono-nerd ttf-font-awesome ttf-roboto papirus-icon-theme xclip polkit-gnome materia-theme lxappearance network-manager-applet xfce4-power-manager nerd-fonts-complete-starship thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly"
-    arch-chroot /mnt /bin/bash -c "systemctl enable ly.service"
-    arch-chroot /mnt /bin/bash -c "git clone https://github.com/crolbar/bspwm && cd bspwm"
-    arch-chroot /mnt /bin/bash -c "cp -R bspwm /home/$user/.config/"
-    arch-chroot /mnt /bin/bash -c "cp -R alacritty /home/$user/.config/"
-    arch-chroot /mnt /bin/bash -c "cp -R neofetch /home/$user/.config/"
-    arch-chroot /mnt /bin/bash -c "cp -R zsh /home/$user/.config/"
-    arch-chroot /mnt /bin/bash -c "cp -R .zshrc /home/$user/"
+    arch-chroot /mnt /bin/bash -c "su $user && pacman -Syy git"
+    arch-chroot /mnt /bin/bash -c "su $user && cd && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si"
+    arch-chroot /mnt /bin/bash -c "su $user && yay -S --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio zsh pavucontrol neofetch alacritty lsd ttf-jetbrains-mono-nerd ttf-font-awesome ttf-roboto papirus-icon-theme xclip polkit-gnome materia-theme lxappearance network-manager-applet xfce4-power-manager nerd-fonts-complete-starship thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly"
+    arch-chroot /mnt /bin/bash -c "su $user && systemctl enable ly.service"
+    arch-chroot /mnt /bin/bash -c "su $user && cd && \
+    git clone https://github.com/crolbar/bspwm && cd bspwm && \
+     cp -R bspwm /home/$user/.config/ && \
+     cp -R alacritty /home/$user/.config/ && \
+     neofetch /home/$user/.config/ && \
+     zsh /home/$user/.config/ && \
+     .zshrc /home/$user/"
 elif [[confirmation2 == no ]];
 then
     echo 
