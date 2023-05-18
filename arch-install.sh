@@ -49,18 +49,22 @@ then
  else 
     exit
 fi
+echo "Chose the name of the host"
+read host
+echo "Chose the name of the root user"
+read user
 genfstab -U -p /mnt >> /mnt/etc/fstab 
-arch-chroot /mnt systemctl enable NetworkManager
-arch-chroot /mnt grub-install /dev/$drive
-arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
-arch-chroot /mnt echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
-arch-chroot /mnt echo LANG="C.UTF-8" > /etc/locale.conf
-arch-chroot /mnt locale-gen
-arch-chroot /mnt echo arch > /etc/hostname
-arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Sofia /etc/localtime 
-arch-chroot /mnt useradd -mg wheel kubo
-arch-chroot /mnt echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
+arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
+arch-chroot /mnt /bin/bash -c "grub-install /dev/$drive"
+arch-chroot /mnt /bin/bash -c "grub-mkconfig -o /boot/grub/grub.cfg"
+arch-chroot /mnt /bin/bash -c "echo en_US.UTF-8 UTF-8 >> /etc/locale.gen"
+arch-chroot /mnt /bin/bash -c "echo LANG="C.UTF-8" > /etc/locale.conf"
+arch-chroot /mnt /bin/bash -c "locale-gen"
+arch-chroot /mnt /bin/bash -c "echo $host > /etc/hostname"
+arch-chroot /mnt /bin/bash -c "ln -sf /usr/share/zoneinfo/Europe/Sofia /etc/localtime" 
+arch-chroot /mnt /bin/bash -c "useradd -mg wheel $user"
+arch-chroot /mnt /bin/bash -c "echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers"
 arch-chroot /mnt passwd
-arch-chroot /mnt passwd kubo
+arch-chroot /mnt passwd $user
 umount -R /mnt
 echo "you can reboot now"
