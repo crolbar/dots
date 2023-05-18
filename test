@@ -1,3 +1,0 @@
-echo "Chose the name of the host"
-read host
-echo $host
