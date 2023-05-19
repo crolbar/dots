@@ -144,7 +144,9 @@ arch-chroot /mnt /bin/bash -c "ln -sf /usr/share/zoneinfo/Europe/Sofia /etc/loca
 arch-chroot /mnt /bin/bash -c "echo $host > /etc/hostname"
 arch-chroot /mnt /bin/bash -c "useradd -mg wheel $user"
 arch-chroot /mnt /bin/bash -c "echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers"
+echo "SET THE ROOT PASSWORD"
 arch-chroot /mnt passwd
+echo "SET THE USER PASSWORD"
 arch-chroot /mnt passwd $user
 ehco "
 =========================================================================================
@@ -162,11 +164,12 @@ then
     arch-chroot -u $user /mnt /bin/bash -c "sudo pacman -Syy git"
     arch-chroot -u $user /mnt /bin/bash -c "sudo chown $user /root"
     arch-chroot -u $user /mnt /bin/bash -c "sudo git clone https://aur.archlinux.org/yay.git /home/$user/yay && cd /home/$user && sudo chown -R $user:users ./yay && cd yay && makepkg -si"
-    arch-chroot -u $user /mnt /bin/bash -c "yay -Syy --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio zsh pavucontrol neofetch alacritty lsd ttf-hack ttf-font-awesome ttf-roboto papirus-icon-theme xclip polkit-gnome materia-theme lxappearance network-manager-applet xfce4-power-manager thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly mesa physlock"
+    arch-chroot -u $user /mnt /bin/bash -c "yay -Syy --noconfirm --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio zsh pavucontrol neofetch alacritty lsd ttf-hack ttf-font-awesome ttf-roboto papirus-icon-theme xclip polkit-gnome materia-theme lxappearance network-manager-applet xfce4-power-manager thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly mesa physlock"
     arch-chroot -u $user /mnt /bin/bash -c "sudo systemctl enable ly.service"
     arch-chroot -u $user /mnt /bin/bash -c "cd /home/$user && \
     git clone https://github.com/crolbar/dots && \
      cd dots && \
+     mkdir /home/$user/.config && \
      mkdir /home/$user/.config/bspwm && \
      cp -a bspwm /home/$user/.config/bspwm && \
      cp -a alacritty /home/$user/.config/ && \
