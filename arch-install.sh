@@ -170,7 +170,8 @@ then
     git clone https://github.com/crolbar/dots && \
      cd dots && \
      mkdir /home/$user/.config && \
-     mkdir /home/$user/.config/bspwm && \
+     mkdir /home/$user/.config/bspwm"
+     arch-chroot -u $user /mnt /bin/bash -c "
      cp -a bspwm /home/$user/.config/bspwm && \
      cp -a alacritty /home/$user/.config/ && \
      cp -a neofetch /home/$user/.config/ && \
