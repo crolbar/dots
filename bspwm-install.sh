@@ -13,10 +13,10 @@ sudo systemctl enable ly.service
     git clone https://github.com/crolbar/dots && \
         cd dots && \
         mkdir $HOME/.config && \
-        cp -R bspwm $HOME/.config/ && \
-        cp -R alacritty $HOME/.config/ && \
-        cp -R neofetch $HOME/.config/ && \
-        cp -R zsh $HOME/.config/ && \
+        cp -a bspwm $HOME/.config/ && \
+        cp -a alacritty $HOME/.config/ && \
+        cp -a neofetch $HOME/.config/ && \
+        cp -a zsh $HOME/.config/ && \
         cp .zshrc $HOME/
 elif [[ $WM == no ]];
 then

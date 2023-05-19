@@ -57,6 +57,9 @@ Chose the name of the root user
 ==============================="
 read user
 umount -R /mnt
+umount -R /mnt/boot
+umount -R /mnt/boot/efi
+echo
 if  [[ $ef == efi ]] && [[ $swap == y || $swap == yes || $swap == "" ]]; 
 then
         parted /dev/$drive mklabel gpt
@@ -100,8 +103,8 @@ then
         parted /dev/$drive set 1 boot on
         parted /dev/$drive mkpart primary ext4 128MiB 100%
         mkfs.fat -F32 /dev/$drive'1'
-        mkfs.ext4 /dev/$drive'3'
-        mount /dev/$drive'3' /mnt
+        mkfs.ext4 /dev/$drive'2'
+        mount /dev/$drive'2' /mnt
         mount -m /dev/$drive'1' /mnt/boot/efi
         pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager efibootmgr
         echo	"
@@ -115,8 +118,8 @@ then
         parted /dev/$drive set 1 boot on
         parted /dev/$drive mkpart primary ext4 128MiB 100%
         mkfs.ext4 /dev/$drive'1'
-        mkfs.ext4 /dev/$drive'3'
-        mount /dev/$drive'3' /mnt
+        mkfs.ext4 /dev/$drive'2'
+        mount /dev/$drive'2' /mnt
         mount -m /dev/$drive'1' /mnt/boot
         pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager
         echo	"
@@ -164,10 +167,10 @@ then
     arch-chroot -u $user /mnt /bin/bash -c "cd /home/$user && \
     git clone https://github.com/crolbar/dots && \
      cd dots && \
-     cp -R bspwm /home/$user/.config/bspwm/ && \
-     cp -R alacritty /home/$user/.config/ && \
-     cp -R neofetch /home/$user/.config/ && \
-     cp -R zsh /home/$user/.config/ && \
+     cp -a bspwm /home/$user/.config/ && \
+     cp -a alacritty /home/$user/.config/ && \
+     cp -a neofetch /home/$user/.config/ && \
+     cp -a zsh /home/$user/.config/ && \
      cp .zshrc /home/$user/"
 elif [[ $WM == no ]];
 then
