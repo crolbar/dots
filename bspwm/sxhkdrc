@@ -7,7 +7,8 @@ super + {x,r,e,b}
 	dmenu_run -nb black -sb '#6600CC', \
 	thunar, \
 	firefox}
-
+	
+#
 # quit/restart bspwm
 super + ctrl + {q,r}
 	bspc {quit,wm -r}
@@ -21,9 +22,13 @@ super + {d,shift + space,f}
 	bspc node -t {tiled,floating,fullscreen}
 
 # focus,switch the node in the given direction
-super + {_,shift + }{Left,Down,Up,Right}
+super + {_,shift+ }{Left,Down,Up,Right}
+  bspc node -{f,s} {west,south,north,east}
+  
+# focus,switch the node in the give direction(vim) 
+super + {_,shift+ }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
-
+  
 # focus the last desktop,node and switch between tiled/monocle
 {super,alt} + {Tab,z}
 	bspc {desktop,node} {-f last,-l next}
@@ -35,18 +40,14 @@ super + shift +{1-6}
 	for mon_id in $(bspc query -N -n); do \
         bspc node "$\{mon_id\}:focused#$\{desktop\}.local" -d; \
     done
-
+  
 # focus on the selected desktop on the selected monitor
-super + {1-6}
-    desktop={1-6}; \
+super + {1-7}
+    desktop={1-7}; \
 	bspc desktop "$\{desktop\}.local" -f 
 	for mon_id in $(bspc query -M -m); do \
         bspc desktop "$\{mon_id\}:focused#$\{desktop\}.local" -f; \
     done
-
-
-
-
 
 # preselect spawn direction
 super + ctrl + {a,s,w,d,space}
@@ -55,3 +56,5 @@ super + ctrl + {a,s,w,d,space}
 # power off,reboot,log out,lock
 super + ctrl + alt + shift + {p,r,q,s,l}
 	{sudo systemctl poweroff,sudo systemctl reboot,bspc quit,physlock -d && sudo systemctl suspend,physlock -d}
+
+   

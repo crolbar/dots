@@ -1,11 +1,8 @@
 #! /bin/sh
 # crolbar
 
-i=1
-for monitor in $(bspc query -M); do
-bspc monitor $monitor \
-        -d {1,2,3,4,5,6}
-    let i++
+for monitor in $(bspc query -M); do 
+bspc monitor $monitor -d {1,2,3,4,5,6,7}
 done
 
 bspc config border_width         2
@@ -30,8 +27,8 @@ done
 picom --config "$HOME"/.config/bspwm/picom.conf &
 sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
 dunst -config "$HOME"/.config/bspwm/dunstrc &
-polybar DP-2 -c "$HOME"/.config/bspwm/config.ini &
-polybar DP-0 -c "$HOME"/.config/bspwm/config.ini &
-feh --bg-fill "$HOME"/.config/bspwm/wallpapers/wall2.png &
+#polybar DP-2 -c "$HOME"/.config/bspwm/config.ini &
+#polybar DP-0 -c "$HOME"/.config/bspwm/config.ini &
+feh --bg-fill "$HOME"/.config/bspwm/wallpapers/wall.png &
 nm-applet &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
