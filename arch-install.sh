@@ -159,7 +159,7 @@ then
     arch-chroot -u $user /mnt /bin/bash -c "sudo pacman -Syy git"
     arch-chroot -u $user /mnt /bin/bash -c "sudo chown $user /root"
     arch-chroot -u $user /mnt /bin/bash -c "sudo git clone https://aur.archlinux.org/yay.git /home/$user/yay && cd /home/$user && sudo chown -R $user:users ./yay && cd yay && makepkg -si"
-    arch-chroot -u $user /mnt /bin/bash -c "yay -Syy --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio zsh pavucontrol neofetch alacritty lsd ttf-font-awesome ttf-roboto papirus-icon-theme xclip polkit-gnome materia-theme lxappearance network-manager-applet xfce4-power-manager thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly mesa physlock"
+    arch-chroot -u $user /mnt /bin/bash -c "yay -Syy --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio zsh pavucontrol neofetch alacritty lsd ttf-hack ttf-font-awesome ttf-roboto papirus-icon-theme xclip polkit-gnome materia-theme lxappearance network-manager-applet xfce4-power-manager thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly mesa physlock"
     arch-chroot -u $user /mnt /bin/bash -c "sudo systemctl enable ly.service"
     arch-chroot -u $user /mnt /bin/bash -c "cd /home/$user && \
     git clone https://github.com/crolbar/dots && \
