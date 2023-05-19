@@ -167,7 +167,8 @@ then
     arch-chroot -u $user /mnt /bin/bash -c "cd /home/$user && \
     git clone https://github.com/crolbar/dots && \
      cd dots && \
-     cp -a bspwm /home/$user/.config/ && \
+     mkdir /home/$user/.config/bspwm && \
+     cp -a bspwm /home/$user/.config/bspwm && \
      cp -a alacritty /home/$user/.config/ && \
      cp -a neofetch /home/$user/.config/ && \
      cp -a zsh /home/$user/.config/ && \

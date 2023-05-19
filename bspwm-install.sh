@@ -12,7 +12,7 @@ yay -Syy --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio zsh pavucontr
 sudo systemctl enable ly.service
     git clone https://github.com/crolbar/dots && \
         cd dots && \
-        mkdir $HOME/.config && \
+        mkdir /home/$user/.config/bspwm && \
         cp -a bspwm $HOME/.config/ && \
         cp -a alacritty $HOME/.config/ && \
         cp -a neofetch $HOME/.config/ && \
