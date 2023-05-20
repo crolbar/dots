@@ -1,0 +1,56 @@
+
+import:
+  - ~/.config/alacritty/fonts.yml
+  
+window:
+ 
+      
+
+  decorations: none
+
+  opacity: 0.8
+  dynamic_title: true
+
+  history: 10000
+  multiplier: 3
+
+selection:
+  save_to_clipboard: false
+
+cursor:
+  style:
+    shape: Block
+    blinking: On
+    
+  unfocused_hollow: false 
+  blink_interval: 550
+
+live_config_reload: true
+
+colors:
+  primary:
+    background: '#000000'
+    foreground: '#ffffff'
+  normal:
+    black:   '#000000'
+    red:     '#cc0403'
+    green:   '#19cb00'
+    yellow:  '#cecb00'
+    #yellow: '#565e65'
+    blue:    '#0d73cc'
+    magenta: '#cb1ed1'
+    cyan:    '#0dcdcd'
+    white:   '#dddddd'
+
+  bright:
+    black:   '#767676'
+    red:     '#cc0403'
+    green:   '#23fd00'
+    #yellow:  '#fffd00'
+    yellow: '#565e65'
+    blue:    '#1a8fff'
+    magenta: '#fd28ff'
+    cyan:    '#14ffff'
+    white:   '#ffffff'
+
+
