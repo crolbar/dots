@@ -25,6 +25,3 @@ then
 else 
     exit
 fi 
-
-
-

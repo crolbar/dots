@@ -170,7 +170,7 @@ then
     git clone https://github.com/crolbar/dots && \
      cd dots && \
      mkdir /home/$user/.config"
-     arch-chroot -u $user /mnt /bin/bash -c "cd /home/$user/dots && \
+    arch-chroot -u $user /mnt /bin/bash -c "cd /home/$user/dots && \
      cp -a bspwm /home/$user/.config/bspwm && \
      cp -a alacritty /home/$user/.config/ && \
      cp -a neofetch /home/$user/.config/ && \
@@ -187,5 +187,3 @@ echo "
 ==========================
     YOU CAN REBOOT NOW
 =========================="
-
-
