@@ -161,10 +161,10 @@ do you want to use my bspwm config yes/no
 read WM
 if [[ $WM == y ]] || [[ $WM == yes ]];
 then
-    arch-chroot -u $user /mnt /bin/bash -c "sudo pacman -Syy git"
+    arch-chroot -u $user /mnt /bin/bash -c "sudo pacman -Sy git"
     arch-chroot -u $user /mnt /bin/bash -c "sudo chown $user /root"
     arch-chroot -u $user /mnt /bin/bash -c "sudo git clone https://aur.archlinux.org/yay.git /home/$user/yay && cd /home/$user && sudo chown -R $user:users ./yay && cd yay && makepkg -si"
-    arch-chroot -u $user /mnt /bin/bash -c "yay -Syy --noconfirm --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio zsh pavucontrol neofetch alacritty lsd ttf-hack ttf-font-awesome ttf-roboto papirus-icon-theme xclip polkit-gnome materia-theme lxappearance network-manager-applet xfce4-power-manager thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly mesa physlock"
+    arch-chroot -u $user /mnt /bin/bash -c "yay -Sy --noconfirm --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio zsh pavucontrol neofetch alacritty lsd ttf-hack ttf-font-awesome ttf-roboto papirus-icon-theme xclip polkit-gnome materia-theme network-manager-applet xfce4-power-manager thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly mesa physlock"
     arch-chroot -u $user /mnt /bin/bash -c "sudo systemctl enable ly.service"
     arch-chroot -u $user /mnt /bin/bash -c "cd /home/$user && \
     git clone https://github.com/crolbar/dots && \
@@ -175,6 +175,7 @@ then
      cp -a alacritty /home/$user/.config/ && \
      cp -a neofetch /home/$user/.config/ && \
      cp -a zsh /home/$user/.config/ && \
+     cp -a gtk-3.0 /home/$user/.config/ && \
      cp .zshrc /home/$user/"
 elif [[ $WM == no ]];
 then
