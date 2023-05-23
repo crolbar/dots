@@ -28,8 +28,8 @@ done
 picom --config "$HOME"/.config/bspwm/picom.conf &
 sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
 dunst -config "$HOME"/.config/bspwm/dunstrc &
-polybar DP-2 -c "$HOME"/.config/bspwm/config.ini &
+#polybar DP-2 -c "$HOME"/.config/bspwm/config.ini &
 polybar DP-0 -c "$HOME"/.config/bspwm/config.ini &
-feh --bg-fill "$HOME"/.config/bspwm/wallpapers/wall6.png &
+feh --bg-fill "$HOME"/.config/bspwm/wallpapers/wall.png &
 nm-applet &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
