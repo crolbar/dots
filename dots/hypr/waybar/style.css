@@ -1,0 +1,147 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Roboto,"Font Awesome 6 Free Solid";
+    font-size: 12px;
+    font-weight: bold;
+    min-height: 0;
+    margin: 0px;
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0.658);
+    color: #a6fcff;
+}
+
+tooltip {
+    background: rgba(0, 0, 0, 0.658);
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #11111b;
+}
+
+#workspaces button {
+    color: #838383;
+}
+
+#workspaces button.active {
+    color: #abf0a8;
+}
+
+#workspaces button.focused {
+    color: #ffffff;
+    background: #00000000;
+}
+
+#workspaces button.urgent {
+    color: #ffffff;
+    background: #ff9100;
+}
+
+#workspaces button:hover {
+    background: #00000000;
+    color: #ffffff;
+}
+
+#custom-language,
+#custom-updates,
+#custom-caffeine,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#workspaces,
+#tray,
+#pipewire,
+#backlight {
+    background: rgba(0, 0, 0, 0);
+    padding: 0px 10px;
+    margin: 0px 0px;
+    margin-top: 0px;
+    border: 0px solid #000000;
+}
+
+#tray {
+    background: rgba(0, 0, 0, 0);
+    border-radius: 0px;
+    margin-left: 1px;
+    padding-left: 0px;
+}
+
+#workspaces {
+    background: rgba(0, 0, 0, 0);
+    border-radius: 0px;
+    margin-left: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+#custom-caffeine {
+    color: #89dceb;
+    border-radius: 0px 0px 0px 0px;
+    border-right: 0px;
+    margin-left: 0px;
+}
+
+#custom-language {
+    color: #f38ba8;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#custom-updates {
+    background: rgba(0, 0, 0, 0);
+    color: #f5c2e7;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 0px 0px 0px 0px;;
+}
+
+#window {
+    background: rgba(0, 0, 0, 0);
+    border-radius: 0px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+#clock {
+    background: rgba(0, 0, 0, 0);
+    color: #fab387;
+    border-radius: 0px 0px 0px 0px;
+    margin-right: 0px;
+    border-right: 0px;
+}
+
+#cpu {
+    background: rgba(0, 0, 0, 0);
+    color: #d4d250;
+    border-left: 0px;
+    border-right: 0px;
+    margin-right: 10px;
+}
+
+#memory {
+    background: rgba(0, 0, 0, 0);
+    color: #c52121;
+    border-left: 0px;
+    border-right: 0px;
+    margin-right: 0px;
+}
+
+#pulseaudio {
+    background: rgba(0, 0, 0, 0);
+    color: #89b4fa;
+    border-left: 0px;
+    border-right: 0px;
+    padding-left: 0px;
+}
+
+#pulseaudio.microphone {
+    background: rgba(0, 0, 0, 0);
+    color: #cba6f7;
+    margin-right: 0px;
+}
+
+

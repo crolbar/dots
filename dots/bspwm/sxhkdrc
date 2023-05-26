@@ -1,0 +1,77 @@
+#!/bin/bash
+# crolbar
+
+# Apps
+super + {x,r,e,b,t}
+	{alacritty, \
+	rofi -show drun, \
+	thunar, \
+	firefox, \
+	dmenu_run -nb black -sb '#6600CC'}
+
+# restart bspwm
+super + ctrl + r
+	bspc wm -r
+
+# Reload sxhkd
+super + Escape
+	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
+
+# close 
+super + shift +  {q,r}
+	bspc node {-c,@/ --rotate 90}
+
+# set the window state
+super + {d,shift + space,f}
+	bspc node -t {tiled,floating,fullscreen}
+
+# focus,switch the node in the given direction
+super + {_,shift+ }{Left,Down,Up,Right}
+  bspc node -{f,s} {west,south,north,east}
+  
+# focus,switch the node in the give direction(vim) 
+super + {_,shift+ }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+  
+# focus the last desktop,node and switch between tiled/monocle
+{super,alt} + {Tab,z}
+	bspc {desktop,node} {-f last,-l next}
+
+# send the selected node to the given desktop
+super + shift +{1-6}
+    desktop={1-6}; \
+	bspc node -d "$\{desktop\}.local"  
+	for mon_id in $(bspc query -N -n); do \
+        bspc node "$\{mon_id\}:focused#$\{desktop\}.local" -d; \
+    done
+  
+# focus on the selected desktop on the selected monitor
+super + {1-7}
+    desktop={1-7}; \
+	bspc desktop "$\{desktop\}.local" -f 
+	for mon_id in $(bspc query -M -m); do \
+        bspc desktop "$\{mon_id\}:focused#$\{desktop\}.local" -f; \
+    done
+
+# preselect spawn direction
+super + ctrl + {a,s,w,d,space}
+	bspc node -p {west,south,north,east,cancel}
+
+# power off,reboot,log out,lock
+super + ctrl + alt + shift + {p,r,q,s,l}
+	{sudo systemctl poweroff,sudo systemctl reboot,bspc quit,physlock -d && sudo systemctl suspend,physlock -d}
+
+# mute mic
+super + F8
+	mic
+
+# volume control
+super + alt + {F11,F12}
+	pamixer --allow-boost --set-limit 150 -{d,i} 3
+
+super + alt + shift + {F9,F10}
+	volume{ --browser-, --browser+}
+
+super + alt + shift + {F11,F12}
+	volume{ --music-, --music+}
+	
