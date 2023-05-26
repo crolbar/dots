@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: monospace;
+    font-family: Roboto,"Font Awesome 6 Free Solid";
     font-size: 12px;
     font-weight: bold;
     min-height: 0;
@@ -9,12 +9,12 @@
 }
 
 window#waybar {
-    background: #000000;
-    color: #cdd6f4;
+    background: rgba(0, 0, 0, 0.658);
+    color: #a6fcff;
 }
 
 tooltip {
-    background: #000000;
+    background: rgba(0, 0, 0, 0.658);
     border-radius: 10px;
     border-width: 2px;
     border-style: solid;
@@ -22,37 +22,31 @@ tooltip {
 }
 
 #workspaces button {
-    padding: 5px;
-    color: #644368;
-    margin-right: 5px;
+    color: #838383;
 }
 
 #workspaces button.active {
-    color: #a6adc8;
+    color: #abf0a8;
 }
 
 #workspaces button.focused {
-    color: #a6adc8;
-    background: #eba0ac;
-    border-radius: 10px;
+    color: #ffffff;
+    background: #00000000;
 }
 
 #workspaces button.urgent {
-    color: #11111b;
-    background: #a6e3a1;
-    border-radius: 10px;
+    color: #ffffff;
+    background: #ff9100;
 }
 
 #workspaces button:hover {
-    background: #11111b;
-    color: #cdd6f4;
-    border-radius: 10px;
+    background: #00000000;
+    color: #ffffff;
 }
 
 #custom-language,
 #custom-updates,
 #custom-caffeine,
-#custom-weather,
 #window,
 #clock,
 #battery,
@@ -60,8 +54,9 @@ tooltip {
 #network,
 #workspaces,
 #tray,
+#pipewire,
 #backlight {
-    background: #000000;
+    background: rgba(0, 0, 0, 0);
     padding: 0px 10px;
     margin: 0px 0px;
     margin-top: 0px;
@@ -69,23 +64,25 @@ tooltip {
 }
 
 #tray {
+    background: rgba(0, 0, 0, 0);
     border-radius: 0px;
-    margin-right: 0px;
+    margin-left: 1px;
+    padding-left: 0px;
 }
 
 #workspaces {
-    background: #000000;
+    background: rgba(0, 0, 0, 0);
     border-radius: 0px;
     margin-left: 0px;
     padding-right: 0px;
-    padding-left: 5px;
+    padding-left: 0px;
 }
 
 #custom-caffeine {
     color: #89dceb;
     border-radius: 0px 0px 0px 0px;
     border-right: 0px;
-    margin-left: 10px;
+    margin-left: 0px;
 }
 
 #custom-language {
@@ -95,6 +92,7 @@ tooltip {
 }
 
 #custom-updates {
+    background: rgba(0, 0, 0, 0);
     color: #f5c2e7;
     border-left: 0px;
     border-right: 0px;
@@ -102,45 +100,48 @@ tooltip {
 }
 
 #window {
+    background: rgba(0, 0, 0, 0);
     border-radius: 0px;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 6px;
+    margin-right: 6px;
 }
 
 #clock {
+    background: rgba(0, 0, 0, 0);
     color: #fab387;
     border-radius: 0px 0px 0px 0px;
-    margin-left: 0px;
+    margin-right: 0px;
     border-right: 0px;
 }
 
-#network {
-    color: #f9e2af;
+#cpu {
+    background: rgba(0, 0, 0, 0);
+    color: #d4d250;
     border-left: 0px;
     border-right: 0px;
+    margin-right: 10px;
+}
+
+#memory {
+    background: rgba(0, 0, 0, 0);
+    color: #c52121;
+    border-left: 0px;
+    border-right: 0px;
+    margin-right: 0px;
 }
 
 #pulseaudio {
+    background: rgba(0, 0, 0, 0);
     color: #89b4fa;
     border-left: 0px;
     border-right: 0px;
+    padding-left: 0px;
 }
 
 #pulseaudio.microphone {
+    background: rgba(0, 0, 0, 0);
     color: #cba6f7;
     margin-right: 0px;
-    border-radius: 0 0px 0px 0;
 }
 
-#battery {
-    color: #a6e3a1;
-    border-radius: 0 0px 0px 0;
-    margin-right: 10px;
-    border-left: 0px;
-}
 
-#custom-weather {
-    border-radius: 0px 0px 0px 0px;
-    border-right: 0px;
-    margin-left: 0px;
-}
