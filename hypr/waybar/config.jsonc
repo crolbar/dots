@@ -10,7 +10,6 @@
     ],
     "modules-center": ["hyprland/window"],
     "modules-right": [
-        "custom/updates",
         "pulseaudio",
         "pulseaudio#microphone",
         "cpu",
@@ -43,11 +42,6 @@
         "format": " {}%",
         "format-alt":" {used:0.1f}G",
         "max-length": 10
-    },
-    "custom/updates": {
-        "exec": "(yay -Qua) | wc -l",
-        "interval": 7200,
-        "format": " {}"
     },
     // "custom/language": {
     //     "exec": "cat /tmp/kb_layout",

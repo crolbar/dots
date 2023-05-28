@@ -21,8 +21,8 @@
     padding = 12
     horizontal_padding = 12
     text_icon_padding = 0
-    frame_width = 3
-    frame_color = "#A7A4E0"
+    frame_width = 2
+    frame_color = "#00ffff"
     gap_size = 0
     separator_color = frame
     sort = yes
@@ -50,7 +50,7 @@
     always_run_script = true
     title = Dunst
     class = Dunst
-    corner_radius = 2
+    corner_radius = 10
     ignore_dbusclose = false
     force_xinerama = false
     mouse_middle_click = do_action, close_current

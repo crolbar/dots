@@ -44,17 +44,14 @@ tooltip {
     color: #ffffff;
 }
 
-#custom-language,
 #custom-updates,
 #custom-caffeine,
 #window,
 #clock,
-#battery,
 #pulseaudio,
 #network,
 #workspaces,
 #tray,
-#pipewire,
 #backlight {
     background: rgba(0, 0, 0, 0);
     padding: 0px 10px;
@@ -89,14 +86,6 @@ tooltip {
     color: #f38ba8;
     border-left: 0px;
     border-right: 0px;
-}
-
-#custom-updates {
-    background: rgba(0, 0, 0, 0);
-    color: #f5c2e7;
-    border-left: 0px;
-    border-right: 0px;
-    border-radius: 0px 0px 0px 0px;;
 }
 
 #window {
