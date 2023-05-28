@@ -189,12 +189,13 @@ ehco "
     ENABLED "NetworkManager" CHOSE EN_US FOR THE LOCALES AND /EU/SA FOR THE LOCALTIME
             CREATED A GRUB BOOT LOADER A HOSTNAME ($host) AND A USER ($user)        
 ========================================================================================="
-echo
+echo 
 
 # GUI setup
-if [[ $WM == y || $WM == yes || $WM == ""]]; then
+export user
+if [[ $WM == y || $WM == yes || $WM == "" ]]; then
     arch-chroot -u $user /mnt /bin/bash -c "sudo pacman -Sy git && git clone https://github.com/crolbar/dots"
-    arhc-chroot /mnt /bin/bash -c "/dots/bspwm-install.sh"
+    arch-chroot /mnt /bin/bash -c "/dots/bspwm-install.sh"
 else
     echo
 fi
