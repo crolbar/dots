@@ -9,9 +9,9 @@ fi
 clear
 
 # display the disks to the user
-echo ===================================================
+echo =====================================================
 lsblk
-echo ===================================================
+echo =====================================================
 echo "
 ===============================================================
 Chose a drive from the listed above you want to install arch on
@@ -25,13 +25,9 @@ echo "
 EVERYTHING ON DRIVE $drive WILL BE ERASED ARE YOU SHURE YOU WANT TO CONTINUE? [Y/n]
 ==================================================================================="
 read confirmation
-if [[ $confirmation == y ]] || [[ $confirmation == yes ]]; 
-then
+if [[ $confirmation == y || $confirmation == "" ]]; then
     echo
- elif [[ $confirmation == "" ]];
-then
-    echo
- else 
+else 
     echo EXITING OUT OF ARCH-INSTALL
     exit
 fi
@@ -42,7 +38,7 @@ echo "
 Do you want to create a swap partition? [Y/n]
 ============================================="
 read swap
-if [[ $swap == y ]] || [[ $swap == yes ]] || [[ $swap == "" ]]; 
+if [[ $swap == y || $swap == "" ]]; 
 then
 echo "
 =========================================================
@@ -81,6 +77,13 @@ echo "
 Chose the PASSWORD of the root user
 ==================================="
 read rootpasswd
+
+# GUI or no
+echo "
+=========================================
+do you want to use my bspwm config yes/no
+========================================="
+read WM
 
 
 # unmount devices if any
@@ -188,36 +191,38 @@ ehco "
 ========================================================================================="
 echo
 
+if [[ $WM == y || $WM == yes || $WM == ""]]; then
+    arch-chroot -u $user /mnt /bin/bash -c "sudo pacman -Sy git && git clone https://github.com/crolbar/dots"
+    arhc-chroot /mnt /bin/bash -c "/dots/bspwm-install.sh"
+else
+    echo
+fi
+
 # GUI setup
-echo "
-=========================================
-do you want to use my bspwm config yes/no
-========================================="
-read WM
-if [[ $WM == y ]] || [[ $WM == yes ]];
-then
-    arch-chroot -u $user /mnt /bin/bash -c "sudo pacman -Sy git"
-    arch-chroot -u $user /mnt /bin/bash -c "sudo chown $user /root"
-    arch-chroot -u $user /mnt /bin/bash -c "sudo git clone https://aur.archlinux.org/yay.git /home/$user/yay && cd /home/$user && sudo chown -R $user:users ./yay && cd yay && makepkg -si"
-    arch-chroot -u $user /mnt /bin/bash -c "yay -Sy --noconfirm --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio alsa-utils zsh pavucontrol neofetch alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme network-manager-applet xfce4-power-manager thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly mesa physlock"
-    arch-chroot -u $user /mnt /bin/bash -c "sudo systemctl enable ly.service"
-    arch-chroot -u $user /mnt /bin/bash -c "cd /home/$user && \
-    git clone https://github.com/crolbar/dots && \
-     cd dots && \
-     mkdir /home/$user/.config"
-    arch-chroot -u $user /mnt /bin/bash -c "cd /home/$user/dots && \
-     cp -a bspwm /home/$user/.config/bspwm && \
-     cp -a alacritty /home/$user/.config/ && \
-     cp -a neofetch /home/$user/.config/ && \
-     cp -a zsh /home/$user/.config/ && \
-     cp -a gtk-3.0 /home/$user/.config/ && \
-     cp .zshrc /home/$user/"
-elif [[ $WM == no ]];
-then
-    echo 
-else 
-    echo 
-fi 
+# if [[ $WM == y ]] || [[ $WM == yes ]];
+# then
+#     arch-chroot -u $user /mnt /bin/bash -c "sudo pacman -Sy git"
+#     arch-chroot -u $user /mnt /bin/bash -c "sudo chown $user /root"
+#     arch-chroot -u $user /mnt /bin/bash -c "sudo git clone https://aur.archlinux.org/yay.git /home/$user/yay && cd /home/$user && sudo chown -R $user:users ./yay && cd yay && makepkg -si --noconfirm"
+#     arch-chroot -u $user /mnt /bin/bash -c "yay -Sy --noconfirm --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio alsa-utils zsh pavucontrol neofetch alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme network-manager-applet xfce4-power-manager thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly mesa physlock"
+#     arch-chroot -u $user /mnt /bin/bash -c "sudo systemctl enable ly.service"
+#     arch-chroot -u $user /mnt /bin/bash -c "cd /home/$user && \
+#     git clone https://github.com/crolbar/dots && \
+#      cd dots && \
+#      mkdir /home/$user/.config"
+#     arch-chroot -u $user /mnt /bin/bash -c "cd /home/$user/dots && \
+#      cp -a bspwm /home/$user/.config/bspwm && \
+#      cp -a alacritty /home/$user/.config/ && \
+#      cp -a neofetch /home/$user/.config/ && \
+#      cp -a zsh /home/$user/.config/ && \
+#      cp -a gtk-3.0 /home/$user/.config/ && \
+#      cp .zshrc /home/$user/"
+# elif [[ $WM == no ]];
+# then
+#     echo 
+# else 
+#     echo 
+# fi 
 umount -R /mnt
 echo "
 ==========================

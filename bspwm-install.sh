@@ -1,12 +1,6 @@
 #!/bin/bash
 # crolbar
-echo "
-=========================================
-do you want to use my bspwm config yes/no
-========================================="
-read WM
-if [[ $WM == y ]] || [[ $WM == yes ]];
-then
+sudo -u kubo bash << EOF
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 yay -Sy --needed --noconfirm bspwm sxhkd picom dmenu dunst polybar pulseaudio alsa-utils zsh pavucontrol neofetch alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme network-manager-applet xfce4-power-manager thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly mesa physlock
 sudo systemctl enable ly.service
@@ -20,9 +14,5 @@ git clone https://github.com/crolbar/dots
     cp -a zsh $HOME/.config/
     cp -a gtk-3.0 $HOME/.config/  
     cp .zshrc $HOME/
-elif [[ $WM == no ]];
-then
-    exit
-else 
-    exit
-fi 
+
+EOF
