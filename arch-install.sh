@@ -194,7 +194,7 @@ echo
 # GUI setup
 export user
 if [[ $WM == y || $WM == yes || $WM == "" ]]; then
-    arch-chroot -u $user /mnt /bin/bash -c "sudo pacman -Sy git && git clone https://github.com/crolbar/dots"
+    arch-chroot /mnt /bin/bash -c "sudo pacman -Sy --noconfirm git && git clone https://github.com/crolbar/dots"
     arch-chroot /mnt /bin/bash -c "/dots/bspwm-install.sh"
 else
     echo
