@@ -1,5 +1,14 @@
 #!/bin/bash
 # crolbar
+# determine if the pc is running efi or bios
+if [ -d "/sys/firmware/efi" ]; then
+    ef=efi
+else
+    ef=bios
+fi
+clear
+
+# display the disks to the user
 echo ===================================================
 lsblk
 echo ===================================================
@@ -9,6 +18,8 @@ Chose a drive from the listed above you want to install arch on
 example: sda
 ==============================================================="
 read  drive
+
+# warn the user
 echo "
 ===================================================================================
 EVERYTHING ON DRIVE $drive WILL BE ERASED ARE YOU SHURE YOU WANT TO CONTINUE? [Y/n]
@@ -24,12 +35,8 @@ then
     echo EXITING OUT OF ARCH-INSTALL
     exit
 fi
-echo "
-===================================================
-Choose what you want the setup to be for efi or bios
-example: efi
-==================================================="
-read ef
+
+# swap partition creation
 echo "
 =============================================
 Do you want to create a swap partition? [Y/n]
@@ -46,20 +53,44 @@ read ss
  else 
     echo
 fi
+
+# set hostname 
 echo "
 ==================
 Chose the hostname.
 =================="
 read host
+
+# set username
 echo "
-===============================
-Chose the name of the root user
-==============================="
+================================
+Chose the username for your user
+================================"
 read user
+
+# set user password
+echo "
+================================
+Chose the PASSWORD for your user
+================================"
+read userpasswd
+
+# set root password
+echo "
+===================================
+Chose the PASSWORD of the root user
+==================================="
+read rootpasswd
+
+
+# unmount devices if any
 umount -R /mnt
 umount -R /mnt/boot
 umount -R /mnt/boot/efi
 echo
+
+#   create the partitions depending if using swap or not and bios or efi
+
 if  [[ $ef == efi ]] && [[ $swap == y || $swap == yes || $swap == "" ]]; 
 then
         parted /dev/$drive mklabel gpt
@@ -78,6 +109,7 @@ then
         =======================================================================================================================
         FORMATED /dev/$drive AND CREATED A $ef BOOT PARTITION WITH AN SWAP PARTITION WITH $ss OF STORAGE AND A ROOT PARTITION
         ======================================================================================================================="
+ 
  elif [[ $ef == bios ]] && [[ $swap == y || $swap == yes || $swap == "" ]];
  then
         parted /dev/$drive mklabel msdos
@@ -96,6 +128,7 @@ then
         =======================================================================================================================
         FORMATED /dev/$drive AND CREATED A $ef BOOT PARTITION WITH AN SWAP PARTITION WITH $ss OF STORAGE AND A ROOT PARTITION
         ======================================================================================================================="
+ 
  elif [[ $ef == efi ]] && [[ $swap != y || $swap != yes || $swap != "" ]]
  then
         parted /dev/$drive mklabel gpt
@@ -111,6 +144,7 @@ then
         ==================================================================================================================
                         FORMATED /dev/$drive AND CREATED A $ef BOOT PARTITION WITH AN ROOT PARTITION
         =================================================================================================================="
+ 
  elif [[ $ef == bios ]] && [[ $swap != y || $swap != yes || $swap != "" ]];
  then
         parted /dev/$drive mklabel msdos
@@ -133,6 +167,7 @@ then
         ================================================="
         exit
 fi
+# configuring the system
 genfstab -U -p /mnt >> /mnt/etc/fstab 
 arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
 arch-chroot /mnt /bin/bash -c "grub-install /dev/$drive"
@@ -144,16 +179,16 @@ arch-chroot /mnt /bin/bash -c "ln -sf /usr/share/zoneinfo/Europe/Sofia /etc/loca
 arch-chroot /mnt /bin/bash -c "echo $host > /etc/hostname"
 arch-chroot /mnt /bin/bash -c "useradd -mg wheel $user"
 arch-chroot /mnt /bin/bash -c "echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers"
-echo "SET THE ROOT PASSWORD"
-arch-chroot /mnt passwd
-echo "SET THE USER PASSWORD"
-arch-chroot /mnt passwd $user
+arch-chroot /mnt /bin/bash -c "echo '$user:$userpasswd' | chpasswd"
+arch-chroot /mnt /bin/bash -c "echo 'root:$rootpasswd' | chpasswd"
 ehco "
 =========================================================================================
     ENABLED "NetworkManager" CHOSE EN_US FOR THE LOCALES AND /EU/SA FOR THE LOCALTIME
             CREATED A GRUB BOOT LOADER A HOSTNAME ($host) AND A USER ($user)        
 ========================================================================================="
 echo
+
+# GUI setup
 echo "
 =========================================
 do you want to use my bspwm config yes/no
