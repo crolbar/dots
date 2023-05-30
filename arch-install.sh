@@ -198,13 +198,13 @@ if [[ $ef == efi ]]; then
     parted /dev/$drive mkpart ESP fat32 0% 500MiB
     parted /dev/$drive set 1 boot on
     mkfs.fat -F32 /dev/$drive'1'
-    mount -m /dev/$drive'1' /mnt/boot/efi
+    
 elif [[ $ef == bios ]]; then
     parted /dev/$drive mklabel msdos
     parted /dev/$drive mkpart primary ext4 0% 500MiB
     parted /dev/$drive set 1 boot on
     mkfs.ext4 /dev/$drive'1'
-    mount -m /dev/$drive'1' /mnt/boot
+
 else
     echo "
     =================================================
@@ -228,8 +228,10 @@ fi
 
 if [[ $ef == efi ]]; then 
     pacstrap /mnt base base-devel linux linux-firmware grub networkmanager efibootmgr
+    mount -m /dev/$drive'1' /mnt/boot/efi
 elif [[ $ef == bios ]]; then
     pacstrap /mnt base base-devel linux linux-firmware grub networkmanager
+    mount -m /dev/$drive'1' /mnt/boot
 fi
 
 # configuring the system
