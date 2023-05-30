@@ -109,9 +109,8 @@ do you want to use my bspwm config yes/no
 read WM
 
 # unmount devices if any
-umount -R /mnt
-umount -R /mnt/boot
-umount -R /mnt/boot/efi
+umount -a /mnt
+
 echo
 
 #   create the partitions depending if using swap or not and bios or efi
@@ -199,6 +198,7 @@ if [[ $ef == efi ]]; then
     parted /dev/$drive mkpart ESP fat32 0% 500MiB
     parted /dev/$drive set 1 boot on
     mkfs.fat -F32 /dev/$drive'1'
+    mount -m /dev/$drive'1' /mnt/boot/efi
 elif [[ $ef == bios ]]; then
     parted /dev/$drive mklabel msdos
     parted /dev/$drive mkpart primary ext4 0% 500MiB
@@ -251,7 +251,7 @@ ehco "
     ENABLED "NetworkManager" CHOSE EN_US FOR THE LOCALES AND /EU/SA FOR THE LOCALTIME
             CREATED A GRUB BOOT LOADER A HOSTNAME ($host) AND A USER ($user)        
 ========================================================================================="
-echo 
+ehco 
 
 # GUI setup
 export user
