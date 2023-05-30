@@ -17,17 +17,16 @@ echo "
 Chose a drive from the listed above you want to install arch on
 example: sda
 ==============================================================="
-read  drive
+read -p  drive
 
 # warn the user
 echo "
 ===================================================================================
 EVERYTHING ON DRIVE $drive WILL BE ERASED ARE YOU SHURE YOU WANT TO CONTINUE? [Y/n]
 ==================================================================================="
-read confirmation
-if [[ $confirmation == y || $confirmation == "" ]]; then
-    echo
-else 
+read -p "Are you sure? " -n 1 confirmation
+
+if [[ $confirmation != y || $confirmation != "" ]]; then
     echo EXITING OUT OF ARCH-INSTALL
     exit
 fi
@@ -48,6 +47,7 @@ example: 8G (in gigabytes) example2: 8192M (in megabytes)
     swap=true
 else
     swap=false
+    ss=500M
 fi
 echo
 
@@ -198,13 +198,21 @@ if [[ $ef == efi ]]; then
     parted /dev/$drive mkpart ESP fat32 0% 500MiB
     parted /dev/$drive set 1 boot on
     mkfs.fat -F32 /dev/$drive'1'
-    
+    mount -m /dev/$drive'1' /mnt/boot/efi
+    parted /dev/$drive mkpart primary ext4 $ss'iB' 100%
+    mkfs.ext4 /dev/$drive'2'
+    mount /dev/$drive'2' /mnt
+    pacstrap /mnt base base-devel linux linux-firmware grub networkmanager efibootmgr
 elif [[ $ef == bios ]]; then
     parted /dev/$drive mklabel msdos
     parted /dev/$drive mkpart primary ext4 0% 500MiB
     parted /dev/$drive set 1 boot on
     mkfs.ext4 /dev/$drive'1'
-
+    mount -m /dev/$drive'1' /mnt/boot
+    parted /dev/$drive mkpart primary ext4 $ss'iB' 100%
+    mkfs.ext4 /dev/$drive'2'
+    mount /dev/$drive'2' /mnt
+    pacstrap /mnt base base-devel linux linux-firmware grub networkmanager
 else
     echo "
     =================================================
@@ -213,25 +221,10 @@ else
     exit
 fi
 
-if [[ $swap == false ]]; then
-    parted /dev/$drive mkpart primary ext4 500MiB 100%
-    mkfs.ext4 /dev/$drive'2'
-    mount /dev/$drive'2' /mnt
-elif [[ $swap == true ]]; then
+if [[ $swap == true ]]; then
     parted /dev/$drive mkpart primary linux-swap 500MiB $ss'iB'
-    parted /dev/$drive mkpart primary ext4 $ss'iB' 100%
-    mkswap /dev/$drive'2'   
-    mkfs.ext4 /dev/$drive'3'
-    swapon /dev/$drive'2'
-    mount /dev/$drive'3' /mnt
-fi
-
-if [[ $ef == efi ]]; then 
-    pacstrap /mnt base base-devel linux linux-firmware grub networkmanager efibootmgr
-    mount -m /dev/$drive'1' /mnt/boot/efi
-elif [[ $ef == bios ]]; then
-    pacstrap /mnt base base-devel linux linux-firmware grub networkmanager
-    mount -m /dev/$drive'1' /mnt/boot
+    mkswap /dev/$drive'3'   
+    swapon /dev/$drive'3'
 fi
 
 # configuring the system
@@ -248,12 +241,12 @@ arch-chroot /mnt /bin/bash -c "useradd -mg wheel $user"
 arch-chroot /mnt /bin/bash -c "echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers"
 arch-chroot /mnt /bin/bash -c "echo '$user:$userpasswd' | chpasswd"
 arch-chroot /mnt /bin/bash -c "echo 'root:$rootpasswd' | chpasswd"
-ehco "
+echo "
 =========================================================================================
     ENABLED "NetworkManager" CHOSE EN_US FOR THE LOCALES AND /EU/SA FOR THE LOCALTIME
             CREATED A GRUB BOOT LOADER A HOSTNAME ($host) AND A USER ($user)        
 ========================================================================================="
-ehco 
+echo 
 
 # GUI setup
 export user
