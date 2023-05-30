@@ -29,11 +29,11 @@ elif [ $activemonitor == $third ]; then
 fi;;
 s)
 if [ $activemonitor == $main ]; then
-  hyprctl dispatch movetoworkspace "$1"
+  hyprctl dispatch movetoworkspacesilent "$1"
 elif [ $activemonitor == $second ]; then
-  hyprctl dispatch movetoworkspace $(($1 + 5))
+  hyprctl dispatch movetoworkspacesilent $(($1 + 5))
 elif [ $activemonitor == $third ]; then
-  hyprctl dispatch movetoworkspace $(($1 + 10))
+  hyprctl dispatch movetoworkspacesilent $(($1 + 10))
 fi;;
 esac
 
