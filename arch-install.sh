@@ -37,17 +37,17 @@ echo "
 =============================================
 Do you want to create a swap partition? [Y/n]
 ============================================="
-read swap
-if [[ $swap == y || $swap == "" ]]; 
-then
-echo "
-=========================================================
-How much space do you want to give the swap partition
-example: 8G (in gigabytes) example2: 8192M (in megabytes)
-========================================================="
-read ss
- else 
-    echo
+read swapc
+if [[ $swapc == y || $swapc == "" ]]; then
+    echo "
+    =========================================================
+    How much space do you want to give the swap partition
+    example: 8G (in gigabytes) example2: 8192M (in megabytes)
+    ========================================================="
+    read ss
+    swap=true
+else
+    swap=false
 fi
 
 # set hostname 
@@ -69,14 +69,32 @@ echo "
 ================================
 Chose the PASSWORD for your user
 ================================"
-read userpasswd
+prompt="Enter the user password:"
+while IFS= read -p "$prompt" -r -s -n 1 char
+do
+    if [[ $char == $'\0' ]]
+    then
+        break
+    fi
+    prompt='*'
+    userpasswd+="$char"
+done
 
 # set root password
 echo "
 ===================================
 Chose the PASSWORD of the root user
 ==================================="
-read rootpasswd
+prompt="Enter the root password:"
+while IFS= read -p "$prompt" -r -s -n 1 char
+do
+    if [[ $char == $'\0' ]]
+    then
+        break
+    fi
+    prompt='*'
+    rootpasswd+="$char"
+done
 
 # GUI or no
 echo "
@@ -94,82 +112,128 @@ echo
 
 #   create the partitions depending if using swap or not and bios or efi
 
-if  [[ $ef == efi ]] && [[ $swap == y || $swap == yes || $swap == "" ]]; 
-then
-        parted /dev/$drive mklabel gpt
-        parted /dev/$drive mkpart ESP fat32 0% 128MiB
-        parted /dev/$drive set 1 boot on
-        parted /dev/$drive mkpart primary linux-swap 128MiB $ss'iB'
-        parted /dev/$drive mkpart primary ext4 $ss'iB' 100%
-        mkfs.fat -F32 /dev/$drive'1'
-        mkswap /dev/$drive'2'
-        mkfs.ext4 /dev/$drive'3'
-        swapon /dev/$drive'2'
-        mount /dev/$drive'3' /mnt
-        mount -m /dev/$drive'1' /mnt/boot/efi
-        pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager efibootmgr
-        echo	"
-        =======================================================================================================================
-        FORMATED /dev/$drive AND CREATED A $ef BOOT PARTITION WITH AN SWAP PARTITION WITH $ss OF STORAGE AND A ROOT PARTITION
-        ======================================================================================================================="
+# if  [[ $ef == efi ]] && [[ $swap == y || $swap == yes || $swap == "" ]]; 
+# then
+#         parted /dev/$drive mklabel gpt
+#         parted /dev/$drive mkpart ESP fat32 0% 128MiB
+#         parted /dev/$drive set 1 boot on
+#         parted /dev/$drive mkpart primary linux-swap 128MiB $ss'iB'
+#         parted /dev/$drive mkpart primary ext4 $ss'iB' 100%
+#         mkfs.fat -F32 /dev/$drive'1'
+#         mkswap /dev/$drive'2'
+#         mkfs.ext4 /dev/$drive'3'
+#         swapon /dev/$drive'2'
+#         mount /dev/$drive'3' /mnt
+#         mount -m /dev/$drive'1' /mnt/boot/efi
+#         pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager efibootmgr
+#         echo	"
+#         =======================================================================================================================
+#         FORMATED /dev/$drive AND CREATED A $ef BOOT PARTITION WITH AN SWAP PARTITION WITH $ss OF STORAGE AND A ROOT PARTITION
+#         ======================================================================================================================="
  
- elif [[ $ef == bios ]] && [[ $swap == y || $swap == yes || $swap == "" ]];
- then
-        parted /dev/$drive mklabel msdos
-        parted /dev/$drive mkpart primary ext4 0% 128MiB
-        parted /dev/$drive set 1 boot on
-        parted /dev/$drive mkpart primary linux-swap 128MiB $ss'iB'
-        parted /dev/$drive mkpart primary ext4 $ss'iB' 100%
-        mkfs.ext4 /dev/$drive'1'
-        mkswap /dev/$drive'2'
-        mkfs.ext4 /dev/$drive'3'
-        swapon /dev/$drive'2'
-        mount /dev/$drive'3' /mnt
-        mount -m /dev/$drive'1' /mnt/boot
-        pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager
-        echo	"
-        =======================================================================================================================
-        FORMATED /dev/$drive AND CREATED A $ef BOOT PARTITION WITH AN SWAP PARTITION WITH $ss OF STORAGE AND A ROOT PARTITION
-        ======================================================================================================================="
+#  elif [[ $ef == bios ]] && [[ $swap == y || $swap == yes || $swap == "" ]];
+#  then
+#         parted /dev/$drive mklabel msdos
+#         parted /dev/$drive mkpart primary ext4 0% 128MiB
+#         parted /dev/$drive set 1 boot on
+#         parted /dev/$drive mkpart primary linux-swap 128MiB $ss'iB'
+#         parted /dev/$drive mkpart primary ext4 $ss'iB' 100%
+#         mkfs.ext4 /dev/$drive'1'
+#         mkswap /dev/$drive'2'
+#         mkfs.ext4 /dev/$drive'3'
+#         swapon /dev/$drive'2'
+#         mount /dev/$drive'3' /mnt
+#         mount -m /dev/$drive'1' /mnt/boot
+#         pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager
+#         echo	"
+#         =======================================================================================================================
+#         FORMATED /dev/$drive AND CREATED A $ef BOOT PARTITION WITH AN SWAP PARTITION WITH $ss OF STORAGE AND A ROOT PARTITION
+#         ======================================================================================================================="
  
- elif [[ $ef == efi ]] && [[ $swap != y || $swap != yes || $swap != "" ]]
- then
-        parted /dev/$drive mklabel gpt
-        parted /dev/$drive mkpart ESP fat32 0% 128MiB
-        parted /dev/$drive set 1 boot on
-        parted /dev/$drive mkpart primary ext4 128MiB 100%
-        mkfs.fat -F32 /dev/$drive'1'
-        mkfs.ext4 /dev/$drive'2'
-        mount /dev/$drive'2' /mnt
-        mount -m /dev/$drive'1' /mnt/boot/efi
-        pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager efibootmgr
-        echo	"
-        ==================================================================================================================
-                        FORMATED /dev/$drive AND CREATED A $ef BOOT PARTITION WITH AN ROOT PARTITION
-        =================================================================================================================="
+#  elif [[ $ef == efi ]] && [[ $swap != y || $swap != yes || $swap != "" ]]
+#  then
+#         parted /dev/$drive mklabel gpt
+#         parted /dev/$drive mkpart ESP fat32 0% 128MiB
+#         parted /dev/$drive set 1 boot on
+#         parted /dev/$drive mkpart primary ext4 128MiB 100%
+#         mkfs.fat -F32 /dev/$drive'1'
+#         mkfs.ext4 /dev/$drive'2'
+#         mount /dev/$drive'2' /mnt
+#         mount -m /dev/$drive'1' /mnt/boot/efi
+#         pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager efibootmgr
+#         echo	"
+#         ==================================================================================================================
+#                         FORMATED /dev/$drive AND CREATED A $ef BOOT PARTITION WITH AN ROOT PARTITION
+#         =================================================================================================================="
  
- elif [[ $ef == bios ]] && [[ $swap != y || $swap != yes || $swap != "" ]];
- then
-        parted /dev/$drive mklabel msdos
-        parted /dev/$drive mkpart primary ext4 0% 128MiB
-        parted /dev/$drive set 1 boot on
-        parted /dev/$drive mkpart primary ext4 128MiB 100%
-        mkfs.ext4 /dev/$drive'1'
-        mkfs.ext4 /dev/$drive'2'
-        mount /dev/$drive'2' /mnt
-        mount -m /dev/$drive'1' /mnt/boot
-        pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager
-        echo	"
-        ==================================================================================================================
-                        FORMATED /dev/$drive AND CREATED A $ef BOOT PARTITION WITH AN ROOT PARTITION
-        =================================================================================================================="
- else 
-        echo "
-        =================================================
-                    EXITING OUT OF ARCH-INSTALL
-        ================================================="
-        exit
+#  elif [[ $ef == bios ]] && [[ $swap != y || $swap != yes || $swap != "" ]];
+#  then
+#         parted /dev/$drive mklabel msdos
+#         parted /dev/$drive mkpart primary ext4 0% 128MiB
+#         parted /dev/$drive set 1 boot on
+#         parted /dev/$drive mkpart primary ext4 128MiB 100%
+#         mkfs.ext4 /dev/$drive'1'
+#         mkfs.ext4 /dev/$drive'2'
+#         mount /dev/$drive'2' /mnt
+#         mount -m /dev/$drive'1' /mnt/boot
+#         pacstrap /mnt base base-devel linux linux-firmware grub nano networkmanager
+#         echo	"
+#         ==================================================================================================================
+#                         FORMATED /dev/$drive AND CREATED A $ef BOOT PARTITION WITH AN ROOT PARTITION
+#         =================================================================================================================="
+#  else 
+#         echo "
+#         =================================================
+#                     EXITING OUT OF ARCH-INSTALL
+#         ================================================="
+#         exit
+# fi
+
+
+if [[ $ef == efi ]]; then 
+    parted /dev/$drive mklabel gpt
+    parted /dev/$drive mkpart ESP fat32 0% 500MiB
+    parted /dev/$drive set 1 boot on
+    mkfs.fat -F32 /dev/$drive'1'
+elif [[ $ef == bios ]]; then
+    parted /dev/$drive mklabel msdos
+    parted /dev/$drive mkpart primary ext4 0% 500MiB
+    parted /dev/$drive set 1 boot on
+    mkfs.ext4 /dev/$drive'1'
+    mount -m /dev/$drive'1' /mnt/boot
+else
+    echo "
+    =================================================
+            EXITING OUT OF ARCH-INSTALL
+    ================================================="
+    exit
 fi
+
+if [[ $swap == false ]]; then
+    parted /dev/$drive mkpart primary ext4 500MiB 100%
+    mkfs.ext4 /dev/$drive'2'
+    mount /dev/$drive'2' /mnt
+elif [[ $swap == true ]]
+    parted /dev/$drive mkpart primary linux-swap 500MiB $ss'iB'
+    parted /dev/$drive mkpart primary ext4 $ss'iB' 100%
+    mkswap /dev/$drive'2'   
+    mkfs.ext4 /dev/$drive'3'
+    swapon /dev/$drive'2'
+    mount /dev/$drive'3' /mnt
+fi
+
+if [[ $ef == efi ]]; then 
+    pacstrap /mnt base base-devel linux linux-firmware grub networkmanager efibootmgr
+elif [[ $ef == bios ]]; then
+    pacstrap /mnt base base-devel linux linux-firmware grub networkmanager
+fi
+
+
+
+
+
+
+
 # configuring the system
 genfstab -U -p /mnt >> /mnt/etc/fstab 
 arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
