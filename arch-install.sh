@@ -39,16 +39,17 @@ Do you want to create a swap partition? [Y/n]
 ============================================="
 read swapc
 if [[ $swapc == y || $swapc == "" ]]; then
-    echo "
-    =========================================================
-    How much space do you want to give the swap partition
-    example: 8G (in gigabytes) example2: 8192M (in megabytes)
-    ========================================================="
+echo "
+=========================================================
+How much space do you want to give the swap partition
+example: 8G (in gigabytes) example2: 8192M (in megabytes)
+========================================================="
     read ss
     swap=true
 else
     swap=false
 fi
+echo
 
 # set hostname 
 echo "
@@ -56,6 +57,7 @@ echo "
 Chose the hostname.
 =================="
 read host
+echo
 
 # set username
 echo "
@@ -63,6 +65,7 @@ echo "
 Chose the username for your user
 ================================"
 read user
+echo
 
 # set user password
 echo "
@@ -79,6 +82,7 @@ do
     prompt='*'
     userpasswd+="$char"
 done
+echo
 
 # set root password
 echo "
@@ -95,6 +99,7 @@ do
     prompt='*'
     rootpasswd+="$char"
 done
+echo
 
 # GUI or no
 echo "
@@ -102,7 +107,6 @@ echo "
 do you want to use my bspwm config yes/no
 ========================================="
 read WM
-
 
 # unmount devices if any
 umount -R /mnt
@@ -213,7 +217,7 @@ if [[ $swap == false ]]; then
     parted /dev/$drive mkpart primary ext4 500MiB 100%
     mkfs.ext4 /dev/$drive'2'
     mount /dev/$drive'2' /mnt
-elif [[ $swap == true ]]
+elif [[ $swap == true ]]; then
     parted /dev/$drive mkpart primary linux-swap 500MiB $ss'iB'
     parted /dev/$drive mkpart primary ext4 $ss'iB' 100%
     mkswap /dev/$drive'2'   
@@ -227,12 +231,6 @@ if [[ $ef == efi ]]; then
 elif [[ $ef == bios ]]; then
     pacstrap /mnt base base-devel linux linux-firmware grub networkmanager
 fi
-
-
-
-
-
-
 
 # configuring the system
 genfstab -U -p /mnt >> /mnt/etc/fstab 
