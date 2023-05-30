@@ -7,24 +7,25 @@ else
     ef=bios
 fi
 clear
+echo && echo
 
 # display the disks to the user
-echo =====================================================
-lsblk
-echo =====================================================
+echo "      ====================================================="
+lsblk | awk '{print "       " $0}'
+echo "      ====================================================="
 echo "
-===============================================================
-Chose a drive from the listed above you want to install arch on
-example: sda
-==============================================================="
-read -p  drive
+    ===============================================================
+    Chose a drive from the listed above you want to install arch on
+    example: sda
+    ==============================================================="
+read -p  "    >" drive
 
 # warn the user
 echo "
-===================================================================================
-EVERYTHING ON DRIVE $drive WILL BE ERASED ARE YOU SHURE YOU WANT TO CONTINUE? [Y/n]
-==================================================================================="
-read -p "Are you sure? " -n 1 confirmation
+    ===================================================================================
+    EVERYTHING ON DRIVE $drive WILL BE ERASED ARE YOU SHURE YOU WANT TO CONTINUE? [Y/n]
+    ==================================================================================="
+read -p "    >" -n 1 confirmation
 
 if [[ $confirmation != y || $confirmation != "" ]]; then
     echo EXITING OUT OF ARCH-INSTALL
@@ -32,47 +33,51 @@ if [[ $confirmation != y || $confirmation != "" ]]; then
 fi
 
 # swap partition creation
+clear
 echo "
-=============================================
-Do you want to create a swap partition? [Y/n]
-============================================="
-read swapc
+    =============================================
+    Do you want to create a swap partition? [Y/n]
+    ============================================="
+read -p "    >" -n 1 swapc
 if [[ $swapc == y || $swapc == "" ]]; then
 echo "
-=========================================================
-How much space do you want to give the swap partition
-example: 8G (in gigabytes) example2: 8192M (in megabytes)
-========================================================="
-    read ss
+    =========================================================
+    How much space do you want to give the swap partition
+    example: 8G (in gigabytes) example2: 8192M (in megabytes)
+    ========================================================="
+    read -p "    >" ss
     swap=true
 else
     swap=false
     ss=500M
 fi
-echo
+
+clear
+echo && echo
 
 # set hostname 
+
 echo "
-==================
-Chose the hostname.
-=================="
-read host
+    ==================
+    Chose the hostname
+    =================="
+read -p "    >" host
 echo
 
 # set username
 echo "
-================================
-Chose the username for your user
-================================"
-read user
+    ================================
+    Chose the username for your user
+    ================================"
+read -p "    >" user
 echo
 
 # set user password
 echo "
-================================
-Chose the PASSWORD for your user
-================================"
-prompt="Enter the user password:"
+    ================================
+    Chose the PASSWORD for your user
+    ================================"
+prompt="    >"
 while IFS= read -p "$prompt" -r -s -n 1 char
 do
     if [[ $char == $'\0' ]]
@@ -86,10 +91,10 @@ echo
 
 # set root password
 echo "
-===================================
-Chose the PASSWORD of the root user
-==================================="
-prompt="Enter the root password:"
+    ===================================
+    Chose the PASSWORD of the root user
+    ==================================="
+prompt="    >"
 while IFS= read -p "$prompt" -r -s -n 1 char
 do
     if [[ $char == $'\0' ]]
@@ -103,10 +108,10 @@ echo
 
 # GUI or no
 echo "
-=========================================
-do you want to use my bspwm config yes/no
-========================================="
-read WM
+    =========================================
+    do you want to use my bspwm config yes/no
+    ========================================="
+read -p "    >" WM
 
 # unmount devices if any
 umount -a /mnt
@@ -215,9 +220,9 @@ elif [[ $ef == bios ]]; then
     pacstrap /mnt base base-devel linux linux-firmware grub networkmanager
 else
     echo "
-    =================================================
-            EXITING OUT OF ARCH-INSTALL
-    ================================================="
+            =================================================
+                    EXITING OUT OF ARCH-INSTALL
+            ================================================="
     exit
 fi
 
@@ -242,10 +247,10 @@ arch-chroot /mnt /bin/bash -c "echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc
 arch-chroot /mnt /bin/bash -c "echo '$user:$userpasswd' | chpasswd"
 arch-chroot /mnt /bin/bash -c "echo 'root:$rootpasswd' | chpasswd"
 echo "
-=========================================================================================
-    ENABLED "NetworkManager" CHOSE EN_US FOR THE LOCALES AND /EU/SA FOR THE LOCALTIME
-            CREATED A GRUB BOOT LOADER A HOSTNAME ($host) AND A USER ($user)        
-========================================================================================="
+        =========================================================================================
+            ENABLED "NetworkManager" CHOSE EN_US FOR THE LOCALES AND /EU/SA FOR THE LOCALTIME
+                    CREATED A GRUB BOOT LOADER A HOSTNAME ($host) AND A USER ($user)        
+        ========================================================================================="
 echo 
 
 # GUI setup
@@ -260,6 +265,6 @@ fi
 # umounting 
 umount -R /mnt
 echo "
-==========================
-    YOU CAN REBOOT NOW
-=========================="
+        ==========================
+            YOU CAN REBOOT NOW
+        =========================="
