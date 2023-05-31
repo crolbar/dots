@@ -27,7 +27,9 @@ echo "
     ==================================================================================="
 read -p "    >" -n 1 confirmation
 
-if [[ $confirmation != y || $confirmation != "" ]]; then
+if [[ $confirmation == y || $confirmation == "" ]]; then
+    echo
+else
     echo EXITING OUT OF ARCH-INSTALL
     exit
 fi
