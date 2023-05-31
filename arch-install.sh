@@ -115,7 +115,9 @@ echo "
 read -p "    >" WM
 
 # unmount devices if any
-umount -a
+umount -r /mnt
+umount -r /mnt/boot
+umount -r /mnt/boot/efi
 echo
 
 #   create the partitions depending if using swap or not and bios or efi
