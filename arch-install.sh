@@ -157,18 +157,6 @@ fi
 
 # configuring the system
 genfstab -U -p /mnt >> /mnt/etc/fstab 
-# arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager"
-# arch-chroot /mnt /bin/bash -c "grub-install /dev/$drive"
-# arch-chroot /mnt /bin/bash -c "grub-mkconfig -o /boot/grub/grub.cfg"
-# arch-chroot /mnt /bin/bash -c "echo en_US.UTF-8 UTF-8 >> /etc/locale.gen"
-# arch-chroot /mnt /bin/bash -c "echo LANG="C.UTF-8" > /etc/locale.conf"
-# arch-chroot /mnt /bin/bash -c "locale-gen"
-# arch-chroot /mnt /bin/bash -c "ln -sf /usr/share/zoneinfo/Europe/Sofia /etc/localtime" 
-# arch-chroot /mnt /bin/bash -c "echo $host > /etc/hostname"
-# arch-chroot /mnt /bin/bash -c "useradd -mg wheel $user"
-# arch-chroot /mnt /bin/bash -c "echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers"
-# arch-chroot /mnt /bin/bash -c "echo '$user:$userpasswd' | chpasswd"
-# arch-chroot /mnt /bin/bash -c "echo 'root:$rootpasswd' | chpasswd"
 arch-chroot /mnt /bin/bash -c "systemctl enable NetworkManager && \
 grub-install /dev/$drive && \
 grub-mkconfig -o /boot/grub/grub.cfg && \
