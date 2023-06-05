@@ -109,9 +109,10 @@ echo
 
 # GUI or no
 echo "
-    =========================================
-    do you want to use my bspwm config yes/no
-    ========================================="
+    ====================================================
+    do you want to use my bspwm or hyprwm config or none
+    ====================================================
+	[bsp] | [hypr] | [no]"
 read -p "    >" WM
 
 # unmount devices if any
@@ -178,8 +179,10 @@ echo
 
 # GUI setup
 export user
-if [[ $WM == y || $WM == yes || $WM == "" ]]; then
-    arch-chroot /mnt /bin/bash -c "sudo pacman -Sy --noconfirm git && git clone https://github.com/crolbar/dots && /dots/bspwm-install.sh"
+if [[ $WM == bsp ]]; then
+	arch-chroot /mnt /bin/bash -c "sudo pacman -Sy --noconfirm git && git clone https://github.com/crolbar/dots && /dots/bspwm-install.sh"
+elif [[ $WM == hypr ]]; then
+	arch-chroot /mnt /bin/bash -c "sudo pacman -Sy --noconfirm git && git clone https://github.com/crolbar/dots && /dots/hypr-install.sh"
 fi
 
 # umounting 
