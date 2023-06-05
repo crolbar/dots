@@ -2,7 +2,7 @@
 # crolbar
 sudo -u $user bash << EOF
 git clone https://aur.archlinux.org/yay.git /home/$user/yay && cd /home/$user/yay && makepkg -si --noconfirm
-yay -Sy --needed --noconfirm hyprland swaybg jq dunst waybar pulseaudio alsa-utils zsh pavucontrol neofetch alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme network-manager-applet xfce4-power-manager thunar feh firefox gedit ly physlock
+yay -Sy --needed --noconfirm hyprland swaybg jq pamixer wofi dunst waybar pulseaudio alsa-utils zsh pavucontrol neofetch alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme network-manager-applet xfce4-power-manager thunar feh firefox gedit ly physlock
 sudo systemctl enable ly.service
 cd /dots
 cp -a hypr /home/$user/.config/ 
