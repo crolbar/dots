@@ -77,19 +77,25 @@ echo
 # set user password
 echo "
     ================================
-    Chose the PASSWORD for your user
+    Choose the PASSWORD for your user
     ================================"
 prompt="    >"
+userpasswd=""
 while IFS= read -p "$prompt" -r -s -n 1 char
 do
     if [[ $char == $'\0' ]]; then
-
         break
+    elif [[ $char == $'\177' ]]; then
+        if [ -n "$userpasswd" ]; then
+            prompt=$'\b \b'
+            userpasswd=${userpasswd%?}  
+        fi
+    else
+        prompt='*' 
+        userpasswd+="$char"
     fi
-    prompt='*'
-    userpasswd+="$char"
 done
-echo
+echo 
 
 # set root password
 echo "
@@ -97,15 +103,22 @@ echo "
     Chose the PASSWORD of the root user
     ==================================="
 prompt="    >"
+rootpasswd=""
 while IFS= read -p "$prompt" -r -s -n 1 char
 do
     if [[ $char == $'\0' ]]; then
         break
+    elif [[ $char == $'\177' ]]; then 
+        if [ -n "$rootpasswd" ]; then
+            prompt=$'\b \b'  
+            rootpasswd=${rootpasswd%?}  
+        fi
+    else
+        prompt='*'  
+        rootpasswd+="$char"
     fi
-    prompt='*'
-    rootpasswd+="$char"
 done
-echo
+echo 
 
 # GUI or no
 echo "
@@ -116,6 +129,7 @@ echo "
 read -p "    >" WM
 
 # unmount devices if any
+cd
 umount -r /mnt
 umount -r /mnt/boot
 umount -r /mnt/boot/efi

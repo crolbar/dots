@@ -9,4 +9,6 @@ cp -a hypr /home/$user/.config/
 cp -a alacritty /home/$user/.config/ 
 cp -a zsh /home/$user/.config/ 
 cp .zshrc /home/$user/
+echo 'GRUB_CMDLINE_LINUX_DEFAULT="nvidia_drm.modeset=1"' | sudo tee -a /etc/default/grub >> /dev/null
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 EOF
