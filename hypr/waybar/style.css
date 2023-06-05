@@ -10,7 +10,7 @@
 
 window#waybar {
     background: rgba(0, 0, 0, 0.658);
-    color: #a6fcff;
+    color: #a7f5f8;
 }
 
 tooltip {
@@ -26,12 +26,11 @@ tooltip {
 }
 
 #workspaces button.active {
-    color: #abf0a8;
+    color: #b2fdb0;
 }
 
 #workspaces button.focused {
     color: #ffffff;
-    background: #00000000;
 }
 
 #workspaces button.urgent {
@@ -40,7 +39,6 @@ tooltip {
 }
 
 #workspaces button:hover {
-    background: #00000000;
     color: #ffffff;
 }
 
@@ -76,7 +74,7 @@ tooltip {
 }
 
 #custom-caffeine {
-    color: #89dceb;
+    color: #92efff;
     border-radius: 0px 0px 0px 0px;
     border-right: 0px;
     margin-left: 0px;
@@ -105,7 +103,7 @@ tooltip {
 
 #cpu {
     background: rgba(0, 0, 0, 0);
-    color: #d4d250;
+    color: #ff82c1;
     border-left: 0px;
     border-right: 0px;
     margin-right: 10px;
@@ -113,7 +111,7 @@ tooltip {
 
 #memory {
     background: rgba(0, 0, 0, 0);
-    color: #c52121;
+    color: #ff8b94;
     border-left: 0px;
     border-right: 0px;
     margin-right: 0px;
