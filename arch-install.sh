@@ -1,5 +1,6 @@
 #!/bin/bash
 # crolbar
+
 # determine if the pc is running efi or bios
 if [ -d "/sys/firmware/efi" ]; then
     ef=efi

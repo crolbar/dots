@@ -1,4 +1,5 @@
 #! /bin/bash
+#crolbar
 activemonitor=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')
 monitor_output=$(hyprctl monitors | awk '/Monitor/ {print $2}')
 
