@@ -2,6 +2,7 @@
 activemonitor=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')
 monitor_output=$(hyprctl monitors | awk '/Monitor/ {print $2}')
 
+# label the monitors to main, second, third
 declare -a monitor_names
 counter=1
 for monitor in $monitor_output; do
@@ -18,8 +19,10 @@ for monitor in $monitor_output; do
   (( counter++ ))
 done
 
+
 case $2 in 
 f)
+# focus to a workspace depending on the focused monitor
 if [ $activemonitor == $main ]; then
   hyprctl dispatch workspace "$1"
 elif [ $activemonitor == $second ]; then
@@ -28,6 +31,7 @@ elif [ $activemonitor == $third ]; then
   hyprctl dispatch workspace $(($1 + 10))
 fi;;
 s)
+# move a focused window to the selected workspace on the focused monitor
 if [ $activemonitor == $main ]; then
   hyprctl dispatch movetoworkspacesilent "$1"
 elif [ $activemonitor == $second ]; then

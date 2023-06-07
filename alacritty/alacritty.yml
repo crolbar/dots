@@ -4,8 +4,6 @@ import:
   
 window:
  
-      
-
   decorations: none
 
   opacity: 0.8
@@ -36,7 +34,6 @@ colors:
     red:     '#cc0403'
     green:   '#19cb00'
     yellow:  '#cecb00'
-    #yellow: '#565e65'
     blue:    '#0d73cc'
     magenta: '#cb1ed1'
     cyan:    '#0dcdcd'
@@ -46,8 +43,7 @@ colors:
     black:   '#767676'
     red:     '#cc0403'
     green:   '#23fd00'
-    #yellow:  '#fffd00'
-    yellow: '#565e65'
+    yellow:  '#fffd00'
     blue:    '#1a8fff'
     magenta: '#fd28ff'
     cyan:    '#14ffff'
