@@ -11,7 +11,6 @@ else
     pac=yay
 fi
 $pac -Sy --needed --noconfirm bspwm sxhkd picom dmenu dunst polybar pulseaudio alsa-utils zsh pavucontrol neofetch alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme network-manager-applet xfce4-power-manager thunar feh xorg-xrandr xorg-xinput xorg-server xorg-xinit   
-cd /dots
 cp -a bspwm ~/.config/ 
 cp -a alacritty ~/.config/ 
 cp -a zsh ~/.config/
