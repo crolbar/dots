@@ -85,7 +85,7 @@
         "tooltip": false,
         "format-muted": "Muted",
         "on-click": "pamixer -t",
-        "on-click-middle": "$HOME/.config/hypr/scripts/default-sink.sh",
+        "on-click-middle": "~/.config/hypr/scripts/default-sink.sh",
         "on-click-right": "pavucontrol",
         "on-scroll-up": "pamixer -i 5",
         "on-scroll-down": "pamixer -d 5",

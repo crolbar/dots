@@ -7,22 +7,22 @@ current_state=$(cat "$state_file")
 case "$1" in
 --ds)
     if [ "$current_state" = "1" ]; then
-    pacmd set-default-sink "$other_sink"
-    polybar-msg action dsaudio hook 2
-    new_state="2"
+        pacmd set-default-sink "$other_sink"
+        polybar-msg action dsaudio hook 2
+        new_state="2"
     else
-    pacmd set-default-sink "$other_sink"
-    polybar-msg action dsaudio hook 1
-    new_state="1"
+        pacmd set-default-sink "$other_sink"
+        polybar-msg action dsaudio hook 1
+        new_state="1"
     fi
     echo "$new_state" > "$state_file";;
 --ds-i)
     if [ "$current_state" = "1" ]; then
-    sleep 1
-    polybar-msg action dsaudio hook 1
+        sleep 1
+        polybar-msg action dsaudio hook 1
     else
-    sleep 1
-    polybar-msg action dsaudio hook 2
+        sleep 1
+        polybar-msg action dsaudio hook 2
     fi;;
 *)
 esac

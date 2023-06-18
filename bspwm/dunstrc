@@ -4,7 +4,7 @@
     follow = mouse
     width = 300
     height = 300
-    origin = top-right
+    origin = top-left
     offset = 10x50
     scale = 0
     notification_limit = 20
@@ -21,8 +21,9 @@
     padding = 12
     horizontal_padding = 12
     text_icon_padding = 0
-    frame_width = 3
-    frame_color = "#A7A4E0"
+    frame_width = 2
+    #frame_color = "#7eb8cc"
+    frame_color = "#ffffff"
     gap_size = 0
     separator_color = frame
     sort = yes
@@ -50,20 +51,23 @@
     always_run_script = true
     title = Dunst
     class = Dunst
-    corner_radius = 2
+    corner_radius = 10
     ignore_dbusclose = false
     force_xinerama = false
     mouse_middle_click = do_action, close_current
     mouse_right_click = close_all
     per_monitor_dpi = false
+    
 [urgency_low]
-    background = "#222222"
+    background = "#000000"
     foreground = "#ffffff"
     timeout = 10
+
 [urgency_normal]
-    background = "#222222"
+    background = "#000000"
     foreground = "#ffffff"
     timeout = 10
+    
 [urgency_critical]
     background = "#900000"
     foreground = "#ffffff"

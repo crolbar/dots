@@ -4,7 +4,7 @@
     follow = mouse
     width = 300
     height = 300
-    origin = top-right
+    origin = top-left
     offset = 10x50
     scale = 0
     notification_limit = 20
@@ -22,7 +22,8 @@
     horizontal_padding = 12
     text_icon_padding = 0
     frame_width = 2
-    frame_color = "#00ffff"
+    #frame_color = "#7eb8cc"
+    frame_color = "#ffffff"
     gap_size = 0
     separator_color = frame
     sort = yes
@@ -58,12 +59,12 @@
     per_monitor_dpi = false
     
 [urgency_low]
-    background = "#222222"
+    background = "#000000"
     foreground = "#ffffff"
     timeout = 10
 
 [urgency_normal]
-    background = "#222222"
+    background = "#000000"
     foreground = "#ffffff"
     timeout = 10
     
