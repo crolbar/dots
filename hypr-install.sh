@@ -7,14 +7,14 @@ if command -v yay >/dev/null 2>&1; then
 elif command -v paru >/dev/null 2>&1; then
     pac=paru
 else
-    git clone https://aur.archlinux.org/yay.git /home/$user/yay && cd /home/$user/yay && makepkg -si --noconfirm
+    git clone https://aur.archlinux.org/yay.git ~/yay && cd ~/yay && makepkg -si --noconfirm
     pac=yay
 fi
 $pac -Sy --needed --noconfirm hyprland swaybg jq pamixer wofi dunst waybar pulseaudio alsa-utils zsh pavucontrol alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme network-manager-applet thunar   
-cp -a hypr /home/$user/.config/ 
-cp -a alacritty /home/$user/.config/ 
-cp -a zsh /home/$user/.config/ 
-cp .zshrc /home/$user/
+cp -a hypr ~/.config/ 
+cp -a alacritty ~/.config/ 
+cp -a zsh ~/.config/ 
+cp .zshrc ~
 ;;
 
 arch-install)
