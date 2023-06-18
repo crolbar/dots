@@ -20,6 +20,10 @@ echo "
     example: sda
     ==============================================================="
 read -p  "    >" drive
+ #chek if the drive is an nvme and add an p at the end for the partition
+if [[ $drive == nvme* ]]; then
+    drive="${drive}p"
+fi
 
 # warn the user
 echo "
