@@ -1,3 +1,11 @@
+- **Window Manager** • [Hyprland](https://github.com/hyprwm/Hyprland) / [Bspwm](https://github.com/baskerville/bspwm)
+- **Shell** • [Zsh](https://www.zsh.org)
+- **Terminal** • [Alacritty](https://github.com/alacritty/alacritty)
+- **Panel** • [Waybar](https://aur.archlinux.org/packages/waybar-hyprland-git) / [Polybar](https://github.com/polybar/polybar)
+- **Notify Daemon** • [Dunst](https://github.com/dunst-project/dunst)
+- **Launcher** • [Rofi](https://github.com/davatorium/rofi) / [Wofi](https://hg.sr.ht/~scoopta/wofi)
+- **File Manager** • [Thunar](https://github.com/xfce-mirror/thunar)
+
 
 
 ## Hyprland
