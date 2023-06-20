@@ -5,11 +5,9 @@ case "$1" in
 if [ $micstate == 'true' ]; then
     polybar-msg action mic hook 2
     pamixer --default-source -t
-    echo unmute
 else
     polybar-msg action mic hook 1
     pamixer --default-source -t
-    echo mute
 fi;;
 --mic-i)
 if [ $micstate == 'true' ]; then
