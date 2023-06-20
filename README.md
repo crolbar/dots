@@ -20,6 +20,7 @@ git clone https://github.com/crolbar/dots ~/dots
 cp -r ~/dots/hypr ~/.config/hypr
 ```
 ## Bspwm
+![bspwm](https://github.com/crolbar/dots/assets/61518558/cd9f535d-b9c7-4a08-bf01-49760feb487a)
 
 ### Dependencies
 ```
