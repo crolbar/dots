@@ -32,11 +32,11 @@ git clone https://github.com/crolbar/dots ~/dots
 cp -r ~/dots/bspwm ~/.config/bspwm
 ```
 # Automation scripts 
-- arch-install.sh - script to install arch (may not work on some systems) \
-  - can't choose locales \
-  - can't choose bootloader \
-  - can't choose kernel version \
-  - can't choose partition size \
+- arch-install.sh - script to install arch (may not work on some systems) 
+  - can't choose locales 
+  - can't choose bootloader 
+  - can't choose kernel version 
+  - can't choose partition size 
   - auto uses networkmanager
 - bspwm-install.sh - script ot isntall my bspwm config (with dependencies)
 - hypr-install.sh - script ot isntall my hyprland config (with dependencies)
