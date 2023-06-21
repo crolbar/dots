@@ -1,10 +1,9 @@
 - **Window Manager** • [Hyprland](https://github.com/hyprwm/Hyprland) / [Bspwm](https://github.com/baskerville/bspwm)
 - **Shell** • [Zsh](https://www.zsh.org)
 - **Terminal** • [Alacritty](https://github.com/alacritty/alacritty)
-- **Panel** • [Waybar](https://aur.archlinux.org/packages/waybar-hyprland-git) / [Polybar](https://github.com/polybar/polybar)
+- **Panel** • [Waybar](https://github.com/Alexays/Waybar) / [Polybar](https://github.com/polybar/polybar)
 - **Notify Daemon** • [Dunst](https://github.com/dunst-project/dunst)
 - **Launcher** • [Rofi](https://github.com/davatorium/rofi) / [Wofi](https://hg.sr.ht/~scoopta/wofi)
-- **File Manager** • [Thunar](https://github.com/xfce-mirror/thunar)
 
 
 ## Hyprland
@@ -12,7 +11,7 @@
 
 ### Dependencies
 ```
-yay -Sy --noconfirm --needed hyprland swaybg jq pamixer wofi dunst waybar pulseaudio alsa-utils zsh pavucontrol alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme network-manager-applet thunar 
+yay -Sy --needed hyprland swaybg jq pamixer wofi dunst waybar zsh pavucontrol alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme
 ```
 ### Installation
 ```
@@ -24,7 +23,7 @@ cp -r ~/dots/hypr ~/.config/hypr
 
 ### Dependencies
 ```
-yay -Sy --noconfirm --needed bspwm sxhkd picom dmenu dunst polybar pulseaudio alsa-utils zsh pavucontrol neofetch alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme network-manager-applet xfce4-power-manager thunar feh firefox xorg-xrandr xorg-xinput xorg-server xorg-xinit gedit ly physlock
+yay -Sy --needed bspwm sxhkd picom dmenu dunst polybar zsh alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme feh xorg-xrandr xorg-xinput xorg-server xorg-xinit
 ```
 ### Installation
 ```
@@ -35,7 +34,7 @@ cp -r ~/dots/bspwm ~/.config/bspwm
 - arch-install.sh - script to install arch (may not work on some systems) 
   - can't choose locales 
   - can't choose bootloader 
-  - can't choose kernel version 
+  - can't choose kernel
   - can't choose partition size 
   - auto uses networkmanager
 - bspwm-install.sh - script ot isntall my bspwm config (with dependencies)
