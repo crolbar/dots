@@ -33,10 +33,10 @@ cp -r ~/dots/bspwm ~/.config/bspwm
 ```
 # Automation scripts 
 - arch-install.sh - script to install arch (may not work on some systems) \
-  - cant choose locales \
-  - cant choose bootloader \
-  - cant choose kernel version \
-  - cant choose partition size \
+  - can't choose locales \
+  - can't choose bootloader \
+  - can't choose kernel version \
+  - can't choose partition size \
   - auto uses networkmanager
 - bspwm-install.sh - script ot isntall my bspwm config (with dependencies)
 - hypr-install.sh - script ot isntall my hyprland config (with dependencies)
