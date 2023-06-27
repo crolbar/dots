@@ -1,0 +1,175 @@
+#! /bin/bash
+# crolbar
+
+# define app names (from the output of "pactl list sink-inputs")
+music_application_name="Spotify"
+browser_application_name="Brave"
+
+# grab indexes
+music_index=$(pactl list sink-inputs | awk -v m_app="$music_application_name" '/Sink Input #/{gsub("#","",$NF); m_id=$NF} /application.name/{if ($0~m_app) print m_id}')
+browser_indexes=$(pactl list sink-inputs | awk -v b_app="$browser_application_name" '/Sink Input #/{gsub("#","",$NF); b_id=$NF} /application.name/{if ($0~b_app) print b_id}')
+mon_index=$(pamixer --list-sinks | grep GP106 | awk '{print $1}')
+head_index=$(pamixer --list-sinks | grep G533 | awk '{print $1}')
+
+# state file for browser/music (muted/unmuted)
+browser_current_state=$(cat ~/.config/eww/scripts/.browser-state)
+music_current_state=$(cat ~/.config/eww/scripts/.music-state)
+
+# browser_volume=$(pactl list sink-inputs | awk -v m_app="Firefox" '/Volume: front-left: /{gsub(" ","",$0); split($0, arr, "/"); m_id=arr[2]} /application.name/{if ($0~m_app) print m_id}')
+
+
+#==============================        eww volume sliders      ==============================  
+
+case "$1" in 
+
+mic) #========================       microphone      ======================== 
+    if [ $2 == "mute" ]; then
+        pamixer --default-source -t
+        mic=$(pamixer --get-volume-human --default-source | sed 's/%//g')
+        if [ $mic == muted ]; then
+            eww update micvolume="0"
+        else
+            eww update micvolume=$mic
+        fi
+
+    elif [ $2 == "poll" ]; then
+        pamixer --get-volume-human --default-source | sed 's/%//g' | awk '{ if ($1 == "muted"){ print "0" } else { print $1 } }'
+
+    elif [ $2 == "vol-change" ]; then
+        mic=$(pamixer --get-volume-human --default-source | sed 's/%//g')
+            if [ "$mic" == "muted" ]; then
+                echo 0
+                eww update micvolume="0"
+            else
+                pamixer --default-source --set-volume $3
+            fi
+    fi
+    ;;
+
+
+mon) #========================       monitor/speaker      ======================== 
+    if [ $2 == "mute"  ]; then
+        pamixer --sink "$mon_index" -t
+        mon=$(pamixer --get-volume-human --sink "$mon_index" | sed 's/%//g')
+        if [ $mon == muted ]; then
+            eww update monvolume="0"
+        else
+            eww update monvolume=$mon
+        fi
+
+    elif [ $2 == "poll" ]; then
+        pamixer --sink "$mon_index" --get-volume-human | sed 's/%//g' | awk '{ if ($1 == "muted"){ print "0" } else { print $1 } }'
+
+    elif [ $2 == "vol-change" ]; then
+        mon=$(pamixer --get-volume-human --sink "$mon_index" | sed 's/%//g')
+            if [ "$mon" == "muted" ]; then
+                echo 0
+                eww update monvolume="0"
+            else
+                pamixer --allow-boost --sink "$mon_index" --set-volume $3
+            fi
+    fi
+    ;;
+
+
+head) #========================       headphones      ======================== 
+
+    if [ "$2" == "mute" ]; then
+        pamixer --sink "$head_index" -t
+        head=$(pamixer --get-volume-human --sink "$head_index" | sed 's/%//g')
+            if [ "$head" == "muted" ]; then
+                eww update headvolume="0"
+            else
+                eww update headvolume=$head
+            fi
+
+    elif [ "$2" == "poll" ]; then 
+        pamixer --sink "$head_index" --get-volume-human | sed 's/%//g' | awk '{ if ($1 == "muted"){ print "0" } else { print $1 } }'
+
+    elif [ "$2" == "vol-change" ]; then
+        head=$(pamixer --get-volume-human --sink "$head_index" | sed 's/%//g')
+            if [ "$head" == "muted" ]; then
+                echo 0
+                eww update headvolume="0"
+            else
+                pamixer --allow-boost --sink "$head_index" --set-volume $3
+            fi
+    fi
+    ;;
+
+
+music) #========================       music-player      ======================== 
+    if [ "$2" == "mute" ]; then
+        music_volume=$(pactl list sink-inputs | awk -v m_app="$music_application_name" '/Volume: front-left: /{gsub(" ","",$0); split($0, arr, "/"); m_id=arr[2]} /application.name/{if ($0~m_app) {gsub("%", "", m_id); print m_id}}')
+        if [ $music_current_state == "1" ]; then
+            pactl set-sink-input-mute "$music_index" false
+            echo "0" > ~/.config/eww/scripts/.music-state
+            eww update musicvolume=$music_volume
+        elif [ $music_current_state == "0" ];then
+            pactl set-sink-input-mute "$music_index" true
+            echo "1" > ~/.config/eww/scripts/.music-state
+            eww update musicvolume="0"
+        fi
+
+    elif [ "$2" == "poll" ]; then 
+        if [ -z "$(pactl list sink-inputs | awk -v m_app="$music_application_name" '/Volume: front-left: /{gsub(" ","",$0); split($0, arr, "/"); m_id=arr[2]} /application.name/{if ($0~m_app) {gsub("%", "", m_id); print m_id}}')" ]; then
+            echo 0
+        elif [ $music_current_state == "1" ]; then
+            echo 0
+            eww update musicvolume="0"
+        else
+            pactl list sink-inputs | awk -v m_app="$music_application_name" '/Volume: front-left: /{gsub(" ","",$0); split($0, arr, "/"); m_id=arr[2]} /application.name/{if ($0~m_app) {gsub("%", "", m_id); print m_id}}'
+        fi
+
+    elif [ "$2" == "vol-change" ]; then
+        if [ $music_current_state == "1" ]; then
+            echo 0
+            eww update musicvolume="0"
+        else
+            pactl set-sink-input-volume "$music_index" "$3"%
+        fi
+    fi
+    ;;
+
+
+browser) #========================       browser      ======================== 
+    if [ "$2" == "mute" ]; then
+        browser_volume=$(pactl list sink-inputs | awk -v m_app="$browser_application_name" '/Volume: front-left: /{gsub(" ","",$0); split($0, arr, "/"); m_id=arr[2]} /application.name/ && $0 ~ m_app {gsub("%", "", m_id); print m_id; exit}')
+        if [ $browser_current_state == "1" ]; then
+            for index in $browser_indexes; do
+                pactl set-sink-input-mute "$index" false
+            done
+            eww update browservolume=$browser_volume
+            echo "0" > ~/.config/eww/scripts/.browser-state
+        elif [ $browser_current_state == "0" ];then
+            for index in $browser_indexes; do
+                pactl set-sink-input-mute "$index" true
+            done
+            echo "1" > ~/.config/eww/scripts/.browser-state
+            eww update browservolume="0"
+        fi
+
+    elif [ "$2" == "poll" ]; then 
+    # pactl list sink-inputs | awk -v m_app="$browser_application_name" '/application.name/{if ($0~m_app) app_found=1} /Volume: front-left: / && app_found && !value_found {gsub("%","",$0); split($0, arr, "/"); m_id=arr[2]; value_found=1} END {if (value_found) {gsub(/ /,"",m_id); print m_id}}'
+        if [ -z "$(pactl list sink-inputs | awk -v m_app="$browser_application_name" '/Volume: front-left: /{gsub(" ","",$0); split($0, arr, "/"); m_id=arr[2]} /application.name/ && $0 ~ m_app {gsub("%", "", m_id); print m_id; exit}')" ]; then
+            echo 0
+        elif [ $browser_current_state == "1" ]; then
+            echo 0
+            eww update browservolume="0"
+        else
+            pactl list sink-inputs | awk -v m_app="$browser_application_name" '/Volume: front-left: /{gsub(" ","",$0); split($0, arr, "/"); m_id=arr[2]} /application.name/ && $0 ~ m_app {gsub("%", "", m_id); print m_id; exit}'
+        fi
+
+    elif [ "$2" == "vol-change" ]; then
+        if [ $browser_current_state == "1" ]; then
+            echo 0
+            eww update browservolume="0"
+        else
+            for index in $browser_indexes; do
+                pactl set-sink-input-volume "$index" "$3"%
+            done
+        fi
+    fi
+    ;;
+
+esac

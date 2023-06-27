@@ -1,0 +1,235 @@
+* {
+    all: unset; //Unsets everything so you can style everything from scratch
+  }
+
+$base: rgba(0, 0, 0, 0.63);
+
+$grey: #363636;
+
+$blue: #92efff;
+$blue2: #5454a1;
+
+$text: #eeeeee;
+
+$red: #74283a;
+
+$red2: #ff82c1;
+$red3: rgba(78, 34, 45, 0.411);
+
+$yellow: #efb993;
+$yellow2: #836955;
+
+$purple1: #dcaaf3;
+
+$purple2: #8e6e9c;
+
+$purple3: rgba(44, 35, 49, 0.450);
+
+$pink: #ff82c1;
+
+$green: #3fdaa4;
+
+
+
+
+.board {
+    // border: 3px solid red;;
+    background-color: $base;
+    border-radius: 15px;
+
+    .board-box {
+    margin: -80px 0px 80px 0px;
+    }
+    
+    // =========================    time/date     =========================
+    .time-reload {
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: $purple2;
+        margin-left: 20px;
+        .wofi {
+            margin: 0px 20px 0px -20px;
+            color: $purple2;
+        }
+    }
+
+    .cal-notes {
+        margin: -80px 0px 80px 20px;
+
+        // =========================    calendar     =========================
+        .cal {
+            calendar:selected {
+                color: $green;
+            }
+
+            calendar.header {
+                color: $purple1;
+            }
+
+            calendar.button {
+                color: $purple1;
+            }
+
+            calendar.highlight {
+                color: $purple1;
+            }
+
+            calendar:indeterminate {
+                color: #757575;
+            }
+        }
+
+        // =========================    notes     =========================
+        .notes{
+            color: #9df5c2; 
+            font-size: 1.4rem;
+            // margin: -30px 0px 30px;
+                .edit-button {
+                    color: $purple1;
+                    font-size: 1rem;
+                }
+                .clear-button {
+                    color: $red;
+                    border-radius: 20px;
+                    border: 1px solid $red;
+                    padding: 0px 2px 2px 3px;
+                }
+            }
+    }
+    // =========================    sysinfo     =========================
+    .sysinfo {
+        padding: 1rem;
+        margin: -130px 0px 130px 0px;
+
+        .iconram {
+            font-size: 4rem;
+            color: $purple2;
+        }
+        .iconcpu {
+            font-size: 4rem;
+            color: $purple2;
+        }
+        .icondisk {
+            font-size: 4rem;
+            color: $purple2;
+        }
+        .cpu, .ram, .disk {
+            background-color: $base;
+            color: $purple2;
+        }
+    }
+    // =========================    sliders     =========================
+    .sliders {
+        font-size: 2rem;
+        margin: -160px 0px 160px 15px; 
+
+         scale trough  {
+            min-height: 17px;
+            background-color: $base;
+            border-radius: 100px;
+        }
+
+        scale highlight {
+            padding: 7px;
+            border-radius: 10px;
+            background-color: $purple2;
+        }
+        
+        .head_icon {
+            color: $blue2;
+            margin-right: 17px;
+        }
+        .mon_icon {
+            color: $blue2;
+            margin-right: 12px;
+            margin-left: -2.5px;
+        }
+        .mic_icon {
+            color: $red2;
+            margin-right: 17px;
+            margin-left: 4px;
+        }
+        .music_icon {
+            color: $green;
+            margin-right: 15px;
+        }
+        .browser_icon {
+            color: $yellow;
+            margin-right: 15px;
+        }
+    }
+    .apps {
+        margin: -140px 0px 140px 15px;
+    }
+}
+
+
+
+.player {
+    font-size: 1.1rem;
+    background-color: $base;
+    border-radius: 20px;
+    .player-box {
+        margin: 2px 165px -2px -165px;
+        color: $yellow2;
+        font-size: 0.9rem;
+    }
+    .title {
+        margin: -15px 0px 15px;
+        color: $yellow;
+    }
+    .artist {
+        margin: -15px 5px 15px -5px;
+        color: $red;
+    }
+    .player-buttons {
+        font-size: 2rem;
+        margin: 0px -90px 0px 90px;
+        .button-previous {
+            font-size: 4rem;
+            color: $red;
+        }
+        .button-pause {
+            padding: 10px;
+            color: $red;
+        }
+        .button-next {
+            font-size: 4rem;
+            color: $red;
+        }
+        .button-change {
+            font-size: 4rem;
+            margin: -20px -35px 20px 35px;
+            color: $grey;
+        }
+    }
+    .position_slider {
+        margin: 10px; 
+         scale trough  {
+            min-height: 30px;
+            background-color: $red3;
+            border-radius: 100px;
+        }
+        scale highlight {
+            padding: 7px;
+            border-radius: 100px;
+            background-color: $red;
+        }
+        
+    }
+    .volume_slider {
+        margin: -15px -15px 0px 15px; 
+
+         scale trough  {
+            min-height: 30px;
+            background-color: $red3;
+            border-radius: 100px;
+        }
+        scale highlight {
+            padding: 7px;
+            border-radius: 100px;
+            background-color: $red;
+        }
+        
+    }
+}
