@@ -46,6 +46,5 @@ PROMPT=' %B%F{magenta}%n%f%b %B%F{red}%~%f%b${vcs_info_msg_0_}%b %(?.%B%F{green}
 alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
 alias cdd='cd ..'
-alias yay='paru'
 
 neofetch
