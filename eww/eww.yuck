@@ -26,10 +26,13 @@
                         
 (defwidget board []
     (box :class "board-box" :orientation "v"  
-        (box :class "time-reload" :orientation "h" :halign "center" :space-evenly false :spacing 70
-        (button :class "wofi" :onclick "wofi --conf ~/.config/hypr/wofi/config --style ~/.config/hypr/wofi/style.css &" "{  }") 
-        time
-        (button :class "reload-button" :onclick "eww reload" ""))
+        (box :class "top" :orientation "h" :halign "center" :space-evenly false
+            (button :class "power-menu-button" :tooltip "open power-menu" :onclick "eww open power-menu --toggle" "")
+            (button :class "wofi" :onclick "wofi --conf ~/.config/hypr/wofi/config --style ~/.config/hypr/wofi/style.css &" "{  }") 
+            (label :text time :class "time")
+            (button :class "reload-button" :onclick "eww reload" "")
+            (button :class "close-button" :onclick "eww close board" "")
+        )
         (box :class "cal-notes" :orientation "h" 
             (box :class "cal" (cal))
             (box :class "notes" :orientation "v" :space-evenly false :halign "center"
@@ -40,19 +43,19 @@
         )
         (box :class "sysinfo":orientation "h" :spacing 30 (ram) (cpu) (disk))
         (box :class "sliders" :orientation "v" 
-            (box :space-evenly false :class "volume_slider"
+            (box :space-evenly false :class "music_slider"
                 (button :class "music_icon" :onclick "scripts/volume music mute" {musicvolume == "0" ? "" :""} )
                 (scale :min 0 :max 151 :width 420 :value musicvolume :onchange "scripts/volume music vol-change {}"))
-            (box :space-evenly false :class "volume_slider"
+            (box :space-evenly false :class "browser_slider"
                 (button :class "browser_icon" :onclick "scripts/volume browser mute" {browservolume == 0 ? "" :""} )
                 (scale :min 0 :max 151 :width 420 :value browservolume :onchange "scripts/volume browser vol-change {}"))
-            (box :space-evenly false :class "volume_slider"
+            (box :space-evenly false :class "head_slider"
                 (button :class "head_icon" :onclick "scripts/volume head mute" {headvolume == 0 ? "" :""} )
                 (scale :min 0 :max 151 :width 420 :value headvolume :onchange "scripts/volume head vol-change {}"))
-            (box :space-evenly false :class "volume_slider"
+            (box :space-evenly false :class "mon_slider"
                 (button :class "mon_icon" :onclick "scripts/volume mon mute" {monvolume == 0 ? "" :""} )
                 (scale :min 0 :max 151 :width 420 :value monvolume :onchange "scripts/volume mon vol-change {}"))
-            (box :space-evenly false :class "volume_slider"
+            (box :space-evenly false :class "mic_slider"
                 (button :class "mic_icon" :onclick "scripts/volume mic mute" {micvolume == 0 ? "" :""} )
                 (scale :min 0 :max 101 :width 420 :value micvolume :onchange "scripts/volume mic vol-change {}"))
         )
@@ -88,7 +91,7 @@
     (box :class "player" :orientation "v" :space-evenly false 
         (box :class "player-box" (label :text player :limit-width 60))
         (box :class "artist" (label :text artist :limit-width 60))
-        (box :class "title" (label :text title :limit-width 60))
+        (box :class "title" (label :text title :limit-width 37))
         (box :orientation "h" :space-evenly false
             (box :space-evenly false :class "volume_slider"
                 (scale :min 0 :max 101 :width 20 :flipped true :timeout "4s" :value vol :orientation "v" :onchange "scripts/player vol set {}")
@@ -105,7 +108,17 @@
         )
     )
 )
+            ;================power-menu================
 
+(defwidget power-menu []
+    (box :orientation "h" :spacing 10
+        (button :class "shutdown" :tooltip "poweroff" :onclick "sudo poweroff" "")
+        (button :class "reboot" :tooltip "reboot" :onclick "sudo reboot" "")
+        (button :class "sleep" :tooltip "suspend" :onclick "eww close power-menu && swaylock -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3 | sudo systemctl suspend" "")
+        (button :class "lock" :tooltip "lock" :onclick "eww close power-menu && swaylock -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3 &" "")
+        (button :class "close" :tooltip "close power-menu" :onclick "eww close power-menu" "")
+    )
+)
                         ;================sysinfo================
 (defwidget cal [] (calendar :class "cal"))
 (defwidget ram [] 
@@ -135,7 +148,7 @@
     :monitor 0
     :windowtype "fg"
     :geometry (geometry :x "25px"
-                        :y "40px"
+                        :y "35px"
                         :width "500px"
                         :height "1000px"
                         :anchor "top right")
@@ -149,5 +162,15 @@
                         :width "400px"
                         :height "150px"
                         :anchor "top center")
-    (player-info))
+(player-info))
+
+(defwindow power-menu 
+    :monitor 0
+    :windowtype "fg"
+    :geometry (geometry :x "0px"
+                        :y "0px"
+                        :width "450px"
+                        :height "100px"
+                        :anchor "center")
+    (power-menu))
 

@@ -1,0 +1,10 @@
+mode=drun
+insensitive=true
+prompt=
+width=250
+height=550
+term=alacritty
+hide_scroll=true
+location=1
+yoffset=200
+xoffset=45

@@ -1,0 +1,15 @@
+#!/bin/bash
+case $1 in
+eww)
+if pgrep -x "eww" >/dev/null; then
+  pkill -x "eww"
+else
+  eww open bar &
+fi;;
+waybar)
+if pgrep -x "waybar" >/dev/null; then
+  pkill -x "waybar"
+else
+  waybar -c ~/.config/hypr/waybar/config.jsonc -s ~/.config/hypr/waybar/style.css &
+fi;;
+esac

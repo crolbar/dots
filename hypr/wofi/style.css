@@ -1,0 +1,25 @@
+
+window {
+  margin: 1px;
+  border: 3px solid #414141;
+  border-radius: 15px 15px 15px 15px;
+}
+
+#input {
+  border: none;
+  background-color: #000000;
+}
+
+#outer-box {
+  margin: 3px;
+  padding: 3px;
+  background-color: #000000;
+  border-radius: 15px 15px 15px 15px;
+}
+#entry:selected {
+  background-color: #000000;
+}
+
+#text:selected {
+  color: #ffffff;
+}

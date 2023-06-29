@@ -145,8 +145,8 @@ browser) #========================       browser      ========================
             for index in $browser_indexes; do
                 pactl set-sink-input-mute "$index" true
             done
-            echo "1" > ~/.config/eww/scripts/.browser-state
             eww update browservolume="0"
+            echo "1" > ~/.config/eww/scripts/.browser-state
         fi
 
     elif [ "$2" == "poll" ]; then 

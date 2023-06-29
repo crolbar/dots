@@ -3,7 +3,7 @@
 
 # define app names
 music_application_name="Spotify"
-browser_application_name="Firefox"
+browser_application_name="Brave"
 
 # grab app indexes
 music_index=$(pactl list sink-inputs | awk -v m_app="$music_application_name" '/Sink Input #/{gsub("#","",$NF); m_id=$NF} /application.name/{if ($0~m_app) print m_id}')

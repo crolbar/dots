@@ -1,24 +1,18 @@
 * {
-    border: none;
     border-radius: 0;
-    font-family: Roboto,"Font Awesome 6 Free Solid";
-    font-size: 12px;
+    font-family: "Roboto","Font Awesome 6 Free Solid";
+    font-size: 14px;
     font-weight: bold;
     min-height: 0;
-    margin: 0px;
+    margin: -1px 0px -1px;
 }
-
-window#waybar {
-    background: rgba(0, 0, 0, 0.658);
+#waybar {
+    background: rgba(0, 0, 0, 0.749);
     color: #a7f5f8;
 }
-
 tooltip {
-    background: rgba(0, 0, 0, 0.658);
+    background: rgba(0, 0, 0, 0.521);
     border-radius: 10px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #11111b;
 }
 
 #workspaces button {
@@ -40,95 +34,40 @@ tooltip {
 
 #workspaces button:hover {
     color: #ffffff;
-}
-
-#custom-updates,
-#custom-caffeine,
-#window,
-#clock,
-#pulseaudio,
-#network,
-#workspaces,
-#tray,
-#backlight {
-    background: rgba(0, 0, 0, 0);
-    padding: 0px 10px;
-    margin: 0px 0px;
-    margin-top: 0px;
-    border: 0px solid #000000;
-}
-
-#tray {
-    background: rgba(0, 0, 0, 0);
-    border-radius: 0px;
-    margin-left: 1px;
-    padding-left: 0px;
-}
-
-#workspaces {
-    background: rgba(0, 0, 0, 0);
-    border-radius: 0px;
-    margin-left: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
-}
-
-#custom-caffeine {
-    color: #92efff;
-    border-radius: 0px 0px 0px 0px;
-    border-right: 0px;
-    margin-left: 0px;
-}
-
-#custom-language {
-    color: #f38ba8;
-    border-left: 0px;
-    border-right: 0px;
-}
-
-#window {
-    background: rgba(0, 0, 0, 0);
-    border-radius: 0px;
-    margin-left: 6px;
-    margin-right: 6px;
+    background: rgba(0, 0, 0, 0.377);
 }
 
 #clock {
-    background: rgba(0, 0, 0, 0);
     color: #fab387;
-    border-radius: 0px 0px 0px 0px;
-    margin-right: 0px;
-    border-right: 0px;
 }
 
 #cpu {
-    background: rgba(0, 0, 0, 0);
     color: #ff82c1;
-    border-left: 0px;
-    border-right: 0px;
-    margin-right: 10px;
 }
 
 #memory {
-    background: rgba(0, 0, 0, 0);
     color: #ff8b94;
-    border-left: 0px;
-    border-right: 0px;
-    margin-right: 0px;
 }
 
 #pulseaudio {
-    background: rgba(0, 0, 0, 0);
     color: #89b4fa;
-    border-left: 0px;
-    border-right: 0px;
-    padding-left: 0px;
 }
 
 #pulseaudio.microphone {
-    background: rgba(0, 0, 0, 0);
     color: #cba6f7;
-    margin-right: 0px;
 }
 
+#custom-eww {
+    font-size: 1.05rem;
+    color: #67a5ad;
+    margin-left: 3px;
+}
+
+#cpu,
+#memory,
+#pulseaudio.microphone,
+#pulseaudio,
+#clock {
+    margin: 0px 5px;
+}
 

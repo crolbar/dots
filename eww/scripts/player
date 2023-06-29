@@ -1,8 +1,8 @@
 #! /bin/bash
 # crolbar
+PATH="$HOME/.config/eww/scripts:$PATH"
 music_application_name="Spotify"
 browser_application_name="Brave"
-PATH="$HOME/.config/eww/scripts:$PATH"
 active_player=$(playerctl --all-players metadata --format '{{playerName}}' | head -n 1)
 innactive_player=$(playerctl --all-players metadata --format '{{playerName}}' | tail -n 1)
 music_index=$(pactl list sink-inputs | awk -v m_app="$music_application_name" '/Sink Input #/{gsub("#","",$NF); m_id=$NF} /application.name/{if ($0~m_app) print m_id}')
