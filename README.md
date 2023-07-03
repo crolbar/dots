@@ -3,7 +3,7 @@
 - **Terminal** • [Alacritty](https://github.com/alacritty/alacritty)
 - **Panel** • [Waybar](https://github.com/Alexays/Waybar) / [Polybar](https://github.com/polybar/polybar)
 - **Notify Daemon** • [Dunst](https://github.com/dunst-project/dunst)
-- **Launcher** • [Rofi](https://github.com/davatorium/rofi) / [Wofi](https://hg.sr.ht/~scoopta/wofi)
+- **Launcher** • [Wofi](https://hg.sr.ht/~scoopta/wofi) / [Rofi](https://github.com/davatorium/rofi)
 
 
 ## Hyprland
