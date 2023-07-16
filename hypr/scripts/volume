@@ -16,11 +16,11 @@ case "$1" in
     pactl set-sink-input-volume "$music_index" -2%;;
   --browser+)
     for index in $browser_indexes; do
-      pactl set-sink-input-volume "$index" +2%
+      pactl set-sink-input-volume "$index" +1.5%
     done;;
   --browser-)
     for index in $browser_indexes; do
-      pactl set-sink-input-volume "$index" -2%
+      pactl set-sink-input-volume "$index" -1.5%
     done;;
 esac
 

@@ -3,7 +3,7 @@
 activemonitor=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')
 monitor_output=$(hyprctl monitors | awk '/Monitor/ {print $2}')
 
-# label the monitors to main, second, third
+# label the monitors to main, second and third
 declare -a monitor_names
 counter=1
 for monitor in $monitor_output; do

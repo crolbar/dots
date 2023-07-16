@@ -58,9 +58,8 @@ tooltip {
 }
 
 #custom-eww {
-    font-size: 1.05rem;
-    color: #67a5ad;
-    margin-left: 3px;
+    color: #ffffff;
+    margin: 0px 5px 0px 3px;
 }
 
 #cpu,
