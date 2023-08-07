@@ -42,6 +42,18 @@ poll)
         eww update artist="$artist"
         eww update title="$title"
         player poll status
+    ;;
+    length)
+    input_time=$(playerctl metadata --format "{{ duration(mpris:length) }}")
+    IFS=":" read -r hours minutes seconds <<< "$input_time"
+    seconds=${seconds#0}
+    if [ -z $seconds ]; then
+        total_seconds=$((hours * 60 + minutes + 1))
+    else 
+        total_seconds=$((hours * 3600 + minutes * 60 + seconds + 1))
+    fi
+    printf "$total_seconds"
+    ;;
     esac
 ;;
 change)
@@ -50,16 +62,9 @@ change)
     playerctl --player="$innactive_player" play-pause
     sleep 0.1
     pamixer -t
-    length=$(player length)
+    length=$(player poll length)
     eww update length="$length" 
     player poll update
-;;
-length)
-    input_time=$(playerctl metadata --format "{{ duration(mpris:length) }}")
-    IFS=":" read -r minutes seconds <<< "$input_time"
-    seconds=${seconds#0}
-    total_seconds=$((minutes * 60 + seconds + 1))
-    printf "$total_seconds"
 ;;
 vol)
     case $2 in 

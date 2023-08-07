@@ -1,11 +1,13 @@
 * {
     all: unset;
+    font-family: "Roboto","Font Awesome 6 Free Solid";
   }
 
 $base: rgba(0, 0, 0, 0.63);
 
 $yellow: #c48c6a;
 $yellow2: #c09470;
+$yellow3: #ffb78a;
 $pink: #9c5277;
 $blue: #89b4fa;
 $purple: #836ba0;
@@ -15,7 +17,6 @@ $grey: #757575;
 $red: #74283a;
 $red3: rgba(78, 34, 45, 0.411);
 $green: #45b18b;
-
 
 .board {
     // border: 3px solid red;
@@ -37,18 +38,20 @@ $green: #45b18b;
         }
         .reload-button {
             color: $grey;
+            margin-top: 10px;
         }
         .close-button {
             font-size: 2rem;
-            margin: 0px -10px 0px 10px;
+            margin: 10px -10px 0px 10px;
             color: $red;
         }
         .wofi {
             color: $grey;
+            margin-top: 5px;
         }
         .power-menu-button {
-            font-size: 2rem;
-            margin: 0px 10px 0px -10px;
+            font-size: 1.7rem;
+            margin: 11px 10px 0px -10px;
             color: $red;
         }
     }
@@ -104,7 +107,7 @@ $green: #45b18b;
     // =========================    sysinfo     =========================
     .sysinfo {
         padding: 1rem;
-        margin: -130px 0px 130px 0px;
+        margin: -100px 0px 100px 0px;
 
         .iconram {
             font-size: 4rem;
@@ -134,7 +137,7 @@ $green: #45b18b;
     // =========================    sliders     =========================
     .sliders {
         font-size: 2rem;
-        margin: -160px 0px 160px 15px; 
+        margin: -110px 0px 110px 15px; 
 
          scale trough  {
             min-height: 17px;
@@ -176,17 +179,73 @@ $green: #45b18b;
         .mon_icon {
             color: $blue;
             margin-right: 12px;
-            margin-left: -2.5px;
         }
         .mic_icon {
             color: $purple;
-            margin-right: 17px;
-            margin-left: 4px;
+            margin-right: 12px;
         }
     }
-        // =========================    apss     =========================
+        // =========================    apps     =========================
     .apps {
-        margin: -150px 0px 150px 15px;
+        margin: -100px 0px 100px 15px;
+    }
+        // =========================    weather     =========================
+    .weather-container {
+        margin: -170px 80px 170px 0px;
+        .weather-info {
+            font-size: 16px;
+            color: $purple;
+          }
+          
+          .weather-temp {
+            font-size: 32px;
+            color: $yellow;
+          }
+          
+          .weather-icon {
+            font-size: 40px;
+          }
+          
+          .weather-location {
+            font-size: 20px;
+          }
+          .weather-wind {
+            font-size: 20px;
+            color: $blue;
+        }
+      }
+        // =========================    network     =========================
+    .network {
+        margin: -150px 20px 150px -20px;
+        
+        .upspeedbox {
+            margin: -20px 0px 20px;
+        }
+        .downSpeed-text {
+            margin: -40px -40px 40px 40px;
+        }
+        .downarrow {
+            margin: -50px 0px 50px 0px;
+            font-size: 2rem;
+            color: $cyan;
+        }
+        .upSpeed-text {
+            margin: -40px -40px 40px 40px;
+        }
+        .uparrow {
+            margin: -50px 0px 50px 0px;
+            font-size: 2rem;
+            color: $yellow3;
+        }
+    }
+    .downspeed {
+        color: $blue;
+        background-color: $blue;
+
+    }
+    .upspeed {
+        color: $yellow;
+        background-color: $yellow;
     }
 }
 
@@ -202,11 +261,11 @@ $green: #45b18b;
         font-size: 0.9rem;
     }
     .title {
-        margin: -15px 0px 15px;
+        // margin: -25px 0px 25px;
         color: $yellow;
     }
     .artist {
-        margin: -15px 5px 15px -5px;
+        // margin: -25px 5px 25px -5px;
         color: $red;
     }
     .player-buttons {
@@ -226,7 +285,7 @@ $green: #45b18b;
         }
         .button-change {
             font-size: 4rem;
-            margin: -20px -35px 20px 35px;
+            margin: -20px -20px 20px 20px;
             color: $grey;
         }
     }
@@ -280,5 +339,6 @@ $green: #45b18b;
     }
     .close {
         color: $red;
+        font-size: 7rem;
     }
 }
