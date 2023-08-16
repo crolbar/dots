@@ -88,15 +88,3 @@ super + alt + shift + {F11,F12}
 
 {XF86AudioLowerVolume,XF86AudioRaiseVolume,XF86AudioPrev,XF86AudioNext,XF86AudioPlay}
 	{amixer -D pulse sset Master 5%- > /dev/null,amixer -D pulse sset Master 5%+ > /dev/null,playerctl previous,playerctl next,playerctl play-pause}
-
-
-	
-
-
-	
-
-
-	
-
-
-	
