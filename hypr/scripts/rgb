@@ -3,8 +3,10 @@ case $1 in
     s)
         if pgrep -x "openrgb" > /dev/null; then
             pkill openrgb
+            pkill KeyboardVisuali
         else
             openrgb --server --startminimized &
+            KeyboardVisualizer &
         fi
         exit;; 
 esac
@@ -45,8 +47,3 @@ case $curr_profile in
 esac
 
 openrgb -p $curr_profile --noautoconnect
-
-
-
-
-
