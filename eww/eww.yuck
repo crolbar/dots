@@ -34,7 +34,7 @@
             ;================board================
                         
 (defwidget board []
-    (box :class "board-box" :orientation "v"  
+    (box :class "board-box" :orientation "v"
         (box :class "top" :orientation "h" :halign "center" :space-evenly false
             (button :class "power-menu-button" :tooltip "open power-menu" :onclick "eww open power-menu --toggle" "")
             (button :class "wofi" :onclick "wofi --conf ~/.config/hypr/wofi/config --style ~/.config/hypr/wofi/style.css &" "{  }") 
@@ -47,7 +47,7 @@
             (box :class "notes" :orientation "v" :space-evenly false :halign "center"
             (label :text notes :limit-width 75 :wrap true)
             (box :orientation "h"
-                (button :class "edit-button" :onclick "mousepad ~/.notes.txt &" "edit")
+                (button :class "edit-button" :onclick "alacritty -e nvim ~/.notes.txt & sleep 0.1 && hyprctl dispatch togglefloating && hyprctl dispatch centerwindow" "edit")
                 (button :class "clear-button" :onclick "echo '' > ~/.notes.txt && eww reload" "clear")))
         )
         (box :class "sysinfo":orientation "h" :spacing 30 (ram) (cpu) (disk))
@@ -84,7 +84,7 @@
                 (button :onclick "eww close board && brave --new-window youtube.com &" (image :path "images/youtube.png" :image-width 45 :image-height 45))
                 (button :onclick "eww close board && brave --new-window github.com &" (image :path "images/github.png" :image-width 45 :image-height 45))
                 (button :onclick "eww close board && brave --new-window reddit.com &" (image :path "images/reddit.png" :image-width 45 :image-height 45))
-                (button :onclick "eww close board && brave --new-window x.com &" (image :path "images/twitter.png" :image-width 45 :image-height 45))
+                (button :onclick "eww close board && brave --new-window x.com &" (image :path "images/x.png" :image-width 45 :image-height 45))
                 (button :onclick "eww close board && brave --new-window twitch.tv &" (image :path "images/twitch.png" :image-width 45 :image-height 45))
                 (button :onclick "eww close board && brave --new-window chat.openai.com &" (image :path "images/gpt.png" :image-width 45 :image-height 45))
                 (button :onclick "eww close board && lutris &" (image :path "images/lutris.png" :image-width 45 :image-height 45))
@@ -92,7 +92,7 @@
                 (button :onclick "eww close board && qutebrowser &" (image :path "images/qute.png" :image-width 45 :image-height 45))
             )
         )
-        (box :orientation "h" :space-evenly "false" :halign "end" :vexpand "true"
+        (box :orientation "h" :space-evenly false :halign "end"
             (box :class "weather-container" :orientation "v" :space-evenly "false"
                 (label :class "weather-info" :text "${weatherStat}" :halign "start")
                 (button :class "weather-temp" :halign "center" :onclick "brave --new-window https://www.accuweather.com/en/bg/silistra/45981/weather-forecast/45981" "${weatherTemp}")
@@ -104,10 +104,10 @@
                     (downspeed)
                     (box :orientation "h" :halign "end"
                         (label :class "downSpeed-text" :text "${downSpeed}" :halign "end")
-                        (label :class "downarrow" :text "" :halign "end")
+                        (label :class "downarrow" :text "" :halign "end")
                     )
                 )
-                (box :orientation "v" :class "upspeedbox" :vexpand "true"
+                (box :orientation "v" :class "upspeedbox" :vexpand "false"
                     (upspeed)
                     (box :orientation "h" :halign "end"
                         (label :class "upSpeed-text" :text "${upSpeed}" )
@@ -125,10 +125,7 @@
         (box :class "player-box" (label :text player :limit-width 60))
         (box :class "artist" (label :text artist :limit-width 60))
         (box :class "title" (label :text title :limit-width 37))
-        (box :orientation "h" :space-evenly false
-            (box :space-evenly false :class "volume_slider"
-                (scale :min 0 :max 101 :width 20 :flipped true :timeout "4s" :value vol :orientation "v" :onchange "scripts/player vol set {}")
-            )
+        (box :orientation "h" :space-evenly false (box :space-evenly false :class "volume_slider" (scale :min 0 :max 101 :width 20 :flipped true :timeout "4s" :value vol :orientation "v" :onchange "scripts/player vol set {}"))
             (box :class "player-buttons" :orientation "h" :space-evenly false :halign "center" :spacing 45
                 (button :class "button-previous" :timeout "4s" :onclick "playerctl previous && sleep 0.5 && scripts/player poll update" "")
                 (button :class "button-pause" :timeout "4s" :onclick "playerctl play-pause && scripts/player poll status" (label :text status))
@@ -152,8 +149,10 @@
         (button :class "close" :tooltip "close power-menu" :onclick "eww close power-menu" "")
     )
 )
-                        ;================sysinfo================
+
 (defwidget cal [] (calendar :class "cal"))
+
+                    ;================network================
 
 (defwidget downspeed []  
     (box (graph :value {EWW_NET["eno1"].NET_DOWN} 
@@ -170,6 +169,8 @@
                 :max "28000000"
                 :width 250
                 :thickness "3")))
+
+                    ;================sysinfo================
 
 (defwidget ram [] 
     (box (circular-progress :value {EWW_RAM.used_mem_perc}
@@ -195,17 +196,17 @@
                         ;================windows================
 
 (defwindow board
-    :monitor 1
+    :monitor 1 
     :windowtype "fg"
     :geometry (geometry :x "25px"
-                        :y "35px"
+                        :y "25px"
                         :width "500px"
                         :height "1000px"
                         :anchor "top right")
     (board))
 
 (defwindow player-info     
-    :monitor 0
+    :monitor 1 
     :windowtype "fg"
     :geometry (geometry :x "25px"
                         :y "40px"
@@ -215,7 +216,7 @@
 (player-info))
 
 (defwindow power-menu 
-    :monitor 0
+    :monitor 1 
     :windowtype "fg"
     :geometry (geometry :x "0px"
                         :y "0px"

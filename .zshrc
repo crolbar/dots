@@ -39,12 +39,15 @@ zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
 # binds
 bindkey ';5C' forward-word
 bindkey ';5D' backward-word 
+bindkey '^H' backward-kill-word
+bindkey '^[[3;5~' kill-word
 
 # prompt
-PROMPT=' %B%F{magenta}%n%f%b %B%F{red}%~%f%b${vcs_info_msg_0_}%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}%f%b '
+PROMPT=' %B%F{cyan}%n%f%b %B%F{red}%~%f%b${vcs_info_msg_0_}%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}%f%b '
 # alias
 alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
 alias cdd='cd ..'
+alias vs='vscodium .config/hypr && exit'
 
 neofetch
