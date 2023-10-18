@@ -1,18 +1,19 @@
 # crolbar
-export EDITOR='nano'
 export TERMINAL='alacritty'
-export BROWSER='firefox'
-# history
+export BROWSER='brave'
+export VISUAL='nvim'
+export EDITOR='nvim'
 
+# history
 HISTFILE=~/.config/zsh/zhistory
 HISTSIZE=5000
 SAVEHIST=5000
 
 # zsh options
-setopt AUTOCD  
+setopt AUTOCD              # change directory just by typing its name
 setopt PROMPT_SUBST        # enable command substitution in prompt
 setopt MENU_COMPLETE       # Automatically highlight first element of completion menu
-setopt LIST_PACKED		   # The completion menu takes less space.
+setopt LIST_PACKED		     # The completion menu takes less space.
 setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
 setopt HIST_IGNORE_DUPS	   # Do not write events to history that are duplicates of previous events
 setopt HIST_FIND_NO_DUPS   # When searching history don't display results already cycled through twice
@@ -37,17 +38,19 @@ zstyle ':completion:*:descriptions' format '%F{yellow}[-- %d --]%f'
 zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
 
 # binds
-bindkey ';5C' forward-word
-bindkey ';5D' backward-word 
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word 
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
 
 # prompt
 PROMPT=' %B%F{cyan}%n%f%b %B%F{red}%~%f%b${vcs_info_msg_0_}%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}%f%b '
+
 # alias
 alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
 alias cdd='cd ..'
 alias vs='vscodium .config/hypr && exit'
+alias yay='paru'
 
 neofetch
