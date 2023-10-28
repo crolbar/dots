@@ -20,10 +20,6 @@ echo "
     example: sda
     ==============================================================="
 read -p  "    >" drive
- #chek if the drive is an nvme and add an p at the end for the partition
-if [[ $drive == nvme* ]]; then
-    drive="${drive}p"
-fi
 
 # warn the user
 echo "
@@ -63,7 +59,6 @@ clear
 echo && echo
 
 # set hostname 
-
 echo "
     ==================
     Chose the hostname
@@ -140,26 +135,33 @@ umount -r /mnt/boot
 umount -r /mnt/boot/efi
 echo
 
+#chek if the drive is an nvme and add an p at the end for the partition
+if [[ $drive == nvme* ]]; then
+    drivetmp="${drive}p"
+else 
+    drivetmp=$drive
+fi
+
 #   create the partitions depending if using swap or not and bios or efi
 if [[ $ef == efi ]]; then 
     parted /dev/$drive mklabel gpt
     parted /dev/$drive mkpart ESP fat32 0% 500MiB
     parted /dev/$drive set 1 boot on
-    mkfs.fat -F32 /dev/$drive'1'
     parted /dev/$drive mkpart primary ext4 $ss'iB' 100%
-    mkfs.ext4 /dev/$drive'2'
-    mount /dev/$drive'2' /mnt
-    mount -m /dev/$drive'1' /mnt/boot/efi
+    mkfs.fat -F32 /dev/$drivetmp'1'
+    mkfs.ext4 /dev/$drivetmp'2'
+    mount /dev/$drivetmp'2' /mnt
+    mount -m /dev/$drivetmp'1' /mnt/boot/efi
     pacstrap /mnt base base-devel linux linux-firmware grub networkmanager efibootmgr
 elif [[ $ef == bios ]]; then
     parted /dev/$drive mklabel msdos
     parted /dev/$drive mkpart primary ext4 0% 500MiB
     parted /dev/$drive set 1 boot on
-    mkfs.ext4 /dev/$drive'1'
     parted /dev/$drive mkpart primary ext4 $ss'iB' 100%
-    mkfs.ext4 /dev/$drive'2'
-    mount /dev/$drive'2' /mnt
-    mount -m /dev/$drive'1' /mnt/boot
+    mkfs.ext4 /dev/$drivetmp'1'
+    mkfs.ext4 /dev/$drivetmp'2'
+    mount /dev/$drivetmp'2' /mnt
+    mount -m /dev/$drivetmp'1' /mnt/boot
     pacstrap /mnt base base-devel linux linux-firmware grub networkmanager
 else
     echo "
@@ -171,8 +173,8 @@ fi
 
 if [[ $swap == true ]]; then
     parted /dev/$drive mkpart primary linux-swap 500MiB $ss'iB'
-    mkswap /dev/$drive'3'   
-    swapon /dev/$drive'3'
+    mkswap /dev/$drivetmp'3'   
+    swapon /dev/$drivetmp'3'
 fi
 
 # configuring the system
