@@ -125,7 +125,7 @@ echo "
     ====================================================
     do you want to use my bspwm or hyprwm config or none
     ====================================================
-	[bsp] | [hypr] | [no]"
+	[bsp] | [hypr] | [all] | [no]"
 read -p "    >" WM
 
 # unmount devices if any
@@ -204,6 +204,9 @@ if [[ $WM == bsp ]]; then
 	arch-chroot /mnt /bin/bash -c "sudo pacman -Sy --noconfirm git && git clone https://github.com/crolbar/dots && /dots/bspwm-install.sh arch-install"
 elif [[ $WM == hypr ]]; then
 	arch-chroot /mnt /bin/bash -c "sudo pacman -Sy --noconfirm git && git clone https://github.com/crolbar/dots && /dots/hypr-install.sh arch-install"
+elif [[ $WM == all ]]; then
+	arch-chroot /mnt /bin/bash -c "sudo pacman -Sy --noconfirm git && git clone https://github.com/crolbar/dots && /dots/hypr-install.sh arch-install"
+	arch-chroot /mnt /bin/bash -c "sudo pacman -Sy --noconfirm git && git clone https://github.com/crolbar/dots && /dots/bspwm-install.sh arch-install"
 fi
 
 # umounting 
