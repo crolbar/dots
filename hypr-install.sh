@@ -10,7 +10,7 @@ else
     git clone https://aur.archlinux.org/yay-bin.git ~/yay && cd ~/yay && makepkg -si --noconfirm
     pac=yay
 fi
-$pac -Sy --needed --noconfirm hyprland swaybg jq pamixer wofi dunst waybar pulseaudio alsa-utils zsh pavucontrol alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme network-manager-applet thunar   
+$pac -Sy --needed --noconfirm hyprland swaybg jq pamixer wofi dunst waybar pulseaudio alsa-utils zsh pavucontrol alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme network-manager-applet thunar wl-clipboard swaylock
 cp -a hypr ~/.config/ 
 cp -a alacritty ~/.config/ 
 cp -a zsh ~/.config/ 
@@ -20,7 +20,7 @@ cp .zshrc ~
 arch-install)
 sudo -u $user bash << EOF
 git clone https://aur.archlinux.org/yay-bin.git /home/$user/yay && cd /home/$user/yay && makepkg -si --noconfirm
-yay -Sy --needed --noconfirm hyprland swaybg jq pamixer wofi dunst waybar pulseaudio alsa-utils zsh pavucontrol neofetch alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme network-manager-applet thunar feh firefox mousepad ly physlock
+yay -Sy --needed --noconfirm hyprland swaybg jq pamixer wofi dunst waybar pulseaudio alsa-utils zsh pavucontrol neofetch alacritty lsd ttf-hack ttf-font-awesome ttf-roboto dracula-icons-git polkit-gnome dracula-gtk-theme network-manager-applet thunar feh firefox mousepad ly wl-clipboard swaylock
 sudo systemctl enable ly.service
 cd /dots
 cp -a hypr /home/$user/.config/ 

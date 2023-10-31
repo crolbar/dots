@@ -1,0 +1,37 @@
+* {
+  all: unset; // Unsets everything so you can style everything from scratch
+}
+
+//Global Styles
+.bar0 {
+  background-color: #000000;
+  color: #92328F;
+  font-size: 24px;
+}
+
+.time {
+  margin-left: 650px;
+  margin-right: -650px;
+}
+.workspaces button {
+  padding: 6px;
+}
+.workspaces button:hover {
+  color: #ffffff;
+}
+.ws-button-mine {
+  color: #FF79C1;
+}
+.ws-button-visible {
+  color: #92328F;
+}
+.ws-button-urgent {
+  color: #ffd5ca;
+  background-color: #D35D6E;
+}
+.ws-button-busy {
+  color: #92328F;
+}
+.ws-button {
+  color: #92328F;
+}
