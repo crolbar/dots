@@ -138,9 +138,10 @@ echo "
 read -p "    >" -n 1 GTK 
 
 # unmount devices if any
-umount -r /mnt
-umount -r /mnt/boot
 umount -r /mnt/boot/efi
+umount -r /mnt/boot
+umount -r /mnt
+
 echo
 
 #chek if the drive is an nvme and add an p at the end for the partition
