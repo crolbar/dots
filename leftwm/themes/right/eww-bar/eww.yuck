@@ -1,9 +1,8 @@
-(defpoll time :interval "10s" "date '+%H:%M %b %d, %Y'")
+(defpoll time :interval "10s" "date '+%I:%M %p %A %d.%m.%y'")
+(defpoll bat_level :interval "20s" "cat /sys/class/power_supply/BAT0/capacity")
 (deflisten wmstate 
            :initial '{"workspaces":[{"layout":"","tags":[{"name":"","index":0,"mine":false,"busy":false,"visible":false,"urgent":false}]}]}'
            "leftwm state")
-
-
 
 (defwidget workspaces []
     (box :class "workspaces"
@@ -22,12 +21,11 @@
 
 
 (defwidget time [] (box :class "time" {time}))
-(defwidget none[] (box :class "")) 
+(defwidget bat[] (box :class "bat" (label :text "  ") (label :text bat_level))) 
 
-(defwidget bar []
-  (centerbox :orientation "h"
+(defwidget bar [] (centerbox :orientation "h"
     (workspaces)
-    (none)
+    (bat)
     (time)))
 
 (defwindow bar0

@@ -1,5 +1,5 @@
 (
- border_width: 3,
+ border_width: 1,
  margin: 0,
  default_border_color: "#000000",
  floating_border_color: "#DE64AC",
