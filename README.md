@@ -45,7 +45,7 @@ You can set themes with `lxappearance` or `nwg-look` for wayland.
 
 ### Icons
 ```
-sudo git clone https://github.com/m4thewz/dracula-icons /usr/share/icons
+sudo git clone https://github.com/m4thewz/dracula-icons /usr/share/icons/dracula-icons
 ```
 ### Theme
 ```
