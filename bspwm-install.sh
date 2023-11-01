@@ -30,6 +30,7 @@ cp -a alacritty /home/$user/.config/
 cp -a zsh /home/$user/.config/
 cp -a gtk-3.0 /home/$user/.config/  
 cp .zshrc /home/$user/
-EOF;;
+EOF
+;;
 
 esac
