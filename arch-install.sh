@@ -221,7 +221,7 @@ if [[ $GTK == Y || $GTK == y ]]; then
     mkdir -p /mnt/usr/share/themes
     mkdir -p /mnt/usr/share/icons
     cp -r /root/dots/Material-Black-Plum /mnt/usr/share/themes
-    git clone https://github.com/m4thewz/dracula-icons /mnt/usr/share/icons
+    git clone https://github.com/m4thewz/dracula-icons /mnt/usr/share/icons/dracula-icons
 fi
 
 # umounting 
