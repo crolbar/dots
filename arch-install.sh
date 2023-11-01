@@ -160,7 +160,7 @@ if [[ $ef == efi ]]; then
     mkfs.ext4 /dev/$drivetmp'2'
     mount /dev/$drivetmp'2' /mnt
     mount -m /dev/$drivetmp'1' /mnt/boot/efi
-    pacstrap /mnt base base-devel linux linux-firmware grub networkmanager efibootmgr
+    pacstrap /mnt base base-devel linux linux-firmware grub networkmanager efibootmgr sudo
 elif [[ $ef == bios ]]; then
     parted /dev/$drive mklabel msdos
     parted /dev/$drive mkpart primary ext4 0% 500MiB
@@ -170,7 +170,7 @@ elif [[ $ef == bios ]]; then
     mkfs.ext4 /dev/$drivetmp'2'
     mount /dev/$drivetmp'2' /mnt
     mount -m /dev/$drivetmp'1' /mnt/boot
-    pacstrap /mnt base base-devel linux linux-firmware grub networkmanager
+    pacstrap /mnt base base-devel linux linux-firmware grub networkmanager sudo
 else
     echo "
             =================================================
