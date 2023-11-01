@@ -39,3 +39,18 @@ cp -r ~/dots/bspwm ~/.config/bspwm
   - auto uses networkmanager
 - bspwm-install.sh - script ot isntall my bspwm config (with dependencies)
 - hypr-install.sh - script ot isntall my hyprland config (with dependencies)
+
+# GTK Themes
+You can set themes with `lxappearance` or `nwg-look` for wayland.
+
+### Icons
+```
+sudo git clone https://github.com/m4thewz/dracula-icons /mnt/usr/share/icons
+```
+### Theme
+```
+git clone https://github.com/crolbar/dots 
+sudo cp -r dots/Material-Black-Plum /usr/share/themes
+```
+
+

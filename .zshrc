@@ -50,7 +50,9 @@ PROMPT=' %B%F{cyan}%n%f%b %B%F{red}%~%f%b${vcs_info_msg_0_}%b %(?.%B%F{green}✓
 alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
 alias cdd='cd ..'
-alias vs='vscodium .config/hypr && exit'
+alias vs='cd ~/.config/hypr && nvim .'
 alias yay='paru'
+alias vim='nvim'
+alias vimc='cd ~/.config/nvim && nvim .'
 
 neofetch

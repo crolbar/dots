@@ -127,9 +127,17 @@ echo "
     ====================================================
 	[bsp] | [hypr] | [all] | [no]"
 read -p "    >" WM
+echo 
+
+# GTK theme or no
+echo "
+    ===================================================================
+    do you want to use the material black plum and dracula icons themes
+    ===================================================================
+	Y/n"
+read -p "    >" -n 1 GTK 
 
 # unmount devices if any
-cd
 umount -r /mnt
 umount -r /mnt/boot
 umount -r /mnt/boot/efi
@@ -205,8 +213,14 @@ if [[ $WM == bsp ]]; then
 elif [[ $WM == hypr ]]; then
 	arch-chroot /mnt /bin/bash -c "sudo pacman -Sy --noconfirm git && git clone https://github.com/crolbar/dots && /dots/hypr-install.sh arch-install"
 elif [[ $WM == all ]]; then
-	arch-chroot /mnt /bin/bash -c "sudo pacman -Sy --noconfirm git && git clone https://github.com/crolbar/dots && /dots/hypr-install.sh arch-install"
-	arch-chroot /mnt /bin/bash -c "sudo pacman -Sy --noconfirm git && git clone https://github.com/crolbar/dots && /dots/bspwm-install.sh arch-install"
+	arch-chroot /mnt /bin/bash -c "sudo pacman -Sy --noconfirm git && git clone https://github.com/crolbar/dots && /dots/hypr-install.sh arch-install && /dots/bspwm-install.sh arch-install"
+fi
+
+if [[ $GTK == Y || $GTK == y ]]; then
+    mkdir -p /mnt/usr/share/themes
+    mkdir -p /mnt/usr/share/icons
+    cp -r /dots/Material-Black-Plum /mnt/usr/share/themes
+    git clone https://github.com/m4thewz/dracula-icons /mnt/usr/share/icons
 fi
 
 # umounting 
