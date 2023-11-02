@@ -45,12 +45,12 @@ You can set themes with `lxappearance` or `nwg-look` for wayland.
 
 ### Icons
 ```
-sudo git clone https://github.com/m4thewz/dracula-icons /usr/share/icons/dracula-icons
+git clone https://github.com/m4thewz/dracula-icons ~/.local/share/icons/dracula-icons
 ```
 ### Theme
 ```
 git clone https://github.com/crolbar/dots 
-sudo cp -r dots/Material-Black-Plum /usr/share/themes
+cp -r dots/Material-Black-Plum ~/.local/share/themes
 ```
 
 
