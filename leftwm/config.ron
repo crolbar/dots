@@ -35,8 +35,9 @@
         (command: ToggleScratchPad, value: "Alacritty", modifier: ["modkey", "Control"], key: "s"),
 
         (command: Execute, value: "~/.config/leftwm/scripts/eww.sh bar", modifier: ["modkey"], key: "w"),
-
-
+        (command: Execute, value: "pkill eww", modifier: ["modkey", "Shift"], key: "s"),
+        (command: Execute, value: "eww open board --toggle", modifier: ["modkey"], key: "s"),
+        (command: Execute, value: "eww open player --toggle", modifier: ["modkey"], key: "d"),
         
         (command: CloseWindow, modifier: ["modkey", "Shift"], key: "q"),
         (command: SoftReload, modifier: ["modkey", "Shift"], key: "r"),
@@ -82,13 +83,13 @@
         (command: MoveToTag, value: "9", modifier: ["modkey", "Shift"], key: "9"),
 
         (command: Execute, value: "pkill leftwm", modifier: ["modkey", "Shift", "Alt", "Control"], key: "q"),
-        (command: Execute, value: "physlock", modifier: ["modkey", "Shift", "Alt", "Control"], key: "l"),
-        (command: Execute, value: "systemctl reboot", modifier: ["modkey", "Shift", "Alt", "Control"], key: "r"),
-        (command: Execute, value: "systemctl suspent", modifier: ["modkey", "Shift", "Alt", "Control"], key: "s"),
-        (command: Execute, value: "systemctl poweroff", modifier: ["modkey", "Shift", "Alt", "Control"], key: "p"),
+        (command: Execute, value: "sudo i3lock -c 000000", modifier: ["modkey", "Shift", "Alt", "Control"], key: "l"),
+        (command: Execute, value: "sudo systemctl reboot", modifier: ["modkey", "Shift", "Alt", "Control"], key: "r"),
+        (command: Execute, value: "sudo systemctl suspend && sudo i3lock -c 000000", modifier: ["modkey", "Shift", "Alt", "Control"], key: "s"),
+        (command: Execute, value: "sudo systemctl poweroff", modifier: ["modkey", "Shift", "Alt", "Control"], key: "p"),
 
-        (command: Execute, value: "light -U 5 && dunstctl close && dunstify \"brightness at $(cat /sys/class/backlight/intel_backlight/brightness)\"", key: "F4", modifier: ["modkey"]),
-        (command: Execute, value: "light -A 5 && dunstctl close && dunstify \"brightness at $(cat /sys/class/backlight/intel_backlight/brightness)\"", key: "F5", modifier: ["modkey"]),
+        (command: Execute, value: "sudo light -U 5 && dunstctl close && dunstify \"brightness at $(cat /sys/class/backlight/intel_backlight/brightness)\"", key: "F4", modifier: ["modkey"]),
+        (command: Execute, value: "sudo light -A 5 && dunstctl close && dunstify \"brightness at $(cat /sys/class/backlight/intel_backlight/brightness)\"", key: "F5", modifier: ["modkey"]),
 
         (command: Execute, value: "brightnessctl -d asus::kbd_backlight set 33%-", modifier: ["modkey"], key: "F2"),
         (command: Execute, value: "brightnessctl -d asus::kbd_backlight set +33%", modifier: ["modkey"], key: "F3"),

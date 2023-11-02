@@ -5,12 +5,13 @@
 //Global Styles
 .bar0 {
   color: #92328F;
-  font-size: 26px;
+  font-size: 24px;
+  background-color: rgba($color: #000000, $alpha: 0.8);
 }
 
 .time {
-  margin-left: 600px;
-  margin-right: -600px;
+  margin-left: 550px;
+  margin-right: -550px;
 }
 .workspaces button {
   padding: 6px;

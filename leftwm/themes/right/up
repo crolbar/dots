@@ -16,7 +16,8 @@ ln -s $SCRIPTPATH/down /tmp/leftwm-theme-down
 
 leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 
+picom &
 eww daemon -c ~/.config/leftwm/themes/right/eww-bar &
 eww open bar0 -c ~/.config/leftwm/themes/right/eww-bar &
-feh --bg-fill $SCRIPTPATH/wall.png
+feh --bg-fill ~/.config/leftwm/themes/right/wall.png &
 dunst -config ~/.config/bspwm/dunstrc &
