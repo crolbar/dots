@@ -5,172 +5,69 @@
 # \____)_)   \___/(___)_ __/ \__ _)_)   
 
 { config, pkgs, ... }:
-
 {
-    imports = [ # Include the results of the hardware scan.
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    imports = [ 
         ./hardware-configuration.nix
+        ./packages.nix
+        ./boot.nix
+        ./locales.nix
+        ./user.nix
     ];
 
     environment.variables = {
         EDITOR = "nvim";
+        VISUAL = "nvim";
         BROWSER = "brave";
         TERMINAL = "alacritty";
+        PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     };
-
-#boot.loader.systemd-boot.enable = true;
-    boot.loader = {
-        efi = {
-            canTouchEfiVariables = true;
-            efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
-        };
-        grub = { 
-            enable = true;
-            efiSupport = true;
-            device = "nodev";
-            theme = "/boot/grub/themes/theme/darkmatter/";
-        };
-    };
-
 
     networking.hostName = "nixos"; 
-#networking.wireless.enable = true; 
-
-
-# Enable networking
     networking.networkmanager.enable = true;
 
-    time.timeZone = "Europe/Sofia";
-    i18n.defaultLocale = "en_US.UTF-8";
-    i18n.extraLocaleSettings = {
-        LC_ADDRESS = "en_US.UTF-8";
-        LC_IDENTIFICATION = "en_US.UTF-8";
-        LC_MEASUREMENT = "en_US.UTF-8";
-        LC_MONETARY = "en_US.UTF-8";
-        LC_NAME = "en_US.UTF-8";
-        LC_NUMERIC = "en_US.UTF-8";
-        LC_PAPER = "en_US.UTF-8";
-        LC_TELEPHONE = "en_US.UTF-8";
-        LC_TIME = "en_US.UTF-8";
+    sound.enable = true;
+    hardware = {
+        pulseaudio.enable = true;
+        bluetooth.enable = false;
     };
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-    services.xserver.displayManager.defaultSession = "none+leftwm";
-    services.xserver.displayManager.autoLogin.enable = false;
-    services.xserver.displayManager.sddm.enable = true;
-    services.xserver.windowManager.leftwm.enable = true;
     services.xserver = { 
         enable = true;
-        layout = "us";
-        xkbVariant = "";
+        windowManager.leftwm.enable = true;
+        displayManager.sddm.enable = true;
         desktopManager.xterm.enable = false;
     };
 
-    programs.zsh.enable = true;
 
-    sound.enable = true;
-    hardware.pulseaudio.enable = true;
-
-    services.xserver.libinput.enable = true;
-
-# Define a user account. Don't forget to set a password with ‘passwd’.
-    users.users.crolbar = {
-        isNormalUser = true;
-        description = "crolbar";
-        extraGroups = [ "networkmanager" "wheel" ];
-        packages = with pkgs; [];
-
-    };
     security.sudo.wheelNeedsPassword = false;
 
-    users.extraUsers.crolbar = {
-        shell = pkgs.zsh;
-    };
-
-
-    programs.thunar.enable = true;
-    services.tumbler.enable = true; # Thumbnail support for images
-        services.gvfs.enable = true; # Mount, trash, and other functionalities
-        programs.thunar.plugins = with pkgs.xfce; [
-        thunar-archive-plugin
-            thunar-volman
-        ];
+    services.tumbler.enable = true;
+    services.gvfs.enable = true;
+    programs.thunar.plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
 
 
 
 
 
 
-
-
-    fonts.fonts = with pkgs; [
+    fonts.packages = with pkgs; [
         (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
 
     nixpkgs.config.allowUnfree = true;
 
-    environment.systemPackages = with pkgs; [
-        vim 
-            git
-            zsh
-            lsd
-            fd
-            btop
-            htop
-            neofetch
-            neovim
-            brightnessctl
-            light
-            pamixer
-            i3lock
-            tldr
-
-            leftwm
-
-            alacritty
-
-            picom
-            eww
-            feh
-            dunst
-            rofi
-
-            firefox
-            brave
-            vscodium
-            gnome.file-roller
-
-            pavucontrol
-            xclip
-            lxappearance
-            capitaine-cursors
-            xfce.thunar
-
-            discord
-            keepassxc
-
-            roboto
-            font-awesome
-            hack-font
-
-            lua-language-server
-            nodejs
-            clang-tools
-            gcc
-            cargo
-            rustc
-            rustup
-            rust-analyzer
-            python311
-            python311Packages.pip
-            nodePackages.pyright
-            nodePackages_latest.bash-language-server
-            nodePackages_latest.vscode-langservers-extracted
-
-    ];
-
-
-    system.autoUpgrade.enable = true;
+    programs.neovim = {
+        enable = true;
+        configure = {
+            packages.nixbundle.start = with pkgs.vimPlugins; [
+                nvim-cmp
+                nvim-lspconfig
+            ];
+        };
+    };
+    #system.autoUpgrade.enable = true;
+    #system.autoUpgrade.channel = "https://nixos.org/channels/nixpkgs-unstable";
 
     nix.settings.auto-optimise-store = true;
     nix = {
@@ -206,3 +103,4 @@
     system.stateVersion = "23.05"; # Did you read the comment?
 
 }
+
