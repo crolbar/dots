@@ -19,6 +19,6 @@ leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 picom &
 ~/.config/leftwm/scripts/bar.sh bar &
 ~/.config/leftwm/scripts/bat &
-#feh --bg-fill ~/.config/leftwm/right/walls/wall0.png &
-feh --bg-fill ~/.config/leftwm/right/walls/wallno1.png &
+#feh --bg-fill ~/.config/leftwm/right/walls/wallno0.png &
+feh --bg-fill ~/.config/leftwm/right/walls/wall2.png &
 dunst -config ~/.config/bspwm/dunstrc &

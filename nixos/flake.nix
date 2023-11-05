@@ -12,6 +12,7 @@
                     ./boot.nix
                     ./locales.nix
                     ./user.nix
+                    ./app_conf.nix
 
                     ({ pkgs, ... }: {
                         nixpkgs.overlays = [ rust-overlay.overlays.default ];

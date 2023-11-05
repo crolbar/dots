@@ -16,8 +16,9 @@ in
         vim git zsh lsd fd btop htop
         neofetch neovim brightnessctl
         light pamixer tldr fzf zip 
-        alacritty xclip unzip
-        xorg.xev ncdu tmux
+        alacritty xclip unzip tree
+        xorg.xev ncdu tmux skim
+        silver-searcher
 
 
 

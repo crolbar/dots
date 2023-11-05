@@ -3,6 +3,7 @@ export TERMINAL='alacritty'
 export BROWSER='brave'
 export VISUAL='nvim'
 export EDITOR='nvim'
+export PATH="/home/crolbar/bin:$PATH"
 
 # history
 HISTFILE=~/.config/zsh/zhistory
@@ -54,5 +55,13 @@ alias vs='cd ~/.config/hypr && nvim .'
 alias yay='paru'
 alias vim='nvim'
 alias vimc='cd ~/.config/nvim && nvim .'
+
+alias n='cd ~/.config/nixos && vim .'
+alias ns='nix-shell'
+alias reb='sudo nixos-rebuild switch --flake /home/crolbar/.config/nixos'
+alias lfc='cd ~/.config/leftwm && nvim .'
+
+alias v='p=$(find . -type d | sk --preview "tree -C {}" --preview-window down:50%) && cd "$p" && vim .'
+alias vf='p=$(sk --preview "tree -C {}" --preview-window down:50%) && vim "$p"'
 
 neofetch
