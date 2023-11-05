@@ -4,48 +4,49 @@
 #( (___| |  ( (_) )| || |_) ) (_| | |   
 # \____)_)   \___/(___)_ __/ \__ _)_)   
 
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs, ... }:
 {
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
-    imports = [ 
-        ./hardware-configuration.nix
-        ./packages.nix
-        ./boot.nix
-        ./locales.nix
-        ./user.nix
-    ];
 
     environment.variables = {
         EDITOR = "nvim";
         VISUAL = "nvim";
         BROWSER = "brave";
         TERMINAL = "alacritty";
-        PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     };
 
-    networking.hostName = "nixos"; 
+    networking.hostName = "crol"; 
     networking.networkmanager.enable = true;
 
     sound.enable = true;
     hardware = {
         pulseaudio.enable = true;
         bluetooth.enable = false;
+
     };
 
     services.xserver = { 
         enable = true;
         windowManager.leftwm.enable = true;
-        displayManager.sddm.enable = true;
+        displayManager.lightdm.enable = true;
+        displayManager.lightdm.background = "#111111";
         desktopManager.xterm.enable = false;
     };
-
-
     security.sudo.wheelNeedsPassword = false;
 
     services.tumbler.enable = true;
     services.gvfs.enable = true;
     programs.thunar.plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
 
+    programs.git = {
+        enable = true;
+        package = pkgs.gitFull;
+        config = {
+            init = { defaultBranch = "master"; };
+            url."https://github.com/".insteadOf = [ "gh:" ];
+            credential.helper = "store";
+        };
+    };
 
 
 
