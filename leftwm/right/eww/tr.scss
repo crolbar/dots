@@ -1,0 +1,23 @@
+* {
+    all: unset;
+    font-size: 20px;
+}
+
+.workspaces button {
+  //background-color: black;
+  padding: 2px;
+}
+
+.workspaces button:hover {
+  color: #ffffff;
+}
+.ws-button-mine {
+  color: #FF79C1;
+}
+.ws-button-busy {
+  color: #909090;
+}
+.ws-button-urgent {
+  background-color: #ffff00;
+  color: #ffff00;
+}

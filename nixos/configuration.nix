@@ -34,7 +34,7 @@
     };
 
     sound.enable = true;
-    networking.hostName = "crol"; 
+    networking.hostName = "crowbar"; 
     networking.networkmanager.enable = true;
     security.sudo.wheelNeedsPassword = false;
 }

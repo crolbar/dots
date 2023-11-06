@@ -4,12 +4,14 @@ let
      rust = pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
       extensions = [ "rust-src" ];
     });
-
 in
 {
     environment.systemPackages = with pkgs; [
 
         dunst rofi leftwm eww i3lock picom
+
+        polybar
+
 #               ╔═╗╦  ╦
 #               ║  ║  ║
 #               ╚═╝╩═╝╩
@@ -18,17 +20,17 @@ in
         light pamixer tldr fzf zip 
         alacritty xclip unzip tree
         xorg.xev ncdu tmux skim
-        silver-searcher
 
 
 
-        #bluez bluez-tools
+
 #               ╔═╗╦ ╦╦
 #               ║ ╦║ ║║
 #               ╚═╝╚═╝╩
         firefox brave vscodium gnome.file-roller 
         mpv lxappearance xfce.thunar pavucontrol
         discord keepassxc spotify gimp feh mate.eom
+        flameshot
 
 
 
@@ -40,14 +42,16 @@ in
         
 
         lua lua-language-server
+
         nodejs
+
         clang-tools gcc clang
 
         rust rust-analyzer
 
         nixd
 
-        python311 python311Packages.pip nodePackages.pyright
+        python311 python311Packages.pip nodePackages.pyright 
 
         nodePackages_latest.bash-language-server
         nodePackages_latest.vscode-langservers-extracted
@@ -70,5 +74,6 @@ in
         capitaine-cursors
         libsecret
         git-credential-manager
+        xclip
     ];
 }
