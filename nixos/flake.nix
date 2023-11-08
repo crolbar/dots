@@ -3,7 +3,7 @@
 
     outputs = { nixpkgs, rust-overlay, ... }: {
         nixosConfigurations = {
-            crol = nixpkgs.lib.nixosSystem {
+            crowbar = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
                 modules = [ 
                     ./configuration.nix 
@@ -13,6 +13,7 @@
                     ./locales.nix
                     ./user.nix
                     ./app_conf.nix
+                    ./net.nix
 
                     ({ pkgs, ... }: {
                         nixpkgs.overlays = [ rust-overlay.overlays.default ];

@@ -30,11 +30,10 @@
 
     hardware = {
         pulseaudio.enable = true;
-        bluetooth.enable = false;
+        bluetooth.enable = true;
     };
 
     sound.enable = true;
-    networking.hostName = "crowbar"; 
-    networking.networkmanager.enable = true;
+
     security.sudo.wheelNeedsPassword = false;
 }

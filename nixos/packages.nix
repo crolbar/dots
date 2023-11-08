@@ -30,7 +30,7 @@ in
         firefox brave vscodium gnome.file-roller 
         mpv lxappearance xfce.thunar pavucontrol
         discord keepassxc spotify gimp feh mate.eom
-        flameshot
+        flameshot libreoffice zathura
 
 
 
