@@ -43,7 +43,7 @@ in
 
         lua lua-language-server
 
-        nodejs
+        nodejs yarn 
 
         clang-tools gcc clang
 

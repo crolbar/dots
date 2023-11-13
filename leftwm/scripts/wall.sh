@@ -15,7 +15,7 @@ case $1 in
             echo $wall > /tmp/.wall
         fi
         pkill feh
-        feh --bg-fill ~/.config/leftwm/right/walls/wall$wall.png &;;
+        feh --bg-max ~/.config/leftwm/right/walls/wall$wall.png &;;
     i)
         feh --bg-fill ~/.config/leftwm/right/walls/wall$wall.png &;;
 esac

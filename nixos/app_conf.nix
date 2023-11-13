@@ -3,10 +3,17 @@
     services.xserver = { 
         enable = true;
         windowManager.leftwm.enable = true;
-        displayManager.lightdm.enable = true;
-        displayManager.lightdm.background = "#111111";
+        displayManager.startx.enable = true;
         desktopManager.xterm.enable = false;
         resolutions = [ { x = 3200; y = 2000; } ];
+
+        xautolock = {
+            enable = true;
+            enableNotifier = true;
+            locker = "${pkgs.i3lock}/bin/i3lock -c 000000";
+            killer = "/run/current-system/systemd/bin/systemctl suspend";
+            notifier = "${pkgs.libnotify}/bin/dunstify 'Locking in 10 seconds'";
+        };
     };
 
     programs.git = {

@@ -4,7 +4,7 @@
 
     networking.firewall = {
         enable = true;
-        #allowedTCPPorts = [ 80 ];
+        #allowedTCPPorts = [ 80 8000 ];
     };
 
     services.nginx = {
