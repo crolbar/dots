@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 export SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
-processes=("eww" "feh" "dunst" "bat" "polybar")
+processes=("eww" "feh" "dunst" "bat" "polybar" "picom")
 for process in "${processes[@]}"; do
     if pidof -q "$process"; then
         pkill -x "$process" > /dev/null
@@ -16,7 +16,7 @@ ln -s $SCRIPTPATH/down /tmp/leftwm-theme-down
 
 leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 
-picom  &
+picom --backend glx &
 ~/.config/leftwm/scripts/bat &
 ~/.config/leftwm/scripts/wall.sh i &
 polybar tray -c ~/.config/leftwm/right/config.ini &

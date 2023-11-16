@@ -19,7 +19,7 @@ in
         neofetch neovim brightnessctl
         light pamixer tldr fzf zip 
         alacritty xclip unzip tree
-        xorg.xev ncdu tmux skim
+        xorg.xev ncdu tmux skim jq
 
 
 
