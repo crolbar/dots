@@ -3,7 +3,7 @@ export TERMINAL='alacritty'
 export BROWSER='brave'
 export VISUAL='nvim'
 export EDITOR='nvim'
-export PATH="/home/crolbar/bin:$PATH"
+export PATH="/home/plier/bin:$PATH"
 
 # history
 HISTFILE=~/.config/zsh/zhistory
@@ -45,7 +45,7 @@ bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
 
 # prompt
-PROMPT=' %B%F{cyan}%n%f%b %B%F{red}%~%f%b${vcs_info_msg_0_}%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}%f%b '
+PROMPT=' %B%F{blue}%n%f%b %B%F{red}%~%f%b${vcs_info_msg_0_}%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}%f%b '
 
 # alias
 alias ls='lsd -a --group-directories-first'
@@ -58,10 +58,17 @@ alias vimc='cd ~/.config/nvim && nvim .'
 
 alias n='cd ~/.config/nixos && vim .'
 alias ns='nix-shell'
-alias reb='sudo nixos-rebuild switch --flake /home/crolbar/.config/nixos'
+alias reb='sudo nixos-rebuild switch --flake /home/plier/.config/nixos'
 alias lfc='cd ~/.config/leftwm && nvim .'
 
 alias v='p=$(find . -type d | sk --preview "tree -C {}" --preview-window down:50%) && cd "$p" && vim .'
 alias vf='p=$(sk --preview "tree -C {}" --preview-window down:50%) && vim "$p"'
+
+alias lapp='ssh lapp@192.168.1.5'
+alias crol='ssh crolbar@192.168.1.12'
+
+alias mnas='sudo mount -t nfs 192.168.1.5:/nas /mnt/nas -o rw'
+alias umnas='sudo umount /mnt/nas'
+alias nas='cd /mnt/nas'
 
 neofetch

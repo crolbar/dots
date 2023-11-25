@@ -1,5 +1,5 @@
 {
-    networking.hostName = "crowbar"; 
+    networking.hostName = "plier"; 
     networking.networkmanager.enable = true;
 
     networking.firewall = {
@@ -9,7 +9,7 @@
 
     services.nginx = {
         enable = false;
-        virtualHosts."crowbar" = {
+        virtualHosts."plier" = {
             root = "/var/www/nginx";
             locations."/" = {
                 extraConfig = "try_files $uri /index.html;";

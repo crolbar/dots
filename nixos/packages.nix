@@ -10,7 +10,7 @@ in
 
         dunst rofi leftwm eww i3lock picom
 
-        polybar
+        polybar xautolock
 
 #               ╔═╗╦  ╦
 #               ║  ║  ║
@@ -19,7 +19,8 @@ in
         neofetch neovim brightnessctl
         light pamixer tldr fzf zip 
         alacritty xclip unzip tree
-        xorg.xev ncdu tmux skim jq
+        xorg.xev ncdu tmux skim jq nfs-utils
+
 
 
 
@@ -30,7 +31,7 @@ in
         firefox brave vscodium gnome.file-roller 
         mpv lxappearance xfce.thunar pavucontrol
         discord keepassxc spotify gimp feh mate.eom
-        flameshot libreoffice zathura
+        flameshot libreoffice zathura qbittorrent xcolor
 
 
 
