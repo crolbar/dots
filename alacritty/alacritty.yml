@@ -49,4 +49,6 @@ colors:
     cyan:    '#14ffff'
     white:   '#ffffff'
 
-
+  selection:
+    text: CellForeground
+    background: "#252525"
