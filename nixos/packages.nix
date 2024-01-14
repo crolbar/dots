@@ -10,7 +10,7 @@ in
 
         dunst rofi leftwm eww i3lock picom
 
-        polybar xautolock
+        polybar xautolock sxhkd
 
 #               ╔═╗╦  ╦
 #               ║  ║  ║
@@ -19,9 +19,9 @@ in
         neofetch neovim brightnessctl
         light pamixer tldr fzf zip 
         alacritty xclip unzip tree
-        xorg.xev ncdu tmux skim jq nfs-utils
-
-
+        xorg.xev ncdu tmux skim jq 
+        nfs-utils inetutils bottom
+        firebase-tools
 
 
 
@@ -32,6 +32,7 @@ in
         mpv lxappearance xfce.thunar pavucontrol
         discord keepassxc spotify gimp feh mate.eom
         flameshot libreoffice zathura qbittorrent xcolor
+        gnome.gnome-disk-utility polkit_gnome
 
 
 
@@ -48,7 +49,7 @@ in
 
         clang-tools gcc clang
 
-        rust rust-analyzer
+        rust rust-analyzer cargo-make
 
         nixd
 
@@ -56,6 +57,7 @@ in
 
         nodePackages_latest.bash-language-server
         nodePackages_latest.vscode-langservers-extracted
+
 
 
 

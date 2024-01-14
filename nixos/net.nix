@@ -1,10 +1,14 @@
 {
     networking.hostName = "plier"; 
-    networking.networkmanager.enable = true;
+    networking.networkmanager = {
+        enable = true;
+        insertNameservers = [ "192.168.1.11" ];
+    };
+
 
     networking.firewall = {
         enable = true;
-        #allowedTCPPorts = [ 80 8000 ];
+        #allowedTCPPorts = [ ];
     };
 
     services.nginx = {
