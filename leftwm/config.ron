@@ -11,7 +11,7 @@
     mousekey: "Super",
     workspaces: [],
     tags: [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ],
-    layouts: [ MainAndVertStack, GridHorizontal, EvenVertical ],
+    layouts: [ "MainAndVertStack", "GridHorizontal", "EvenVertical" ],
     scratchpad: [ (name: "Alacritty", value: "alacritty", x: 860, y: 390, height: 1000, width: 1500), ],
     window_rules: [
         (window_title: "crolk", spawn_floating: true),
