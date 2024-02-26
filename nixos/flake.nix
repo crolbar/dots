@@ -1,5 +1,8 @@
 {
-    description = "retart";
+    inputs = {
+        nixpkgs.url = "nixpkgs/nixos-unstable";
+        rust-overlay.url = "github:oxalica/rust-overlay";
+    };
 
     outputs = { nixpkgs, rust-overlay, ... }: {
         nixosConfigurations = {
@@ -21,10 +24,5 @@
                 ];
             };
         };
-    };
-
-    inputs = {
-        nixpkgs.url = "nixpkgs/nixos-unstable";
-        rust-overlay.url = "github:oxalica/rust-overlay";
     };
 }

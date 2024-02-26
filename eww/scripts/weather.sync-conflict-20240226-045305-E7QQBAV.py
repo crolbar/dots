@@ -2,9 +2,9 @@ import sys
 import requests
 from subprocess import run
 
-API_KEY = "aba36eff207740e0a5e234935232607"
-CITY_NAME = "Silistra"
-color = "#ffffff"
+API_KEY = ""
+CITY_NAME = ""
+
 
 url = f"https://api.weatherapi.com/v1/current.json?key={API_KEY}&q={CITY_NAME}"
 response = requests.get(url)
@@ -85,3 +85,7 @@ elif sys.argv[1] == "wind": print(f"Wind: {wind_speed}km/h")
 elif sys.argv[1] == "icon": print(icon)
 elif sys.argv[1] == "icon-color": print (color)
 elif sys.argv[1] == "day": print (is_day)
+
+
+
+

@@ -2,13 +2,13 @@
 # crolbar
 
 # Apps
-super + {x,r,e,b,t,s}
+super + {x,r,e,b,t}
 	{alacritty, \
-	rofi -show drun -show-icons, \
+	rofi -show drun, \
 	thunar, \
-	floorp, \
-	dmenu_run -nb black -sb '#6600CC', \
-	eww open board --toggle
+	firefox, \
+	dmenu_run -nb black -sb '#6600CC'}
+
 # restart bspwm
 super + ctrl + r
 	bspc wm -r
@@ -58,7 +58,7 @@ super + ctrl + {a,s,w,d,space}
 
 # power off,reboot,log out,lock
 super + ctrl + alt + shift + {p,r,q,s,l}
-	{sudo systemctl poweroff,sudo systemctl reboot,bspc quit,sudo systemctl suspend,physlock -d}
+	{sudo systemctl poweroff,sudo systemctl reboot,bspc quit,physlock -d && sudo systemctl suspend,physlock -d}
 
 # screenshot
 Print
@@ -88,9 +88,3 @@ super + alt + shift + {F11,F12}
 
 {XF86AudioLowerVolume,XF86AudioRaiseVolume,XF86AudioPrev,XF86AudioNext,XF86AudioPlay}
 	{amixer -D pulse sset Master 5%- > /dev/null,amixer -D pulse sset Master 5%+ > /dev/null,playerctl previous,playerctl next,playerctl play-pause}
-
-# wall
-super + w
-	wall c +
-super + shift + w
-	wall c -

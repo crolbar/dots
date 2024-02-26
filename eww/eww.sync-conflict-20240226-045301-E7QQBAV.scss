@@ -3,8 +3,6 @@
     font-family: "Roboto","Font Awesome 6 Free Solid";
   }
 
-@import "./set_board.scss";
-
 $base: rgba(0, 0, 0, 0.63);
 
 $yellow: #c48c6a;
@@ -20,13 +18,10 @@ $red: #74283a;
 $red3: rgba(78, 34, 45, 0.411);
 $green: #45b18b;
 
-
 .board {
     // border: 3px solid red;
     background-color: $base;
     border-radius: 15px;
-
-
 
     .board-box {
     margin: -70px 0px 70px 0px;

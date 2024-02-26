@@ -3,7 +3,7 @@
 PATH="$HOME/.config/bspwm/scripts:$PATH"
 
 for monitor in $(bspc query -M); do 
-    bspc monitor $monitor -d {1,2,3,4,5,6,7}
+bspc monitor $monitor -d {1,2,3,4,5,6,7}
 done
 
 bspc config border_width         2
@@ -18,7 +18,6 @@ bspc config pointer_follows_focus false
 bspc config pointer_motion_interval 20
 bspc config automatic_scheme alternate
 
-bspc rule -a Eww - board state=floating follow=off
 bspc rule -a pavucontrol state=floating follow=off
 
 processes=("picom" "polybar" "sxhkd" "dunst")
@@ -30,9 +29,9 @@ done
 
 picom --config "$HOME"/.config/bspwm/picom.conf &
 sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
-#dunst -config "$HOME"/.config/bspwm/dunstrc &
-polybar DP-2 -c "$HOME"/.config/bspwm/config.ini &
+dunst -config "$HOME"/.config/bspwm/dunstrc &
+#polybar DP-2 -c "$HOME"/.config/bspwm/config.ini &
 polybar DP-0 -c "$HOME"/.config/bspwm/config.ini &
-wm i
-#nm-applet &
-#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+feh --bg-fill "$HOME"/.config/bspwm/wallpapers/wall.png &
+nm-applet &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &

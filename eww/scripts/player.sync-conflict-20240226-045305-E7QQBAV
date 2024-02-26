@@ -25,12 +25,12 @@ poll)
         status=$(playerctl --player="$active_player" status)
         case $status in 
         Playing)
-            printf ""
-            eww update status="" 
+        printf ""
+        eww update status="" 
         ;;
         Paused)
-            printf ""
-            eww update status=""
+        printf ""
+        eww update status=""
         ;;
         esac
     ;;

@@ -71,4 +71,7 @@ alias mnas='sudo mount -t nfs 192.168.1.5:/nas /mnt/nas -o rw'
 alias umnas='sudo umount /mnt/nas'
 alias nas='cd /mnt/nas'
 
+alias d='. ~/scripts/dapu.sh'
+alias dc='. ~/scripts/dapu.sh cd'
+
 neofetch

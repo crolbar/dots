@@ -1,0 +1,27 @@
+
+.set_board {
+    border-radius: 2rem;
+    background-color: rgba($color: #252525, $alpha: 0.3);
+
+    .sliders {
+        margin-left: 50px;
+
+        .b1 highlight {
+            background-color: #a09050;
+        }
+        .c1 highlight {
+            background-color: #50b050;
+        }
+    }
+
+    scale trough  {
+        min-height: 17px;
+        margin-top: 20px;
+        background-color: black;
+        border-radius: 100px;
+    }
+
+    scale highlight {
+        border-radius: 10px;
+    }
+}

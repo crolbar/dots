@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
 let
-     rust = pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
-      extensions = [ "rust-src" ];
+    rust = pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
+        extensions = [ "rust-src" ];
     });
 in
 {
@@ -21,26 +21,25 @@ in
         alacritty xclip unzip tree
         xorg.xev ncdu tmux skim jq 
         nfs-utils inetutils bottom
-        firebase-tools
+        firebase-tools syncthing
 
 
 
 #               ╔═╗╦ ╦╦
 #               ║ ╦║ ║║
 #               ╚═╝╚═╝╩
-        firefox brave vscodium gnome.file-roller 
+        floorp brave vscodium gnome.file-roller 
         mpv lxappearance xfce.thunar pavucontrol
         discord keepassxc spotify gimp feh mate.eom
         flameshot libreoffice zathura qbittorrent xcolor
-        gnome.gnome-disk-utility polkit_gnome
+        gnome.gnome-disk-utility polkit_gnome qemu
 
 
 
 #             ╔╦╗╔═╗╦  ╦
 #              ║║║╣ ╚╗╔╝
 #             ═╩╝╚═╝ ╚╝ 
-        glib cairo gdk-pixbuf gtk3-x11
-        gtk4 pango glibc pkg-config openssl
+        glib pkg-config openssl 
         
 
         lua lua-language-server

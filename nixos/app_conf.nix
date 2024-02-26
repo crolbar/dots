@@ -17,8 +17,20 @@
             credential.helper = "store";
         };
     };
+    
+    services = {
+        tumbler.enable = true;
+        gvfs.enable = true;
+        tlp.enable = true;
+        syncthing = {
+            user = "plier";
+            enable = true;
+            systemService = false;
+        };
+    };
 
-    services.tumbler.enable = true;
-    services.gvfs.enable = true;
+    virtualisation.libvirtd.enable = true;
+    programs.virt-manager.enable = true;
+
     programs.thunar.plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
 }

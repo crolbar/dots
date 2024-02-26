@@ -8,11 +8,11 @@ monitor_output=$(hyprctl monitors | awk '/Monitor/ {print $2}')
 counter=1
 for monitor in $monitor_output; do
   if (( counter == 1 )); then
-    prefix="main"
-  elif ((counter == 2)); then
-    prefix="second"
-  else
     prefix="third"
+  elif ((counter == 2)); then
+    prefix="main"
+  else
+    prefix="second"
   fi
   
   declare "$prefix=$monitor"

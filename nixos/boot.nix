@@ -8,6 +8,7 @@
                 theme = "/boot/grub/themes/theme/darkmatter";
             };
         };
+        blacklistedKernelModules = ["uvcvideo"];
         kernelParams = [ "quiet" ];
     };
 }

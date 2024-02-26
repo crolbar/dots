@@ -8,28 +8,19 @@
     "modules-left": [
         "hyprland/workspaces"
     ],
-
     "modules-center": ["hyprland/window"],
-
     "modules-right": [
         "pulseaudio",
         "pulseaudio#microphone",
         "cpu",
         "memory",
-        "hyprland/language",
         "clock",
         "tray",
         "custom/eww"
     ],
-
-    "hyprland/language": {
-        "keyboard-name": "sino-wealth-bluetooth-keyboard"
-    },
-
     "hyprland/window": {
         "format": "{}"
     },
-
     "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
@@ -61,27 +52,23 @@
         "25": "5"
         }
     },
-
     "cpu": {
         "interval": 2,
         "format": " {usage}%"
     },
-
     "memory": {
         "interval": 5,
         "format": " {}%",
         "format-alt":" {used:0.1f}G"
     },
-
     "tray": {
-        "icon-size": 20
+        "icon-size": 20,
+        "tooltip": true
     },
-
     "clock": {
         "format": "{:%I:%M %p}",
         "format-alt": "{:%A, %B %d, %Y %I:%M %p}"
     },
-
     "pulseaudio": {
         "format": "{icon}{volume}%",
         "format-muted": "Muted",
@@ -97,7 +84,6 @@
             "default": ["", "", ""]
         }
     },
-
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "format-source": "{volume}%",
@@ -107,7 +93,6 @@
         "on-scroll-up": "pamixer --default-source -i 5",
         "on-scroll-down": "pamixer --default-source -d 5"
     },
-    
     "custom/eww": {
         "on-click": "eww open board --toggle",
         "format": ""

@@ -30,7 +30,7 @@
 
     hardware = {
         pulseaudio.enable = true;
-        bluetooth.enable = true;
+        bluetooth.enable = false;
     };
 
     sound.enable = true;
