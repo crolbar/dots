@@ -2,13 +2,14 @@
 # crolbar
 
 # Apps
-super + {x,r,e,b,t,s}
+super + {x,r,e,b,t,s,m}
 	{alacritty, \
 	rofi -show drun -show-icons, \
 	thunar, \
 	floorp, \
 	dmenu_run -nb black -sb '#6600CC', \
-	eww open board --toggle
+	eww open board --toggle, \
+    spotify
 # restart bspwm
 super + ctrl + r
 	bspc wm -r

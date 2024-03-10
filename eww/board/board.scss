@@ -1,27 +1,10 @@
-* {
-    all: unset;
-    font-family: "Roboto","Font Awesome 6 Free Solid";
-  }
-
-$base: rgba(0, 0, 0, 0.63);
-
-$yellow: #c48c6a;
-$yellow2: #c09470;
-$yellow3: #ffb78a;
-$pink: #9c5277;
-$blue: #89b4fa;
-$purple: #836ba0;
-$cyan: #8bd2d4;
-$red4: #c97077;
-$grey: #757575;
-$red: #74283a;
-$red3: rgba(78, 34, 45, 0.411);
-$green: #45b18b;
 
 .board {
     // border: 3px solid red;
     background-color: $base;
     border-radius: 15px;
+
+
 
     .board-box {
     margin: -70px 0px 70px 0px;
@@ -246,99 +229,5 @@ $green: #45b18b;
     .upspeed {
         color: $yellow;
         background-color: $yellow;
-    }
-}
-
-
-
-.player {
-    font-size: 1.1rem;
-    background-color: $base;
-    border-radius: 20px;
-    .player-box {
-        margin: 2px 165px -2px -165px;
-        color: $yellow2;
-        font-size: 0.9rem;
-    }
-    .title {
-        // margin: -25px 0px 25px;
-        color: $yellow;
-    }
-    .artist {
-        // margin: -25px 5px 25px -5px;
-        color: $red;
-    }
-    .player-buttons {
-        font-size: 2rem;
-        margin: 0px -90px 0px 90px;
-        .button-previous {
-            font-size: 4rem;
-            color: $red;
-        }
-        .button-pause {
-            padding: 10px;
-            color: $red;
-        }
-        .button-next {
-            font-size: 4rem;
-            color: $red;
-        }
-        .button-change {
-            font-size: 4rem;
-            margin: -20px -20px 20px 20px;
-            color: $grey;
-        }
-    }
-    .position_slider {
-        margin: 10px; 
-         scale trough  {
-            min-height: 30px;
-            background-color: $red3;
-            border-radius: 100px;
-        }
-        scale highlight {
-            padding: 7px;
-            border-radius: 100px;
-            background-color: $red;
-        }
-        
-    }
-    .volume_slider {
-        margin: -15px -15px 0px 15px; 
-
-         scale trough  {
-            min-height: 30px;
-            background-color: $red3;
-            border-radius: 100px;
-        }
-        scale highlight {
-            padding: 7px;
-            border-radius: 100px;
-            background-color: $red;
-        }
-        
-    }
-}
-
-.power-menu {
-    font-size: 5rem;
-    background-color: $base;
-    border-radius: 20px;
-    
-    .shutdown {
-        color: $red;
-    }
-    .reboot {
-        color: $green;
-    }
-    .sleep {
-        color: $blue;
-    }
-    .lock {
-        color: $purple;
-    }
-    .close {
-        color: $red;
-        font-size: 7rem;
     }
 }

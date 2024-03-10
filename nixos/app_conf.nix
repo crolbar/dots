@@ -30,6 +30,7 @@
     };
 
     virtualisation.libvirtd.enable = true;
+    virtualisation.docker.enable = true;
     programs.virt-manager.enable = true;
 
     programs.thunar.plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];

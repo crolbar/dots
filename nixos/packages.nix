@@ -22,6 +22,7 @@ in
         xorg.xev ncdu tmux skim jq 
         nfs-utils inetutils bottom
         firebase-tools syncthing
+        xorg.xmodmap dapu matm tt-rs
 
 
 

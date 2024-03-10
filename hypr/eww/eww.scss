@@ -1,0 +1,26 @@
+* {
+    all: unset;
+    font-family: "Roboto","Font Awesome 6 Free Solid";
+}
+
+.bar {
+    background-color: rgba(0, 0, 0, 0.55);
+    color: white;
+
+    .currwin {
+        font-size: 0.9rem;
+    }
+
+    .workspace {
+        padding: 0px 5px;
+        color: #999999;
+
+        &.current {
+            color: white;
+        }
+    }
+
+    .workspace:hover {
+        background-color: #252525;
+    }
+}
