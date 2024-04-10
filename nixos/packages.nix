@@ -23,6 +23,7 @@ in
         nfs-utils inetutils bottom
         firebase-tools syncthing
         xorg.xmodmap dapu matm tt-rs
+        ripgrep
 
 
 
@@ -34,6 +35,7 @@ in
         discord keepassxc spotify gimp feh mate.eom
         flameshot libreoffice zathura qbittorrent xcolor
         gnome.gnome-disk-utility polkit_gnome qemu
+        arduino-ide nm-tray obsidian emacs
 
 
 

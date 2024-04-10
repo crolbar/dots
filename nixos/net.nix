@@ -4,6 +4,7 @@
         enable = true;
         insertNameservers = [ "192.168.1.11" ];
     };
+    networking.wireless.userControlled.enable = false;
 
 
     networking.firewall = {

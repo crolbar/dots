@@ -10,7 +10,7 @@
         users.plier = {
             isNormalUser = true;
             useDefaultShell = true;
-            extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
+            extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "dialout" ];
             hashedPassword = "$y$j9T$vRxv3vPo5oX1UuiSmJF5V/$MzK8chBLfjKPtHJ1OiMOBAXe.i/ykFvclahtkUWUh8B";
         }; 
     };

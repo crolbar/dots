@@ -5,7 +5,7 @@
 
         dapu.url = "github:crolbar/dapu";
         matm.url = "github:crolbar/matm";
-        tt-rs.url = "github:crolbar/tt-rs";
+        tt-rs.url = "github:crolbar/tt-rs?rev=e3c50a9e2826f6d9b19dec7396b366b740e711fc";
     };
 
     outputs = { 
