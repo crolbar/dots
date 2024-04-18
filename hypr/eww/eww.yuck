@@ -23,9 +23,11 @@
         :class "workspaces" 
         :hexpand true
         (for workspace in {hyprland.workspaces}
-            (button 
+            (eventbox
+                :width 20
                 :class "workspace ${hyprland.active == workspace.id ? "current" : ""}"
                 :onclick "hyprctl dispatch workspace name:${workspace.name}"
+                :onscroll "./scripts/workspace_scroll.sh {}"
                 "${workspace.name}"
             )
         )
@@ -35,7 +37,7 @@
 (defwidget currwin [] 
     (box :class "currwin"
         "${hyprland.currwin == "null" ? "" :
-            "${strlength(hyprland.currwin) == 90 ? "${hyprland.currwin}.." :
+            "${strlength(hyprland.currwin) >= 100 ? ".." :
                 "${hyprland.currwin}"
             }"
         }"
@@ -71,6 +73,8 @@
             :onclick "${EWW_CMD} update is_time_short=${is_time_short ? false : true}"
             "${is_time_short ? "${short_time}" : "${long_time}"}"
         )
+
+        (systray :space-evenly false :class "tray")
 
         (button :onclick "eww open board --toggle && eww -c ~/.config/hypr/eww reload" "")
     )

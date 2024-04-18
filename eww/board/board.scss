@@ -1,15 +1,11 @@
 
 .board {
-    // border: 3px solid red;
+    //border: 1px solid red;
     background-color: $base;
     border-radius: 15px;
 
 
 
-    .board-box {
-    margin: -70px 0px 70px 0px;
-    }
-    
     // =========================    time/date     =========================
     .top {
         font-weight: bold;
@@ -40,7 +36,8 @@
     }
 
     .cal-notes {
-        margin: -80px 0px 80px 20px;
+        //margin: -80px 0px 80px 20px;
+        margin-left: 20px;
 
         // =========================    calendar     =========================
         .cal {
@@ -89,9 +86,6 @@
     }
     // =========================    sysinfo     =========================
     .sysinfo {
-        padding: 1rem;
-        margin: -100px 0px 100px 0px;
-
         .iconram {
             font-size: 4rem;
             color: $red4;
@@ -120,7 +114,7 @@
     // =========================    sliders     =========================
     .sliders {
         font-size: 2rem;
-        margin: -110px 0px 110px 15px; 
+        margin-left: 15px;
 
          scale trough  {
             min-height: 17px;
@@ -133,7 +127,7 @@
             border-radius: 10px;
         }
         .music_slider scale highlight {
-                background-color: $green;
+            background-color: $green;
         }
         .browser_slider scale highlight {
             background-color: $yellow;
@@ -170,11 +164,13 @@
     }
         // =========================    apps     =========================
     .apps {
-        margin: -100px 0px 100px 15px;
+        margin: 10px 0px 0px 10px;
     }
         // =========================    weather     =========================
     .weather-container {
-        margin: -170px 80px 170px 0px;
+        margin-top: 15px;
+        margin-left: 15px;
+
         .weather-info {
             font-size: 16px;
             color: $purple;
@@ -199,24 +195,13 @@
       }
         // =========================    network     =========================
     .network {
-        margin: -150px 20px 150px -20px;
+        margin-top: 25px;
         
-        .upspeedbox {
-            margin: -20px 0px 20px;
-        }
-        .downSpeed-text {
-            margin: -40px -40px 40px 40px;
-        }
         .downarrow {
-            margin: -50px 0px 50px 0px;
             font-size: 2rem;
             color: $cyan;
         }
-        .upSpeed-text {
-            margin: -40px -40px 40px 40px;
-        }
         .uparrow {
-            margin: -50px 0px 50px 0px;
             font-size: 2rem;
             color: $yellow3;
         }

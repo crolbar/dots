@@ -11,16 +11,16 @@ browser_indexes=$(pactl list sink-inputs | awk -v b_app="$browser_application_na
 
 case "$1" in
   --music+)
-    pactl set-sink-input-volume "$music_index" +2%;;
+    pactl set-sink-input-volume "$music_index" +4%;;
   --music-)
-    pactl set-sink-input-volume "$music_index" -2%;;
+    pactl set-sink-input-volume "$music_index" -4%;;
   --browser+)
     for index in $browser_indexes; do
-      pactl set-sink-input-volume "$index" +1%
+      pactl set-sink-input-volume "$index" +2%
     done;;
   --browser-)
     for index in $browser_indexes; do
-      pactl set-sink-input-volume "$index" -1%
+      pactl set-sink-input-volume "$index" -2%
     done;;
 esac
 

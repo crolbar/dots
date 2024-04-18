@@ -43,6 +43,26 @@ case "$1" in
             else
                 pamixer --default-source --set-volume $3
             fi
+
+        elif [ $2 == "vol-up" ]; then
+            mic=$(pamixer --get-volume-human --default-source | sed 's/%//g')
+
+            if [ "$mic" == "muted" ]; then
+                echo 0
+                eww update micvolume="0"
+            else
+                pamixer --default-source -i 2
+            fi
+
+        elif [ $2 == "vol-down" ]; then
+            mic=$(pamixer --get-volume-human --default-source | sed 's/%//g')
+
+            if [ "$mic" == "muted" ]; then
+                echo 0
+                eww update micvolume="0"
+            else
+                pamixer --default-source -d 2
+            fi
         fi
     ;;
 
@@ -175,8 +195,18 @@ case "$1" in
             browser_poll
             music_poll
 
-            head_vol=$(pamixer --sink "$head_index" --get-volume-human | sed 's/%//g' | awk '{ if ($1 == "muted"){ print "0" } else { print $1 } }')
-            mon_vol=$(pamixer --sink "$mon_index" --get-volume-human | sed 's/%//g' | awk '{ if ($1 == "muted"){ print "0" } else { print $1 } }')
+            if [ -z $head_index ]; then
+                head_vol=0
+            else
+                head_vol=$(pamixer --sink "$head_index" --get-volume-human | sed 's/%//g' | awk '{ if ($1 == "muted"){ print "0" } else { print $1 } }')
+            fi
+
+            if [ -z $mon_index ]; then
+                mon_vol=0
+            else
+                mon_vol=$(pamixer --sink "$mon_index" --get-volume-human | sed 's/%//g' | awk '{ if ($1 == "muted"){ print "0" } else { print $1 } }')
+            fi
+            
             mic_vol=$(pamixer --get-volume-human --default-source | sed 's/%//g' | awk '{ if ($1 == "muted"){ print "0" } else { print $1 } }')
 
             echo "{\"browser\": $b_vol, \"music\": $m_vol, \"head\": $head_vol, \"mon\": $mon_vol, \"mic\": $mic_vol}"

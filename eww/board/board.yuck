@@ -12,32 +12,32 @@
 (defpoll weatherStat :interval "555h" `python scripts/weather.py status`)
 (defpoll weatherWind :interval "555h" `python scripts/weather.py wind`)
 ;network
-(defpoll upSpeed :interval "1s" `eww get EWW_NET | jq '.eno1.NET_UP' | awk '{ printf "%.2f MiB/s", $1 / 1024 / 1024 / 2 }'`)
-(defpoll downSpeed :interval "1s" `eww get EWW_NET | jq '.eno1.NET_DOWN' | awk '{ printf "%.2f MiB/s", $1 / 1024 / 1024 / 2 }'`)
-
-
+(defpoll upSpeed :interval "1s" `eww get EWW_NET | jq '.eno1.NET_UP' | awk '{ printf "%.2f MiB/s", $1 / 1024 }'`)
+(defpoll downSpeed :interval "1s" `eww get EWW_NET | jq '.eno1.NET_DOWN' | awk '{ printf "%.2f MiB/s", $1 / 1024 }'`)
 
 
 
 (defwidget board []
-    (box :class "board-box" :orientation "v"
-        (box :class "top" :orientation "h" :halign "center" :space-evenly false
+    (box :class "board-box" :orientation "v" :space-evenly false
+        (box :class "top" :orientation "h" :valign "start" :halign "center" :space-evenly false
             (button :class "power-menu-button" :tooltip "open power-menu" :onclick "eww open power-menu --toggle" "")
             (button :class "wofi" :onclick "wofi --conf ~/.config/hypr/wofi/config --style ~/.config/hypr/wofi/style.css &" "{  }") 
             (label :text time :class "time")
             (button :class "reload-button" :onclick "eww reload" "")
             (button :class "close-button" :onclick "eww close board" "")
         )
-        (box :class "cal-notes" :orientation "h" 
+        (box :class "cal-notes" :orientation "h"
             (box :class "cal" (cal))
             (box :class "notes" :orientation "v" :space-evenly false :halign "center"
-            (label :text notes :limit-width 75 :wrap true)
+            (label :text notes :limit-width 15 :wrap true)
             (box :orientation "h"
                 (button :class "edit-button" :onclick "alacritty -e nvim ~/.notes.txt & sleep 0.1 && hyprctl dispatch togglefloating && hyprctl dispatch centerwindow" "edit")
                 (button :class "clear-button" :onclick "echo '' > ~/.notes.txt && eww reload" "clear")))
         )
-        (box :class "sysinfo":orientation "h" :spacing 30 (ram) (cpu) (disk))
-        (box :class "sliders" :orientation "v" 
+        (box :class "sysinfo" :orientation "h" :spacing 30 :height 200 
+            (ram) (cpu) (disk)
+        )
+        (box :class "sliders" :orientation "v" :space-evenly false :spacing 5 
             (box :space-evenly false :class "music_slider"
                 (button :class "music_icon" :onclick "scripts/volume music mute" {volume.music == "0" ? "" :""} )
                 (scale :min 0 :max 151 :width 420 :value {volume.music} :onchange "scripts/volume music vol-change {}"))
@@ -78,22 +78,23 @@
                 (button :onclick "eww close board && qutebrowser &" (image :path "images/qute.png" :image-width 45 :image-height 45))
             )
         )
-        (box :orientation "h" :space-evenly false :halign "end"
-            (box :class "weather-container" :orientation "v" :space-evenly "false"
+        (box :orientation "h" :space-evenly false :spacing 80
+            (box :class "weather-container" :orientation "v" :space-evenly false
                 (label :class "weather-info" :text "${weatherStat}" :halign "start")
                 (button :class "weather-temp" :halign "center" :onclick "floorp https://www.accuweather.com/en/bg/silistra/45981/weather-forecast/45981" "${weatherTemp}")
                 (label :class "weather-icon" :style "color: ${weatherIconColor};" :text "${weatherIcon}" :halign "start")
                 (label :class "weather-wind" :text "${weatherWind}" :halign "start")
             )
-            (box :class "network" :orientation "v" :space-evenly "false"
-                (box :orientation "v" :class "downspeedbox" :vexpand "true"
+            (box :orientation "v" :class "network" :space-evenly false :spacing 20
+
+                (box :orientation "v" :class "downspeedbox"
                     (downspeed)
                     (box :orientation "h" :halign "end"
-                        (label :class "downSpeed-text" :text "${downSpeed}" :halign "end")
+                        (label :class "downSpeed-text" :text "${downSpeed}")
                         (label :class "downarrow" :text "" :halign "end")
                     )
                 )
-                (box :orientation "v" :class "upspeedbox" :vexpand "false"
+                (box :orientation "v" :class "upspeedbox"
                     (upspeed)
                     (box :orientation "h" :halign "end"
                         (label :class "upSpeed-text" :text "${upSpeed}" )
@@ -111,45 +112,63 @@
                     ;================network================
 
 (defwidget downspeed []  
-    (box (graph :value {EWW_NET["eno1"].NET_DOWN} 
+    (box 
+        (graph :value {EWW_NET["eno1"].NET_DOWN} 
                 :class "downspeed"
-                :time-range "30s"               
-                :max "28000000"
+                :time-range "5s"               
+                :max "14000"
                 :width 250
-                :thickness "3")))
+                :thickness 4
+        )
+    )
+)
 
 (defwidget upspeed []  
-    (box (graph :value {EWW_NET["eno1"].NET_UP} 
+    (box 
+        (graph :value {EWW_NET["eno1"].NET_UP} 
                 :class "upspeed"
-                :time-range "30s" 
-                :max "28000000"
+                :time-range "5s" 
+                :max "14000"
                 :width 250
-                :thickness "3")))
+                :thickness 4
+        )
+    )
+)
 
                     ;================sysinfo================
 
 (defwidget ram [] 
-    (box (circular-progress :value {EWW_RAM.used_mem_perc}
+    (box :class "ram-box"
+        (circular-progress :value {EWW_RAM.used_mem_perc}
                             :class "ram"
-                            :thickness 12
+                            :thickness 11
                             :start-at 75
-             (label :class "iconram" :text ""))))
+             (label :class "iconram" :text "")
+        )
+    )
+)
 
 (defwidget cpu []
-    (box (circular-progress :value {EWW_CPU.avg}
+    (box 
+        (circular-progress :value {EWW_CPU.avg}
                             :class "cpu"
                             :thickness 12
                             :start-at 75
-            (label :class "iconcpu" :text ""))))
+            (label :class "iconcpu" :text "")
+        )
+    )
+)
 
 (defwidget disk []
-    (box (circular-progress :value {EWW_DISK["/"].used_perc}
+    (box
+        (circular-progress :value {EWW_DISK["/"].used_perc}
                             :class "disk"
                             :thickness 12
                             :start-at 75
-            (label :class "icondisk" :text ""))))
-
-
+            (label :class "icondisk" :text "")
+        )
+    )
+)
 
 
 
