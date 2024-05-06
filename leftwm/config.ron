@@ -34,8 +34,9 @@
         (command: Execute, value: "floorp", modifier: ["modkey"], key: "b"),
         (command: Execute, value: "thunar", modifier: ["modkey"], key: "e"),
 
-        (command: Execute, value: "eww open tr --toggle -c ~/.config/leftwm/right/eww &", modifier: ["modkey"], key: "w"),
-        (command: Execute, value: "~/.config/leftwm/scripts/bar.sh tray", modifier: ["modkey"], key: "p"),
+        (command: Execute, value: "~/.config/leftwm/scripts/kb.sh", modifier: ["modkey"], key: "space"),
+        (command: Execute, value: "eww open tags --toggle -c ~/.config/leftwm/right/eww &", modifier: ["modkey"], key: "w"),
+        (command: Execute, value: "eww open btm_tray --toggle -c ~/.config/leftwm/right/eww &", modifier: ["modkey"], key: "p"),
         (command: Execute, value: "~/.config/leftwm/scripts/wall.sh c +", modifier: ["modkey"], key: "a"),
         (command: Execute, value: "~/.config/leftwm/scripts/wall.sh c -", modifier: ["modkey", "Shift"], key: "a"),
 
@@ -45,7 +46,6 @@
         
         (command: CloseWindow, modifier: ["modkey", "Shift"], key: "q"),
         (command: SoftReload, modifier: ["modkey", "Shift"], key: "r"),
-
 
         (command: FocusWindowUp, modifier: ["modkey"], key: "h"),
         (command: FocusWindowUp, modifier: ["modkey"], key: "k"),
@@ -59,7 +59,6 @@
 
         (command: SwapTags, modifier: ["Alt"], key: "Tab"),
         (command: NextLayout, modifier: ["modkey"], key: "n"),
-        (command: SetLayout, value: "Monocle", modifier: ["modkey"], key: "m"),
 
         (command: ToggleFloating, modifier: ["modkey"], key: "z"),
         (command: ToggleFullScreen, modifier: ["modkey"], key: "f"),

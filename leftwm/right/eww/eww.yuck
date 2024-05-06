@@ -1,1 +1,2 @@
-(include "./tr.yuck")
+(include "./tags/tags.yuck")
+(include "./btm_tray/btm_tray.yuck")

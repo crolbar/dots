@@ -1,16 +1,8 @@
 { pkgs, ... }:
-
-let
-    rust = pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
-        extensions = [ "rust-src" ];
-    });
-in
 {
     environment.systemPackages = with pkgs; [
 
-        dunst rofi leftwm eww i3lock picom
-
-        polybar xautolock sxhkd
+    dunst rofi leftwm eww i3lock picom xautolock sxhkd
 
 #               ╔═╗╦  ╦
 #               ║  ║  ║
@@ -51,7 +43,13 @@ in
 
         clang-tools gcc clang
 
-        rust rust-analyzer cargo-make
+        
+        (
+            rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
+                    extensions = [ "rust-src" ];
+            })
+        )
+        rust-analyzer cargo-make
 
         nixd
 

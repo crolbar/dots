@@ -153,11 +153,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1710087311,
-        "narHash": "sha256-pXh3dw7UKOad04c0u7KgXsqrRfjbeDSD/v5/ZSCrVdQ=",
+        "lastModified": 1713606759,
+        "narHash": "sha256-v23dr2qyh5clLQA8LzTRsQx4puMO+cujQEqS7aEIx7E=",
         "owner": "crolbar",
         "repo": "matm",
-        "rev": "29d47067d638517e90df146686a82cd40c07ffdb",
+        "rev": "32e82b3d9ca99a1ea1b79d73a9a3f9a7dfa4b748",
         "type": "github"
       },
       "original": {
@@ -232,11 +232,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1711703276,
-        "narHash": "sha256-iMUFArF0WCatKK6RzfUJknjem0H9m4KgorO/p3Dopkk=",
+        "lastModified": 1714906307,
+        "narHash": "sha256-UlRZtrCnhPFSJlDQE7M0eyhgvuuHBTe1eJ9N9AQlJQ0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d8fe5e6c92d0d190646fb9f1056741a229980089",
+        "rev": "25865a40d14b3f9cf19f19b924e2ab4069b09588",
         "type": "github"
       },
       "original": {
@@ -346,11 +346,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1712024007,
-        "narHash": "sha256-52cf+mHZJbSaDFdsBj6vN1hH52AXsMgEpS/ajzc9yQE=",
+        "lastModified": 1714961776,
+        "narHash": "sha256-LiIxWRKbm1DZ+7l1a6FMmIO8leQx5yrRLIApCMai1DY=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "d45d957dc3c48792af7ce58eec5d84407655e8fa",
+        "rev": "f3b20ea4131408ea585bddb1f41f91c4de9499cf",
         "type": "github"
       },
       "original": {
@@ -490,17 +490,16 @@
         "rust-overlay": "rust-overlay_4"
       },
       "locked": {
-        "lastModified": 1711870823,
-        "narHash": "sha256-7bx7eywEwBFY/rU0xvV7ULhDet93uKwmK22Tps/ku+g=",
+        "lastModified": 1712825262,
+        "narHash": "sha256-e9YuzR68FLs/xSsc5MJT00VJpKBS/GZ7176NKgE3/oI=",
         "owner": "crolbar",
         "repo": "tt-rs",
-        "rev": "e3c50a9e2826f6d9b19dec7396b366b740e711fc",
+        "rev": "dc33a2a9c6bcee565283b9341cb9b105f165c25b",
         "type": "github"
       },
       "original": {
         "owner": "crolbar",
         "repo": "tt-rs",
-        "rev": "e3c50a9e2826f6d9b19dec7396b366b740e711fc",
         "type": "github"
       }
     }

@@ -4,7 +4,7 @@
 #( (___| |  ( (_) )| || |_) ) (_| | |   
 # \____)_)   \___/(___)_ __/ \__ _)_)   
 
-{ config, pkgs, nixpkgs, ... }:
+{ ... }:
 {
     system.stateVersion = "23.05";
     nixpkgs.config.allowUnfree = true;
@@ -24,7 +24,7 @@
     environment.variables = {
         EDITOR = "nvim";
         VISUAL = "nvim";
-        BROWSER = "brave";
+        BROWSER = "floorp";
         TERMINAL = "alacritty";
     };
 

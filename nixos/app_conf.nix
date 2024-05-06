@@ -6,9 +6,6 @@
         displayManager.startx.enable = true;
         desktopManager.xterm.enable = false;
         resolutions = [ { x = 3200; y = 2000; } ];
-        xkb.layout = "us,bg";
-        xkb.variant = "dvorak,phonetic";
-        xkb.options = "grp:win_space_toggle";
     };
     services.sshd.enable = true;
 
