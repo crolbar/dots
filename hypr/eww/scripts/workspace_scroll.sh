@@ -12,10 +12,10 @@ done
 
 if [[ "$1" == "down" ]]; then
     next_workspace_index=$((curr_workspace_index + 1))
-    if [[ $next_workspace_index < ${#workspace_names[@]} ]]; then
+    if [[ $next_workspace_index -lt ${#workspace_names[@]} ]]; then
         hyprctl dispatch workspace name:${workspace_names[$next_workspace_index]}
     fi
-else 
+elif [[ "$1" == "up" ]]; then 
     prev_workspace_index=$((curr_workspace_index - 1))
     if [[ $prev_workspace_index -ge 0 ]]; then
         hyprctl dispatch workspace name:${workspace_names[$prev_workspace_index]}
