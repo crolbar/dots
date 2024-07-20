@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 print() {
     workspaces=$(hyprctl workspaces -j | jq -c 'sort_by(.id)')
     active=$(hyprctl activeworkspace -j | jq '.id')

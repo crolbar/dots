@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 curr_workspace_name=$(hyprctl activeworkspace -j | jq '.name' | tr -d '\"')
 
 mapfile -t workspace_names < <(hyprctl workspaces -j | jq -r '.[].name')

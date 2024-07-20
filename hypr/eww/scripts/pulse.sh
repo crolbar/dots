@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 print() {
     sink=$(pamixer --get-volume-human | tr -d '%') 
     source=$(pamixer --get-volume-human --default-source | tr -d '%')

@@ -1,12 +1,11 @@
-#! /bin/bash
+#!/usr/bin/env bash
+
 case $1 in 
     s)
-        if pgrep -x "openrgb" > /dev/null; then
-            pkill openrgb
+        if pgrep -f "KeyboardVisualizer" > /dev/null; then
             pkill KeyboardVisuali
         else
-            openrgb --server --startminimized &
-            KeyboardVisualizer &
+            ~/Github/KeyboardVisualizer/run
         fi
         exit;; 
 esac
@@ -46,4 +45,4 @@ case $curr_profile in
         curr_profile=yellow ;;
 esac
 
-openrgb -p $curr_profile --noautoconnect
+openrgb -p $curr_profile

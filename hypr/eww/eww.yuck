@@ -55,7 +55,7 @@
         (eventbox
             :onclick "pamixer -t"
             :onmiddleclick "~/.config/hypr/scripts/default-sink.sh"
-            :onrightclick "pgrep -x pavucontrol > /dev/null && pkill pavucontrol || pavucontrol &"
+            :onrightclick "pgrep pavucontrol > /dev/null && pkill pavucontrol || pavucontrol &"
             :onscroll "eww update -c ~/.config/hypr/eww scroll={} && pamixer -${scroll == "up" ? "i" : "d"} 5"
             "${volume.sink}"
         )

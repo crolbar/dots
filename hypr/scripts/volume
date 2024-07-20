@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #crolbar
 
 # define app names
-music_application_name="Spotify"
+music_application_name="spotify"
 browser_application_name="Floorp"
 
 # grab app indexes
