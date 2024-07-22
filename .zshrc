@@ -42,10 +42,14 @@ zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word 
 bindkey '^H' backward-kill-word
+bindkey '^W' backward-kill-word
 bindkey '^[[3;5~' kill-word
+bindkey '^[[Z' reverse-menu-complete
 
+## vim delte char bug
+bindkey "^?" backward-delete-char
 # prompt
-PROMPT=' %B%F{blue}%n%f%b %B%F{red}%~%f%b${vcs_info_msg_0_}%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}%f%b '
+PROMPT=' %B%F{red}%~%f%b${vcs_info_msg_0_}%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}>%f%b '
 
 # alias
 alias ls='lsd -a --group-directories-first'
@@ -64,14 +68,17 @@ alias lfc='cd ~/.config/leftwm && nvim .'
 alias v='p=$(find . -type d | sk --preview "tree -C {}" --preview-window down:50%) && cd "$p" && vim .'
 alias vf='p=$(sk --preview "tree -C {}" --preview-window down:50%) && vim "$p"'
 
-alias lapp='ssh lapp@192.168.1.5'
 alias crol='ssh crolbar@192.168.1.12'
+alias screw='ssh screw@192.168.1.11'
+alias kubo='ssh kubo@crolbar.xyz'
 
-alias mnas='sudo mount -t nfs 192.168.1.5:/nas /mnt/nas -o rw'
+alias mnas='sudo mount -t nfs 192.168.1.11:/nas /mnt/nas -o rw -o async'
 alias umnas='sudo umount /mnt/nas'
 alias nas='cd /mnt/nas'
 
 alias d='. ~/scripts/dapu.sh'
 alias dc='. ~/scripts/dapu.sh cd'
 
+alias tt='tt-rs'
+alias t='tmux'
 neofetch
