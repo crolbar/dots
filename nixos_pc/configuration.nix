@@ -28,9 +28,10 @@
         pulseaudio.enable = true;
         bluetooth.enable = false;
         nvidia = {
-            package = config.boot.kernelPackages.nvidiaPackages.stable;
+            package = config.boot.kernelPackages.nvidiaPackages.beta;
             nvidiaSettings = true;
             modesetting.enable = true;
+            powerManagement.enable = true;
         };
     };
     services.xserver.videoDrivers = [ "nvidia" ];
