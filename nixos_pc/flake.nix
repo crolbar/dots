@@ -3,6 +3,7 @@
         nixpkgs.url = "nixpkgs/nixos-unstable";
         rust-overlay.url = "github:oxalica/rust-overlay";
         nur.url = "github:nix-community/NUR";
+        hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
         dapu.url = "github:crolbar/dapu";
         matm.url = "github:crolbar/matm";
@@ -16,10 +17,11 @@
         dapu,
         matm,
         tt-rs,
-    ... } : {
+    ... } @ inputs: {
         nixosConfigurations = {
             crolbar = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
+                specialArgs = { inherit inputs; };
                 modules = [ 
                     ./configuration.nix 
                     ./hardware-configuration.nix

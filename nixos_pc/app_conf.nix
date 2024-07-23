@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
+    imports = [
+        inputs.hyprland.nixosModules.default
+    ];
+
     services.xserver = { 
         enable = true;
         windowManager.bspwm.enable = true;
@@ -24,14 +28,12 @@
         };
     };
 
-    programs.hyprland = {
-        enable = true;
-        xwayland.enable = true;
-    };
+    programs.hyprland.enable = true;
 
+    services.getty.autologinUser = "crolbar";
     xdg.portal = {
         enable = true;
-        extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+        extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
 
     programs.git = {
@@ -55,6 +57,15 @@
     virtualisation.docker.enable = true;
     programs.virt-manager.enable = true;
 
+    programs.yazi = {
+        settings.yazi = {
+            manager = {
+                show_hidden = true;
+                linemode = "size";
+            };
+        };
+        enable = true;
+    };
     programs.thunar = {
         enable = true;
         plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];

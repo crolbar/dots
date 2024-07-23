@@ -16,7 +16,7 @@
         firebase-tools syncthing
         xorg.xmodmap dapu matm tt-rs
         ripgrep socat playerctl
-        gitui ddccontrol
+        gitui ddccontrol exiftool
 
 
 
@@ -29,7 +29,7 @@
         floorp brave vscodium file-roller 
         mpv lxappearance pavucontrol
         discord keepassxc gimp feh mate.eom
-        flameshot libreoffice zathura qbittorrent xcolor
+        flameshot libreoffice zathura qbittorrent
         gnome-disk-utility polkit_gnome qemu
         arduino-ide obsidian emacs networkmanagerapplet
         vesktop nwg-look mangohud
@@ -85,6 +85,9 @@
         libsecret
         git-credential-manager
         xclip
+        xcolor
+        hyprpicker
+        ueberzugpp
         wl-clipboard
         grim slurp
         nur.repos.nltch.spotify-adblock
