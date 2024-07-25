@@ -47,11 +47,6 @@ You can set themes with `lxappearance` or `nwg-look` for wayland.
 ```
 git clone https://github.com/m4thewz/dracula-icons ~/.local/share/icons/dracula-icons
 ```
-### Theme
-```
-git clone https://github.com/crolbar/dots 
-cp -r dots/Material-Black-Plum ~/.local/share/themes
-```
 
 # FIX ANNOYING VOLUME CONTROLS IN FIREFOX BROWSERS
 so i have an problem where if i watch something like youtube and if i use the volume control in the youtube player it also changes the system volume of firefox (so the system volume and youtube player volume are synced)

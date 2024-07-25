@@ -132,7 +132,7 @@ echo
 # GTK theme or no
 echo "
     ===================================================================
-    do you want to use the material black plum and dracula icons themes
+    do you want to use  dracula icons
     ===================================================================
 	Y/n"
 read -p "    >" -n 1 GTK 
@@ -220,7 +220,6 @@ fi
 if [[ $GTK == Y || $GTK == y ]]; then
     mkdir -p /mnt/usr/share/themes
     mkdir -p /mnt/usr/share/icons
-    cp -r /root/dots/Material-Black-Plum /mnt/usr/share/themes
     git clone https://github.com/m4thewz/dracula-icons /mnt/usr/share/icons/dracula-icons
 fi
 
