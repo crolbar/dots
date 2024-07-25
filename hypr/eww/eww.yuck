@@ -1,4 +1,5 @@
-(deflisten hyprland "scripts/hyprland.sh")
+;;(deflisten hyprland "scripts/hyprland.sh")
+(deflisten hyprland "scripts/hyprland")
 (deflisten volume "scripts/pulse.sh")
 
 (defpoll short_time :interval "10s" "date '+%I:%M %p'")
