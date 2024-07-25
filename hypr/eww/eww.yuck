@@ -28,7 +28,7 @@
                 :width 20
                 :class "workspace ${hyprland.active == workspace.id ? "current" : ""}"
                 :onclick "hyprctl dispatch workspace name:${workspace.name}"
-                :onscroll "./scripts/workspace_scroll.sh {}"
+                :onscroll "./scripts/workspace_scroll {}"
                 "${workspace.name}"
             )
         )

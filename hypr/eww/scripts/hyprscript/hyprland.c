@@ -331,10 +331,10 @@ char* get_obj(char* str)
     //printf("activeworkspace_id: `%s`\n", activewidnow_title);
     //printf("activeworkspace_id: `%s`\n", activeworkspace_id);
 
-    char* empty = "\"\"";
+    char* empty = "  ";
     if (workspaces == NULL) {
         workspaces = malloc(3);
-        strcpy(workspaces, empty);
+        strcpy(workspaces, "[]");
         workspaces[2] = '\0';
     }
     if (activeworkspace_id == NULL) {
