@@ -8,16 +8,18 @@
         dapu.url = "github:crolbar/dapu";
         matm.url = "github:crolbar/matm";
         tt-rs.url = "github:crolbar/tt-rs";
+        lobster.url = "github:justchokingaround/lobster";
     };
 
-    outputs = { 
+    outputs = inputs@{ 
         nixpkgs,
         rust-overlay,
         nur,
         dapu,
         matm,
         tt-rs,
-    ... } @ inputs: {
+        lobster,
+    ...} : {
         nixosConfigurations = {
             crolbar = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
@@ -37,6 +39,7 @@
                             dapu = dapu.defaultPackage.x86_64-linux; 
                             matm = matm.defaultPackage.x86_64-linux; 
                             tt-rs = tt-rs.defaultPackage.x86_64-linux; 
+                            lobster = lobster.packages.x86_64-linux.lobster;
                         }) 
                         rust-overlay.overlays.default 
                         nur.overlay

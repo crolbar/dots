@@ -17,7 +17,7 @@
         xorg.xmodmap dapu matm tt-rs
         ripgrep socat playerctl
         gitui ddccontrol exiftool
-
+        lobster
 
 
 
@@ -46,7 +46,7 @@
 
         nodejs yarn 
 
-        clang-tools gcc clang
+        clang-tools gcc clang gnumake
 
         
         (
