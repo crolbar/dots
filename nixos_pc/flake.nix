@@ -8,24 +8,19 @@
         dapu.url = "github:crolbar/dapu";
         matm.url = "github:crolbar/matm";
         tt-rs.url = "github:crolbar/tt-rs";
+        npassm.url = "github:crolbar/npassm";
         lobster.url = "github:justchokingaround/lobster";
     };
 
     outputs = inputs@{ 
         nixpkgs,
-        rust-overlay,
-        nur,
-        dapu,
-        matm,
-        tt-rs,
-        lobster,
-    ...} : {
+        ...} : {
         nixosConfigurations = {
             crolbar = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
-                specialArgs = { inherit inputs; };
+                specialArgs = inputs;
                 modules = [ 
-                    ./configuration.nix 
+                    ./configuration.nix
                     ./hardware-configuration.nix
                     ./packages.nix
                     ./boot.nix
@@ -33,17 +28,7 @@
                     ./user.nix
                     ./app_conf.nix
                     ./net.nix
-
-                    {nixpkgs.overlays = [ 
-                        (final: prev: { 
-                            dapu = dapu.defaultPackage.x86_64-linux; 
-                            matm = matm.defaultPackage.x86_64-linux; 
-                            tt-rs = tt-rs.defaultPackage.x86_64-linux; 
-                            lobster = lobster.packages.x86_64-linux.lobster;
-                        }) 
-                        rust-overlay.overlays.default 
-                        nur.overlay
-                    ];}
+                    ./overlays.nix
                 ];
             };
         };

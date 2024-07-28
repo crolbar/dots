@@ -1,7 +1,7 @@
-{ inputs, pkgs, ... }:
+{ hyprland, pkgs, ... }:
 {
     imports = [
-        inputs.hyprland.nixosModules.default
+        hyprland.nixosModules.default
     ];
 
     services.xserver = { 
@@ -27,6 +27,7 @@
             systemService = false;
         };
     };
+    boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
     programs.hyprland.enable = true;
 
@@ -57,15 +58,6 @@
     virtualisation.docker.enable = true;
     programs.virt-manager.enable = true;
 
-    programs.yazi = {
-        settings.yazi = {
-            manager = {
-                show_hidden = true;
-                linemode = "size";
-            };
-        };
-        enable = true;
-    };
     programs.thunar = {
         enable = true;
         plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];

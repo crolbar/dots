@@ -17,7 +17,7 @@
         xorg.xmodmap dapu matm tt-rs
         ripgrep socat playerctl
         gitui ddccontrol exiftool
-        lobster
+        lobster npassm trash-cli
 
 
 
@@ -57,8 +57,7 @@
         rust-analyzer cargo-make
 
 
-        nixd
-
+        nixd nil alejandra
 
         pyright 
         (python311.withPackages (ppkgs: with ppkgs; [
