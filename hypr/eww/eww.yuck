@@ -77,7 +77,7 @@
 
         (systray :space-evenly false :class "tray")
 
-        (button :onclick "eww open board --toggle && eww -c ~/.config/hypr/eww reload" "")
+        (button :class "board_button" :onclick "eww open board --toggle && eww -c ~/.config/hypr/eww reload" "")
     )
 )
 
