@@ -1,0 +1,30 @@
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    floorp
+    brave
+    vscodium
+    gnome.file-roller
+    mpv
+    lxappearance
+    xfce.thunar
+    pavucontrol
+    discord
+    keepassxc
+    spotify
+    gimp
+    feh
+    mate.eom
+    flameshot
+    libreoffice
+    zathura
+    qbittorrent
+    xcolor
+    gnome.gnome-disk-utility
+    polkit_gnome
+    qemu
+    arduino-ide
+    nm-tray
+    obsidian
+    emacs
+  ];
+}

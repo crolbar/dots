@@ -1,4 +1,0 @@
-(include "./board/board.yuck")
-(include "./board/player-info.yuck")
-(include "./board/power_menu.yuck")
-(include "./settings_board/set_board.yuck")

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+micstate=$(pamixer --default-source --get-mute)
+case "$1" in
+--mute)
+if [ $micstate == 'true' ]; then
+    polybar-msg action mic hook 2
+    pamixer --default-source -t
+else
+    polybar-msg action mic hook 1
+    pamixer --default-source -t
+fi;;
+--mic-i)
+if [ $micstate == 'true' ]; then
+    sleep 1
+    polybar-msg action mic hook 1
+else
+    sleep 1
+    polybar-msg action mic hook 2
+fi;;
+*)
+esac
