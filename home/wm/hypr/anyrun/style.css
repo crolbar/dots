@@ -1,0 +1,15 @@
+#window {
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 16px;
+}
+list#plugin {
+    background-color: rgba(0, 0, 0, 0);
+}
+entry {
+    background-color: rgba(0, 0, 0, 0.749);
+    border: none;
+    border-radius: 0;
+}
+list#main {
+    background-color: rgba(0, 0, 0, 0.749);
+}

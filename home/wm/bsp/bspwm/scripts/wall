@@ -1,21 +1,26 @@
 #!/usr/bin/env bash
-wall=$(cat ~/.config/bspwm/scripts/.wall)
+wall=$(cat ~/.config/bspwm/.wall)
 wallc=$(ls ~/.config/bspwm/wallpapers | wc -l) && ((wallc -= 1))
 case $1 in 
     c)
         ((wall $2= 1))
         if [ "$wall" -ge "$wallc" ]; then
-            echo 0 > ~/.config/bspwm/scripts/.wall
+            echo 0 > ~/.config/bspwm/.wall
             wall=0
         elif [ "$wall" -le "-1" ]; then 
             ((wallc -= 1))
-            echo $wallc > ~/.config/bspwm/scripts/.wall
+            echo $wallc > ~/.config/bspwm/.wall
             wall=$wallc
         else
-            echo $wall > ~/.config/bspwm/scripts/.wall
+            echo $wall > ~/.config/bspwm/.wall
         fi
         pkill feh
         feh --bg-fill ~/.config/bspwm/wallpapers/wall$wall.png &;;
     i)
+        if [ -z "$wall" ]; then
+            echo 0 > ~/.config/bspwm/.wall
+            wall=0
+        fi
+
         feh --bg-fill ~/.config/bspwm/wallpapers/wall$wall.png &;;
 esac

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+wall=$(cat ~/.config/hypr/.wall)
+wallc=$(ls ~/.config/hypr/wallpapers | wc -l) && ((wallc -= 1))
+case $1 in 
+    c)
+        ((wall $2= 1))
+        if [ "$wall" -ge "$wallc" ]; then
+            echo 0 > ~/.config/hypr/.wall
+            wall=0
+        elif [ "$wall" -le -1 ]; then 
+            ((wallc -= 1))
+            echo $wallc > ~/.config/hypr/.wall
+            wall=$wallc
+        else
+            echo "$wall" > ~/.config/hypr/.wall
+        fi
+        pkill swaybg
+        swaybg -m fit -i ~/.config/hypr/wallpapers/wall$wall.png &;;
+    i)
+        swaybg -m fill -i ~/.config/hypr/wallpapers/wall$wall.png &;;
+esac

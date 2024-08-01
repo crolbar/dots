@@ -1,16 +1,17 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     floorp
     brave
     vscodium
-    gnome.file-roller
+    file-roller
     mpv
     lxappearance
-    xfce.thunar
     pavucontrol
     discord
     keepassxc
-    spotify
     gimp
     feh
     mate.eom
@@ -18,13 +19,27 @@
     libreoffice
     zathura
     qbittorrent
-    xcolor
-    gnome.gnome-disk-utility
+    gnome-disk-utility
     polkit_gnome
-    qemu
+    qemu # maybe make virt category ?
     arduino-ide
-    nm-tray
     obsidian
     emacs
+    networkmanagerapplet
+    vesktop
+    nwg-look
+    mangohud
+    pwvucontrol
+    xclip
+    xcolor
+    hyprpicker
+    ueberzugpp
+    wl-clipboard
+    grim
+    slurp
+    capitaine-cursors
+
+    nur.repos.nltch.spotify-adblock
+    nur.repos.nltch.ciscoPacketTracer8
   ];
 }

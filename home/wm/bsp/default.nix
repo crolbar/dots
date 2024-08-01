@@ -1,15 +1,16 @@
 {pkgs, ...}: {
   imports = [
     ./sxhkd.nix
-    ./dunst.nix
+    ../share/dunst.nix
+    ../share/picom.nix
+    ../share/rofi
     ./polybar.nix
   ];
 
   home.packages = with pkgs; [
     alacritty
-    rofi
     i3lock
-    picom
+    feh
   ];
 
   home.file.".xinitrc".text = "exec bspwm";
@@ -54,15 +55,15 @@
       processes=("picom" "polybar" "sxhkd" "dunst")
       for process in "''${processes[@]}"; do
         if pidof -q "$process"; then
-         pkill -x "$process" > /dev/null; sleep 0.1
+         pkill -9 "$process" > /dev/null; sleep 0.1
         fi
       done
 
       sxhkd &
       dunst &
       polybar &
-
-      #picom --config "$HOME"/.config/bspwm/picom.conf &
+      picom &
+      wall i &
     '';
   };
 }

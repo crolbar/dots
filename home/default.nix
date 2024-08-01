@@ -9,6 +9,11 @@ in {
         inherit extraSpecialArgs pkgs;
         modules = [./vm];
       };
+
+      crolbar = homeManagerConfiguration {
+        inherit extraSpecialArgs pkgs;
+        modules = [./crolbar];
+      };
     };
   };
 }

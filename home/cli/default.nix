@@ -2,27 +2,53 @@
   imports = [
     ./git.nix
     ./zsh.nix
+    ./yazi.nix
   ];
 
   home.packages = with pkgs; [
+    vim
+    git
+    lsd
     fd
     btop
     htop
     neofetch
-    vim
-    git
-    lsd
     neovim
+    brightnessctl
+    light
+    pamixer
+    tldr
+    fzf
     zip
+    alacritty
+    xclip
     unzip
     tree
+    xorg.xev
+    ncdu
     tmux
     skim
     jq
     nfs-utils
+    inetutils
+    bottom
+    firebase-tools
+    syncthing
+    xorg.xmodmap
+    dapu
+    matm
+    tt-rs
     ripgrep
+    socat
+    playerctl
     gitui
+    ddccontrol
+    exiftool
+    lobster
+    npassm
+    trash-cli
 
+    # make dev cateogry
     nixd
     nil
     alejandra

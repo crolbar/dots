@@ -22,6 +22,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    nur.url = "github:nix-community/NUR";
+
     yazi.url = "github:sxyazi/yazi";
+
+    dapu.url = "github:crolbar/dapu";
+    matm.url = "github:crolbar/matm";
+    tt-rs.url = "github:crolbar/tt-rs";
+    npassm.url = "github:crolbar/npassm";
+
+    lobster.url = "github:justchokingaround/lobster";
+
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 }
