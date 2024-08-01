@@ -9,11 +9,11 @@
 
     vs = "cd ~/.config/hypr && nvim .";
 
-    n = "cd ~/.config/nixos && vim .";
+    n = "cd ~/Github/dots && vim .";
     ns = "nix-shell";
 
-    reb = "sudo nixos-rebuild switch --flake /home/crolbar/.config/nixos#crolbar";
-    hreb = "home-manager switch --flake /home/crolbar/.config/nixos#crolbar";
+    reb = "sudo nixos-rebuild switch --flake ~/Github/dots#crolbar";
+    hreb = "home-manager switch --flake ~/Github/dots#crolbar";
 
     plier = "ssh plier@192.168.1.27";
     crol = "ssh crolbar@192.168.1.12";

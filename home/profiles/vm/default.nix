@@ -1,10 +1,5 @@
-{pkgs, ...}: {
+{...}: {
   imports = [
-    ../cli
-    #../gui
-    #../wm/left
-    #../wm/bsp
-    ../wm/hypr
     ./shell_aliases.nix
   ];
 

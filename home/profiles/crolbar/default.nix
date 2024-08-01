@@ -1,13 +1,7 @@
 {...}:
 {
   imports = [
-    ../cli
-    ../gui
-    ../wm/bsp
-    ../wm/hypr
     ./shell_aliases.nix
-    #../wm/left
-    ../../overlays.nix
   ];
 
   home.stateVersion = "23.11";
