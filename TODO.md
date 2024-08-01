@@ -1,22 +1,33 @@
-### Apps
-- [ ] alacritty
+## Apps
+- [x] alacritty
 - [ ] tmux
 - [ ] zellij ?
-- [ ] yazi
+- [x] yazi
 - [ ] gitui
+- [ ] nvim
+- [ ] zathura
+- [ ] syncthing
 
-- hyprland
+- [ ] dev tools
 
 
-- leftwm
-    - [ ] add & start polkit
+### leftwm
+- [ ] add & start polkit
 
-- bsp
-    - [ ] replace picom with eww ?
+### bsp
+- [ ] replace polybar with eww ?
 
-### Misc
+## Misc
+
+- [ ] default sys apps for all hosts (git, vim, ..)
+- [ ] themes, icons & cursor (gtk, qt)
+- [ ] home/xdg
+- [ ] grub theme
+- [ ] fonts
 
 - [ ] eww board
 - [ ] wallpapers
+
+- [ ] switch audio to pulse ?
 
 - [ ] rewrite dunst conf ? (this is never gonna happen)
