@@ -24,7 +24,7 @@
       # wallpaper changer
       "SUPER, a, exec, ~/.config/hypr/scripts/wall c +"
       "SUPER SHIFT, a, exec, ~/.config/hypr/scripts/wall c -"
-      "SUPER, c, exec, pkill swaybg"
+      "SUPER, c, exec, swww clear"
 
       # VM
       "SUPER ALT CTRL, v, exec, virt-viewer -f -c qemu:///system win10 | sudo virsh start win10 "

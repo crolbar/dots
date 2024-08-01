@@ -33,10 +33,14 @@
         ];
         set_as_wall = [
           {
-            run = ''pkill swaybg ; swaybg -i "$0" -m fit'';
-            block = false;
-            orphan = true;
+            run = ''swww img "$0"'';
             desc = "SetAsWall";
+          }
+        ];
+        set_as_wall_fit = [
+          {
+            run = ''swww img "$0" --resize fit'';
+            desc = "SetAsWallFit";
           }
         ];
       };
@@ -54,7 +58,7 @@
           }
           {
             mime = "image/*";
-            use = ["view" "set_as_wall" "edit_img" "reveal"];
+            use = ["view" "set_as_wall" "set_as_wall_fit" "edit_img" "reveal"];
           }
           {
             mime = "{audiovideo}/*";

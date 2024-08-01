@@ -6,6 +6,7 @@
   tt-rs,
   lobster,
   npassm,
+  swww,
   ...
 }: let
   ovrls =
@@ -23,6 +24,7 @@ in {
     (final: prev:
       {
         lobster = lobster.packages.x86_64-linux.default;
+        swww = swww.packages.x86_64-linux.swww;
       }
       // ovrls)
     rust-overlay.overlays.default

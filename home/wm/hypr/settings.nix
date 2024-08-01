@@ -19,6 +19,7 @@
       #"/nix/store/$(ls -la /nix/store | grep 'polkit-gnome-0.105$' | awk '{print $9}' | head -n 1)/libexec/polkit-gnome-authentication-agent-1 &"
       "nm-applet &"
       "eww -c ~/.config/hypr/eww/ open bar"
+      "swww-daemon"
     ];
 
     # windowrules

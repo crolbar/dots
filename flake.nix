@@ -36,5 +36,7 @@
     lobster.url = "github:justchokingaround/lobster";
 
     rust-overlay.url = "github:oxalica/rust-overlay";
+
+    swww.url = "github:LGFae/swww";
   };
 }

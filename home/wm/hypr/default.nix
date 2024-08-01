@@ -15,7 +15,7 @@
     anyrun
     swaylock
     eww
-    swaybg
+    swww
   ];
 
   xdg.configFile."hypr/anyrun".source = ./anyrun;
