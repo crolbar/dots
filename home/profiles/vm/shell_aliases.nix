@@ -15,9 +15,9 @@
 
     t = "tmux";
 
-    n = "cd ~/.config/nixos && vim .";
+    n = "cd ~/Github/dots && vim .";
 
-    reb = "sudo nixos-rebuild switch --flake /home/crolbar/.config/nixos#vm";
-    hreb = "home-manager switch --flake /home/crolbar/.config/nixos#vm";
+    reb = "sudo nixos-rebuild switch --flake ~/Github/dots#vm";
+    hreb = "home-manager switch --flake ~/Github/dots#vm";
   };
 }
