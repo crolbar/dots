@@ -12,8 +12,6 @@
   ];
 
   home.packages = with pkgs; [
-    alacritty
-
     anyrun
     swaylock
     eww

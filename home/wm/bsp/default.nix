@@ -8,7 +8,6 @@
   ];
 
   home.packages = with pkgs; [
-    alacritty
     i3lock
     feh
   ];

@@ -17,7 +17,6 @@
   xdg.configFile."leftwm".source = ./leftwm;
 
   home.packages = with pkgs; [
-    alacritty
     eww
     i3lock
     xautolock
