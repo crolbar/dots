@@ -40,7 +40,7 @@
     };
 
     homeConfigurations = {
-      "crolbar@308" = home-manager.lib.homeManagerConfiguration {
+      crolbar = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = inputs;
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [

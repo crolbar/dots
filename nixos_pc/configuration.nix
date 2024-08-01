@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   system.stateVersion = "24.11";
   nixpkgs.config.allowUnfree = true;
 
@@ -21,8 +25,17 @@
     TERMINAL = "alacritty";
   };
 
+  nixpkgs.config.pulseaudio = true;
   hardware = {
-    pulseaudio.enable = true;
+    pulseaudio = {
+      package = pkgs.pulseaudioFull;
+      enable = true;
+      support32Bit = true;
+      daemon.config = {
+        flat-volumes = "yes";
+      };
+    };
+
     bluetooth.enable = false;
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.beta;

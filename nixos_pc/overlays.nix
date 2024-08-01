@@ -7,15 +7,24 @@
   lobster,
   npassm,
   ...
-}: {
+}: let
+  ovrls =
+    builtins.foldl' (acc: elem: acc // elem) {}
+    (
+      map (pkg: let
+        pname = pkg.defaultPackage.x86_64-linux.pname;
+      in {
+        "${pname}" = pkg.defaultPackage.x86_64-linux;
+      })
+      [dapu matm tt-rs npassm]
+    );
+in {
   nixpkgs.overlays = [
-    (final: prev: {
-      dapu = dapu.defaultPackage.x86_64-linux;
-      matm = matm.defaultPackage.x86_64-linux;
-      tt-rs = tt-rs.defaultPackage.x86_64-linux;
-      npassm = npassm.defaultPackage.x86_64-linux;
-      lobster = lobster.packages.x86_64-linux.lobster;
-    })
+    (final: prev:
+      {
+        lobster = lobster.packages.x86_64-linux.default;
+      }
+      // ovrls)
     rust-overlay.overlays.default
     nur.overlay
   ];

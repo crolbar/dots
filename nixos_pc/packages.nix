@@ -7,7 +7,7 @@
 #               ╔═╗╦  ╦
 #               ║  ║  ║
 #               ╚═╝╩═╝╩
-        vim git zsh lsd fd btop htop
+        vim git lsd fd btop htop
         neofetch neovim brightnessctl
         light pamixer tldr fzf zip 
         alacritty xclip unzip tree
