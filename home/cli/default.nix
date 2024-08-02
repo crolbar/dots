@@ -4,6 +4,7 @@
     ./zsh.nix
     ./yazi.nix
     ./tmux.nix
+    ./gitui.nix
   ];
 
   home.packages = with pkgs; [
