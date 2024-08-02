@@ -15,9 +15,5 @@
       gcc
       fd
     ];
-
-    extraConfig = ''
-      :luafile ~/.config/nvim/init.lua
-    '';
   };
 }
