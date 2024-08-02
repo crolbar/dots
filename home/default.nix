@@ -4,10 +4,11 @@
   user_modules = {
     crolbar = [
       ./cli
+      ./cli/zzz.nix
       ./gui
       ./wm/bsp
       ./wm/hypr
-      #../wm/left
+      #./wm/left
       ../overlays.nix
       ./profiles/crolbar
     ];

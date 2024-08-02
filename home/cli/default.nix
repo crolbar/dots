@@ -37,17 +37,11 @@
     firebase-tools
     syncthing
     xorg.xmodmap
-    dapu
-    matm
-    tt-rs
     ripgrep
     socat
     playerctl
-    gitui
     ddccontrol
     exiftool
-    lobster
-    npassm
     trash-cli
 
     # make dev cateogry
