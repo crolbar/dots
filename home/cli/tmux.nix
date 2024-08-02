@@ -11,6 +11,10 @@
     extraConfig = ''
       set -sg terminal-overrides ",*:RGB"
 
+      set -g allow-passthrough on
+      set -ga update-environment TERM
+      set -ga update-environment TERM_PROGRAM
+
       set -s focus-events on
 
       set -g set-titles on
