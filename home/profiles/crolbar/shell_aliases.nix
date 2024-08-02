@@ -5,7 +5,7 @@
     cdd = "cd ..";
 
     vim = "nvim";
-    vimc = "cd ~/.config/nvim && nvim .";
+    vimc = "cd ~/Github/dots/home/cli/neovim/nvim && nvim .";
 
     vs = "cd ~/.config/hypr && nvim .";
 
@@ -14,6 +14,7 @@
 
     reb = "sudo nixos-rebuild switch --flake ~/Github/dots#crolbar";
     hreb = "home-manager switch --flake ~/Github/dots#crolbar";
+    vreb = "cd ~/Github/dots && nix flake lock --update-input nvim_conf && hreb && rm -rf ~/.cache/nvim";
 
     plier = "ssh plier@192.168.1.27";
     crol = "ssh crolbar@192.168.1.12";
