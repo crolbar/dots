@@ -24,6 +24,8 @@
       set -g status-keys "vi"
       set -g mode-keys "vi"
 
+      set -g pane-border-style fg=black
+      set -g pane-active-border-style fg=grey
 
       # status bar
 
