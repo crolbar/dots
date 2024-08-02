@@ -1,6 +1,6 @@
 ## Apps
 - [x] alacritty
-- [ ] tmux
+- [x] tmux
 - [ ] zellij ?
 - [x] yazi
 - [ ] gitui

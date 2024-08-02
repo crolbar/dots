@@ -3,6 +3,7 @@
     ./git.nix
     ./zsh.nix
     ./yazi.nix
+    ./tmux.nix
   ];
 
   home.packages = with pkgs; [
