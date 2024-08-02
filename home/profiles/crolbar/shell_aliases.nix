@@ -30,5 +30,6 @@
 
     tt = "tt-rs";
     t = "tmux";
+    z = "zellij";
   };
 }

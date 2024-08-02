@@ -1,9 +1,9 @@
 ## Apps
 - [x] alacritty
 - [x] tmux
-- [ ] zellij ?
+- [x] zellij ?
 - [x] yazi
-- [ ] gitui
+- [x] gitui
 - [ ] nvim
 - [ ] zathura
 - [ ] syncthing

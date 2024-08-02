@@ -5,6 +5,7 @@
     ./yazi.nix
     ./tmux.nix
     ./gitui.nix
+    ./zellij.nix
   ];
 
   home.packages = with pkgs; [

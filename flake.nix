@@ -38,5 +38,6 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
 
     swww.url = "github:LGFae/swww";
+    zellij.url = "github:a-kenji/zellij-nix";
   };
 }
