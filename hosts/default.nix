@@ -7,7 +7,8 @@
       system = "x86_64-linux";
       inherit specialArgs;
       modules = [
-        ../shared
+        ../shared/nix.nix
+        ../shared/zsh.nix
 
         ./vm
       ];
