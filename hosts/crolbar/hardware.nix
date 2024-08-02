@@ -26,4 +26,10 @@
     device = "/dev/disk/by-uuid/4a7b5c17-3256-4f7c-b475-56d85727f6f8";
     fsType = "ext4";
   };
+
+  fileSystems."/mnt/nas" = {
+    device = "192.168.1.11:/nas";
+    fsType = "nfs";
+    options = ["rw" "async"];
+  };
 }

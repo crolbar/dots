@@ -33,8 +33,6 @@
     tmux
     skim
     jq
-    nfs-utils
-    inetutils
     bottom
     firebase-tools
     syncthing
