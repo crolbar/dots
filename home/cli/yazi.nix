@@ -3,6 +3,11 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [
+    _7zz
+    ueberzugpp
+  ];
+
   programs.yazi = {
     enable = true;
 

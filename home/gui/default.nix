@@ -34,7 +34,6 @@
     xclip
     xcolor
     hyprpicker
-    ueberzugpp
     wl-clipboard
     grim
     slurp
