@@ -11,6 +11,7 @@
     autocd = true;
 
     initExtraFirst = ''
+      bindkey -v
       setopt PROMPT_SUBST        # enable command substitution in prompt
       setopt MENU_COMPLETE       # Automatically highlight first element of completion menu
 
