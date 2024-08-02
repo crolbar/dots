@@ -45,12 +45,5 @@
     ddccontrol
     exiftool
     trash-cli
-
-    # make dev cateogry
-    nixd
-    nil
-    alejandra
-
-    gcc
   ];
 }

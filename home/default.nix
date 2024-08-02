@@ -6,6 +6,7 @@
       ./cli
       ./cli/zzz.nix
       ./gui
+      ./dev
       ./wm/bsp
       ./wm/hypr
       #./wm/left
