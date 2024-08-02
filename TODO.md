@@ -4,7 +4,7 @@
 - [x] zellij ?
 - [x] yazi
 - [x] gitui
-- [ ] nvim
+- [x] nvim
 - [ ] zathura
 - [ ] syncthing
 

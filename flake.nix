@@ -37,6 +37,11 @@
 
     rust-overlay.url = "github:oxalica/rust-overlay";
 
+    nvim_conf = {
+        url = "git+file:./home/cli/neovim/nvim";
+        flake = false;
+    };
+
     swww.url = "github:LGFae/swww";
     zellij.url = "github:a-kenji/zellij-nix";
   };

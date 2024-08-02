@@ -761,6 +761,22 @@
         "type": "github"
       }
     },
+    "nvim_conf": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722605782,
+        "narHash": "sha256-fQRFUARHXRjYYgBK6MOiseYZ1ddfzjpwMmJW0QFKjBU=",
+        "ref": "refs/heads/master",
+        "rev": "a1244e7d597b72f269e71a7be818a2f504a45158",
+        "revCount": 58,
+        "type": "git",
+        "url": "file:./home/cli/neovim/nvim"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:./home/cli/neovim/nvim"
+      }
+    },
     "root": {
       "inputs": {
         "dapu": "dapu",
@@ -772,6 +788,7 @@
         "nixpkgs": "nixpkgs_7",
         "npassm": "npassm",
         "nur": "nur",
+        "nvim_conf": "nvim_conf",
         "rust-overlay": "rust-overlay_3",
         "swww": "swww",
         "tt-rs": "tt-rs",

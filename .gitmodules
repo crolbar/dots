@@ -1,0 +1,3 @@
+[submodule "home/cli/neovim/nvim"]
+	path = home/cli/neovim/nvim
+	url = https://github.com/crolbar/nvim

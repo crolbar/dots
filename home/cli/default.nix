@@ -6,6 +6,7 @@
     ./tmux.nix
     ./gitui.nix
     ./zellij.nix
+    ./neovim
   ];
 
   home.packages = with pkgs; [
@@ -17,7 +18,6 @@
     btop
     htop
     neofetch
-    neovim
     brightnessctl
     light
     pamixer
