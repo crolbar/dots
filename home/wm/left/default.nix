@@ -21,5 +21,8 @@
     i3lock
     xautolock
     feh
+
+    brightnessctl
+    light
   ];
 }

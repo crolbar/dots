@@ -18,8 +18,6 @@
     btop
     htop
     neofetch
-    brightnessctl
-    light
     pamixer
     tldr
     fzf
