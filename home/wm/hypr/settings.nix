@@ -3,12 +3,16 @@
     # monitors
     monitor = "DP-1,1920x1080@144,0x0,1";
 
-    #monitor=DP-1,1920x1080@144,1080x1080,1
-    #monitor=DP-2,1920x1080@75,1080x0,1
-    #monitor=HDMI-A-1,1920x1080@60,0x70,1,transform,3
+    #monitor = [
+    #  "DP-1,1920x1080@144,1080x1080,1"
+    #  "DP-2,1920x1080@75,1080x0,1"
+    #  "HDMI-A-1,1920x1080@60,0x70,1,transform,3"
+    #];
 
-    #monitor=HDMI-A-1,1920x1080@60,0x1080,1
-    #monitor=DP-1,1920x1080@144,0x0,1
+    #monitor = [
+    #  "HDMI-A-1,1920x1080@60,0x1080,1"
+    #  "DP-1,1920x1080@144,0x0,1"
+    #];
 
     # startup apps
     exec-once = [
