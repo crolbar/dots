@@ -3,6 +3,7 @@
     ../share/picom.nix
     ../share/dunst.nix
     ../share/rofi
+    ../share/x11
   ];
 
   home.file.".Xresources".text = ''
@@ -18,7 +19,6 @@
 
   home.packages = with pkgs; [
     eww
-    i3lock
     xautolock
     feh
 

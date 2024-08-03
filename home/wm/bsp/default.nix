@@ -1,15 +1,12 @@
-{pkgs, ...}: {
+{
   imports = [
     ./sxhkd.nix
+    ./polybar.nix
+
     ../share/dunst.nix
     ../share/picom.nix
     ../share/rofi
-    ./polybar.nix
-  ];
-
-  home.packages = with pkgs; [
-    i3lock
-    feh
+    ../share/x11
   ];
 
   home.file.".xinitrc".text = "exec bspwm";

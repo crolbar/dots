@@ -10,14 +10,12 @@
     vscodium
     file-roller
     mpv
-    lxappearance
     pavucontrol
     discord
     keepassxc
     gimp
     feh
     mate.eom
-    flameshot
     libreoffice
     qbittorrent
     gnome-disk-utility
@@ -28,15 +26,8 @@
     emacs
     networkmanagerapplet
     vesktop
-    nwg-look
     mangohud
     pwvucontrol
-    xclip
-    xcolor
-    hyprpicker
-    wl-clipboard
-    grim
-    slurp
     capitaine-cursors
 
     nur.repos.nltch.spotify-adblock

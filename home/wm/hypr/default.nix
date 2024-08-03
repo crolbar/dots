@@ -8,15 +8,11 @@
     ./binds.nix
     ./settings.nix
 
+    ../share/wayland
     ../share/dunst.nix
   ];
 
-  home.packages = with pkgs; [
-    anyrun
-    swaylock
-    eww
-    swww
-  ];
+  home.packages = with pkgs; [ eww ];
 
   xdg.configFile."hypr/anyrun".source = ./anyrun;
   xdg.configFile."hypr/eww".source = ./eww;
