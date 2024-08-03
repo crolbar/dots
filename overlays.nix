@@ -28,6 +28,6 @@ in {
       }
       // ovrls)
     rust-overlay.overlays.default
-    nur.overlay
+    nur.overlay # unused
   ];
 }

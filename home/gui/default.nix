@@ -3,6 +3,7 @@
     ./alacritty.nix
     ./zathura.nix
     ./eww
+    ./spotify.nix
   ];
 
   home.packages = with pkgs; [
@@ -30,8 +31,5 @@
     mangohud
     pwvucontrol
     capitaine-cursors
-
-    nur.repos.nltch.spotify-adblock
-    nur.repos.nltch.ciscoPacketTracer8
   ];
 }
