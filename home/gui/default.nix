@@ -2,6 +2,7 @@
   imports = [
     ./alacritty.nix
     ./zathura.nix
+    ./eww
   ];
 
   home.packages = with pkgs; [

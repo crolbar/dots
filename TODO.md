@@ -26,7 +26,7 @@
 - [ ] fonts
 - [x] x11 mouse sens
 
-- [ ] eww board
+- [x] eww board
 - [ ] switch audio to pulse ?
 
 - [ ] wallpapers

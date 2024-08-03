@@ -1,0 +1,24 @@
+* {
+    all: unset;
+    font-family: "Roboto","Font Awesome 6 Free Solid";
+  }
+
+$base: rgba(0, 0, 0, 0.63);
+
+$yellow: #c48c6a;
+$yellow2: #c09470;
+$yellow3: #ffb78a;
+$pink: #9c5277;
+$blue: #89b4fa;
+$purple: #836ba0;
+$cyan: #8bd2d4;
+$red4: #c97077;
+$grey: #757575;
+$red: #74283a;
+$red3: rgba(78, 34, 45, 0.411);
+$green: #45b18b;
+
+@import "./settings_board/set_board.scss";
+@import "./board/board.scss";
+@import "./board/player-info.scss";
+@import "./board/power_menu.scss";
