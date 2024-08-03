@@ -24,6 +24,7 @@
 - [ ] home/xdg
 - [ ] grub theme
 - [ ] fonts
+- [x] x11 mouse sens
 
 - [ ] eww board
 - [ ] switch audio to pulse ?
