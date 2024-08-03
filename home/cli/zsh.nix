@@ -41,12 +41,12 @@
       bindkey "^?" backward-delete-char
 
 
-      autoload -Uz vcs_info
-      zstyle ':vcs_info:*' formats ' %B%s-[%F{yellow}%f %F{white}%b%f]-'
-      precmd () { vcs_info }
-
-      # prompt
-      PROMPT=' %B%F{red}%~%f%b''${vcs_info_msg_0_}%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}>%f%b '
+      #autoload -Uz vcs_info
+      #zstyle ':vcs_info:*' formats ' %B%s-[%F{yellow}%f %F{white}%b%f]-'
+      #precmd () { vcs_info }
+      #
+      ## prompt
+      #PROMPT=' %B%F{red}%~%f%b''${vcs_info_msg_0_}%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}>%f%b '
 
       neofetch
     '';
