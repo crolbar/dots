@@ -14,7 +14,6 @@
       "bar/bar" = {
         width = "100%";
         height = "14pt";
-        monitor = "Virtual-1";
         line-size = "1pt";
         module-margin = 1;
         font-0 = "Noto Sans:size=11";
