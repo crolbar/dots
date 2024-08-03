@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./alacritty.nix
+    ./zathura.nix
   ];
 
   home.packages = with pkgs; [
@@ -18,7 +19,6 @@
     mate.eom
     flameshot
     libreoffice
-    zathura
     qbittorrent
     gnome-disk-utility
     polkit_gnome

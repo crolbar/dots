@@ -5,10 +5,10 @@
 - [x] yazi
 - [x] gitui
 - [x] nvim
-- [ ] zathura
+- [ ] browser
 - [ ] syncthing
 
-- [ ] dev tools
+- [x] dev tools
 
 
 ### leftwm
@@ -26,8 +26,8 @@
 - [ ] fonts
 
 - [ ] eww board
-- [ ] wallpapers
-
 - [ ] switch audio to pulse ?
+
+- [ ] wallpapers
 
 - [ ] rewrite dunst conf ? (this is never gonna happen)
