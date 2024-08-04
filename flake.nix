@@ -45,6 +45,14 @@
     swww.url = "github:LGFae/swww";
     zellij.url = "github:a-kenji/zellij-nix";
 
+    schizofox = {
+      url = "github:schizofox/schizofox";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";

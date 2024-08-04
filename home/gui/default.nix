@@ -4,10 +4,10 @@
     ./zathura.nix
     ./eww
     ./spotify.nix
+    ./schizofox.nix
   ];
 
   home.packages = with pkgs; [
-    floorp
     brave
     vscodium
     file-roller
