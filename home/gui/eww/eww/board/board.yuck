@@ -6,11 +6,8 @@
 ;time
 (defpoll time :interval "10s" "date '+%I:%M %p %A %d.%m.%y'")
 ;weather
-(defpoll weatherIcon :interval "555h" `python3 scripts/weather.py icon`)
-(defpoll weatherIconColor :interval "555h" `python scripts/weather.py icon-color`)
-(defpoll weatherTemp :interval "555h" `python scripts/weather.py temp`)
-(defpoll weatherStat :interval "555h" `python scripts/weather.py status`)
-(defpoll weatherWind :interval "555h" `python scripts/weather.py wind`)
+(defpoll weather :interval "555h" `scripts/weather`)
+
 ;network
 (defpoll upSpeed :interval "1s" `eww get EWW_NET | jq '.eno1.NET_UP' | awk '{ printf "%.2f MiB/s", $1 / 1024 }'`)
 (defpoll downSpeed :interval "1s" `eww get EWW_NET | jq '.eno1.NET_DOWN' | awk '{ printf "%.2f MiB/s", $1 / 1024 }'`)
@@ -80,10 +77,10 @@
         )
         (box :orientation "h" :space-evenly false :spacing 80
             (box :class "weather-container" :orientation "v" :space-evenly false
-                (label :class "weather-info" :text "${weatherStat}" :halign "start")
-                (button :class "weather-temp" :halign "center" :onclick "schizofox https://www.accuweather.com/en/bg/silistra/45981/weather-forecast/45981" "${weatherTemp}")
-                (label :class "weather-icon" :style "color: ${weatherIconColor};" :text "${weatherIcon}" :halign "start")
-                (label :class "weather-wind" :text "${weatherWind}" :halign "start")
+                (label :class "weather-info" :text "${weather.status}" :halign "start")
+                (button :class "weather-temp" :halign "center" :onclick "schizofox https://www.accuweather.com/en/bg/silistra/45981/weather-forecast/45981" "${weather.temp}")
+                (label :class "weather-icon" :style "color: ${weather.icon_color};" :text "${weather.icon}" :halign "start")
+                (label :class "weather-wind" :text "${weather.wind_speed}" :halign "start")
             )
             (box :orientation "v" :class "network" :space-evenly false :spacing 20
 
