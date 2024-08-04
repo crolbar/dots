@@ -6,10 +6,8 @@
 - [x] gitui
 - [x] nvim
 - [x] browser
-- [ ] chromium conf ?
 - [ ] syncthing
 - [ ] anyrun conf
-- [ ] mail
 
 - [x] dev tools
 
@@ -20,11 +18,14 @@
 ### bsp
 - [ ] replace polybar with eww ?
 
+- [ ] mail ?
+- [ ] chromium conf ?
+
 ## Misc
 
 - [ ] default sys apps for all hosts (git, vim, ..)
 - [ ] themes, icons & cursor (gtk, qt)
-- [ ] home/xdg
+- [x] home/xdg
 - [ ] grub theme
 - [ ] fonts
 - [x] x11 mouse sens

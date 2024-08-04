@@ -15,7 +15,7 @@
 
     bluetooth.enable = false;
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
       nvidiaSettings = true;
       modesetting.enable = true;
       powerManagement.enable = true;
