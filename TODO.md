@@ -5,7 +5,8 @@
 - [x] yazi
 - [x] gitui
 - [x] nvim
-- [ ] browser
+- [x] browser
+- [ ] chromium conf ?
 - [ ] syncthing
 - [ ] anyrun conf
 

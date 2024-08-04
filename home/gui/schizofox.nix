@@ -6,7 +6,8 @@
 
     security = {
       sanitizeOnShutdown = false;
-      userAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0";
+      userAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0";
+      sandbox = false;
     };
 
     misc = {
@@ -157,6 +158,8 @@
       "network.buffer.cache.count" = 128;
       "network.http.max-connections" = 1800;
       "network.ssl_tokens_cache_capacity" = 10240;
+
+      "privacy.firstparty.isolate" = false;
     };
 
     theme = {
