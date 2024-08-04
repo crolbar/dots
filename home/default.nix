@@ -10,6 +10,7 @@
       ./wm/bsp
       ./wm/hypr
       #./wm/left
+      ./misc/xdg.nix
       ../overlays.nix
       ./profiles/crolbar
     ];
@@ -21,6 +22,7 @@
       ./wm/bsp
       #./wm/hypr
       ./profiles/vm
+      ./misc/xdg.nix
     ];
   };
 

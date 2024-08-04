@@ -9,6 +9,7 @@
 - [ ] chromium conf ?
 - [ ] syncthing
 - [ ] anyrun conf
+- [ ] mail
 
 - [x] dev tools
 

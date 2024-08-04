@@ -59,24 +59,24 @@
 
           {
             mime = "text/*";
-            use = ["edit" "reveal"];
+            use = ["edit" "open" "reveal"];
           }
           {
             mime = "image/*";
-            use = ["view" "set_as_wall" "set_as_wall_fit" "edit_img" "reveal"];
+            use = ["open" "set_as_wall" "set_as_wall_fit" "edit_img" "reveal"];
           }
           {
             mime = "{audiovideo}/*";
-            use = ["play" "reveal"];
+            use = ["play" "open" "reveal"];
           }
 
           {
             mime = "application/*zip";
-            use = ["extract" "reveal"];
+            use = ["extract" "open" "reveal"];
           }
           {
             mime = "application/x-{tarbzip*7z-compressedxzrar}";
-            use = ["extract" "reveal"];
+            use = ["extract" "open" "reveal"];
           }
 
           {

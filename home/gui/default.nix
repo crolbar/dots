@@ -18,7 +18,6 @@
     keepassxc
     gimp
     feh
-    mate.eom
     libreoffice
     qbittorrent
     gnome-disk-utility
@@ -29,8 +28,10 @@
     emacs
     networkmanagerapplet
     vesktop
-    mangohud
-    pwvucontrol
-    capitaine-cursors
+    mangohud # go to games
+    pwvucontrol # go to audio
+    capitaine-cursors # go to theme
+    celluloid
+    loupe
   ];
 }
