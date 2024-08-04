@@ -36,8 +36,8 @@
           URLTemplate = "https://yandex.com/search/?text={searchTerms}";
         }
         {
-          Name = "Google";
-          Description = "Google";
+          Name = "Ggle";
+          Description = "Ggle";
           Alias = "!g";
           Method = "GET";
           URLTemplate = "https://www.google.com/search?q={searchTerms}";
