@@ -6,6 +6,7 @@
 
     security = {
       sanitizeOnShutdown = false;
+      userAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0";
     };
 
     misc = {
