@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
 
     char* cmd = NULL;
     if (!strcmp(argv[1], "browser")) {
-        cmd = "pactl list sink-inputs | awk -v m_app=\"Floorp\" '/Sink Input #/{gsub(\"#\",\"\",$NF); m_id=$NF} /application.name/{if ($0~m_app) print m_id}'";
+        cmd = "pactl list sink-inputs | awk -v m_app=\"Firefox\" '/Sink Input #/{gsub(\"#\",\"\",$NF); m_id=$NF} /application.name/{if ($0~m_app) print m_id}'";
     } else if (!strcmp(argv[1], "music")) {
         cmd = "pactl list sink-inputs | awk -v m_app=\"spotify\" '/Sink Input #/{gsub(\"#\",\"\",$NF); m_id=$NF} /application.name/{if ($0~m_app) print m_id}'";
     } else {
@@ -77,38 +77,43 @@ int main(int argc, char *argv[]) {
 
     FILE* p = popen(cmd, "r");
 
+    int ret = 1;
+
     char *line = NULL;
     size_t len = 0;
     ssize_t read;
+    int c = 0;
 
-    read = getline(&line, &len, p);
+    while (getline(&line, &len, p) != -1) {
+        if (c % 2 == 0) {
+            if (!strlen(line)) {
+                return 1;
+            }
 
-    pclose(p);
+            target_index = atoi(line);
+            volume_change_percent = atoi(argv[2]);
 
-    if (!strlen(line)) {
-        return 1;
-    }
+            mainloop = pa_mainloop_new();
+            context = pa_context_new(
+                    pa_mainloop_get_api(mainloop),
+                    "vol");
 
-    target_index = atoi(line);
-    volume_change_percent = atoi(argv[2]);
+            pa_context_set_state_callback(context, context_state_callback, NULL);
+            pa_context_connect(context, NULL, PA_CONTEXT_NOFLAGS, NULL);
 
-    mainloop = pa_mainloop_new();
-    context = pa_context_new(
-            pa_mainloop_get_api(mainloop),
-            "vol");
+            if (pa_mainloop_run(mainloop, &ret) < 0) {
+                fprintf(stderr, "pa_mainloop_run() failed.\n");
+                ret = 1;
+            }
+        }
 
-    pa_context_set_state_callback(context, context_state_callback, NULL);
-    pa_context_connect(context, NULL, PA_CONTEXT_NOFLAGS, NULL);
-
-    int ret = 1;
-    if (pa_mainloop_run(mainloop, &ret) < 0) {
-        fprintf(stderr, "pa_mainloop_run() failed.\n");
-        ret = 1;
+        c++;
     }
 
     pa_context_disconnect(context);
     pa_context_unref(context);
     pa_mainloop_free(mainloop);
+    pclose(p);
 
     return ret;
 }

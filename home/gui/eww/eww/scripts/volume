@@ -3,7 +3,7 @@
 
 # define app names (from the output of "pactl list sink-inputs")
 music_application_name="spotify"
-browser_application_name="Floorp"
+browser_application_name="Firefox"
 
 set_indexes() {
     pactl_json_sink_inputs=$(pactl --format=json list sink-inputs)

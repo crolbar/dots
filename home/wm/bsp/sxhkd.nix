@@ -6,7 +6,7 @@
       "super + x" = "alacritty";
       "super + r" = "rofi -show drun -show-icons";
       "super + e" = "thunar";
-      "super + b" = "floorp";
+      "super + b" = "schizofox";
       "super + t" = "dmenu_run -nb black -sb '#6600CC'";
       "super + s" = "eww open board --toggle";
       "super + m" = "spotify";

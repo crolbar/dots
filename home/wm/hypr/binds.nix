@@ -8,7 +8,7 @@
       # app binds
       "SUPER, x, exec, alacritty"
       "SUPER, e, exec, thunar"
-      "SUPER, b, exec, floorp"
+      "SUPER, b, exec, schizofox"
       "SUPER, m, exec, spotify --enable-features=UseOzonePlatform --ozone-platform=wayland"
       "SUPER, r, exec, anyrun -c ~/.config/hypr/anyrun/"
 
@@ -104,8 +104,8 @@
       "SUPER SHIFT ALT, F12, exec, ~/.config/hypr/scripts/volume music +5"
       "SUPER SHIFT ALT, F7, exec, ~/.config/eww/scripts/volume music mute"
 
-      "SUPER SHIFT ALT, F9, exec, ~/.config/hypr/scripts/volume.sh --browser-"
-      "SUPER SHIFT ALT, F10, exec, ~/.config/hypr/scripts/volume.sh --browser+"
+      "SUPER SHIFT ALT, F9, exec, ~/.config/hypr/scripts/volume browser -5"
+      "SUPER SHIFT ALT, F10, exec, ~/.config/hypr/scripts/volume browser +5"
       "SUPER SHIFT ALT, F8, exec, ~/.config/eww/scripts/volume browser mute"
 
       "SUPER ALT, F9, exec, pamixer -d 5"

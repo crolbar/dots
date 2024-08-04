@@ -56,7 +56,7 @@
         )
         (box :class "apps" :orientation "v" :space-evenly false :spacing 9
             (box :orientation "h" :space-evenly false :spacing 9
-                (button :onclick "eww close board && floorp &" (image :path "images/firefox.png" :image-width 45 :image-height 45))
+                (button :onclick "eww close board && schizofox &" (image :path "images/schizofox.png" :image-width 45 :image-height 45))
                 (button :onclick "eww close board && spotify &" (image :path "images/spotify.png" :image-width 45 :image-height 45))
                 (button :onclick "eww close board && alacritty --working-directory ~ &" (image :path "images/alacritty.png" :image-width 45 :image-height 45))
                 (button :onclick "eww close board && thunar ~ &" (image :path "images/thunar.png" :image-width 45 :image-height 45))
@@ -67,12 +67,12 @@
                 (button :onclick "eww close board && virtualbox &" (image :path "images/vbox.png" :image-width 45 :image-height 45))
             )
             (box :orientation "h" :space-evenly false :spacing 9
-                (button :onclick "eww close board && floorp youtube.com &" (image :path "images/youtube.png" :image-width 45 :image-height 45))
-                (button :onclick "eww close board && floorp github.com &" (image :path "images/github.png" :image-width 45 :image-height 45))
-                (button :onclick "eww close board && floorp reddit.com &" (image :path "images/reddit.png" :image-width 45 :image-height 45))
-                (button :onclick "eww close board && floorp x.com &" (image :path "images/x.png" :image-width 45 :image-height 45))
-                (button :onclick "eww close board && floorp twitch.tv &" (image :path "images/twitch.png" :image-width 45 :image-height 45))
-                (button :onclick "eww close board && floorp chat.openai.com &" (image :path "images/gpt.png" :image-width 45 :image-height 45))
+                (button :onclick "eww close board && schizofox youtube.com &" (image :path "images/youtube.png" :image-width 45 :image-height 45))
+                (button :onclick "eww close board && schizofox github.com &" (image :path "images/github.png" :image-width 45 :image-height 45))
+                (button :onclick "eww close board && schizofox reddit.com &" (image :path "images/reddit.png" :image-width 45 :image-height 45))
+                (button :onclick "eww close board && schizofox x.com &" (image :path "images/x.png" :image-width 45 :image-height 45))
+                (button :onclick "eww close board && schizofox twitch.tv &" (image :path "images/twitch.png" :image-width 45 :image-height 45))
+                (button :onclick "eww close board && schizofox chat.openai.com &" (image :path "images/gpt.png" :image-width 45 :image-height 45))
                 (button :onclick "eww close board && lutris &" (image :path "images/lutris.png" :image-width 45 :image-height 45))
                 (button :onclick "eww close board && steam &" (image :path "images/steam.png" :image-width 45 :image-height 45))
                 (button :onclick "eww close board && qutebrowser &" (image :path "images/qute.png" :image-width 45 :image-height 45))
@@ -81,7 +81,7 @@
         (box :orientation "h" :space-evenly false :spacing 80
             (box :class "weather-container" :orientation "v" :space-evenly false
                 (label :class "weather-info" :text "${weatherStat}" :halign "start")
-                (button :class "weather-temp" :halign "center" :onclick "floorp https://www.accuweather.com/en/bg/silistra/45981/weather-forecast/45981" "${weatherTemp}")
+                (button :class "weather-temp" :halign "center" :onclick "schizofox https://www.accuweather.com/en/bg/silistra/45981/weather-forecast/45981" "${weatherTemp}")
                 (label :class "weather-icon" :style "color: ${weatherIconColor};" :text "${weatherIcon}" :halign "start")
                 (label :class "weather-wind" :text "${weatherWind}" :halign "start")
             )

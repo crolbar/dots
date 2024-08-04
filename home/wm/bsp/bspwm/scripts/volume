@@ -2,7 +2,7 @@
 music_application_name="Spotify"
 music_index=$(pactl list sink-inputs | awk -v m_app="$music_application_name" '/Sink Input #/{gsub("#","",$NF); m_id=$NF} /application.name/{if ($0~m_app) print m_id}')
 
-browser_application_name="Floorp"
+browser_application_name="Firefox"
 browser_indexes=$(pactl list sink-inputs | awk -v b_app="$browser_application_name" '/Sink Input #/{gsub("#","",$NF); b_id=$NF} /application.name/{if ($0~b_app) print b_id}')
 
 case "$1" in
