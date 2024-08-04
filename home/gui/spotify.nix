@@ -14,8 +14,6 @@
       commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland";
     });
 
-    theme = spicePkgs.themes.starryNight;
-
     enabledExtensions = with spicePkgs.extensions; [
       shuffle
       adblock
