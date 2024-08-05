@@ -5,5 +5,6 @@
     ./gamer
     ./virt
     ./thunar.nix
+    ./fonts.nix
   ];
 }
