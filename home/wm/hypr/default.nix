@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    #hyprland.homeManagerModules.default
+    hyprland.homeManagerModules.default
     ./binds.nix
     ./settings.nix
 
@@ -12,7 +12,7 @@
     ../share/dunst.nix
   ];
 
-  home.packages = with pkgs; [ eww ];
+  home.packages = with pkgs; [eww];
 
   xdg.configFile."hypr/anyrun".source = ./anyrun;
   xdg.configFile."hypr/eww".source = ./eww;

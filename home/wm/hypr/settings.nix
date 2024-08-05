@@ -1,4 +1,6 @@
-{
+let
+  cursor = "capitaine-cursors-white";
+in {
   wayland.windowManager.hyprland.settings = {
     # monitors
     monitor = "DP-1,1920x1080@144,0x0,1";
@@ -47,6 +49,7 @@
     # env vars
     env = [
       "XCURSOR_SIZE,20"
+      "XCURSOR_THEME,${cursor}"
       "LIBVA_DRIVER_NAME,nvidia"
       "XDG_SESSION_TYPE,wayland"
       "GBM_BACKEND,nvidia-drm"
