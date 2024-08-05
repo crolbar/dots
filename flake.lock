@@ -75,14 +75,35 @@
         "type": "github"
       }
     },
+    "darkmatter-grub-theme": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1683347392,
+        "narHash": "sha256-snW+8pJvBQ1B11FmUf6kSgARZW5OvW9uXgxA2VrlzcQ=",
+        "owner": "VandalByte",
+        "repo": "darkmatter-grub-theme",
+        "rev": "efe1abbde0aa9410217247d415ff734583af9711",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "VandalByte",
+        "repo": "darkmatter-grub-theme",
+        "type": "gitlab"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
-        "lastModified": 1696426674,
-        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+        "lastModified": 1673956053,
+        "narHash": "sha256-4gtG9iQuiKITOjNQQeQIpoIB6b16fm+504Ch3sNKLd8=",
         "owner": "edolstra",
         "repo": "flake-compat",
-        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+        "rev": "35bb57c0c8d8b62bbfd284272c928ceb64ddbde9",
         "type": "github"
       },
       "original": {
@@ -124,6 +145,22 @@
       }
     },
     "flake-compat_4": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1696426674,
+        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "flake-compat_5": {
       "flake": false,
       "locked": {
         "lastModified": 1696426674,
@@ -944,6 +981,7 @@
     "root": {
       "inputs": {
         "dapu": "dapu",
+        "darkmatter-grub-theme": "darkmatter-grub-theme",
         "flake-parts": "flake-parts",
         "hm": "hm",
         "hyprland": "hyprland",
@@ -1081,7 +1119,7 @@
     },
     "schizofox": {
       "inputs": {
-        "flake-compat": "flake-compat",
+        "flake-compat": "flake-compat_2",
         "flake-parts": [
           "flake-parts"
         ],
@@ -1132,7 +1170,7 @@
     },
     "spicetify-nix": {
       "inputs": {
-        "flake-compat": "flake-compat_2",
+        "flake-compat": "flake-compat_3",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -1153,7 +1191,7 @@
     },
     "swww": {
       "inputs": {
-        "flake-compat": "flake-compat_3",
+        "flake-compat": "flake-compat_4",
         "nixpkgs": "nixpkgs_10",
         "utils": "utils"
       },
@@ -1456,7 +1494,7 @@
     },
     "zellij": {
       "inputs": {
-        "flake-compat": "flake-compat_4",
+        "flake-compat": "flake-compat_5",
         "flake-utils": "flake-utils_9",
         "multitask": "multitask",
         "nixpkgs": "nixpkgs_14",

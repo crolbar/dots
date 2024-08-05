@@ -26,8 +26,8 @@
 - [ ] default sys apps for all hosts (git, vim, ..)
 - [ ] themes, icons & cursor (gtk, qt)
 - [x] home/xdg
-- [ ] grub theme
-- [ ] fonts
+- [x] grub theme
+- [x] fonts
 - [x] x11 mouse sens
 
 - [x] eww board

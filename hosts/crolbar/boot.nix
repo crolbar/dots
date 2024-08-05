@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  darkmatter-grub-theme,
+  ...
+}: {
+  imports = [darkmatter-grub-theme.nixosModule];
+
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
@@ -7,7 +13,13 @@
         enable = true;
         efiSupport = false;
         device = "/dev/sdb";
-        theme = "/boot/grub/themes/theme/darkmatter";
+
+        darkmatter-theme = {
+          enable = true;
+          style = "nixos";
+          icon = "color";
+          resolution = "1080p";
+        };
       };
     };
     blacklistedKernelModules = ["uvcvideo"];

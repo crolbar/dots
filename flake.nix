@@ -57,5 +57,10 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    darkmatter-grub-theme = {
+      url = "gitlab:VandalByte/darkmatter-grub-theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
