@@ -122,7 +122,7 @@
       "SUPER, F8, exec, pamixer --default-source -t"
 
       # screenshot
-      ", Print, exec, grim -g \"''$(slurp)\" - | wl-copy && wl-paste -n > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of the region taken\" -t 1000 # screenshot of a region "
+      ", Print, exec, grim -g \"$(slurp)\" - | wl-copy && wl-paste -n > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of the region taken\" -t 1000 # screenshot of a region "
       "SHIFT, Print, exec, grim - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of whole screen taken\" -t 1000 # screenshot of the whole screen"
     ];
   };
