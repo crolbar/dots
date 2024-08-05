@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     anyrun
-    swaylock
     swww
     hyprpicker
     wl-clipboard
@@ -10,4 +9,8 @@
 
     nwg-look # maybe unneeded
   ];
+
+  programs = {
+      swaylock.enable = true;
+  };
 }
