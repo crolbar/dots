@@ -10,8 +10,7 @@
       ./wm/bsp
       ./wm/hypr
       #./wm/left
-      ./misc/xdg.nix
-      ./misc/gtk.nix
+      ./misc
       ../overlays.nix
       ./profiles/crolbar
     ];
