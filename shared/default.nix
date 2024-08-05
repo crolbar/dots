@@ -6,5 +6,6 @@
     ./virt
     ./thunar.nix
     ./fonts.nix
+    ./qt.nix
   ];
 }

@@ -24,7 +24,7 @@
 ## Misc
 
 - [ ] default sys apps for all hosts (git, vim, ..)
-- [ ] themes, icons & cursor (gtk, qt)
+- [x] themes, icons & cursor (gtk, qt)
 - [x] home/xdg
 - [x] grub theme
 - [x] fonts
