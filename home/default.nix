@@ -11,6 +11,7 @@
       ./wm/hypr
       #./wm/left
       ./misc/xdg.nix
+      ./misc/gtk.nix
       ../overlays.nix
       ./profiles/crolbar
     ];

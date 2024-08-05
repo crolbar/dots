@@ -30,7 +30,6 @@
     vesktop
     mangohud # go to games
     pwvucontrol # go to audio
-    capitaine-cursors # go to theme
     celluloid
     loupe
   ];
