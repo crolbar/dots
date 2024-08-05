@@ -366,8 +366,7 @@ char* get_obj(char* str)
     return obj;
 }
 
-volatile sig_atomic_t keep_running = 1;
-void stop(int sig) { keep_running = 0; }
+void stop(int sig) {exit(0);}
 
 int main(int argc, char** argv) 
 {
@@ -392,51 +391,48 @@ int main(int argc, char** argv)
 
     char* buffer = malloc(8192);
 
-    while (keep_running)
+    while (read(socket2, buffer, 8192) > 0)
     {
-        if (read(socket2, buffer, 8192) > 0) 
+        //printf("%s\n", buffer);
+        int socket1 = socket_connect(sock_path);
+
         {
-            //printf("%s\n", buffer);
-            int socket1 = socket_connect(sock_path);
+            char *s = "[[BATCH]]j/workspaces ; j/activeworkspace ; j/activewindow ; j/devices";
 
-            {
-                char *s = "[[BATCH]]j/workspaces ; j/activeworkspace ; j/activewindow ; j/devices";
-
-                write(socket1, s, strlen(s));
+            write(socket1, s, strlen(s));
 
 
-                size_t size_red = read(socket1, buffer, 8192);
-                if (size_red > 0) {
-                    size_t reply_size = size_red + 1;
-                    char* reply = malloc(reply_size);
-                    strncpy(reply, buffer, size_red);
-                    reply[size_red] = '\0';
+            size_t size_red = read(socket1, buffer, 8192);
+            if (size_red > 0) {
+                size_t reply_size = size_red + 1;
+                char* reply = malloc(reply_size);
+                strncpy(reply, buffer, size_red);
+                reply[size_red] = '\0';
 
-                    while (size_red == 8192) {
-                        size_red = read(socket1, buffer, 8192);
+                while (size_red == 8192) {
+                    size_red = read(socket1, buffer, 8192);
 
-                        size_t new_reply_size = reply_size + size_red;
-                        char *new_reply = realloc(reply, new_reply_size);
+                    size_t new_reply_size = reply_size + size_red;
+                    char *new_reply = realloc(reply, new_reply_size);
 
-                        reply = new_reply;
-                        strncat(reply, buffer, size_red);
-                        reply_size = new_reply_size;
-                    }
-
-                    reply[reply_size-1] = '\0';
-
-                   char* c = get_obj(reply);
-                    if (c)
-                        printf("%s", c);
-
-                    free(reply);
-                    free(c);
+                    reply = new_reply;
+                    strncat(reply, buffer, size_red);
+                    reply_size = new_reply_size;
                 }
-            }
 
-            memset(buffer, 0, 8192);
-            close(socket1);
+                reply[reply_size-1] = '\0';
+
+               char* c = get_obj(reply);
+                if (c)
+                    printf("%s", c);
+
+                free(reply);
+                free(c);
+            }
         }
+
+        memset(buffer, 0, 8192);
+        close(socket1);
     }
 
     free(buffer);
