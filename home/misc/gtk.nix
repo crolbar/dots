@@ -7,8 +7,8 @@
     };
 
     iconTheme = {
-      name = "dracula-icons";
-      package = pkgs.adwaita-icon-theme;
+      name = "Dracula";
+      package = pkgs.dracula-icon-theme;
     };
 
     theme = {
