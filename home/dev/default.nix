@@ -14,16 +14,17 @@
     gcc
     gnumake
 
-
     (
-      rust-bin.selectLatestNightlyWith (toolchain:
-        toolchain.default.override {
-          extensions = ["rust-src"];
-        })
+      if builtins.hasAttr "rust-bin" pkgs
+      then
+        rust-bin.selectLatestNightlyWith (toolchain:
+          toolchain.default.override {
+            extensions = ["rust-src"];
+          })
+      else cargo
     )
     rust-analyzer
     cargo-make
-
 
     (python311.withPackages (ppkgs:
       with ppkgs; [
