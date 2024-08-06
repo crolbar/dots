@@ -7,7 +7,7 @@
 - [x] nvim
 - [x] browser
 - [ ] syncthing
-- [ ] anyrun conf
+- [x] anyrun conf
 
 - [x] dev tools
 

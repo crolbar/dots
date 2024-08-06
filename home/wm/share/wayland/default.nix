@@ -1,6 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ./anyrun.nix
+  ];
   home.packages = with pkgs; [
-    anyrun
     swww
     hyprpicker
     wl-clipboard
@@ -11,6 +13,6 @@
   ];
 
   programs = {
-      swaylock.enable = true;
+    swaylock.enable = true;
   };
 }

@@ -10,7 +10,7 @@
       "SUPER, e, exec, thunar"
       "SUPER, b, exec, schizofox"
       "SUPER, m, exec, spotify --enable-features=UseOzonePlatform --ozone-platform=wayland"
-      "SUPER, r, exec, anyrun -c ~/.config/hypr/anyrun/"
+      "SUPER, r, exec, anyrun"
 
       # EWW
       "SUPER, s, exec, eww open board --toggle"
