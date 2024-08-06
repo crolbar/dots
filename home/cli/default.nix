@@ -17,7 +17,6 @@
     fd
     btop
     htop
-    neofetch
     pamixer
     tldr
     fzf

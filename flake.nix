@@ -6,8 +6,8 @@
       systems = ["x86_64-linux"];
 
       imports = [
-        ./hosts
         ./home
+        ./hosts
       ];
     };
 
@@ -66,5 +66,7 @@
     };
 
     anyrun.url = "github:anyrun-org/anyrun";
+
+    microfetch.url = "github:notashelf/microfetch";
   };
 }

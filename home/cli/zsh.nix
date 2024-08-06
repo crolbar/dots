@@ -1,4 +1,5 @@
-{...}: {
+{microfetch, ...}: {
+  home.packages = [microfetch.packages.x86_64-linux.default];
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
@@ -48,7 +49,7 @@
       ## prompt
       #PROMPT=' %B%F{red}%~%f%b''${vcs_info_msg_0_}%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}>%f%b '
 
-      neofetch
+      microfetch
     '';
   };
 }
