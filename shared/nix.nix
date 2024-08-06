@@ -15,6 +15,7 @@
       warn-dirty = false;
       http-connections = 30;
       builders-use-substitutes = true;
+      trusted-users = [ "root" "@wheel" ];
 
       substituters = [
         "https://cache.nixos.org"
