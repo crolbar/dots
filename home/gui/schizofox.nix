@@ -129,6 +129,7 @@
       "privacy.resistFingerprinting" = false; # breaks alt + [0-9] for switching tabs
       "general.smoothScroll" = false;
       "browser.startup.page" = 3;
+      "browser.startup.homepage" = "chrome://browser/content/blanktab.html";
 
       "browser.display.background_color.dark" = "#000000";
       "browser.display.background_color" = "#000000";
