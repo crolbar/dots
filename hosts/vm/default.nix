@@ -6,5 +6,6 @@
     ./net.nix
     ./user.nix
     ./hardware-configuration.nix
+    ./xdg.nix
   ];
 }
