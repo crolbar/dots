@@ -9,7 +9,7 @@
       "SUPER, x, exec, alacritty"
       "SUPER, e, exec, thunar"
       "SUPER, b, exec, schizofox"
-      "SUPER, m, exec, spotify --enable-features=UseOzonePlatform --ozone-platform=wayland"
+      "SUPER, m, exec, spotify"
       "SUPER, r, exec, anyrun"
 
       # EWW
