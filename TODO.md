@@ -24,7 +24,7 @@
 ## Misc
 
 - [x] fix rust overlay in dev without including overlays.nix fails
-- [ ] default sys apps for all hosts (git, vim, ..)
+- [x] default sys apps for all hosts (git, vim, ..)
 - [x] themes, icons & cursor (gtk, qt)
 - [x] home/xdg
 - [x] grub theme

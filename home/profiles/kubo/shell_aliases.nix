@@ -1,10 +1,5 @@
 {
   programs.zsh.shellAliases = {
-    ls = "lsd -a --group-directories-first";
-    ll = "lsd -la --group-directories-first";
-
-    cdd = "cd ..";
-    vim = "nvim";
     vimc = "cd ~/.config/nvim && nvim .";
 
     ns = "nix-shell";

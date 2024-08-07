@@ -11,9 +11,7 @@
   ];
 
   home.packages = with pkgs; [
-    vim
     ffmpeg
-    lsd
     fd
     btop
     htop
@@ -28,12 +26,13 @@
     skim
     jq
     bottom
-    syncthing
     xorg.xmodmap
     ripgrep
     socat
     ddccontrol
     exiftool
     trash-cli
+
+    syncthing
   ];
 }

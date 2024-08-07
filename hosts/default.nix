@@ -29,6 +29,9 @@
               };
             }
             ./${hostname}
+          ]
+          ++ [
+            ../shared/env.nix
           ];
       };
   in {
