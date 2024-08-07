@@ -9,7 +9,7 @@
       desktopManager.xterm.enable = false;
     };
 
-    getty.autologinUser = "crolbar";
+    getty.autologinUser = "kubo";
     sshd.enable = true;
   };
 }

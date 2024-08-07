@@ -2,7 +2,7 @@
   users = {
     mutableUsers = false;
     defaultUserShell = pkgs.zsh;
-    users.crolbar = {
+    users.kubo = {
       isNormalUser = true;
       shell = pkgs.zsh;
       useDefaultShell = true;

@@ -17,7 +17,7 @@
 
     n = "cd ~/Github/dots && vim .";
 
-    reb = "sudo nixos-rebuild switch --flake ~/Github/dots#vm";
-    hreb = "home-manager switch --flake ~/Github/dots#vm";
+    reb = "sudo nixos-rebuild switch --flake ~/Github/dots";
+    hreb = "home-manager switch --flake ~/Github/dots";
   };
 }

@@ -35,5 +35,6 @@
 - [ ] switch audio to pulse ?
 
 - [ ] wallpapers
+- [ ] xdg different image viewer for x11 ?
 
 - [ ] rewrite dunst conf ? (this is never gonna happen)

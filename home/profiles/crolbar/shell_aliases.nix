@@ -12,8 +12,8 @@
     n = "cd ~/Github/dots && vim .";
     ns = "nix-shell";
 
-    reb = "sudo nixos-rebuild switch --flake ~/Github/dots#crolbar";
-    hreb = "home-manager switch --flake ~/Github/dots#crolbar";
+    reb = "sudo nixos-rebuild switch --flake ~/Github/dots";
+    hreb = "home-manager switch --flake ~/Github/dots";
     vreb = "cd ~/Github/dots && nix flake lock --update-input nvim_conf && hreb && rm -rf ~/.cache/nvim";
 
     plier = "ssh plier@192.168.1.27";

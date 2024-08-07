@@ -15,25 +15,32 @@
       ./profiles/crolbar
     ];
 
-    vm = [
+    kubo = [
       ./cli
-      #./gui
-      #./wm/left
+      ./dev
+
+      ./gui/alacritty.nix
+      ./gui/zathura.nix
+      ./gui/eww
+      ./gui/schizofox.nix
+
       ./wm/bsp
-      #./wm/hypr
+      ./wm/hypr
+      ./misc
       ./profiles/vm
-      ./misc/xdg.nix
     ];
   };
 
   extraSpecialArgs = inputs;
   pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
 in {
+  _module.args = {inherit user_modules;};
+
   flake = {
     homeConfigurations = {
-      vm = homeManagerConfiguration {
+      kubo = homeManagerConfiguration {
         inherit extraSpecialArgs pkgs;
-        modules = user_modules.vm;
+        modules = user_modules.kubo;
       };
 
       crolbar = homeManagerConfiguration {

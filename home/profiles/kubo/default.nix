@@ -4,8 +4,8 @@
   ];
 
   home.stateVersion = "23.11";
-  home.username = "crolbar";
-  home.homeDirectory = "/home/crolbar";
+  home.username = "kubo";
+  home.homeDirectory = "/home/kubo";
   programs.home-manager.enable = true;
   nixpkgs.config.allowUnfree = true;
 
