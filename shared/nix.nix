@@ -1,8 +1,10 @@
-{
+{pkgs, ...}: {
   system.stateVersion = "24.11";
   nixpkgs.config.allowUnfree = true;
 
   nix = {
+    package = pkgs.lix;
+
     settings = {
       experimental-features = [
         "nix-command"
@@ -15,7 +17,7 @@
       warn-dirty = false;
       http-connections = 30;
       builders-use-substitutes = true;
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = ["root" "@wheel"];
 
       substituters = [
         "https://cache.nixos.org"
