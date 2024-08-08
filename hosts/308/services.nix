@@ -4,10 +4,6 @@
     ddccontrol.enable = true;
     hardware.openrgb.enable = true;
 
-    tumbler.enable = true;
-    gvfs.enable = true;
-    tlp.enable = true;
-
     syncthing = {
       user = "crolbar";
       enable = true;
