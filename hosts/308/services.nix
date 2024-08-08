@@ -33,8 +33,6 @@
       accelProfile = "flat";
     };
 
-    pipewire.enable = true;
-
     getty.autologinUser = "crolbar";
   };
 }

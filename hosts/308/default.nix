@@ -9,5 +9,6 @@
     ./xdg.nix
     ./hardware.nix
     ./locales.nix
+    ./audio.nix
   ];
 }

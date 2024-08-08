@@ -32,7 +32,7 @@
 - [x] x11 mouse sens
 
 - [x] eww board
-- [ ] switch audio to pulse ?
+- [x] switch audio to pipewire ?
 
 - [ ] wallpapers
 - [ ] xdg different image viewer for x11 ?

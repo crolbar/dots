@@ -1,18 +1,5 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{config, ...}: {
   hardware = {
-    pulseaudio = {
-      package = pkgs.pulseaudioFull;
-      enable = true;
-      support32Bit = true;
-      daemon.config = {
-        flat-volumes = "yes";
-      };
-    };
-
     bluetooth.enable = false;
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.stable;

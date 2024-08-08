@@ -32,6 +32,7 @@
     ddccontrol
     exiftool
     trash-cli
+    pulseaudioFull # for pactl
 
     syncthing
   ];

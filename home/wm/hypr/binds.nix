@@ -100,13 +100,13 @@
       ", XF86AudioPlay, exec, playerctl play-pause"
 
       # button box binds
-      "SUPER SHIFT ALT, F11, exec, ~/.config/hypr/scripts/volume music -5"
-      "SUPER SHIFT ALT, F12, exec, ~/.config/hypr/scripts/volume music +5"
-      "SUPER SHIFT ALT, F7, exec, ~/.config/eww/scripts/volume music mute"
+      "SUPER SHIFT ALT, F11, exec, ~/.config/hypr/scripts/volume.sh music-"
+      "SUPER SHIFT ALT, F12, exec, ~/.config/hypr/scripts/volume.sh music+"
+      "SUPER SHIFT ALT, F7, exec, ~/.config/eww/scripts/volume.sh music mute"
 
-      "SUPER SHIFT ALT, F9, exec, ~/.config/hypr/scripts/volume browser -5"
-      "SUPER SHIFT ALT, F10, exec, ~/.config/hypr/scripts/volume browser +5"
-      "SUPER SHIFT ALT, F8, exec, ~/.config/eww/scripts/volume browser mute"
+      "SUPER SHIFT ALT, F9, exec, ~/.config/hypr/scripts/volume.sh browser-"
+      "SUPER SHIFT ALT, F10, exec, ~/.config/hypr/scripts/volume.sh browser+"
+      "SUPER SHIFT ALT, F8, exec, ~/.config/eww/scripts/volume.sh browser mute"
 
       "SUPER ALT, F9, exec, pamixer -d 5"
       "SUPER ALT, F10, exec, pamixer -i 5"

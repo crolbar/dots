@@ -10,15 +10,15 @@ music_index=$(pactl list sink-inputs | awk -v m_app="$music_application_name" '/
 browser_indexes=$(pactl list sink-inputs | awk -v b_app="$browser_application_name" '/Sink Input #/{gsub("#","",$NF); b_id=$NF} /application.name/{if ($0~b_app) print b_id}')
 
 case "$1" in
-  --music+)
+  music+)
     pactl set-sink-input-volume "$music_index" +4%;;
-  --music-)
+  music-)
     pactl set-sink-input-volume "$music_index" -4%;;
-  --browser+)
+  browser+)
     for index in $browser_indexes; do
        pactl set-sink-input-volume "$index" +2%
     done;;
-  --browser-)
+  browser-)
     for index in $browser_indexes; do
       pactl set-sink-input-volume "$index" -2%
     done;;

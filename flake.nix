@@ -68,5 +68,7 @@
     anyrun.url = "github:anyrun-org/anyrun";
 
     microfetch.url = "github:notashelf/microfetch";
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 }
