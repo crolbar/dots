@@ -33,7 +33,7 @@
 
 - [x] eww board
 - [x] switch audio to pipewire ?
-- [ ] yazi with xdg-open opens with xterm
+- [x] yazi with xdg-open opens with xterm
 
 - [ ] wallpapers
 - [ ] xdg different image viewer for x11 ?

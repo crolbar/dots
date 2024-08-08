@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   browser = ["Schizofox.desktop"];
   fileManager = ["yazi.desktop"];
   imageViewer = ["org.gnome.Loupe"];
@@ -69,4 +73,17 @@ in {
       defaultApplications = associations;
     };
   };
+
+  # use alacritty as an terminal emulator to open terminal apps (like yazi or nvim) with xdg-open
+  home.packages = [
+    pkgs.xdg-utils
+    (
+      pkgs.writeTextFile {
+        name = "xdg-terminal-exec";
+        destination = "/bin/xdg-terminal-exec";
+        text = "#!${pkgs.runtimeShell}\nalacritty -e \"$@\"";
+        executable = true;
+      }
+    )
+  ];
 }
