@@ -73,6 +73,10 @@ in {
       mouse_move_enables_dpms = true;
     };
 
+    render = {
+        explicit_sync = false;
+    };
+
     # variables
     general = {
       gaps_in = 2;
