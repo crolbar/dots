@@ -13,6 +13,7 @@
       ./misc
       ../overlays.nix
       ./profiles/crolbar
+      ./misc/mangohud.nix
     ];
 
     kubo = [
