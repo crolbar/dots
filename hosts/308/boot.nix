@@ -5,6 +5,8 @@
 }: {
   imports = [darkmatter-grub-theme.nixosModule];
 
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
 

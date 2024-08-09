@@ -19,6 +19,8 @@
       builders-use-substitutes = true;
       trusted-users = ["root" "@wheel"];
 
+      extra-platforms = ["aarch64_linux"];
+
       substituters = [
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"

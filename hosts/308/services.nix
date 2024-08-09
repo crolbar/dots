@@ -4,6 +4,8 @@
     ddccontrol.enable = true;
     hardware.openrgb.enable = true;
 
+    gvfs.enable = true;
+
     syncthing = {
       user = "crolbar";
       enable = true;
