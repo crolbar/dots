@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
-# changes the default output device to the other avalable
+# change the default output device to the other avalable
+mapfile -t sinks < <(pactl list short sinks | awk '{print $2}')
 
-mon="alsa_output.pci-0000_0d_00.1.hdmi-stereo"
-head="alsa_output.usb-Logitech_G533_Gaming_Headset-00.iec958-stereo"
-if [[ "$(pactl list short sinks | grep RUNNING | cut -f2)" == "$head" ]];then
-    pactl set-default-sink $mon
-else
-    pactl set-default-sink $head
-fi
+current_sink=$(pactl get-default-sink)
+
+other_sink=""
+for sink in "${sinks[@]}"; do
+    if [ "$sink" != "$current_sink" ]; then
+        other_sink="$sink"
+        break
+    fi
+done
+
+pactl set-default-sink "$other_sink"
+dunstify "Switched to $other_sink"
