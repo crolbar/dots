@@ -55,5 +55,16 @@
         ../overlays.nix
       ];
     };
+
+    screw = mkNixosSys {
+      username = "screw";
+      hostname = "screw";
+      modules = [
+        ../shared/nix.nix
+        ../shared/fonts.nix
+        ../shared/zsh.nix
+        ../shared/env.nix
+      ];
+    };
   };
 }

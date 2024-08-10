@@ -1,6 +1,4 @@
 {inputs, ...}: let
-  inherit (inputs.hm.lib) homeManagerConfiguration;
-
   user_modules = {
     crolbar = [
       ./cli
@@ -9,7 +7,6 @@
       ./dev
       ./wm/bsp
       ./wm/hypr
-      #./wm/left
       ./misc
       ../overlays.nix
       ./profiles/crolbar
@@ -28,25 +25,45 @@
       ./wm/bsp
       ./wm/hypr
       ./misc
-      ./profiles/vm
+      ./profiles/kubo
+    ];
+
+    screw = [
+      ./cli
+      ./profiles/screw
     ];
   };
 
   extraSpecialArgs = inputs;
-  pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+
+  mkHome = {
+    system,
+    username,
+    ...
+  } @ args:
+    inputs.hm.lib.homeManagerConfiguration {
+      inherit extraSpecialArgs;
+      pkgs = inputs.nixpkgs.legacyPackages."${system}";
+      modules = user_modules."${username}";
+    };
 in {
   _module.args = {inherit user_modules;};
 
   flake = {
     homeConfigurations = {
-      kubo = homeManagerConfiguration {
-        inherit extraSpecialArgs pkgs;
-        modules = user_modules.kubo;
+      kubo = mkHome {
+        system = "x86_64-linux";
+        username = "kubo";
       };
 
-      crolbar = homeManagerConfiguration {
-        inherit extraSpecialArgs pkgs;
-        modules = user_modules.crolbar;
+      crolbar = mkHome {
+        system = "x86_64-linux";
+        username = "crolbar";
+      };
+
+      screw = mkHome {
+        system = "aarch64-linux";
+        username = "screw";
       };
     };
   };
