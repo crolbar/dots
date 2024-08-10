@@ -1,4 +1,8 @@
-{inputs, ...}: let
+{
+  inputs,
+  withSystem,
+  ...
+}: let
   user_modules = {
     crolbar = [
       ./cli
@@ -34,18 +38,23 @@
     ];
   };
 
-  extraSpecialArgs = inputs;
-
   mkHome = {
     system,
     username,
     ...
   } @ args:
-    inputs.hm.lib.homeManagerConfiguration {
-      inherit extraSpecialArgs;
-      pkgs = inputs.nixpkgs.legacyPackages."${system}";
-      modules = user_modules."${username}";
-    };
+    withSystem system ({
+      inputs',
+      self',
+      ...
+    }: let
+      extraSpecialArgs = inputs // {inherit inputs';};
+    in
+      inputs.hm.lib.homeManagerConfiguration {
+        inherit extraSpecialArgs;
+        pkgs = inputs.nixpkgs.legacyPackages."${system}";
+        modules = user_modules."${username}";
+      });
 in {
   _module.args = {inherit user_modules;};
 

@@ -1,9 +1,8 @@
 {
-  microfetch,
-  pkgs,
+  inputs',
   ...
 }: {
-  home.packages = [microfetch.packages."${pkgs.system}".default];
+  home.packages = [inputs'.microfetch.packages.default];
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
