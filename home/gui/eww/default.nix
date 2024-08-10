@@ -1,7 +1,7 @@
 {
-    programs.eww = {
-        enable = true;
-        enableZshIntegration = true;
-        configDir = ./eww;
-    };
+  programs.eww = {
+    enable = true;
+    enableZshIntegration = true;
+    configDir = ./eww;
+  };
 }
