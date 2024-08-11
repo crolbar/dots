@@ -4,6 +4,25 @@
 
     shellInit = ''
       bindkey -v
+
+      # Ctrl + right
+      bindkey '^[[1;5C' forward-word
+      # Ctrl + left
+      bindkey '^[[1;5D' backward-word
+
+      # Ctrl + BS
+      bindkey '^H' backward-kill-word
+      bindkey '^W' backward-kill-word
+
+      # Ctrl + del
+      bindkey '^[[3;5~' kill-word
+
+      # Shift + tab in complete
+      bindkey '^[[Z' reverse-menu-complete
+
+      ## vim delte char bug
+      bindkey "^?" backward-delete-char
+
       setopt PROMPT_SUBST        # enable command substitution in prompt
       setopt MENU_COMPLETE       # Automatically highlight first element of completion menu
 
