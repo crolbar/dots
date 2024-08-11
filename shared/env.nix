@@ -19,6 +19,8 @@
       ll = "lsd -la --group-directories-first";
       cdd = "cd .."; # I don't even know why..
       vim = "nvim";
+      ssc = "sudo systemctl";
+      scu = "systemctl --user";
     };
   };
 }

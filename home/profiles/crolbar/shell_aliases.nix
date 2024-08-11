@@ -1,4 +1,6 @@
-{
+{pkgs, ...}: {
+  home.packages = [pkgs.dig];
+
   programs.zsh.shellAliases = {
     vimc = "cd ~/Github/dots/home/cli/neovim/nvim && nvim .";
 
@@ -27,5 +29,8 @@
     tt = "tt-rs";
     t = "tmux";
     z = "zellij";
+
+    pubip = "dig @resolver4.opendns.com myip.opendns.com +short";
+    pubip6 = "dig @resolver1.ipv6-sandbox.opendns.com AAAA myip.opendns.com +short -6";
   };
 }
