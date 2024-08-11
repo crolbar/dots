@@ -27,6 +27,12 @@
     options = ["nofail" "noauto"];
   };
 
+  fileSystems."/nas" = {
+    device = "/dev/disk/by-uuid/0de20af8-447e-4f8f-86ba-3e9ccbbe4bb6";
+    fsType = "ext4";
+    options = ["noatime" "nodiratime" "commit=60" "barrier=1"];
+  };
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction

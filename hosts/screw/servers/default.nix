@@ -5,5 +5,6 @@
     ./grafana.nix
     ./nginx.nix
     ./prometheus.nix
+    ./nfs.nix
   ];
 }

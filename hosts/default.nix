@@ -48,10 +48,8 @@
       system = "x86_64-linux";
       modules = [
         ../shared/nix.nix
-        ../shared/thunar.nix
-        ../shared/qt.nix
-        ../shared/zsh.nix
-        ../shared/fonts.nix
+        ../shared/gui
+        ../shared/cli
       ];
     };
 
@@ -71,9 +69,8 @@
       system = "aarch64-linux";
       modules = [
         ../shared/nix.nix
-        ../shared/fonts.nix
-        ../shared/zsh.nix
         ../shared/env.nix
+        ../shared/cli
       ];
     };
   };

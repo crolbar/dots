@@ -15,9 +15,9 @@
     options = ["users" "nofail" "exec"];
   };
 
-  #fileSystems."/mnt/nas" = {
-  #  device = "192.168.1.11:/nas";
-  #  fsType = "nfs";
-  #  options = ["rw" "async"];
-  #};
+  fileSystems."/mnt/nas" = {
+    device = "192.168.1.11:/nas";
+    fsType = "nfs";
+    options = ["rw"];
+  };
 }
