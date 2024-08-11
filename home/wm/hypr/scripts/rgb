@@ -3,9 +3,9 @@
 case $1 in 
     s)
         if pgrep -f "KeyboardVisualizer" > /dev/null; then
-            pkill KeyboardVisuali
+            pkill .KeyboardVisual
         else
-            ~/Github/KeyboardVisualizer/run
+            cd && KeyboardVisualizer
         fi
         exit;; 
 esac

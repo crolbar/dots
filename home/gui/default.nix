@@ -32,5 +32,6 @@
     pwvucontrol # go to audio
     celluloid
     loupe
+    lutris
   ];
 }

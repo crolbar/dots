@@ -15,6 +15,7 @@
       ../overlays.nix
       ./profiles/crolbar
       ./misc/mangohud.nix
+      ./gui/KeyboardVisualizer.nix
     ];
 
     kubo = [
