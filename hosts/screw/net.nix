@@ -1,6 +1,9 @@
 {
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      insertNameservers = ["127.0.0.1"];
+    };
     interfaces.end0 = {
       ipv4.addresses = [
         {
