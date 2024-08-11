@@ -35,7 +35,6 @@
 - [x] switch audio to pipewire ?
 - [x] yazi with xdg-open opens with xterm
 
-- [ ] yazi in root
 
 - [ ] wallpapers
 - [ ] xdg different image viewer for x11 ?

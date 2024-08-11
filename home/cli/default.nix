@@ -3,7 +3,6 @@
     ./git.nix
     ./zsh.nix
     ./starship.nix
-    ./yazi.nix
     ./tmux.nix
     ./gitui.nix
     ./zellij.nix
