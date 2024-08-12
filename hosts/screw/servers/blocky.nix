@@ -11,10 +11,8 @@
         groups = {
           default = [
             "https://dns.quad9.net/dns-query"
-            "9.9.9.9"
-            "149.112.112.112"
             "https://dns.digitale-gesellschaft.ch/dns-query"
-            "5.9.164.112"
+            "https://cloudflare-dns.com/dns-query"
           ];
         };
       };
