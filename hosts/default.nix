@@ -20,7 +20,10 @@
         self',
         ...
       }: let
-        specialArgs = inputs // {inherit inputs';};
+        specialArgs =
+          inputs
+          // {inherit inputs';}
+          // {inherit username;};
       in
         nixosSystem {
           inherit specialArgs;

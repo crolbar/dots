@@ -49,7 +49,10 @@
       self',
       ...
     }: let
-      extraSpecialArgs = inputs // {inherit inputs';};
+      extraSpecialArgs =
+        inputs
+        // {inherit inputs';}
+        // {inherit username;};
     in
       inputs.hm.lib.homeManagerConfiguration {
         inherit extraSpecialArgs;

@@ -1,6 +1,5 @@
-{
+{username, ...}: {
   services = {
-
     xserver = {
       enable = true;
       windowManager.bspwm.enable = true;
@@ -9,7 +8,7 @@
       desktopManager.xterm.enable = false;
     };
 
-    getty.autologinUser = "kubo";
+    getty.autologinUser = username;
     sshd.enable = true;
   };
 }

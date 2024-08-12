@@ -1,4 +1,4 @@
-{
+{username, ...}:{
   services = {
     sshd.enable = true;
     ddccontrol.enable = true;
@@ -7,7 +7,7 @@
     gvfs.enable = true;
 
     syncthing = {
-      user = "crolbar";
+      user = username;
       enable = true;
       systemService = false;
     };
@@ -31,6 +31,6 @@
       accelProfile = "flat";
     };
 
-    getty.autologinUser = "crolbar";
+    getty.autologinUser = username;
   };
 }

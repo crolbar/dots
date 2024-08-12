@@ -1,8 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  username,
+  ...
+}: {
   users = {
     mutableUsers = false;
     defaultUserShell = pkgs.zsh;
-    users.crolbar = {
+    users.${username} = {
       isNormalUser = true;
       shell = pkgs.zsh;
       useDefaultShell = true;
