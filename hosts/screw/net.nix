@@ -1,5 +1,7 @@
-{
+{lib, ...}: {
   networking = {
+    useDHCP = lib.mkDefault true;
+
     networkmanager = {
       enable = true;
       insertNameservers = ["127.0.0.1" "9.9.9.9"];

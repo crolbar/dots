@@ -5,7 +5,7 @@
     ./security.nix
     ./net.nix
     ./user.nix
-    ./hardware-configuration.nix
+    ./fs.nix
     ./xdg.nix
   ];
 }

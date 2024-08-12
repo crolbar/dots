@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   hardware = {
     bluetooth.enable = false;
     nvidia = {
@@ -7,17 +11,8 @@
       modesetting.enable = true;
       powerManagement.enable = true;
     };
-  };
 
-  fileSystems."/arch" = {
-    device = "/dev/disk/by-uuid/4a7b5c17-3256-4f7c-b475-56d85727f6f8";
-    fsType = "ext4";
-    options = ["users" "nofail" "exec"];
-  };
-
-  fileSystems."/mnt/nas" = {
-    device = "192.168.1.11:/nas";
-    fsType = "nfs";
-    options = ["rw"];
+    enableRedistributableFirmware = lib.mkDefault true;
+    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 }

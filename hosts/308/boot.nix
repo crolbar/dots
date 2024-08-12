@@ -24,11 +24,22 @@
         };
       };
     };
+
     blacklistedKernelModules = ["uvcvideo"];
     kernelParams = [
       "quiet"
       "acpi_enforce_resources=lax" # needed for openrgb in aorus MOBOs
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1" # fixes hyprland crash on suspend wakeup
+    ];
+    kernelModules = ["kvm-amd"];
+
+    initrd.availableKernelModules = [
+      "nvme"
+      "xhci_pci"
+      "ahci"
+      "usbhid"
+      "usb_storage"
+      "sd_mod"
     ];
   };
 }

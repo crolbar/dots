@@ -1,4 +1,5 @@
 {
+  lib,
   inputs,
   user_modules,
   withSystem,
@@ -27,6 +28,7 @@
             args.modules
             ++ [
               {networking.hostName = hostname;}
+              {nixpkgs.hostPlatform = lib.mkDefault system;}
               inputs.hm.nixosModules.default
 
               {
