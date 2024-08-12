@@ -29,14 +29,25 @@
 
       blocking = {
         denylists = {
-          ads = [
+          blocks = [
             "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
-          ];
-          adult = [
+            "https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
+            "https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt"
+
+            "https://blocklistproject.github.io/Lists/ads.txt"
             "https://blocklistproject.github.io/Lists/porn.txt"
+            "https://blocklistproject.github.io/Lists/phishing.txt"
+            "https://blocklistproject.github.io/Lists/malware.txt"
+            "https://blocklistproject.github.io/Lists/tracking.txt"
+          ];
+
+          cringe = [
+            ''
+              /youtube/
+            ''
           ];
         };
-        clientGroupsBlock.default = ["ads" "adult"];
+        clientGroupsBlock.default = ["blocks" "cringe"];
       };
 
       customDNS = {
