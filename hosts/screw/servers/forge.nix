@@ -1,4 +1,9 @@
-{...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   services.forgejo = {
     enable = true;
     database.type = "mysql";
@@ -28,4 +33,20 @@
       service.DISABLE_REGISTRATION = true;
     };
   };
+
+  environment.systemPackages = let
+    cfg = config.services.forgejo;
+  in [
+    (pkgs.writeScriptBin "forgejo-cli" ''
+      #!${pkgs.runtimeShell}
+      cd ${cfg.stateDir}
+      exec=exec
+      if [[ "$USER" != ${cfg.user} ]]; then
+        exec='exec /run/wrappers/bin/sudo -u ${cfg.user} -g ${cfg.group} --preserve-env=GITEA_WORK_DIR --preserve-env=GITEA_CUSTOM'
+      fi
+      export GITEA_WORK_DIR=${cfg.stateDir}
+      export GITEA_CUSTOM=${cfg.customDir}
+      $exec ${lib.getExe cfg.package} "$@"
+    '')
+  ];
 }
