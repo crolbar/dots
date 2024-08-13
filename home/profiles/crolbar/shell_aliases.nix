@@ -1,13 +1,19 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  zsh = "${lib.getExe pkgs.zsh}";
+in {
   home.packages = [pkgs.dig];
 
   programs.zsh.shellAliases = {
     vimc = "cd ~/Github/dots/home/cli/neovim/nvim && nvim .";
 
-    vs = "cd ~/.config/hypr && nvim .";
-
     n = "cd ~/Github/dots && vim .";
-    ns = "nix-shell";
+
+    ns = "nix-shell --command \"bash -c \\\"SHELL=${zsh} && ${zsh}\\\"\"";
+    nd = "nix develop --command bash -c \"SHELL=${zsh} && \"${zsh}\"\"";
 
     reb = "sudo nixos-rebuild switch --flake ~/Github/dots";
     hreb = "home-manager switch --flake ~/Github/dots";
