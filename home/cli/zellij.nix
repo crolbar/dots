@@ -1,7 +1,15 @@
-{zellij, ...}:
 {
-    programs.zellij = {
-        enable = true;
-        package = zellij.packages.x86_64-linux.default;
-    };
+  inputs',
+  pkgs,
+  ...
+}: let
+  package =
+    if builtins.match "x86_64-linux" pkgs.system != null
+    then inputs'.zellij.packages.default
+    else pkgs.zellij;
+in {
+  programs.zellij = {
+    enable = true;
+    inherit package;
+  };
 }
