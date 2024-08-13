@@ -74,6 +74,8 @@
       bind -T copy-mode-vi C-v send -X rectangle-toggle
       bind -T copy-mode-vi y send -X copy-selection-and-cancel
       bind -T copy-mode-vi Escape send -X cancel
+
+      bind b set-option -g status
     '';
   };
 }
