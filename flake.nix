@@ -8,23 +8,8 @@
       imports = [
         ./home
         ./hosts
+        ./devShell.nix
       ];
-      perSystem = {
-        config,
-        pkgs,
-        ...
-      }: {
-        devShells.default = pkgs.mkShell {
-          name = "dots";
-          packages = [
-            pkgs.alejandra
-            pkgs.git
-            pkgs.nil
-          ];
-        };
-
-        formatter = pkgs.alejandra;
-      };
     };
 
   inputs = {
