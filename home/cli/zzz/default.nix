@@ -1,12 +1,9 @@
-{pkgs, ...}:
-{
+{pkgs, ...}: {
+  imports = [./dapu.nix];
   home.packages = with pkgs; [
-    dapu
     matm
     tt-rs
     npassm
-
     lobster
   ];
 }
-

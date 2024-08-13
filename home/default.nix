@@ -6,7 +6,7 @@
   user_modules = {
     crolbar = [
       ./cli
-      ./cli/zzz.nix
+      ./cli/zzz
       ./gui
       ./dev
       ./wm/bsp
