@@ -24,6 +24,7 @@
     ncdu
     skim
     jq
+    duf
     bottom
     xorg.xmodmap
     ripgrep
