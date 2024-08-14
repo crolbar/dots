@@ -1,16 +1,33 @@
 {
   services.prometheus = {
     enable = true;
-    configText = ''
-      global:
-        scrape_interval:     15s
-        evaluation_interval: 15s
 
-      scrape_configs:
-        - job_name: 'localhost'
+    exporters = {
+      node = {
+        enable = true;
+        enabledCollectors = ["systemd"];
+        port = 9100;
+      };
+    };
 
-          static_configs:
-          - targets: ['localhost:4000']
-    '';
+    globalConfig = {
+      scrape_interval = "15s";
+      evaluation_interval = "15s";
+    };
+
+    scrapeConfigs = [
+      {
+        job_name = "localhost";
+        static_configs = [
+          {
+            targets = [
+              "localhost:4000"
+              "localhost:3000"
+              "localhost:9100"
+            ];
+          }
+        ];
+      }
+    ];
   };
 }
