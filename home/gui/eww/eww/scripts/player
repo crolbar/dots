@@ -1,5 +1,5 @@
-#! /bin/bash
-# crolbar
+#!/usr/bin/env bash
+
 PATH="$HOME/.config/eww/scripts:$PATH"
 music_application_name="spotify"
 browser_application_name="Brave"

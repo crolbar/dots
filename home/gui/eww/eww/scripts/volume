@@ -1,5 +1,4 @@
-#! /bin/bash
-# crolbar
+#!/usr/bin/env bash
 
 # define app names (from the output of "pactl list sink-inputs")
 music_application_name="spotify"
@@ -10,7 +9,7 @@ set_indexes() {
     # grab indexes
     music_index=$(echo $pactl_json_sink_inputs | jq "first(.[]| select(.properties.\"application.name\" == \"$music_application_name\"))| .index")
     browser_indexes=$(echo $pactl_json_sink_inputs | jq ".[]| select(.properties.\"application.name\" == \"$browser_application_name\")| .index")
-    mon_index=$(pamixer --list-sinks | grep GP106 | awk '{print $1}')
+    mon_index=$(pamixer --list-sinks | grep alsa_output.pci | awk '{print $1}')
     head_index=$(pamixer --list-sinks | grep G533 | awk '{print $1}')
 
     # state file for browser/music (muted/unmuted)
