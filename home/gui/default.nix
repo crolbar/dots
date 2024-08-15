@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   imports = [
-    ./alacritty.nix
     ./zathura.nix
     ./eww
     ./spotify.nix
     ./schizofox.nix
+    ./term_emulators
   ];
 
   home.packages = with pkgs; [

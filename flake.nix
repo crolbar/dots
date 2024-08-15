@@ -71,5 +71,6 @@
     microfetch.url = "github:notashelf/microfetch";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
+    wezterm.url = "github:wez/wezterm?dir=nix";
   };
 }
