@@ -4,6 +4,7 @@
     ./eww
     ./spotify.nix
     ./schizofox.nix
+    ./obs.nix
     ./term_emulators
   ];
 
