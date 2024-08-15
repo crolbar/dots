@@ -25,7 +25,12 @@ in {
       inputs.hm.lib.homeManagerConfiguration {
         inherit extraSpecialArgs;
         pkgs = inputs.nixpkgs.legacyPackages."${args.system}";
-        modules = user_modules."${username}";
+        modules =
+          user_modules."${username}"
+          ++ [
+            ../home/profiles/${username}
+            ../home/profiles/home.nix
+          ];
       });
 
   mkNixosSys = {
@@ -56,8 +61,13 @@ in {
 
             {
               home-manager = {
-                users.${username}.imports = user_modules."${username}";
                 extraSpecialArgs = specialArgs;
+                users.${username}.imports =
+                  user_modules."${username}"
+                  ++ [
+                    ../home/profiles/${username}
+                    ../home/profiles/home.nix
+                  ];
               };
             }
             ../hosts/${hostname}
