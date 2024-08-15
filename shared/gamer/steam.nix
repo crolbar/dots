@@ -5,7 +5,7 @@
 }: {
   imports = [nix-gaming.nixosModules.platformOptimizations];
 
-  environment.defaultPackages = [pkgs.power-profiles-daemon];
+  environment.defaultPackages = [pkgs.lutris];
 
   services.auto-cpufreq.enable = true;
 

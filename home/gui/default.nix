@@ -29,10 +29,8 @@
     emacs
     networkmanagerapplet
     vesktop
-    mangohud # go to games
     pwvucontrol # go to audio
     celluloid
     loupe
-    lutris
   ];
 }
