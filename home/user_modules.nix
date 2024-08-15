@@ -12,6 +12,16 @@
     ./gui/KeyboardVisualizer.nix
   ];
 
+  plier = [
+    ./cli
+    ./cli/zzz
+    ./gui
+    ./dev
+    ./wm/left
+    ./misc
+    ../overlays.nix
+  ];
+
   kubo = [
     ./cli
     ./dev

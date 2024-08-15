@@ -16,7 +16,6 @@ ln -s $SCRIPTPATH/down /tmp/leftwm-theme-down
 
 leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 
-#picom --backend glx &
 picom &
 ~/.config/leftwm/scripts/bat &
 ~/.config/leftwm/scripts/wall.sh i &

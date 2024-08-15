@@ -84,21 +84,23 @@
         (command: MoveToTag, value: "9", modifier: ["modkey", "Shift"], key: "9"),
 
         (command: Execute, value: "pkill leftwm", modifier: ["modkey", "Shift", "Alt", "Control"], key: "q"),
-        (command: Execute, value: "sudo i3lock -c 000000", modifier: ["modkey", "Shift", "Alt", "Control"], key: "l"),
+        (command: Execute, value: "i3lock -c 000000", modifier: ["modkey", "Shift", "Alt", "Control"], key: "l"),
         (command: Execute, value: "sudo systemctl reboot", modifier: ["modkey", "Shift", "Alt", "Control"], key: "r"),
-        (command: Execute, value: "sudo systemctl suspend && sudo i3lock -c 000000", modifier: ["modkey", "Shift", "Alt", "Control"], key: "s"),
+        (command: Execute, value: "sudo systemctl suspend && i3lock -c 000000", modifier: ["modkey", "Shift", "Alt", "Control"], key: "s"),
         (command: Execute, value: "sudo systemctl poweroff", modifier: ["modkey", "Shift", "Alt", "Control"], key: "p"),
 
-        (command: Execute, value: "sudo light -U 5 && dunstctl close && dunstify \"brightness at $(cat /sys/class/backlight/intel_backlight/brightness)\"", key: "XF86XK_MonBrightnessDown", modifier: [""]),
-        (command: Execute, value: "sudo light -A 5 && dunstctl close && dunstify \"brightness at $(cat /sys/class/backlight/intel_backlight/brightness)\"", key: "XF86XK_MonBrightnessUp", modifier: [""]),
+        (command: Execute, value: "sudo light -U 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"", key: "XF86XK_MonBrightnessDown", modifier: [""]),
+        (command: Execute, value: "sudo light -A 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"", key: "XF86XK_MonBrightnessUp", modifier: [""]),
+        (command: Execute, value: "sudo light -U 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"", modifier: ["modkey"], key: "F4"),
+        (command: Execute, value: "sudo light -A 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"", modifier: ["modkey"], key: "F5"),
 
         (command: Execute, value: "brightnessctl -d asus::kbd_backlight set 33%-", modifier: ["modkey"], key: "F2"),
         (command: Execute, value: "brightnessctl -d asus::kbd_backlight set +33%", modifier: ["modkey"], key: "F3"),
 
-        (command: Execute, value: "amixer set Master 5%-", modifier: [""], key: "XF86XK_AudioLowerVolume"),
-        (command: Execute, value: "amixer set Master 5%+", modifier: [""], key: "XF86XK_AudioRaiseVolume"),
-        (command: Execute, value: "amixer set Master toggle", modifier: [""], key: "XF86XK_AudioMute"),
-        (command: Execute, value: "amixer set Capture toggle", modifier: [""], key: "XF86XK_AudioMicMute"),
+        (command: Execute, value: "amixer set Master 5%- && dunstctl close-all && dunstify \"Volume at: $(pamixer --get-volume-human)\"", modifier: [""], key: "XF86XK_AudioLowerVolume"),
+        (command: Execute, value: "amixer set Master 5%+ && dunstctl close-all && dunstify \"Volume at: $(pamixer --get-volume-human)\"", modifier: [""], key: "XF86XK_AudioRaiseVolume"),
+        (command: Execute, value: "amixer set Master toggle && dunstify \"Volume at: $(pamixer --get-volume-human)\"", modifier: [""], key: "XF86XK_AudioMute"),
+        (command: Execute, value: "amixer set Capture toggle && dunstify \"Mic at: $(pamixer --get-volume-human --default-source)\"", modifier: [""], key: "XF86XK_AudioMicMute"),
     ],
     state_path: None,
 )

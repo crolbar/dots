@@ -22,6 +22,18 @@ in {
       ];
     };
 
+    plier = mkNixosSys {
+      username = "plier";
+      hostname = "plier";
+      system = "x86_64-linux";
+      modules = [
+        ../shared/virt
+        ../shared/gui
+        ../shared/cli
+        ../overlays.nix
+      ];
+    };
+
     screw = mkNixosSys {
       username = "screw";
       hostname = "screw";

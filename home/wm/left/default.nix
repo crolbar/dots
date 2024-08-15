@@ -24,5 +24,6 @@
 
     brightnessctl
     light
+    alsa-utils # amixer
   ];
 }

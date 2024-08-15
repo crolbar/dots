@@ -10,7 +10,7 @@
 
   home.packages = with pkgs; [
     chromium
-    brave
+    brave # unused maybe remove ?
     vscodium
     file-roller
     mpv

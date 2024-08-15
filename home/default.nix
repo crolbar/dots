@@ -12,6 +12,11 @@ in {
       username = "crolbar";
     };
 
+    plier = mkHome {
+      system = "x86_64-linux";
+      username = "plier";
+    };
+
     screw = mkHome {
       system = "aarch64-linux";
       username = "screw";
