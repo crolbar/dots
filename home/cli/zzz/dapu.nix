@@ -14,10 +14,10 @@
               cd "$(dirname "$output")" || exit
           fi
           if [[ $1 != "cd" ]]; then
-              if [[ -e $output/shell.nix ]]; then
-                  nix-shell --run "bash -c \"SHELL=zsh && nvim .\""
-              elif [[ -e $output/flake.nix ]]; then
+              if [[ -e $output/flake.nix ]]; then
                   nix develop --command bash -c "SHELL=zsh && nvim ."
+              elif [[ -e $output/shell.nix ]]; then
+                  nix-shell --run "bash -c \"SHELL=zsh && nvim .\""
               else
                   nvim "$output"
               fi
