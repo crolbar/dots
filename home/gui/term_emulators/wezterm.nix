@@ -35,25 +35,25 @@
               background = "#000000",
 
               ansi = {
-                  "#000000", -- black
-                  "#cc0403", -- red
-                  "#19cb00", -- green
-                  "#cecb00", -- yellow
-                  "#0d73cc", -- blue
-                  "#cb1ed1", -- magenta
-                  "#0dcdcd", -- cyan
-                  "#dddddd", -- white
+                  "#000000",
+                  "#ff7eb6",
+                  "#42be65",
+                  "#ffe97b",
+                  "#33b1ff",
+                  "#ee5396",
+                  "#3ddbd9",
+                  "#dde1e6",
               },
 
               brights = {
-                  "#767676", -- black
-                  "#cc0403", -- red
-                  "#23fd00", -- green
-                  "#fffd00", -- yellow
-                  "#1a8fff", -- blue
-                  "#fd28ff", -- magenta
-                  "#14ffff", -- cyan
-                  "#ffffff", -- white
+                  "#393939",
+                  "#ff7eb6",
+                  "#42be65",
+                  "#ffe97b",
+                  "#33b1ff",
+                  "#ee5396",
+                  "#3ddbd9",
+                  "#ffffff",
               },
           },
       }

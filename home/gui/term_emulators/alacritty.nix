@@ -12,25 +12,25 @@
 
       colors = {
         bright = {
-          black = "#767676";
-          blue = "#1a8fff";
-          cyan = "#14ffff";
-          green = "#23fd00";
-          magenta = "#fd28ff";
-          red = "#cc0403";
+          black = "#393939";
+          magenta = "#ff7eb6";
+          green = "#42be65";
+          yellow = "#ffe97b";
+          blue = "#33b1ff";
+          red = "#ee5396";
+          cyan = "#3ddbd9";
           white = "#ffffff";
-          yellow = "#fffd00";
         };
 
         normal = {
           black = "#000000";
-          blue = "#0d73cc";
-          cyan = "#0dcdcd";
-          green = "#19cb00";
-          magenta = "#cb1ed1";
-          red = "#cc0403";
-          white = "#dddddd";
-          yellow = "#cecb00";
+          magenta = "#ff7eb6";
+          green = "#42be65";
+          yellow = "#ffe97b";
+          blue = "#33b1ff";
+          red = "#ee5396";
+          cyan = "#3ddbd9";
+          white = "#dde1e6";
         };
         primary = {
           background = "#000000";
@@ -38,8 +38,13 @@
         };
 
         selection = {
-          background = "#252525";
+          background = "#525252";
           text = "CellForeground";
+        };
+
+        cursor = {
+          text = "#000000";
+          cursor = "#ff7eb6";
         };
       };
 
