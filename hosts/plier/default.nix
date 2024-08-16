@@ -8,7 +8,7 @@
     ./net.nix
     ./audio.nix
     ./user.nix
-    #./xdg.nix
+    ./xdg.nix
     ./locales.nix
     ./servers
   ];
