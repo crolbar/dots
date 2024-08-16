@@ -69,14 +69,18 @@
     };
 
     extensions = {
-      darkreader.enable = true;
       simplefox.enable = true;
+      darkreader.enable = false;
 
       enableDefaultExtensions = true;
 
       enableExtraExtensions = true;
       extraExtensions = let
         extensions = [
+          {
+            id = "addon@darkreader.org";
+            name = "darkreader";
+          }
           {
             id = "{1018e4d6-728f-4b20-ad56-37578a4de76}";
             name = "flagfox";
