@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  username,
+  ...
+}: {
   imports = [
     ../share/picom.nix
     ../share/dunst.nix
@@ -6,9 +10,10 @@
     ../share/x11
   ];
 
-  home.file.".Xresources".text = ''
-    Xft.dpi: 192
-  '';
+  home.file.".Xresources".text =
+    if username == "plier"
+    then "Xft.dpi: 192"
+    else "";
 
   home.file.".xinitrc".text =
     # https://nixos.wiki/wiki/Using_X_without_a_Display_Manager

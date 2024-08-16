@@ -1,11 +1,17 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  username,
+  ...
+}: let
   cursor = "capitaine-cursors-white";
 in {
   wayland.windowManager.hyprland.settings = {
     # monitors
-    monitor = "DP-1,1920x1080@144,0x0,1";
-
-    #monitor = [
+    monitor =
+      if username == "plier"
+      then "eDP-1,3200x2000@120,0x0,2"
+      else "DP-1,1920x1080@144,0x0,1";
+    #[
     #  "DP-1,1920x1080@144,1080x1080,1"
     #  "DP-2,1920x1080@75,1080x0,1"
     #  "HDMI-A-1,1920x1080@60,0x70,1,transform,3"
@@ -46,14 +52,21 @@ in {
     ];
 
     # env vars
-    env = [
-      "XCURSOR_SIZE,20"
-      "XCURSOR_THEME,${cursor}"
-      "LIBVA_DRIVER_NAME,nvidia"
-      "XDG_SESSION_TYPE,wayland"
-      "GBM_BACKEND,nvidia-drm"
-      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-    ];
+    env =
+      [
+        "XCURSOR_SIZE,20"
+        "XCURSOR_THEME,${cursor}"
+      ]
+      ++ (
+        if username == "crolbar"
+        then [
+          "LIBVA_DRIVER_NAME,nvidia"
+          "XDG_SESSION_TYPE,wayland"
+          "GBM_BACKEND,nvidia-drm"
+          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        ]
+        else []
+      );
 
     cursor = {
       no_hardware_cursors = true;
@@ -104,7 +117,10 @@ in {
         "windowsIn, 1, 3, cubic, slide"
         "windowsOut, 1, 3, cubic, slide"
         "windowsMove, 1, 3, cubic, slide"
-        "border, 1, 10, default"
+
+        # idk if this is working on nvidia but
+        # on my laptop there is an anoing red bar on unfocused windows for 2 secs
+        "border, 0, 10, default"
         "fade, 1, 3, workspace"
         "workspaces, 1, 3, workspace"
       ];
