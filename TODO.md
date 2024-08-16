@@ -6,7 +6,8 @@
 - [x] gitui
 - [x] nvim
 - [x] browser
-- [ ] syncthing
+- [x] syncthing
+    - [ ] some way to declare the .stignore files in each folder with nix
 - [x] anyrun conf
 
 - [x] dev tools

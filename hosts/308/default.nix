@@ -10,5 +10,6 @@
     ./user.nix
     ./xdg.nix
     ./locales.nix
+    ./servers
   ];
 }

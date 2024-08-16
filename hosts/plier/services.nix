@@ -1,15 +1,7 @@
-{username, ...}: {
+{...}: {
   services = {
     sshd.enable = true;
-
     gvfs.enable = true;
-
-    syncthing = {
-      user = username;
-      enable = true;
-      systemService = false;
-    };
-
     playerctld.enable = true;
 
     xserver = {

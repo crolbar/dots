@@ -1,16 +1,10 @@
-{username, ...}:{
+{username, ...}: {
   services = {
     sshd.enable = true;
     ddccontrol.enable = true;
     hardware.openrgb.enable = true;
 
     gvfs.enable = true;
-
-    syncthing = {
-      user = username;
-      enable = true;
-      systemService = false;
-    };
 
     playerctld.enable = true;
 
