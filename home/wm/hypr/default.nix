@@ -12,7 +12,10 @@
     ../share/dunst.nix
   ];
 
-  home.packages = with pkgs; [eww];
+  home.packages = with pkgs; [
+    polkit_gnome
+    eww
+  ];
 
   xdg.configFile."hypr/eww".source = ./eww;
   xdg.configFile."hypr/scripts".source = ./scripts;

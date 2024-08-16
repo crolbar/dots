@@ -1,4 +1,4 @@
-let
+{pkgs, ...}: let
   cursor = "capitaine-cursors-white";
 in {
   wayland.windowManager.hyprland.settings = {
@@ -21,8 +21,7 @@ in {
       "playerctld daemon"
       "dunst"
       "~/.config/hypr/scripts/wall i"
-      #"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
-      #"/nix/store/$(ls -la /nix/store | grep 'polkit-gnome-0.105$' | awk '{print $9}' | head -n 1)/libexec/polkit-gnome-authentication-agent-1 &"
+      "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
       "nm-applet &"
       "eww -c ~/.config/hypr/eww/ open bar"
       "swww-daemon"
@@ -74,7 +73,7 @@ in {
     };
 
     render = {
-        explicit_sync = false;
+      explicit_sync = false;
     };
 
     # variables

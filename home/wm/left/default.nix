@@ -12,6 +12,7 @@
 
   home.file.".xinitrc".text = ''
     xrdb ~/.Xresources &
+    ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
     xautolock -locker "i3lock -c 000000" -notifier "dunstify 'locking in 5'" -notify 300 &
     exec leftwm
   '';
@@ -21,6 +22,7 @@
     eww
     xautolock
     feh
+    polkit_gnome
 
     brightnessctl
     light

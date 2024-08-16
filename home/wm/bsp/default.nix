@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ./sxhkd.nix
     ./polybar.nix
@@ -8,6 +8,8 @@
     ../share/rofi
     ../share/x11
   ];
+
+  home.packages = [pkgs.polkit_gnome];
 
   home.file.".xinitrc".text = "exec bspwm";
   xdg.configFile."bspwm/scripts".source = ./bspwm/scripts;
@@ -60,6 +62,7 @@
       polybar &
       picom &
       wall i &
+      ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
     '';
   };
 }
