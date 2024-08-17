@@ -80,9 +80,12 @@ in {
               path,
               ignores,
               ...
-            }: {
-              "${path}/.stignore".text = ignores;
-            }
+            }:
+              if ignores == ""
+              then {}
+              else {
+                "${path}/.stignore".text = ignores;
+              }
           )
           cfg.settings.folders;
       }
