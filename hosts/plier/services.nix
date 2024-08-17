@@ -11,4 +11,5 @@
       displayManager.startx.enable = true;
     };
   };
+  programs.hyprland.enable = true;
 }

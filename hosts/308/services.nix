@@ -27,4 +27,5 @@
 
     getty.autologinUser = username;
   };
+  programs.hyprland.enable = true;
 }
