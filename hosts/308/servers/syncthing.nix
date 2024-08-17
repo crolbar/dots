@@ -25,21 +25,21 @@
         projects = {
           path = "/home/${username}/projects";
           devices = ["plier"];
-          ignores = ''
-            target
-            dist
-            yuki.bin
-            yuki_right.bin
-            yuki_left.bin
-            build
-            nixos-sd-image-24.11.20240804.cb9a96f-aarch64-linux.img
-          '';
+          ignores = [
+            "target"
+            "dist"
+            "yuki.bin"
+            "yuki_right.bin"
+            "yuki_left.bin"
+            "build"
+            "nixos-sd-image-24.11.20240804.cb9a96f-aarch64-linux.img"
+          ];
         };
 
         dots = {
           path = "/home/${username}/Github/dots";
           devices = ["plier"];
-          ignores = "test";
+          ignores = ["test"];
         };
 
         yo = {

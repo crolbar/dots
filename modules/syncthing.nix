@@ -42,8 +42,8 @@ in {
               type = types.listOf types.str;
             };
             ignores = mkOption {
-              type = types.str;
-              default = "";
+              type = types.listOf types.str;
+              default = [];
             };
           };
         });
@@ -81,11 +81,9 @@ in {
               ignores,
               ...
             }:
-              if ignores == ""
+              if ignores == []
               then {}
-              else {
-                "${path}/.stignore".text = ignores;
-              }
+              else {"${path}/.stignore".text = builtins.concatStringsSep "\n" ignores;}
           )
           cfg.settings.folders;
       }
