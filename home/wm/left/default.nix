@@ -16,17 +16,10 @@
     else "";
 
   home.file.".xinitrc".text =
-    # https://nixos.wiki/wiki/Using_X_without_a_Display_Manager
-    # without it the xdg portal doesn't work on
+    # somehow found it from: https://discourse.nixos.org/t/how-to-start-user-units-when-using-startx/16919/2
+    # without this the xdg portal doesn't work
     ''
-      if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-          eval $(dbus-launch --exit-with-session --sh-syntax)
-      fi
-      systemctl --user import-environment DISPLAY XAUTHORITY
-
-      if command -v dbus-update-activation-environment >/dev/null 2>&1; then
-          dbus-update-activation-environment DISPLAY XAUTHORITY
-      fi
+      dbus-daemon --session --address="unix:path=$XDG_RUNTIME_DIR/bus" &
     ''
     + ''
       xrdb ~/.Xresources &
