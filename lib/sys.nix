@@ -75,6 +75,7 @@ in {
           ++ [
             ../shared/env.nix
             ../shared/nix.nix
+            ../modules
           ];
       });
 }

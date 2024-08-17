@@ -7,14 +7,15 @@
 - [x] nvim
 - [x] browser
 - [x] syncthing
-    - [ ] some way to declare the .stignore files in each folder with nix
+    - [x] some way to declare the .stignore files in each folder with nix
+    - [ ] if ignores are not specified don't write an empty file
 - [x] anyrun conf
 
 - [x] dev tools
 
 
 ### leftwm
-- [ ] add & start polkit
+- [x] add & start polkit
 
 ### bsp
 - [ ] replace polybar with eww ?
