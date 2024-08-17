@@ -35,12 +35,19 @@ in {
         default = {};
         type = types.attrsOf (types.submodule {
           options = {
+            paused = mkOption {
+              type = types.bool;
+              default = false;
+            };
+
             path = mkOption {
               type = types.str;
             };
+
             devices = mkOption {
               type = types.listOf types.str;
             };
+
             ignores = mkOption {
               type = types.listOf types.str;
               default = [];

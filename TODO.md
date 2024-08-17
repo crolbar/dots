@@ -10,7 +10,6 @@
     - [x] some way to declare the .stignore files in each folder with nix
     - [x] if ignores are not specified don't write an empty file
     - [x] make ignores a list ?
-    - [ ] ignore .git by default ?
 - [x] anyrun conf
 
 - [x] dev tools
