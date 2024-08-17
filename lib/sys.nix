@@ -73,6 +73,7 @@ in {
             ../hosts/${hostname}
           ]
           ++ [
+            ../shared/locales.nix
             ../shared/env.nix
             ../shared/nix.nix
             ../modules

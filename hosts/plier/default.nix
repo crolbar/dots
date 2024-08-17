@@ -8,8 +8,6 @@
     ./net.nix
     ./audio.nix
     ./user.nix
-    ./xdg.nix
-    ./locales.nix
     ./servers
   ];
 }

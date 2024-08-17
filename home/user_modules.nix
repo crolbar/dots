@@ -27,7 +27,7 @@
     ./cli
     ./dev
 
-    ./gui/alacritty.nix
+    ./gui/term_emulators/alacritty.nix
     ./gui/zathura.nix
     ./gui/eww
     ./gui/schizofox.nix

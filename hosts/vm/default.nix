@@ -6,6 +6,5 @@
     ./net.nix
     ./user.nix
     ./fs.nix
-    ./xdg.nix
   ];
 }
