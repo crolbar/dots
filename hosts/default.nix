@@ -7,8 +7,8 @@ in {
       hostname = "vm";
       system = "x86_64-linux";
       modules = [
-        ../shared/gui
-        ../shared/cli
+        ./shared/gui
+        ./shared/cli
       ];
     };
 
@@ -17,7 +17,7 @@ in {
       hostname = "308";
       system = "x86_64-linux";
       modules = [
-        ../shared
+        ./shared
         ../overlays.nix
       ];
     };
@@ -27,9 +27,9 @@ in {
       hostname = "plier";
       system = "x86_64-linux";
       modules = [
-        ../shared/virt
-        ../shared/gui
-        ../shared/cli
+        ./shared/virt
+        ./shared/gui
+        ./shared/cli
         ../overlays.nix
       ];
     };
@@ -39,7 +39,7 @@ in {
       hostname = "screw";
       system = "aarch64-linux";
       modules = [
-        ../shared/cli
+        ./shared/cli
       ];
     };
   };

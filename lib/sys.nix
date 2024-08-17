@@ -73,9 +73,9 @@ in {
             ../hosts/${hostname}
           ]
           ++ [
-            ../shared/locales.nix
-            ../shared/env.nix
-            ../shared/nix.nix
+            ../hosts/shared/locales.nix
+            ../hosts/shared/env.nix
+            ../hosts/shared/nix.nix
             ../modules
           ];
       });
