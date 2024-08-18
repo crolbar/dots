@@ -21,7 +21,7 @@
 ### bsp
 - [ ] replace polybar with eww ?
 
-- [ ] mail ?
+- [x] mail ?
 - [ ] chromium conf ?
 
 ## Misc

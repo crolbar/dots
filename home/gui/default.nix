@@ -6,6 +6,7 @@
     ./schizofox.nix
     ./obs.nix
     ./term_emulators
+    ./zoho.nix
   ];
 
   home.packages = with pkgs; [
