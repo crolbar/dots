@@ -38,7 +38,8 @@
 - [x] switch audio to pipewire ?
 - [x] yazi with xdg-open opens with xterm
 
-
+https://github.com/cynicsketch/nix-mineral
+- [x] firefox update fucked simplefox. fix that ?
 - [ ] wallpapers
 - [ ] xdg different image viewer for x11 ?
 

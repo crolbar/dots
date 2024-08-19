@@ -69,7 +69,7 @@
     };
 
     extensions = {
-      simplefox.enable = true;
+      simplefox.enable = false; # im adding it manualy in theme
       darkreader.enable = false;
 
       enableDefaultExtensions = true;
@@ -165,47 +165,214 @@
       "network.ssl_tokens_cache_capacity" = 10240;
 
       "privacy.firstparty.isolate" = false;
+
+      # enables ctrl + shift + alt + i
+      "devtools.debugger.remote-enabled" = true;
+      "devtools.chrome.enabled" = true;
     };
 
-    theme = {
+    theme = let
+      mainColor = "#000000";
+      secondaryColor = "#151515";
+    in {
       defaultUserChrome.enable = false;
       defaultUserContent.enable = false;
 
+      # modified https://github.com/migueravila/SimpleFox/blob/master/chrome/userChrome.css
       extraUserChrome = ''
-        /* extraUserChrome from nix */
+        :root {
+          --sfwindow: ${mainColor};
+          --sfsecondary: ${secondaryColor};
+        }
+
+        /* Urlbar View */
+
+        .urlbarView {
+          display: none !important;
+        }
+
+        /*─────────────────────────────*/
+
+        /*
+        ┌─┐┌─┐┬  ┌─┐┬─┐┌─┐
+        │  │ ││  │ │├┬┘└─┐
+        └─┘└─┘┴─┘└─┘┴└─└─┘
+        */
+
+        /* Tabs colors  */
+        #tabbrowser-tabs:not([movingtab])
+          > #tabbrowser-arrowscrollbox
+          > .tabbrowser-tab
+          > .tab-stack
+          > .tab-background[multiselected='true'],
+        #tabbrowser-tabs:not([movingtab])
+          > #tabbrowser-arrowscrollbox
+          > .tabbrowser-tab
+          > .tab-stack
+          > .tab-background[selected='true'] {
+          background-image: none !important;
+          background-color: var(--toolbar-bgcolor) !important;
+        }
+
+        /* Inactive tabs color */
+        #navigator-toolbox {
+          background-color: var(--sfwindow) !important;
+        }
+
+        /* Window colors  */
+        :root {
+          --toolbar-bgcolor: var(--sfsecondary) !important;
+          --tabs-border-color: var(--sfsecondary) !important;
+          --lwt-sidebar-background-color: var(--sfwindow) !important;
+          --lwt-toolbar-field-focus: var(--sfsecondary) !important;
+        }
+
+        /* Sidebar color  */
+        #sidebar-box,
+        .sidebar-placesTree {
+          background-color: var(--sfwindow) !important;
+        }
+
+        /*
+
+        ┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+         ││├┤ │  ├┤  │ ├┤
+        ─┴┘└─┘┴─┘└─┘ ┴ └─┘
+        ┌─┐┌─┐┌┬┐┌─┐┌─┐┌┐┌┌─┐┌┐┌┌┬┐┌─┐
+        │  │ ││││├─┘│ ││││├┤ │││ │ └─┐
+        └─┘└─┘┴ ┴┴  └─┘┘└┘└─┘┘└┘ ┴ └─┘
+
+        */
+
+        /* Tabs elements  */
+        .tab-close-button {
+          display: none;
+        }
+
+        .titlebar-buttonbox-container,
+        .titlebar-spacer,
+        #alltabs-button {
+          display: none !important;
+        }
+
+        #nav-bar:not([tabs-hidden='true']) {
+          box-shadow: none;
+        }
+
+        #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
+          > #tabbrowser-arrowscrollbox
+          > .tabbrowser-tab[first-visible-unpinned-tab] {
+          margin-inline-start: 0 !important;
+        }
 
         :root {
-            --sfwindow: #000000;
-            --sfsecondary: #151515;
+          --toolbarbutton-border-radius: 0 !important;
+          --tab-border-radius: 0 !important;
+          --tab-block-margin: 0 !important;
+        }
+
+        .tab-background {
+          border-right: 0px solid rgba(0, 0, 0, 0) !important;
+          margin-left: -4px !important;
+        }
+
+        .tabbrowser-tab:is([visuallyselected='true'], [multiselected])
+          > .tab-stack
+          > .tab-background {
+          box-shadow: none !important;
+        }
+
+        .tabbrowser-tab[last-visible-tab='true'] {
+          padding-inline-end: 0 !important;
+        }
+
+        #tabs-newtab-button {
+          padding-left: 0 !important;
+        }
+
+        #titlebar:-moz-window-inactive {
+          opacity: 1 !important; /* force opacity to remain the same */
+          transition: none !important;
+        }
+
+        /* Url Bar  */
+
+        .urlbar-input-container { /* changed to a class in new versions */
+          background-color: var(--sfsecondary) !important;
+          border: none !important;
+        }
+
+        #nav-bar {
+          border: none !important;
+        }
+
+        #urlbar-container {
+          margin-left: 0 !important;
+        }
+
+        #urlbar[focused] > #urlbar-background { /* changed [focused='true'] to  [focused] */
+          box-shadow: none !important;
+        }
+
+        #nav-bar toolbarspring { /* urlbar spacers */
+          display: none !important;
+        }
+
+        #navigator-toolbox {
+          border: none !important;
+        }
+
+        /* Bookmarks bar  */
+        toolbarbutton.bookmark-item:not(.subviewbutton) {
+          min-width: 1.6em;
+        }
+
+        /* Toolbar  */
+        #tracking-protection-icon-container,
+        #urlbar-zoom-button,
+        #star-button-box,
+        #pageActionButton,
+        #pageActionSeparator,
+        #tabs-newtab-button,
+        #PanelUI-button,
+        #forward-button,
+        .tab-secondary-label {
+          display: none !important;
+        }
+
+        .urlbarView-url {
+          color: #dedede !important;
+        }
+
+        /* Disable elements  */
+        #context-navigation,
+        #context-savepage,
+        #context-pocket,
+        #context-sendpagetodevice,
+        #context-selectall,
+        #context-inspect-a11y,
+        #context-sendlinktodevice,
+        #context-bookmarklink,
+        #context-savelink,
+        #context-savelinktopocket,
+        #context-sendlinktodevice,
+        #context-sendimage,
+        #context-print-selection {
+          display: none !important;
+        }
+
+        #context_bookmarkTab,
+        #context_moveTabOptions,
+        #context_sendTabToDevice,
+        #context_reopenInContainer,
+        #context_selectAllTabs,
+        #context_closeTabOptions {
+          display: none !important;
         }
 
         browser[type="content-primary"],
         browser[type="content"] {
             background-color: #000000 !important;
-        }
-
-        .titlebar-buttonbox-container,
-        #alltabs-button {
-            display: none !important;
-        }
-        .tabbrowser-tab:not([pinned]) .tab-icon-image,
-        .bookmark-item .toolbarbutton-icon,
-        #back-button,
-        #context-viewsource,
-        #context-openlinkinusercontext-menu,
-        #context-searchselect {
-          display: flex !important;
-        }
-      '';
-      extraUserContent = ''
-        :root {
-          scrollbar-width: auto !important;
-        }
-
-        @-moz-document url(about:privatebrowsing) {
-          :root {
-            scrollbar-width: auto !important;
-          }
         }
       '';
     };
