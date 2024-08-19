@@ -26,27 +26,67 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
 
-    nur.url = "github:nix-community/NUR";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     yazi.url = "github:sxyazi/yazi";
 
-    dapu.url = "github:crolbar/dapu";
-    matm.url = "github:crolbar/matm";
-    tt-rs.url = "github:crolbar/tt-rs";
-    npassm.url = "github:crolbar/npassm";
+    dapu = {
+      url = "github:crolbar/dapu";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        rust-overlay.follows = "rust-overlay";
+      };
+    };
 
-    lobster.url = "github:justchokingaround/lobster";
+    matm = {
+      url = "github:crolbar/matm";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        rust-overlay.follows = "rust-overlay";
+      };
+    };
 
-    rust-overlay.url = "github:oxalica/rust-overlay";
+    tt-rs = {
+      url = "github:crolbar/tt-rs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
+    };
+
+    npassm = {
+      url = "github:crolbar/npassm";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
+    lobster = {
+      url = "github:justchokingaround/lobster";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
 
     nvim_conf = {
       url = "git+file:./home/cli/neovim/nvim";
       flake = false;
     };
 
-    swww.url = "github:LGFae/swww";
+    swww = {
+      url = "github:LGFae/swww";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zellij.url = "github:a-kenji/zellij-nix";
 
     schizofox = {
@@ -67,11 +107,33 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    anyrun.url = "github:anyrun-org/anyrun";
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
 
-    microfetch.url = "github:notashelf/microfetch";
+    microfetch = {
+      url = "github:notashelf/microfetch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    nix-gaming.url = "github:fufexan/nix-gaming";
-    wezterm.url = "github:wez/wezterm?dir=nix";
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+
+    wezterm = {
+      url = "github:wez/wezterm?dir=nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
+    };
   };
 }

@@ -1,7 +1,6 @@
 {
   inputs',
   rust-overlay,
-  nur,
   ...
 }: let
   ovrls =
@@ -15,6 +14,5 @@ in {
   nixpkgs.overlays = [
     (final: prev: ovrls)
     rust-overlay.overlays.default
-    nur.overlay # unused
   ];
 }
