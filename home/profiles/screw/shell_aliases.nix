@@ -6,7 +6,7 @@
   zsh = "${lib.getExe pkgs.zsh}";
 in {
   programs.zsh.shellAliases = {
-    vimc = "cd ~/.config/nvim && nvim .";
+    vimc = "cd ~/Github/dots/home/cli/neovim/nvim && nvim .";
 
     ns = "nix-shell --command \"bash -c \\\"SHELL=${zsh} && ${zsh}\\\"\"";
     nd = "nix develop --command bash -c \"SHELL=${zsh} && \"${zsh}\"\"";
