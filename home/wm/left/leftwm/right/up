@@ -18,7 +18,7 @@ leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 
 picom &
 ~/.config/leftwm/scripts/bat &
-~/.config/leftwm/scripts/wall.sh i &
+~/scripts/wall.sh i &
 eww open btm_tray -c ~/.config/leftwm/right/eww
 eww open tags -c ~/.config/leftwm/right/eww
 dunst &

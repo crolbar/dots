@@ -19,11 +19,9 @@
       "SUPER, w, exec, eww -c ~/.config/hypr/eww/ open bar --toggle"
       "SUPER SHIFT, s, exec, pkill eww"
 
-      "SUPER SHIFT, f, exec, feh ~/.config/hypr/wallpapers/black.png"
-
       # wallpaper changer
-      "SUPER, a, exec, ~/.config/hypr/scripts/wall c +"
-      "SUPER SHIFT, a, exec, ~/.config/hypr/scripts/wall c -"
+      "SUPER, a, exec, ~/scripts/wall.sh"
+      "SUPER SHIFT, a, exec, ~/scripts/wall.sh b"
       "SUPER, c, exec, swww clear"
 
       # VM

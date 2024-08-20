@@ -26,7 +26,7 @@ in {
     exec-once = [
       "playerctld daemon"
       "dunst"
-      "~/.config/hypr/scripts/wall i"
+      "~/scripts/wall.sh i"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
       "nm-applet &"
       "eww -c ~/.config/hypr/eww/ open bar"

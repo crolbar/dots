@@ -40,6 +40,7 @@
 
 https://github.com/cynicsketch/nix-mineral
 - [x] firefox update fucked simplefox. fix that ?
+- [x] walls & shared scirpt for x11 & wayland
 - [ ] xdg different image viewer for x11 ?
 
 - [ ] rewrite dunst conf ? (this is never gonna happen)

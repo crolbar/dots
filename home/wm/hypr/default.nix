@@ -10,6 +10,7 @@
 
     ../share/wayland
     ../share/dunst.nix
+    ../share/wall
   ];
 
   home.packages = with pkgs; [
@@ -19,7 +20,6 @@
 
   xdg.configFile."hypr/eww".source = ./eww;
   xdg.configFile."hypr/scripts".source = ./scripts;
-  xdg.configFile."hypr/wallpapers".source = ./wallpapers;
 
   wayland.windowManager.hyprland.enable = true;
 }

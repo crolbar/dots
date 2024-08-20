@@ -11,6 +11,7 @@
     ../share/picom.nix
     ../share/rofi
     ../share/x11
+    ../share/wall
   ];
 
   home.packages = with pkgs; [
@@ -80,7 +81,7 @@
       dunst &
       polybar &
       picom &
-      wall i &
+      ~/scripts/wall.sh i &
     '';
   };
 }
