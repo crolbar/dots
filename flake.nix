@@ -37,38 +37,15 @@
 
     yazi.url = "github:sxyazi/yazi";
 
-    dapu = {
-      url = "github:crolbar/dapu";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
-
-    matm = {
-      url = "github:crolbar/matm";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
-
-    tt-rs = {
-      url = "github:crolbar/tt-rs";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
-
-    npassm = {
-      url = "github:crolbar/npassm";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
+    # not sure how caching works exacly but with my testing I find out that:
+    # If in the input flake the nixpkgs are overritten for all other inputs (not 100% sure but in pkgs that I don't override them it always triggers compilation)
+    # and in your flake (in which you use the flake as an input) you don't override nixpkgs
+    # you will be able to use the cache but if you overrite nixpkgs there is a chance that the 
+    # store hash will change only because you overrite them and you will not be able to use the cache.
+    dapu.url = "github:crolbar/dapu";
+    matm.url = "github:crolbar/matm";
+    tt-rs.url = "github:crolbar/tt-rs";
+    npassm.url = "github:crolbar/npassm";
 
     lobster = {
       url = "github:justchokingaround/lobster";
