@@ -8,6 +8,7 @@
     ../share/dunst.nix
     ../share/rofi
     ../share/x11
+    ../share/wall
   ];
 
   home.file.".Xresources".text =
