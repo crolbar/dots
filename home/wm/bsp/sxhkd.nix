@@ -55,8 +55,10 @@
       "{XF86AudioLowerVolume,XF86AudioRaiseVolume,XF86AudioPrev,XF86AudioNext,XF86AudioPlay}" = "{amixer -D pulse sset Master 5%- > /dev/null,amixer -D pulse sset Master 5%+ > /dev/null,playerctl previous,playerctl next,playerctl play-pause}";
 
       # wall
-      "super + w" = "~/scripts/wall.sh";
+      "super + w" = "~/scripts/wall.sh f";
       "super + shift + w" = "~/scripts/wall.sh b";
+      "super + alt + w" = "~/scripts/wall.sh f f";
+      "super + shift + alt + w" = "~/scripts/wall.sh b f";
     };
 
     extraConfig = ''

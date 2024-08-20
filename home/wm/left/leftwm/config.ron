@@ -37,8 +37,10 @@
         (command: Execute, value: "~/.config/leftwm/scripts/kb.sh", modifier: ["modkey"], key: "space"),
         (command: Execute, value: "eww open tags --toggle -c ~/.config/leftwm/right/eww &", modifier: ["modkey"], key: "w"),
         (command: Execute, value: "eww open btm_tray --toggle -c ~/.config/leftwm/right/eww &", modifier: ["modkey"], key: "p"),
-        (command: Execute, value: "~/scripts/wall.sh", modifier: ["modkey"], key: "a"),
+        (command: Execute, value: "~/scripts/wall.sh f", modifier: ["modkey"], key: "a"),
         (command: Execute, value: "~/scripts/wall.sh b", modifier: ["modkey", "Shift"], key: "a"),
+        (command: Execute, value: "~/scripts/wall.sh f f", modifier: ["modkey", "Alt"], key: "a"),
+        (command: Execute, value: "~/scripts/wall.sh b f", modifier: ["modkey", "Shift", "Alt"], key: "a"),
 
         (command: Execute, value: "pkill eww", modifier: ["modkey", "Shift"], key: "s"),
         (command: Execute, value: "eww open board --toggle", modifier: ["modkey"], key: "s"),

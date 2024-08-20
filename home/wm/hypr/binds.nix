@@ -20,8 +20,10 @@
       "SUPER SHIFT, s, exec, pkill eww"
 
       # wallpaper changer
-      "SUPER, a, exec, ~/scripts/wall.sh"
+      "SUPER, a, exec, ~/scripts/wall.sh f"
       "SUPER SHIFT, a, exec, ~/scripts/wall.sh b"
+      "SUPER ALT, a, exec, ~/scripts/wall.sh f f"
+      "SUPER SHIFT ALT, a, exec, ~/scripts/wall.sh b f"
       "SUPER, c, exec, swww clear"
 
       # VM

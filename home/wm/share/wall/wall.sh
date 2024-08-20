@@ -52,11 +52,21 @@ fi
 wall="$HOME/wallpapers/$wall"
 
 if [ -z "$WAYLAND_DISPLAY" ]; then
-    feh --bg-max "$wall" &
+    mode="fill"
+    if [ "$2" == "f" ]; then
+        mode="max"
+    fi
+
+    feh --bg-$mode "$wall" &
 else 
+    resize_mode="crop"
+    if [ "$2" == "f" ]; then
+        resize_mode="fit"
+    fi
+
     if [ "$1" == "b" ]; then
-        swww img "$wall" --transition-type right --transition-fps 60 --transition-bezier 0.5,0.5,0.5,0.5 --transition-duration 0.1 
+        swww img "$wall" --resize $resize_mode --transition-type right --transition-fps 60 --transition-bezier 0.5,0.5,0.5,0.5 --transition-duration 0.1
     else
-        swww img "$wall" --transition-type left --transition-fps 60 --transition-bezier 0.5,0.5,0.5,0.5 --transition-duration 0.1
+        swww img "$wall" --resize $resize_mode --transition-type left --transition-fps 60 --transition-bezier 0.5,0.5,0.5,0.5 --transition-duration 0.1
     fi
 fi

@@ -4,9 +4,8 @@
     ./cli/zzz
     ./gui
     ./dev
-    #./wm/bsp
+    ./wm/bsp
     ./wm/hypr
-    ./wm/left
     ./misc
     ../overlays.nix
     ./misc/mangohud.nix
