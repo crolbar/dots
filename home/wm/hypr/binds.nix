@@ -7,7 +7,6 @@
     bind = [
       # app binds
       "SUPER, x, exec, alacritty"
-      "SUPER, e, exec, thunar"
       "SUPER, b, exec, schizofox"
       "SUPER, m, exec, spotify"
       "SUPER, r, exec, anyrun"
