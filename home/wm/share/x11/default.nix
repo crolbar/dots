@@ -4,6 +4,7 @@
     xcolor
     i3lock
     flameshot
+    feh
 
     lxappearance # maybe unneeded
   ];

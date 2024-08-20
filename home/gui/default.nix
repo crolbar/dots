@@ -19,7 +19,6 @@
     discord
     keepassxc
     gimp
-    feh
     libreoffice
     qbittorrent
     gnome-disk-utility

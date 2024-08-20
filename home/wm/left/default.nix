@@ -32,7 +32,6 @@
   home.packages = with pkgs; [
     eww
     xautolock
-    feh
     polkit_gnome
 
     brightnessctl
