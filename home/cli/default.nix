@@ -33,5 +33,6 @@
     exiftool
     trash-cli
     pulseaudioFull # for pactl
+    cachix
   ];
 }
