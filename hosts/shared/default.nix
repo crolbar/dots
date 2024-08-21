@@ -4,5 +4,6 @@
     ./virt
     ./cli
     ./gui
+    ./dev
   ];
 }
