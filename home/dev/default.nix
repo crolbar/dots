@@ -35,5 +35,7 @@
 
     nodePackages_latest.bash-language-server
     nodePackages_latest.vscode-langservers-extracted
+
+    jetbrains.idea-community
   ];
 }
