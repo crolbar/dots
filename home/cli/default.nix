@@ -21,7 +21,7 @@
     unzip
     tree
     xorg.xev
-    ncdu
+    gdu
     skim
     jq
     duf
