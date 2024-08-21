@@ -21,6 +21,7 @@
       vim = "nvim";
       ssc = "sudo systemctl";
       scu = "systemctl --user";
+      nix-clean = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
     };
   };
 }
