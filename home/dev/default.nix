@@ -37,5 +37,7 @@
     nodePackages_latest.vscode-langservers-extracted
 
     jetbrains.idea-community
+    jdt-language-server
+    google-java-format
   ];
 }
