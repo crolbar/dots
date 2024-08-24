@@ -12,7 +12,6 @@
       enable = true;
       windowManager = {
         bspwm.enable = true;
-        leftwm.enable = true;
       };
       displayManager = {
         startx.enable = true;
