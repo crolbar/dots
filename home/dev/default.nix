@@ -35,6 +35,7 @@
 
     nodePackages_latest.bash-language-server
     nodePackages_latest.vscode-langservers-extracted
+    typescript-language-server
 
     jetbrains.idea-community
     jdt-language-server
