@@ -23,6 +23,12 @@
       ## vim delte char bug
       bindkey "^?" backward-delete-char
 
+      # edit cmd line with $EDITOR
+      autoload -z edit-command-line
+      zle -N edit-command-line
+      bindkey "^E" edit-command-line
+      bindkey -M vicmd "^E" edit-command-line
+
       setopt PROMPT_SUBST        # enable command substitution in prompt
       setopt MENU_COMPLETE       # Automatically highlight first element of completion menu
 
