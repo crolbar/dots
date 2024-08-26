@@ -22,6 +22,7 @@
 
       ## vim delte char bug
       bindkey "^?" backward-delete-char
+      bindkey "^[[127;5u" backward-kill-word
 
       # edit cmd line with $EDITOR
       autoload -z edit-command-line
