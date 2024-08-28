@@ -1,4 +1,5 @@
-## Nixos - Home Manager - Flakes config
+<h1 align="center"> NixOS - Home Manager - Flakes config </h1>
+
 <div align="center">
     This <a href="https://nixos.wiki/wiki/Flakes ">nix flake</a> contains NixOS configurations for all of my <a href="#Hosts" />systems</a> and with the help of <a href="https://github.com/nix-community/home-manager">Home Manager</a> for all of the <a href="#Software" >software</a> that I'm using. 
 </div><br/><br/>
