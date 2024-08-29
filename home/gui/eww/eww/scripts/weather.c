@@ -100,11 +100,11 @@ int main()
         else if (!strcmp(icon_code, "1276")) { icon = ""; icon_color = "#eff0b3"; }
         else if (!strcmp(icon_code, "1279")) { icon = ""; icon_color = "#eff0b3"; }
         else if (!strcmp(icon_code, "1282")) { icon = ""; icon_color = "#eff0b3"; }
+        else { icon = ""; icon_color = "#83ace2"; }
 
         if (!strcmp(is_day, "0")) {
-            if (!strcmp(icon, "")) { icon = ""; icon_color = "#ffb78a"; }
-            else if (!strcmp(icon, "")) { icon = ""; icon_color = "#b1e4eb"; }
-            else if (!strcmp(icon, "")) { icon = ""; icon_color = "#83ace2"; }
+            if (!strcmp(icon, "")) { icon = ""; icon_color = "#83ace2"; }
+            else { icon = ""; icon_color = "#b1e4eb"; }
         }
 
         printf
