@@ -38,7 +38,11 @@
 - [x] switch audio to pipewire ?
 - [x] yazi with xdg-open opens with xterm
 
-https://github.com/cynicsketch/nix-mineral
+- [ ] better java formatter ?
+
+- https://github.com/cynicsketch/nix-mineral
+- https://github.com/the-nix-way/dev-templates/blob/main/rust/flake.nix#L15
+
 - [x] firefox update fucked simplefox. fix that ?
 - [x] walls & shared scirpt for x11 & wayland
 - [ ] xdg different image viewer for x11 ?
