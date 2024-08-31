@@ -1,6 +1,6 @@
 {inputs', ...}: {
   programs.wezterm = {
-    enable = true;
+    enable = false;
     enableZshIntegration = false;
     enableBashIntegration = false;
     #package = inputs'.wezterm.packages.default;
