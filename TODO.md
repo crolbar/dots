@@ -42,6 +42,7 @@
 
 - https://github.com/cynicsketch/nix-mineral
 - https://github.com/the-nix-way/dev-templates/blob/main/rust/flake.nix#L15
+- https://github.com/igor-petruk/scriptisto
 
 - [x] firefox update fucked simplefox. fix that ?
 - [x] walls & shared scirpt for x11 & wayland

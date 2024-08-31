@@ -86,7 +86,7 @@ in {
     };
 
     render = {
-      explicit_sync = false;
+      explicit_sync = true;
     };
 
     # variables

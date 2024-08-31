@@ -9,7 +9,7 @@
     else pkgs.zellij;
 in {
   programs.zellij = {
-    enable = true;
+    enable = false;
     inherit package;
   };
 }

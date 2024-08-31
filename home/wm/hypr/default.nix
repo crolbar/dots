@@ -1,10 +1,10 @@
 {
-  hyprland,
+  #hyprland,
   pkgs,
   ...
 }: {
   imports = [
-    hyprland.homeManagerModules.default
+    #hyprland.homeManagerModules.default
     ./binds.nix
     ./settings.nix
 
