@@ -1,3 +1,10 @@
+#!/usr/bin/env scriptisto
+
+// scriptisto-begin
+// script_src: dispatch.c
+// build_cmd: gcc dispatch.c -o ./script
+// scriptisto-end
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -1,3 +1,10 @@
+#!/usr/bin/env scriptisto
+
+// scriptisto-begin
+// script_src: workspace_scroll.c
+// build_cmd: gcc workspace_scroll.c -o ./script
+// scriptisto-end
+
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>

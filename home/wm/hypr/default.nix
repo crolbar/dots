@@ -16,6 +16,7 @@
   home.packages = with pkgs; [
     polkit_gnome
     eww
+    scriptisto # for c scripts
   ];
 
   xdg.configFile."hypr/eww".source = ./eww;

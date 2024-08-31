@@ -1,11 +1,11 @@
 
-(defpoll length :interval "2s" :initial 0 `scripts/player poll length`)
-(defpoll title :interval "2s" :initial 0 `scripts/player poll title`)
-(defpoll artist :interval "2s" :initial 0 `scripts/player poll artist`)
-(defpoll status :interval "2s" :initial 0 `scripts/player poll status`)
-(defpoll player :interval "2s" :initial 0 `scripts/player poll player`)
+(defpoll length :interval "2s" :initial 0 `scripts/player.sh poll length`)
+(defpoll title :interval "2s" :initial 0 `scripts/player.sh poll title`)
+(defpoll artist :interval "2s" :initial 0 `scripts/player.sh poll artist`)
+(defpoll status :interval "2s" :initial 0 `scripts/player.sh poll status`)
+(defpoll player :interval "2s" :initial 0 `scripts/player.sh poll player`)
 (defpoll position :interval "1s" :initial 0 `playerctl position`)
-(defpoll vol :interval "2s" :initial 0 `scripts/player vol`)
+(defpoll vol :interval "2s" :initial 0 `scripts/player.sh vol`)
 
 
 
@@ -15,12 +15,12 @@
         (box :class "player-box" (label :text player :limit-width 60))
         (box :class "artist" (label :text artist :limit-width 60))
         (box :class "title" (label :text title :limit-width 37))
-        (box :orientation "h" :space-evenly false (box :space-evenly false :class "volume_slider" (scale :min 0 :max 101 :width 20 :flipped true :timeout "4s" :value vol :orientation "v" :onchange "scripts/player vol set {}"))
+        (box :orientation "h" :space-evenly false (box :space-evenly false :class "volume_slider" (scale :min 0 :max 101 :width 20 :flipped true :timeout "4s" :value vol :orientation "v" :onchange "scripts/player.sh vol set {}"))
             (box :class "player-buttons" :orientation "h" :space-evenly false :halign "center" :spacing 45
-                (button :class "button-previous" :timeout "4s" :onclick "playerctl previous && sleep 0.5 && scripts/player poll update" "")
-                (button :class "button-pause" :timeout "4s" :onclick "playerctl play-pause && scripts/player poll status" (label :text status))
-                (button :class "button-next" :timeout "4s" :onclick "playerctl next && sleep 0.5 && scripts/player poll update" "" )
-                (button :class "button-change" :timeout "4s" :onclick "scripts/player change" "" )
+                (button :class "button-previous" :timeout "4s" :onclick "playerctl previous && sleep 0.5 && scripts/player.sh poll update" "")
+                (button :class "button-pause" :timeout "4s" :onclick "playerctl play-pause && scripts/player.sh poll status" (label :text status))
+                (button :class "button-next" :timeout "4s" :onclick "playerctl next && sleep 0.5 && scripts/player.sh poll update" "" )
+                (button :class "button-change" :timeout "4s" :onclick "scripts/player.sh change" "" )
             )
         )
         (box :space-evenly false :class "position_slider" :orientation "v"
