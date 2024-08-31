@@ -9,8 +9,8 @@
        move_up: Some((code: Char('k'), modifiers: "")),
        move_down: Some((code: Char('j'), modifiers: "")),
 
-       shift_up: Some((code: Char('K'), modifiers: "SHIFT")),
-       shift_down: Some((code: Char('J'), modifiers: "SHIFT")),
+       shift_up: Some((code: Char('g'), modifiers: "")),
+       shift_down: Some((code: Char('G'), modifiers: "SHIFT")),
 
        page_down: Some((code: Char('d'), modifiers: "CONTROL")),
        page_up: Some((code: Char('u'), modifiers: "CONTROL")),
