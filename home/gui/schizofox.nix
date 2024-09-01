@@ -139,6 +139,7 @@
       "browser.display.background_color" = "#000000";
       "browser.display.focus_background_color" = "#000000";
       "browser.display.focus_background_color.dark" = "#000000";
+      "browser.newtabpage.enabled" = false;
 
       # some* "borrowed" from https://github.com/yokoffing/Betterfox
       "full-screen-api.warning.delay" = -1;
