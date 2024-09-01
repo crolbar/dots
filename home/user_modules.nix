@@ -18,6 +18,7 @@
     ./gui
     ./dev
     ./wm/left
+    ./wm/river
     ./wm/hypr
     ./misc
     ../overlays.nix
