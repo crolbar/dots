@@ -8,7 +8,7 @@
       enable = true;
       windowManager = {
         bspwm.enable = true;
-        leftwm.enable = true;
+        leftwm.enable = false; # if I use overlay and enable this it breaks systemd
       };
       displayManager = {
         startx.enable = true;

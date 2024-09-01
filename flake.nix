@@ -112,5 +112,6 @@
         rust-overlay.follows = "rust-overlay";
       };
     };
+    leftwm.url = "github:leftwm/leftwm";
   };
 }
