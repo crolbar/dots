@@ -140,7 +140,7 @@
       "browser.display.focus_background_color" = "#000000";
       "browser.display.focus_background_color.dark" = "#000000";
 
-      # *some "borrowed" from https://github.com/yokoffing/Betterfox
+      # some* "borrowed" from https://github.com/yokoffing/Betterfox
       "full-screen-api.warning.delay" = -1;
       "full-screen-api.warning.timeout" = 0;
       "browser.privatebrowsing.vpnpromourl" = "";
@@ -151,7 +151,7 @@
       "gfx.canvas.accelerated.cache-items" = 4096;
       "gfx.canvas.accelerated.cache-size" = 512;
       "gfx.content.skia-font-cache-size" = 20;
-      "layers.gpu-process.enabled" = true;
+      "layers.gpu-process.enabled" = false; # causes slow startup in x11 after my flake update in commit `a7f2909`
       "media.ffmpeg.vaapi.enabled" = true;
       "media.hardware-video-decoding.enabled" = true;
       "browser.low_commit_space_threshold_percent" = 33;
