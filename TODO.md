@@ -24,6 +24,12 @@
 - [x] mail ?
 - [ ] chromium conf ?
 
+### river
+- [ ] switch layout generator
+- [ ] bars
+- [ ] touchpad tap not working
+- [ ] spawn in slave
+
 ## Misc
 
 - [x] fix rust overlay in dev without including overlays.nix fails

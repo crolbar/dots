@@ -16,4 +16,5 @@
     };
   };
   programs.hyprland.enable = true;
+  programs.river.enable = true;
 }

@@ -8,6 +8,7 @@
     wl-clipboard
     grim
     slurp
+    wayland-utils
 
     nwg-look # maybe unneeded
   ];
