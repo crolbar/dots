@@ -15,11 +15,12 @@ in {
     eww
     scriptisto # for c scripts
     ristate
+    wideriver
   ];
 
   xdg.configFile."river/eww".source = ./eww;
 
-  wayland.windowManager.river = {
+  wayland.windowManager.river = rec {
     enable = true;
 
     # `https://codeberg.org/river/river/src/branch/master/example/init`
@@ -46,7 +47,7 @@ in {
       border-color-focused = "0xDE64AC";
       border-color-unfocused = "0x000000";
 
-      default-layout = "rivertile";
+      default-layout = "wideriver";
 
       declare-mode = [
         "locked"
@@ -74,7 +75,24 @@ in {
 
     extraConfig = ''
       dbus-daemon --session --address="unix:path=$XDG_RUNTIME_DIR/bus" &
-      rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 &
+      wideriver \
+          --layout                       left        \
+          --layout-alt                   monocle     \
+          --stack                        even        \
+          --count-master                 1           \
+          --ratio-master                 0.50        \
+          --inner-gaps                   0           \
+          --outer-gaps                   0           \
+          --smart-gaps                               \
+          --border-width                 1           \
+          --border-width-monocle         0           \
+          --border-width-smart-gaps      0           \
+          --border-color-focused         "${settings.border-color-focused}"  \
+          --border-color-focused-monocle "${settings.border-color-focused}"  \
+          --border-color-unfocused       "${settings.border-color-unfocused}"  \
+          --log-threshold                info        \
+         > "/tmp/wideriver.$${XDG_VTNR}.$${USER}.log" 2>&1 &
+
       eww -c ~/.config/river/eww daemon && eww -c ~/.config/river/eww open btm_tray & eww -c ~/.config/river/eww open tags &
     '';
   };

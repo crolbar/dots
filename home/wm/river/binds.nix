@@ -46,16 +46,16 @@ in {
         "Super+Shift J" = "swap next";
         "Super+Shift K" = "swap previous";
 
-        "Super+Shift H" = "send-layout-cmd rivertile \"main-ratio -0.05\"";
-        "Super+Shift L" = "send-layout-cmd rivertile \"main-ratio +0.05\"";
+        "Super+Shift H" = "send-layout-cmd wideriver '--ratio -0.05'";
+        "Super+Shift L" = "send-layout-cmd wideriver '--ratio +0.05'";
 
-        "Super Up" = "send-layout-cmd rivertile \"main-location top\"";
-        "Super Right" = "send-layout-cmd rivertile \"main-location right\"";
-        "Super Down" = "send-layout-cmd rivertile \"main-location bottom\"";
-        "Super Left" = "send-layout-cmd rivertile \"main-location left\"";
+        "Super n" = "send-layout-cmd wideriver '--count -1'";
+        "Super+Shift n" = "send-layout-cmd wideriver '--count +1'";
 
-        "Super n" = "send-layout-cmd rivertile \"main-count -1\"";
-        "Super+Shift n" = "send-layout-cmd rivertile \"main-count +1\"";
+        "Super Up" = "send-layout-cmd wideriver '--layout top'";
+        "Super Right" = "send-layout-cmd wideriver '--layout right'";
+        "Super Down" = "send-layout-cmd wideriver '--layout bottom'";
+        "Super Left" = "send-layout-cmd wideriver '--layout left'";
 
 
         # Floats
