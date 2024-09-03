@@ -90,10 +90,7 @@ in {
         "Super+Shift+Alt A" = "spawn \"~/scripts/wall.sh b f\"";
         "Super c" = "spawn \"swww clear\"";
 
-        "Super+Shift+Alt+Control q" = "exit";
-        "Super+Shift+Alt+Control l" = "spawn \"swaylock -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3\"";
-        "Super+Shift+Alt+Control s" = "spawn \"sudo systemctl suspend && swaylock -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3\"";
-
+        # MEDIA & LIGHT
         "None XF86MonBrightnessDown" = "spawn 'sudo light -U 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"'";
         "None XF86MonBrightnessUp" = "spawn 'sudo light -A 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"'";
 
@@ -104,6 +101,15 @@ in {
         "None XF86AudioRaiseVolume" = "spawn 'amixer set Master 5%+ && dunstctl close-all && dunstify \"Volume at: $(pamixer --get-volume-human)\"'";
         "None XF86AudioMute" = "spawn 'amixer set Master toggle && dunstify \"Volume at: $(pamixer --get-volume-human)\"'";
         "None XF86AudioMicMute" = "spawn 'amixer set Capture toggle && dunstify \"Mic at: $(pamixer --get-volume-human --default-source)\"'";
+
+        # MISC
+        "Super+Shift+Alt+Control q" = "exit";
+        "Super+Shift+Alt+Control l" = "spawn \"swaylock -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3\"";
+        "Super+Shift+Alt+Control s" = "spawn \"sudo systemctl suspend && swaylock -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3\"";
+
+        "None PRINT" = "spawn 'grim -g \"$(slurp)\" - | wl-copy && wl-paste -n > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of the region taken\" -t 1000 # screenshot of a region'";
+        "Shift PRINT" = "spawn 'grim - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of whole screen taken\" -t 1000 # screenshot of the whole screen'";
+
       };
 
     map-pointer.normal = {
