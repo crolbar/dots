@@ -27,8 +27,8 @@
 ### river
 - [ ] switch layout generator
 - [ ] bars
-- [ ] touchpad tap not working
 - [ ] spawn in slave
+- [x] touchpad tap not working
 
 ## Misc
 

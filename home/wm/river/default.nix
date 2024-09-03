@@ -21,9 +21,29 @@ in {
 
     # `https://codeberg.org/river/river/src/branch/master/example/init`
     settings = {
+      spawn = [
+        "playerctld daemon"
+        "dunst"
+        "~/scripts/wall.sh i"
+        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+        "nm-applet"
+        "swww-daemon"
+      ];
+
+      rule-add = {
+        # alt -app-id
+        "-title" = {
+          "'*'" = "ssd"; # alt float|ssd|tags|position|dimensions|fullscreen
+        };
+      };
+
+      xcursor-theme = "${cursor} 20";
+
       border-width = 1;
       border-color-focused = "0xDE64AC";
       border-color-unfocused = "0x000000";
+
+      default-layout = "rivertile";
 
       declare-mode = [
         "locked"
@@ -31,34 +51,26 @@ in {
         "passthrough"
       ];
 
-      input = {};
-
-      rule-add = {
-        "-title" = {
-          "'*'" = "ssd";
+      input = {
+        "'*'" = {
+          accel-profile = "adaptive"; # alt flat,none
+          pointer-accel = -0.4;
+        };
+        "pointer-1267-12817-ASUE1211:00_04F3:3211_Touchpad" = {
+          tap = "enabled";
         };
       };
 
       set-repeat = "50 300";
 
-      spawn = [
-        "playerctld daemon"
-        "dunst"
-        "~/scripts/wall.sh i"
-        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-        "nm-applet"
-        "eww -c ~/.config/hypr/eww/ open bar"
-        "swww-daemon"
-      ];
-
       keyboard-layout = "-variant \",dvorak,phonetic\" -options \"grp:win_space_toggle\" \"us,us,bg\"";
 
-      xcursor-theme = "${cursor} 20";
-      default-layout = "rivertile";
-      output-layout = "rivertile";
+      focus-follows-cursor = "always";
     };
 
     extraConfig = ''
+      dbus-daemon --session --address="unix:path=$XDG_RUNTIME_DIR/bus" &
+      systemctl start --user kanshi
       rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 &
     '';
   };
