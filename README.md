@@ -6,6 +6,11 @@
 
 ![](.github/assets/Screenshot-2024-08-28_11:20:29.png)
 
+<details><summary><b>river</summary>
+
+![](.github/assets/Screenshot-2024-09-03_15:17:15.png)
+
+</details>
 
 # Hosts
 - **308**: Desktop PC with a Ryzen 5 3600 and a 1060 3bg (old but does the job for me). Running Hyprland.
@@ -20,7 +25,7 @@ The software I use across my systems is:
 
 ### Wayland compositors
 - [Hyprland](https://github.com/hyprwm/Hyprland) - (config: [home/wm/hypr](home/wm/hypr))
-- [river](https://isaacfreund.com/software/river/) - (config: [home/wm/river](home/wm/river))
+- [river](https://isaacfreund.com/software/river/) - (config: [home/wm/river](home/wm/river)) (status cilent - [ristate](https://github.com/crolbar/ristate))
 
 ### Window managers
 - [LeftWM](https://github.com/leftwm/leftwm) - for when something doesn't work on river (config: [home/wm/left](home/wm/left))
