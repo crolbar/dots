@@ -79,7 +79,8 @@ in {
 
         # EWW
         "Super s" = "spawn \"eww open board --toggle\"";
-        "Super w" = "spawn \"eww -c ~/.config/hypr/eww/ open bar --toggle\"";
+        "Super p" = "spawn \"eww -c ~/.config/river/eww open btm_tray --toggle\"";
+        "Super w" = "spawn \"eww -c ~/.config/river/eww open tags --toggle\"";
         "Super+Shift s" = "spawn \"pkill eww\"";
 
         # Wall

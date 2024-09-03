@@ -1,0 +1,21 @@
+(defwidget btm[] 
+ (box    
+  :space-evenly false
+  :spacing 20
+
+  "C ${round(EWW_CPU.avg, 0)}%"
+
+  "${EWW_BATTERY.BAT0.status == "Discharging" ? "B" : "CB"} ${EWW_BATTERY.BAT0.capacity}%"
+
+  (systray :class "tray")
+ )
+ )
+
+(defwindow btm_tray
+    :monitor 0
+    :stacking "fg"
+    :exclusive false
+    :focusable false
+    :geometry (geometry :anchor "bottom right")
+    (btm)
+)

@@ -2,6 +2,7 @@
   inputs',
   rust-overlay,
   leftwm,
+  ristate,
   ...
 }: let
   ovrls =
@@ -14,6 +15,7 @@
 in {
   nixpkgs.overlays = [
     (final: prev: ovrls)
+    ristate.overlays.default
     leftwm.overlays.default
     rust-overlay.overlays.default
   ];

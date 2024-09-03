@@ -14,7 +14,10 @@ in {
     polkit_gnome
     eww
     scriptisto # for c scripts
+    ristate
   ];
+
+  xdg.configFile."river/eww".source = ./eww;
 
   wayland.windowManager.river = {
     enable = true;
@@ -73,6 +76,7 @@ in {
       dbus-daemon --session --address="unix:path=$XDG_RUNTIME_DIR/bus" &
       systemctl start --user kanshi
       rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 &
+      eww -c ~/.config/river/eww daemon && eww -c ~/.config/river/eww open btm_tray & eww -c ~/.config/river/eww open tags &
     '';
   };
 }

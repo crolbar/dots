@@ -1,0 +1,25 @@
+* {
+    all: unset;
+    font-size: 10px;
+}
+
+.workspaces button {
+  padding: 2px;
+}
+
+.workspaces button:hover {
+  color: #ffffff;
+}
+
+.tag-button {
+  color: gray;
+}
+
+.tag-button-mine {
+  color: #ffffff;
+}
+
+.tag-button-urgent {
+  color: #000000;
+  background-color: #ffff00;
+}

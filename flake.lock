@@ -1032,6 +1032,32 @@
         "url": "file:./home/cli/neovim/nvim"
       }
     },
+    "ristate": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": [
+          "rust-overlay"
+        ]
+      },
+      "locked": {
+        "lastModified": 1725352218,
+        "narHash": "sha256-yRwi+ixn9tXF+dqubSOpLTVxWntKldwps+WYKJLR3fE=",
+        "owner": "crolbar",
+        "repo": "ristate",
+        "rev": "2427b315fa210ab5abde6939dbe792ca1cb0d952",
+        "type": "github"
+      },
+      "original": {
+        "owner": "crolbar",
+        "repo": "ristate",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "anyrun": "anyrun",
@@ -1048,6 +1074,7 @@
         "nixpkgs": "nixpkgs_5",
         "npassm": "npassm",
         "nvim_conf": "nvim_conf",
+        "ristate": "ristate",
         "rust-overlay": "rust-overlay_4",
         "schizofox": "schizofox",
         "spicetify-nix": "spicetify-nix",

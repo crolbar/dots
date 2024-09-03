@@ -1,0 +1,26 @@
+(deflisten ristate "./scripts/ristate.sh")
+(defvar make "SamsungDisplayCorp.")
+
+(defwidget workspaces []
+ (box :class "workspaces"
+  (box (for tag in '${ristate.view_tags["${make}"]}'
+        (button
+         :class {tag == '${ristate.focused_tags["${make}"][0]}' ? "tag-button-mine" :
+                 tag == '${ristate.urgency["${make}"][0]}' ? "tag-button-urgent" : 
+                 "tag-button"}
+         :onclick "riverctl set-focused-tags $((1 << (${tag} - 1)))"
+         {"${tag}"}
+        )
+       )
+  )
+ )
+)
+
+(defwindow tags
+    :monitor 0
+    :stacking "fg"
+    :exclusive false
+    :focusable false
+    :geometry (geometry :anchor "top right")
+    (workspaces)
+)

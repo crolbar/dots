@@ -40,7 +40,7 @@
     # not sure how caching works exacly but with my testing I find out that:
     # If in the input flake the nixpkgs are overritten for all other inputs (not 100% sure but in pkgs that I don't override them it always triggers compilation)
     # and in your flake (in which you use the flake as an input) you don't override nixpkgs
-    # you will be able to use the cache but if you overrite nixpkgs there is a chance that the 
+    # you will be able to use the cache but if you overrite nixpkgs there is a chance that the
     # store hash will change only because you overrite them and you will not be able to use the cache.
     dapu.url = "github:crolbar/dapu";
     matm.url = "github:crolbar/matm";
@@ -112,6 +112,16 @@
         rust-overlay.follows = "rust-overlay";
       };
     };
+
     leftwm.url = "github:leftwm/leftwm";
+
+    ristate = {
+      url = "github:crolbar/ristate";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        rust-overlay.follows = "rust-overlay";
+      };
+    };
   };
 }
