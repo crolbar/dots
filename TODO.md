@@ -25,10 +25,10 @@
 - [ ] chromium conf ?
 
 ### river
-- [ ] switch layout generator
 - [ ] bars
-- [ ] spawn in slave
+- [ ] switch layout generator ?
 - [x] touchpad tap not working
+- [x] spawn in slave
 
 ## Misc
 
