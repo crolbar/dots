@@ -13,6 +13,16 @@
     nwg-look # maybe unneeded
   ];
 
+  xdg.desktopEntries = {
+    hyprpicker = {
+      name = "HyprPicker";
+      genericName = "Terminal";
+      exec = "sh -c \"wl-copy \\$(hyprpicker)\"";
+      terminal = false;
+      icon = "xcolor";
+    };
+  };
+
   programs = {
     swaylock.enable = true;
   };
