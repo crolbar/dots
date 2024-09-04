@@ -62,6 +62,9 @@
       bind > swap-pane -D
       bind < swap-pane -U
 
+      bind . swap-window -t +1
+      bind , swap-window -t -1
+
       bind -r H resize-pane -L 2
       bind -r J resize-pane -D 2
       bind -r K resize-pane -U 2
