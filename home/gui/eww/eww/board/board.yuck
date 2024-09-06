@@ -1,12 +1,13 @@
 
 ;volume
-(deflisten volume :initial 0 `scripts/volume.sh poll`)
+(defvar volscript "~/scripts/eww/volume.sh")
+(deflisten volume :initial 0 "~/scripts/eww/volume.sh poll")
 ;notes
 (defpoll notes :interval "555h" "cat ~/.notes.txt")
 ;time
 (defpoll time :interval "10s" "date '+%I:%M %p %A %d.%m.%y'")
 ;weather
-(defpoll weather :interval "555h" `./scripts/weather.c`)
+(defpoll weather :interval "555h" `~/scripts/eww/weather`)
 
 ;network
 (defpoll upSpeed :interval "1s" `eww get EWW_NET | jq '.eno1.NET_UP' | awk '{ printf "%.2f MiB/s", $1 / 1024 }'`)
@@ -36,20 +37,20 @@
         )
         (box :class "sliders" :orientation "v" :space-evenly false :spacing 5 
             (box :space-evenly false :class "music_slider"
-                (button :class "music_icon" :onclick "scripts/volume.sh music mute" {volume.music == "0" ? "" :""} )
-                (scale :min 0 :max 151 :width 420 :value {volume.music} :onchange "scripts/volume.sh music vol-change {}"))
+                (button :class "music_icon" :onclick "${volscript} music mute" {volume.music == "0" ? "" :""} )
+                (scale :min 0 :max 151 :width 420 :value {volume.music} :onchange "${volscript} music vol-change {}"))
             (box :space-evenly false :class "browser_slider"
-                (button :class "browser_icon" :onclick "scripts/volume.sh browser mute" {volume.browser == 0 ? "" :""} )
-                (scale :min 0 :max 151 :width 420 :value {volume.browser} :onchange "scripts/volume.sh browser vol-change {}"))
+                (button :class "browser_icon" :onclick "${volscript} browser mute" {volume.browser == 0 ? "" :""} )
+                (scale :min 0 :max 151 :width 420 :value {volume.browser} :onchange "${volscript} browser vol-change {}"))
             (box :space-evenly false :class "head_slider"
-                (button :class "head_icon" :onclick "scripts/volume.sh head mute" {volume.head == 0 ? "" :""} )
-                (scale :min 0 :max 151 :width 420 :value {volume.head} :onchange "scripts/volume.sh head vol-change {}"))
+                (button :class "head_icon" :onclick "${volscript} head mute" {volume.head == 0 ? "" :""} )
+                (scale :min 0 :max 151 :width 420 :value {volume.head} :onchange "${volscript} head vol-change {}"))
             (box :space-evenly false :class "mon_slider"
-                (button :class "mon_icon" :onclick "scripts/volume.sh mon mute" {volume.mon == 0 ? "" :""} )
-                (scale :min 0 :max 151 :width 420 :value {volume.mon} :onchange "scripts/volume.sh mon vol-change {}"))
+                (button :class "mon_icon" :onclick "${volscript} mon mute" {volume.mon == 0 ? "" :""} )
+                (scale :min 0 :max 151 :width 420 :value {volume.mon} :onchange "${volscript} mon vol-change {}"))
             (box :space-evenly false :class "mic_slider"
-                (button :class "mic_icon" :onclick "scripts/volume.sh mic mute" {volume.mic == 0 ? "" :""} )
-                (scale :min 0 :max 101 :width 420 :value {volume.mic} :onchange "scripts/volume.sh mic vol-change {}"))
+                (button :class "mic_icon" :onclick "${volscript} mic mute" {volume.mic == 0 ? "" :""} )
+                (scale :min 0 :max 101 :width 420 :value {volume.mic} :onchange "${volscript} mic vol-change {}"))
         )
         (box :class "apps" :orientation "v" :space-evenly false :spacing 9
             (box :orientation "h" :space-evenly false :spacing 9

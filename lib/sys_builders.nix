@@ -1,4 +1,5 @@
 {
+  self,
   withSystem,
   inputs,
   lib,
@@ -20,7 +21,8 @@ in {
       extraSpecialArgs =
         inputs
         // {inherit inputs';}
-        // {inherit username;};
+        // {inherit username;}
+        // {inherit (self.outputs) clib;};
     in
       inputs.hm.lib.homeManagerConfiguration {
         inherit extraSpecialArgs;
@@ -48,7 +50,8 @@ in {
       specialArgs =
         inputs
         // {inherit inputs';}
-        // {inherit username;};
+        // {inherit username;}
+        // {inherit (self.outputs) clib;};
     in
       nixosSystem {
         inherit specialArgs;

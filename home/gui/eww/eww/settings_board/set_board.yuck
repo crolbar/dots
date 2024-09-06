@@ -1,25 +1,26 @@
-(defpoll b_1_val :interval "500h" :initial 0 `scripts/dcc.sh read_b 1`)
-(defpoll b_2_val :interval "500h" :initial 0 `scripts/dcc.sh read_b 2`)
-(defpoll c_1_val :interval "500h" :initial 0 `scripts/dcc.sh read_c 1`)
-(defpoll c_2_val :interval "500h" :initial 0 `scripts/dcc.sh read_c 2`)
+(defpoll b_1_val :interval "500h" :initial 0 `~/scripts/eww/dcc.sh read_b 1`)
+(defpoll b_2_val :interval "500h" :initial 0 `~/scripts/eww/dcc.sh read_b 2`)
+(defpoll c_1_val :interval "500h" :initial 0 `~/scripts/eww/dcc.sh read_c 1`)
+(defpoll c_2_val :interval "500h" :initial 0 `~/scripts/eww/dcc.sh read_c 2`)
+(defvar dccscript "~/scripts/eww/dcc.sh")
 
 (defwidget set_board []
     (box :orientation "v" :class "set_board" :space-evenly false
           (box :class "sliders" :orientation "v" 
               (box :space-evenly false :class "brigth_1"
-                  (scale :class "b1" :min 0 :max 100 :width 300 :value b_1_val :onchange "scripts/dcc.sh b 1 {}")
+                  (scale :class "b1" :min 0 :max 100 :width 300 :value b_1_val :onchange "${dccscript} b 1 {}")
               )
               (box :space-evenly false :class "contr_1" :orientation: "h"
-                  (scale :class "c1" :min 0 :max 100 :width 300 :value c_1_val :onchange "scripts/dcc.sh c 1 {}")
+                  (scale :class "c1" :min 0 :max 100 :width 300 :value c_1_val :onchange "${dccscript} c 1 {}")
               )
 
               (box)
 
               (box :space-evenly false :class "brigth_2"
-                  (scale :class "b1" :min 0 :max 100 :width 300 :value b_2_val :onchange "scripts/dcc.sh b 2 {}")
+                  (scale :class "b1" :min 0 :max 100 :width 300 :value b_2_val :onchange "${dccscript} b 2 {}")
               )
               (box :space-evenly false :class "contr_2"
-                  (scale :class "c1" :min 0 :max 100 :width 300 :value c_2_val :onchange "scripts/dcc.sh c 2 {}")
+                  (scale :class "c1" :min 0 :max 100 :width 300 :value c_2_val :onchange "${dccscript} c 2 {}")
               )
           )
     )

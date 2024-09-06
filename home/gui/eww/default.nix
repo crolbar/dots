@@ -1,7 +1,5 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    scriptisto # for c scripts
-  ];
+{
+  imports = [./scripts];
 
   programs.eww = {
     enable = true;
