@@ -70,6 +70,7 @@ in {
       keyboard-layout = "-variant \",dvorak,phonetic\" -options \"grp:win_space_toggle\" \"us,us,bg\"";
 
       focus-follows-cursor = "always";
+      set-cursor-warp = "on-focus-change";
       default-attach-mode = "below"; # spawn in slave
     };
 
