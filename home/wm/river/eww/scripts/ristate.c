@@ -1,10 +1,3 @@
-#!/usr/bin/env scriptisto
-
-// scriptisto-begin
-// script_src: ristate.c
-// build_cmd: gcc ristate.c -o ./script
-// scriptisto-end
-
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>

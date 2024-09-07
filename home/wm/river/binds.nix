@@ -57,7 +57,6 @@ in {
         "Super Down" = "send-layout-cmd wideriver '--layout bottom'";
         "Super Left" = "send-layout-cmd wideriver '--layout left'";
 
-
         # Floats
         "Super+Control H" = "move left 100";
         "Super+Control J" = "move down 100";
@@ -75,7 +74,6 @@ in {
 
         "Super+Shift Period" = "send-to-output next";
         "Super+Shift Comma" = "send-to-output previous";
-
 
         # EWW
         "Super s" = "spawn \"eww open board --toggle\"";
@@ -109,7 +107,6 @@ in {
 
         "None PRINT" = "spawn 'grim -g \"$(slurp)\" - | wl-copy && wl-paste -n > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of the region taken\" -t 1000 # screenshot of a region'";
         "Shift PRINT" = "spawn 'grim - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of whole screen taken\" -t 1000 # screenshot of the whole screen'";
-
       };
 
     map-pointer.normal = {

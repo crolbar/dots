@@ -1,4 +1,4 @@
-(deflisten ristate "./scripts/ristate.c")
+(deflisten ristate "./scripts/ristate")
 
 (defwidget workspaces []
  (box :class "workspaces"

@@ -4,6 +4,7 @@ in {
   imports = [
     ./binds.nix
     ./kanshi.nix
+    ./eww
 
     ../share/wayland
     ../share/dunst.nix
@@ -12,13 +13,8 @@ in {
 
   home.packages = with pkgs; [
     polkit_gnome
-    eww
-    scriptisto # for c scripts
-    ristate
     wideriver
   ];
-
-  xdg.configFile."river/eww".source = ./eww;
 
   wayland.windowManager.river = rec {
     enable = true;
