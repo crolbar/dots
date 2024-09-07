@@ -1,5 +1,4 @@
-;;(deflisten hyprland "scripts/hyprland.sh")
-(deflisten hyprland "./scripts/hyprland.c")
+(deflisten hyprland "./scripts/hyprland")
 (deflisten volume "scripts/pulse.sh")
 
 (defpoll short_time :interval "10s" "date '+%I:%M %p'")
@@ -28,7 +27,7 @@
                 :width 20
                 :class "workspace ${hyprland.active == workspace.id ? "current" : ""}"
                 :onclick "hyprctl dispatch workspace name:${workspace.name}"
-                :onscroll "./scripts/workspace_scroll.c {}"
+                :onscroll "./scripts/workspace_scroll {}"
                 "${workspace.name}"
             )
         )

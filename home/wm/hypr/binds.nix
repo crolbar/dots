@@ -31,9 +31,9 @@
       "SUPER ALT CTRL SHIFT, v, exec, sudo virsh shutdown win10 "
 
       # switch to next rgb profile
-      "SUPER CTRL, a, exec, ~/.config/hypr/scripts/rgb"
+      "SUPER CTRL, a, exec, ~/.config/hypr/scripts/rgb.sh"
       # open KeyboardVisualizer and start openrgb server
-      "SUPER CTRL SHIFT, a, exec, ~/.config/hypr/scripts/rgb s"
+      "SUPER CTRL SHIFT, a, exec, ~/.config/hypr/scripts/rgb.sh s"
       # stop openrgb and turn off lights
       "SUPER CTRL ALT, a, exec, openrgb -p black"
 
@@ -61,29 +61,29 @@
 
       # switch workspaces
       "SUPER, grave, workspace, name:0"
-      "SUPER, 1, exec, ~/.config/hypr/scripts/dispatch.c 1 f"
-      "SUPER, 2, exec, ~/.config/hypr/scripts/dispatch.c 2 f"
-      "SUPER, 3, exec, ~/.config/hypr/scripts/dispatch.c 3 f"
-      "SUPER, 4, exec, ~/.config/hypr/scripts/dispatch.c 4 f"
-      "SUPER, 5, exec, ~/.config/hypr/scripts/dispatch.c 5 f"
-      "SUPER, 6, exec, ~/.config/hypr/scripts/dispatch.c 6 f"
-      "SUPER, 7, exec, ~/.config/hypr/scripts/dispatch.c 7 f"
-      "SUPER, 8, exec, ~/.config/hypr/scripts/dispatch.c 8 f"
-      "SUPER, 9, exec, ~/.config/hypr/scripts/dispatch.c 9 f"
-      "SUPER, 0, exec, ~/.config/hypr/scripts/dispatch.c 10 f"
+      "SUPER, 1, exec, ~/.config/hypr/scripts/dispatch 1 f"
+      "SUPER, 2, exec, ~/.config/hypr/scripts/dispatch 2 f"
+      "SUPER, 3, exec, ~/.config/hypr/scripts/dispatch 3 f"
+      "SUPER, 4, exec, ~/.config/hypr/scripts/dispatch 4 f"
+      "SUPER, 5, exec, ~/.config/hypr/scripts/dispatch 5 f"
+      "SUPER, 6, exec, ~/.config/hypr/scripts/dispatch 6 f"
+      "SUPER, 7, exec, ~/.config/hypr/scripts/dispatch 7 f"
+      "SUPER, 8, exec, ~/.config/hypr/scripts/dispatch 8 f"
+      "SUPER, 9, exec, ~/.config/hypr/scripts/dispatch 9 f"
+      "SUPER, 0, exec, ~/.config/hypr/scripts/dispatch 10 f"
 
       # move focused window to a workspace
       "SUPER SHIFT, grave, movetoworkspacesilent, name:0"
-      "SUPER SHIFT, 1, exec, ~/.config/hypr/scripts/dispatch.c 1 s"
-      "SUPER SHIFT, 2, exec, ~/.config/hypr/scripts/dispatch.c 2 s"
-      "SUPER SHIFT, 3, exec, ~/.config/hypr/scripts/dispatch.c 3 s"
-      "SUPER SHIFT, 4, exec, ~/.config/hypr/scripts/dispatch.c 4 s"
-      "SUPER SHIFT, 5, exec, ~/.config/hypr/scripts/dispatch.c 5 s"
-      "SUPER SHIFT, 6, exec, ~/.config/hypr/scripts/dispatch.c 6 s"
-      "SUPER SHIFT, 7, exec, ~/.config/hypr/scripts/dispatch.c 7 s"
-      "SUPER SHIFT, 8, exec, ~/.config/hypr/scripts/dispatch.c 8 s"
-      "SUPER SHIFT, 9, exec, ~/.config/hypr/scripts/dispatch.c 9 s"
-      "SUPER SHIFT, 0, exec, ~/.config/hypr/scripts/dispatch.c 10 s"
+      "SUPER SHIFT, 1, exec, ~/.config/hypr/scripts/dispatch 1 s"
+      "SUPER SHIFT, 2, exec, ~/.config/hypr/scripts/dispatch 2 s"
+      "SUPER SHIFT, 3, exec, ~/.config/hypr/scripts/dispatch 3 s"
+      "SUPER SHIFT, 4, exec, ~/.config/hypr/scripts/dispatch 4 s"
+      "SUPER SHIFT, 5, exec, ~/.config/hypr/scripts/dispatch 5 s"
+      "SUPER SHIFT, 6, exec, ~/.config/hypr/scripts/dispatch 6 s"
+      "SUPER SHIFT, 7, exec, ~/.config/hypr/scripts/dispatch 7 s"
+      "SUPER SHIFT, 8, exec, ~/.config/hypr/scripts/dispatch 8 s"
+      "SUPER SHIFT, 9, exec, ~/.config/hypr/scripts/dispatch 9 s"
+      "SUPER SHIFT, 0, exec, ~/.config/hypr/scripts/dispatch 10 s"
 
       # lock, poweroff, reboot, sleep, exit
       "SUPER SHIFT ALT CTRL, l, exec, swaylock -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3 &"
@@ -102,11 +102,11 @@
       # button box binds
       "SUPER SHIFT ALT, F11, exec, ~/.config/hypr/scripts/volume.sh music-"
       "SUPER SHIFT ALT, F12, exec, ~/.config/hypr/scripts/volume.sh music+"
-      "SUPER SHIFT ALT, F7, exec, ~/.config/eww/scripts/volume.sh music mute"
+      "SUPER SHIFT ALT, F7, exec, ~/scripts/eww/volume.sh music mute"
 
       "SUPER SHIFT ALT, F9, exec, ~/.config/hypr/scripts/volume.sh browser-"
       "SUPER SHIFT ALT, F10, exec, ~/.config/hypr/scripts/volume.sh browser+"
-      "SUPER SHIFT ALT, F8, exec, ~/.config/eww/scripts/volume.sh browser mute"
+      "SUPER SHIFT ALT, F8, exec, ~/scripts/eww/volume.sh browser mute"
 
       "SUPER ALT, F9, exec, pamixer -d 5"
       "SUPER ALT, F10, exec, pamixer -i 5"

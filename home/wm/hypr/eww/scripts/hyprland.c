@@ -1,10 +1,3 @@
-#!/usr/bin/env scriptisto
-
-// scriptisto-begin
-// script_src: hyprland.c
-// build_cmd: gcc hyprland.c -o ./script
-// scriptisto-end
-
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>

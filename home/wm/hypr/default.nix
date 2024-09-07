@@ -7,20 +7,15 @@
     #hyprland.homeManagerModules.default
     ./binds.nix
     ./settings.nix
+    ./eww
+    ./scripts
 
     ../share/wayland
     ../share/dunst.nix
     ../share/wall
   ];
 
-  home.packages = with pkgs; [
-    polkit_gnome
-    eww
-    scriptisto # for c scripts
-  ];
-
-  xdg.configFile."hypr/eww".source = ./eww;
-  xdg.configFile."hypr/scripts".source = ./scripts;
+  home.packages = [pkgs.polkit_gnome];
 
   wayland.windowManager.hyprland.enable = true;
 }

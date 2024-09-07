@@ -1,15 +1,6 @@
-#!/usr/bin/env scriptisto
-
-// scriptisto-begin
-// script_src: dispatch.c
-// build_cmd: gcc dispatch.c -o ./script
-// scriptisto-end
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <unistd.h>
@@ -71,12 +62,6 @@ int main(int argc, char** argv)
             sprintf(cmd, fmt, action, wid);
 
             write(client_fd, cmd, size);
-
-            //char buffer[100];
-            //int num_read = read(client_fd, buffer, sizeof(buffer));
-            //if (num_read > 0) {
-            //    printf("Client received: %s\n", buffer);
-            //}
 
             free(cmd);
             free(sock_path);
