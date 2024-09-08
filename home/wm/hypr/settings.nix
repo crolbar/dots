@@ -117,6 +117,7 @@ in {
         "windowsIn, 1, 3, cubic, slide"
         "windowsOut, 1, 3, cubic, slide"
         "windowsMove, 1, 3, cubic, slide"
+        "fade, 1, 3, cubic"
 
         # idk if this is working on nvidia but
         # on my laptop there is an anoing red bar on unfocused windows for 2 secs
