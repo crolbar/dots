@@ -14,6 +14,7 @@ in {
   home.packages = with pkgs; [
     polkit_gnome
     wideriver
+    lswt
   ];
 
   wayland.windowManager.river = rec {
@@ -30,6 +31,7 @@ in {
         "swww-daemon"
       ];
 
+      # `lswt` to get id and name
       rule-add = {
         # alt -app-id
         "-title" = {
