@@ -123,5 +123,14 @@
         rust-overlay.follows = "rust-overlay";
       };
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "hm";
+        darwin.follows = "";
+      };
+    };
   };
 }

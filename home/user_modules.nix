@@ -2,6 +2,8 @@
   crolbar = [
     ./cli
     ./cli/zzz
+    ./cli/leetcode_cli.nix
+    ./misc/agenix.nix
     ./gui
     ./dev
     ./wm/bsp
