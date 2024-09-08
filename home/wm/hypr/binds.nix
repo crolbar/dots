@@ -120,6 +120,9 @@
       # screenshot
       ", Print, exec, grim -g \"$(slurp)\" - | wl-copy && wl-paste -n > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of the region taken\" -t 1000 # screenshot of a region "
       "SHIFT, Print, exec, grim - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of whole screen taken\" -t 1000 # screenshot of the whole screen"
+
+      # layout
+      "SUPER, space, exec, dunstify layout \"changed to: $(hyprctl devices -j | jq '.keyboards[] | select(.name == \"crolbar-yuki\") | .active_keymap')\""
     ];
   };
 }
