@@ -11,7 +11,7 @@ in{
   home.packages = [inputs'.agenix.packages.default];
 
   age.secrets.leet = {
-    file = ../../secrets/csrf.age;
+    file = ../../secrets/leet.age;
     path = "${home}/.leetcode/leetcode.toml";
     mode = "644";
   };
