@@ -1,7 +1,13 @@
-{
+{pkgs, ...}: {
   services.picom = {
-    enable = true;
-    #backend = "glx";
+    enable = false;
+    backend = "glx";
     vSync = true;
   };
+
+  home.packages = [pkgs.picom];
+  xdg.configFile."picom/picom.conf".text = ''
+    backend = "glx";
+    vsync = true;
+  '';
 }
