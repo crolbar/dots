@@ -50,7 +50,8 @@ int get_workspace_id(char* str)
             num = num * 10 + str[i] - '0';
         }
     }
-    if (negative) {
+    if (negative) 
+    {
         num *= -1;
     }
 
@@ -112,7 +113,8 @@ char* get_workspaces(char* str,
     size_t wrk_len = strlen(wrk);
 
     int num_wrksps = 0;
-    for (int i = 0; i < wrk_len; i++) {
+    for (int i = 0; i < wrk_len; i++) 
+    {
         if (wrk[i] == '{' )
             num_wrksps += 1;
     }
@@ -122,7 +124,8 @@ char* get_workspaces(char* str,
 
     int start = 0;
     int end = 0;
-    for (int i = 0; i < wrk_len; i++) {
+    for (int i = 0; i < wrk_len; i++) 
+    {
         if (wrk[i] == '{') {
             start = i;
         } else if (wrk[i] == '}') {
@@ -141,12 +144,14 @@ char* get_workspaces(char* str,
 
     free(wrk);
 
-    for (int i = 1; i < wrk_arr_size; i++) {
+    for (int i = 1; i < wrk_arr_size; i++) 
+    {
         char* w = wrk_arr[i];
         int key = get_workspace_id(w);
         int j = i - 1;
 
-        while (j >= 0 && get_workspace_id(wrk_arr[j]) > key) {
+        while (j >= 0 && get_workspace_id(wrk_arr[j]) > key) 
+        {
             wrk_arr[j + 1] = wrk_arr[j];
             j = j - 1;
         }
@@ -184,7 +189,8 @@ char* get_activeworkspace_id(char* str,
      
 
     char* awid = strstr(activeworkspace, "\"id\": ");
-    if (awid == NULL) {
+    if (awid == NULL) 
+    {
         free(activeworkspace);
         return NULL;
     }
@@ -192,7 +198,8 @@ char* get_activeworkspace_id(char* str,
     int awid_start = -1;
     int awid_end = -1;
 
-    for (int i = 0; i < strlen(awid); i++) {
+    for (int i = 0; i < strlen(awid); i++) 
+    {
         if (awid[i] == ' ') {
             awid_start = i;
         } else if (awid[i] == ',') {
@@ -223,7 +230,8 @@ char* get_activewidnow_title(char* str,
 
     char* aw = strstr(activewindow, "\"title\": ");
 
-    if (aw == NULL) {
+    if (aw == NULL) 
+    {
         free(activewindow);
         return NULL;
     }
@@ -232,7 +240,8 @@ char* get_activewidnow_title(char* str,
     int aw_end = -1;
 
 
-    for (int i = 1; i < strlen(aw); i++) {
+    for (int i = 1; i < strlen(aw); i++) 
+    {
         if (aw[i-1] == ' ' && aw[i] == '"' && aw_start == -1) {
             aw_start = i;
         } else if (aw[i] == '"' && aw[i+1] == ',') {
@@ -268,7 +277,8 @@ char* get_keymap(char* str,
 
     char* km = strstr(kb, "\"active_keymap\": ");
 
-    if (km == NULL) {
+    if (km == NULL) 
+    {
         free(devices);
         return NULL;
     }
@@ -277,7 +287,8 @@ char* get_keymap(char* str,
     int km_end = -1;
 
 
-    for (int i = 1; i < strlen(km); i++) {
+    for (int i = 1; i < strlen(km); i++) 
+    {
         if (km[i-1] == ' ' && km[i] == '"' && km_start == -1) {
             km_start = i;
         } else if (km[i] == '"' && km[i+1] == ',') {
@@ -305,9 +316,12 @@ char* get_obj(char* str)
     int activeworkspace_end = -1;
     int activewindow_end = -1;
 
-    for (int i = 0; i < str_len; i++) {
-        if (i < str_len - 1) {
-            if (str[i] == '\n' && str[i+1] == '\n' && str[i+2] == '\n') {
+    for (int i = 0; i < str_len; i++) 
+    {
+        if (i < str_len - 1) 
+        {
+            if (str[i] == '\n' && str[i+1] == '\n' && str[i+2] == '\n') 
+            {
                 if (workspaces_end == -1) {
                     workspaces_end = i;
                 } else if (activeworkspace_end == -1) {
@@ -332,22 +346,29 @@ char* get_obj(char* str)
     //printf("activeworkspace_id: `%s`\n", activeworkspace_id);
 
     char* empty = "  ";
-    if (workspaces == NULL) {
+    if (workspaces == NULL) 
+    {
         workspaces = malloc(3);
         strcpy(workspaces, "[]");
         workspaces[2] = '\0';
     }
-    if (activeworkspace_id == NULL) {
+
+    if (activeworkspace_id == NULL) 
+    {
         activeworkspace_id = malloc(3);
         strcpy(activeworkspace_id, empty);
         activeworkspace_id[2] = '\0';
     }
-    if (activewidnow_title == NULL) {
+
+    if (activewidnow_title == NULL) 
+    {
         activewidnow_title = malloc(3);
         strcpy(activewidnow_title, empty);
         activewidnow_title[2] = '\0';
     }
-    if (keymap == NULL) {
+
+    if (keymap == NULL) 
+    {
         keymap = malloc(3);
         strcpy(keymap, empty);
         keymap[2] = '\0';
@@ -364,6 +385,53 @@ char* get_obj(char* str)
     free(workspaces);
 
     return obj;
+}
+
+
+void up(char* sock_path, char* buffer) 
+{
+    //printf("%s\n", buffer);
+    int socket1 = socket_connect(sock_path);
+
+    {
+        char *s = "[[BATCH]]j/workspaces ; j/activeworkspace ; j/activewindow ; j/devices";
+
+        write(socket1, s, strlen(s));
+
+
+        size_t size_red = read(socket1, buffer, 8192);
+        if (size_red > 0) 
+        {
+            size_t reply_size = size_red + 1;
+            char* reply = malloc(reply_size);
+            strncpy(reply, buffer, size_red);
+            reply[size_red] = '\0';
+
+            while (size_red == 8192) 
+            {
+                size_red = read(socket1, buffer, 8192);
+
+                size_t new_reply_size = reply_size + size_red;
+                char *new_reply = realloc(reply, new_reply_size);
+
+                reply = new_reply;
+                strncat(reply, buffer, size_red);
+                reply_size = new_reply_size;
+            }
+
+            reply[reply_size-1] = '\0';
+
+            char* c = get_obj(reply);
+            if (c)
+                printf("%s", c);
+
+            free(reply);
+            free(c);
+        }
+    }
+
+    memset(buffer, 0, 8192);
+    close(socket1);
 }
 
 void stop(int sig) {exit(0);}
@@ -391,48 +459,10 @@ int main(int argc, char** argv)
 
     char* buffer = malloc(8192);
 
+    up(sock_path, buffer);
     while (read(socket2, buffer, 8192) > 0)
     {
-        //printf("%s\n", buffer);
-        int socket1 = socket_connect(sock_path);
-
-        {
-            char *s = "[[BATCH]]j/workspaces ; j/activeworkspace ; j/activewindow ; j/devices";
-
-            write(socket1, s, strlen(s));
-
-
-            size_t size_red = read(socket1, buffer, 8192);
-            if (size_red > 0) {
-                size_t reply_size = size_red + 1;
-                char* reply = malloc(reply_size);
-                strncpy(reply, buffer, size_red);
-                reply[size_red] = '\0';
-
-                while (size_red == 8192) {
-                    size_red = read(socket1, buffer, 8192);
-
-                    size_t new_reply_size = reply_size + size_red;
-                    char *new_reply = realloc(reply, new_reply_size);
-
-                    reply = new_reply;
-                    strncat(reply, buffer, size_red);
-                    reply_size = new_reply_size;
-                }
-
-                reply[reply_size-1] = '\0';
-
-               char* c = get_obj(reply);
-                if (c)
-                    printf("%s", c);
-
-                free(reply);
-                free(c);
-            }
-        }
-
-        memset(buffer, 0, 8192);
-        close(socket1);
+        up(sock_path, buffer);
     }
 
     free(buffer);
