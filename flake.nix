@@ -33,7 +33,12 @@
       };
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=0f594732b063a90d44df8c5d402d658f27471dfe";
+    hyprland = {
+      type = "git";
+      url = "https://github.com/hyprwm/Hyprland";
+      ref = "refs/tags/v0.43.0";
+      submodules = true;
+    };
 
     yazi.url = "github:sxyazi/yazi";
 
