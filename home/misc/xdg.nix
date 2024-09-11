@@ -12,8 +12,7 @@
   discordClient = ["vesktop.desktop"];
   spotifyClient = ["spotify.desktop"];
   pdfPlayer = ["zathura.desktop"];
-
-  #mail = [""];
+  mail = ["zoho-mail-desktop.desktop"];
 
   associations = {
     "text/html" = browser;
@@ -44,7 +43,7 @@
 
     "x-scheme-handler/spotify" = spotifyClient;
     "x-scheme-handler/discord" = discordClient;
-    #"x-scheme-handler/mailto" = mail;
+    "x-scheme-handler/mailto" = mail;
   };
 in {
   xdg = {
