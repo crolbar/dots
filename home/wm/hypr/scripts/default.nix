@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  musicPlayer = "spotify";
+  musicPlayer = "Music Player Daemon";
   browser = "Firefox";
 in {
   imports = [

@@ -4,7 +4,7 @@
   ...
 }: let
   browser = "Firefox";
-  music_player = "spotify";
+  music_player = "Music Player Daemon";
   args = {inherit pkgs browser music_player;};
 in {
   imports = [

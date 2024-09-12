@@ -7,6 +7,7 @@
     ./obs.nix
     ./term_emulators
     ./zoho.nix
+    ./nextcloud.nix
   ];
 
   home.packages = with pkgs; [
