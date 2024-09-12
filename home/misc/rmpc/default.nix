@@ -6,6 +6,12 @@
   musicDir = "${config.home.homeDirectory}/Music";
 in {
   services = {
+    mpd-discord-rpc = {
+      enable = true;
+      settings = {
+        id = 1283875986626187304;
+      };
+    };
     mpd = {
       enable = true;
       musicDirectory = musicDir;
