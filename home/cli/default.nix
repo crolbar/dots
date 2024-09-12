@@ -34,5 +34,6 @@
     trash-cli
     pulseaudioFull # for pactl
     cachix
+    #(pkgs.callPackage ../../drvs/binsider.nix {})
   ];
 }
