@@ -82,6 +82,12 @@ in {
       repeat_delay = "300";
     };
 
+    device = {
+      name = "crolbar-yuki-1";
+      accel_profile = "adaptive";
+      sensitivity = -0.2;
+    };
+
     misc = {
       disable_hyprland_logo = true;
       background_color = "0x000000";
