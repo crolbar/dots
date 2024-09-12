@@ -77,6 +77,9 @@ in {
       kb_options = "grp:win_space_toggle";
       kb_layout = "us,us,bg";
       kb_variant = ",dvorak,phonetic";
+
+      repeat_rate = "50";
+      repeat_delay = "300";
     };
 
     misc = {
