@@ -99,6 +99,9 @@ in {
         "None XF86AudioRaiseVolume" = "spawn 'amixer set Master 5%+ && dunstctl close-all && dunstify \"Volume at: $(pamixer --get-volume-human)\"'";
         "None XF86AudioMute" = "spawn 'amixer set Master toggle && dunstify \"Volume at: $(pamixer --get-volume-human)\"'";
         "None XF86AudioMicMute" = "spawn 'amixer set Capture toggle && dunstify \"Mic at: $(pamixer --get-volume-human --default-source)\"'";
+        "None XF86AudioPrev" = "spawn 'playerctl previous'";
+        "None XF86AudioNext" = "spawn 'playerctl next'";
+        "None XF86AudioPlay" = "spawn 'playerctl play-pause'";
 
         # MISC
         "Super+Shift+Alt+Control q" = "exit";
