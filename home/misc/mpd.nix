@@ -73,8 +73,8 @@ in {
 
       printf "\e[31mRemoving ~/.local/share/mpd/tag_cache..\e[0m\n"
       rm ~/.local/share/mpd/tag_cache
-      printf "\e[31mRemoving ~/.Music/playlysts/*..\e[0m\n"
-      rm ~/.Music/playlysts/*
+      printf "\e[31mRemoving ~/Music/playlists/*..\e[0m\n"
+      rm ~/Music/playlists/*
 
       printf "\e[32mStarting mpd services..\e[0m\n"
       systemctl start --user mpd-discord-rpc.service mpdris2.service mpd.service
