@@ -1,37 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
-  musicDir = "${config.home.homeDirectory}/Music";
-in {
-  services = {
-    mpd-discord-rpc = {
-      enable = true;
-      settings = {
-        id = 1283875986626187304;
-      };
-    };
-    mpd = {
-      enable = true;
-      musicDirectory = musicDir;
-      playlistDirectory = "${musicDir}/playlists";
-      extraConfig = ''
-        audio_output {
-          type "pipewire"
-          name "PipeWire Sound Server"
-        }
-        audio_output {
-          type "fifo"
-          name "pipe"
-          path "/tmp/mpd.fifo"
-        }
-        replaygain "track"
-        replaygain_limit "no"
-      '';
-    };
-  };
-
+{pkgs, ...}: {
   home.packages = [
     #(pkgs.callPackage ../../../drvs/rmpc.nix {})
     pkgs.rmpc

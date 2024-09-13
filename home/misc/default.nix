@@ -2,6 +2,6 @@
   imports = [
     ./xdg.nix
     ./gtk.nix
-    ./rmpc
+    ./mpd.nix
   ];
 }
