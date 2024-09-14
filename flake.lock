@@ -747,11 +747,11 @@
         "rust-overlay": "rust-overlay_3"
       },
       "locked": {
-        "lastModified": 1724165395,
-        "narHash": "sha256-JKq++IQmU3Dug1bPB1y9dE5dALqvdBavwhuZ3+Qzi+c=",
+        "lastModified": 1726338889,
+        "narHash": "sha256-sRG57/tXIkqrVhWmZvyvMjBB3B939gV1I+8DRtCXJvQ=",
         "owner": "crolbar",
         "repo": "matm",
-        "rev": "5bd3da7d4469b4b03408409b2d9214d172e742c9",
+        "rev": "d75acb7f6dc6226b50e4af94e6c48cf314590c98",
         "type": "github"
       },
       "original": {
