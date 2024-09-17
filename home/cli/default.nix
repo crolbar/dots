@@ -5,6 +5,7 @@
     ./starship.nix
     ./tmux.nix
     ./gitui.nix
+    ./lazygit.nix
     ./zellij.nix
     ./neovim
   ];
