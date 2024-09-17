@@ -1,4 +1,20 @@
-{
+{pkgs, ...}: let
+  gitFrontend = "lazygit";
+  gitScript = pkgs.writers.writeBash "git.sh" ''
+    if ! tmux has-session -t git 2>/dev/null; then
+        tmux new-session -d -s git -c "$(tmux display-message -p '#{pane_current_path}')" "${gitFrontend}; zsh"
+    fi
+    if [ "$(tmux display-message -p '#S')" == "git" ]; then
+        tmux switch-client -l
+    else
+        if [ "$(tmux display-message -p '#{pane_current_path}')" != "$(tmux display-message -t git -p '#{pane_current_path}')" ]; then
+            tmux kill-session -t git
+            tmux new-session -d -s git -c "$(tmux display-message -p '#{pane_current_path}')" "${gitFrontend}; zsh"
+        fi
+        tmux switch-client -t git
+    fi
+  '';
+in {
   programs.tmux = {
     enable = true;
 
@@ -79,6 +95,7 @@
       bind -T copy-mode-vi Escape send -X cancel
 
       bind b set-option -g status
+      bind g run-shell "${gitScript}"
     '';
   };
 }
