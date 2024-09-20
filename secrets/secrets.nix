@@ -3,4 +3,5 @@ let
   plier = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtqrRAGCPikoJLsp0N612KkbRA58gj3WJazEmZyu34+WLBQ3j27bmdD/QnnVWJTNYb9DT45hTj+yhumCJKE9iJjYH6bGl3X7k/1MsWTqvHVp7JT2k+XO51mav1meD2uEwsjq5OVGjlAMJcdtBzbXlpiyJv/14BmL2tY8c/7OfM/NqbOXQlJuMcRTBm7EN+sFr6Z3o3sYpNEuTdKnUGwAOt0Cw+dZZDImvP8JdgITMKgbw5jxTRLslgc6TuGzvb8f14wpEpInZDTHeVesxLnkHzr1CVvR6ySfYZfP2JcZxSM41zAi6PhilZdt8dqjQs0A3RnaHq1BrIYWg7VYWUx24JZcrk6j8eKSANfUCkeYdPJOqI76ZGSMF8yCD5kEOo5IxvFFzhtHDsQjz7LNwWNPb+ROhtHojoqEaVrWyVdOHcbTdnlDhnOzE1/Hu3akZxWBrycSZUVX6K9C7CwGN7FWZceG3T/IyhTBcs8NXgYftEOzJ/wvvbTfUBWvchSmCmC5c=";
 in {
   "leet.age".publicKeys = [crolbar plier];
+  "git.age".publicKeys = [crolbar plier];
 }
