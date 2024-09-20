@@ -1,5 +1,5 @@
 {pkgs, ...}: {
   home.packages = [
-    (pkgs.callPackage ../../drvs/zohoMail.nix {})
+    (pkgs.callPackage ../../derivations/zohoMail.nix {})
   ];
 }

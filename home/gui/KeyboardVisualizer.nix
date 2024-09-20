@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.packages = [
-    (pkgs.callPackage ../../drvs/KeyboardVisualizer.nix {})
+    (pkgs.callPackage ../../derivations/KeyboardVisualizer.nix {})
   ];
 
   home.file."settings.txt".text = ''
