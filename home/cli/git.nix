@@ -16,8 +16,20 @@
 
         url."https://github.com/".insteadOf = ["gh:"];
 
+        http.postBuffer = 157286400;
+
         core.askPass = "";
-        credential.helper = "store";
+
+        credential = {
+          helper = "store";
+
+          "https://github.com/crolbar" = {
+            username = "crolbar";
+          };
+          "https://github.com/voicegrip" = {
+            username = "voicegrip";
+          };
+        };
       };
     };
 
