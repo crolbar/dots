@@ -44,7 +44,7 @@
 - [x] switch audio to pipewire ?
 - [x] yazi with xdg-open opens with xterm
 
-- [ ] better java formatter ?
+- [x] better java formatter ? urgent !!! (this google bullshit is being timeouted for being slow jesus)
 
 - https://github.com/cynicsketch/nix-mineral
 - https://github.com/the-nix-way/dev-templates/blob/main/rust/flake.nix#L15

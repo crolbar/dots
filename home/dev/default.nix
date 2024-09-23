@@ -39,6 +39,5 @@
 
     jetbrains.idea-community
     jdt-language-server
-    google-java-format
   ];
 }
