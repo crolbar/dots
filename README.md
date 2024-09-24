@@ -56,4 +56,4 @@ The software I use across my systems is:
 
 
 # Credits
-**BIG** help in the making of this flake were [NotAShelf's]() [nyx](https://github.com/NotAShelf/nyx) and [fufexan's](https://github.com/fufexan) [dotfiles](https://github.com/fufexan/dotfiles).
+**BIG** help in the making of this flake were [NotAShelf's](https://github.com/NotAShelf) [nyx](https://github.com/NotAShelf/nyx) and [fufexan's](https://github.com/fufexan) [dotfiles](https://github.com/fufexan/dotfiles).
