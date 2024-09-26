@@ -1,4 +1,8 @@
-{pkgs, username, ...}: {
+{
+  pkgs,
+  username,
+  ...
+}: {
   users = {
     mutableUsers = false;
     defaultUserShell = pkgs.zsh;

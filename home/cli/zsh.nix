@@ -1,7 +1,4 @@
-{
-  inputs',
-  ...
-}: {
+{inputs', ...}: {
   home.packages = [inputs'.microfetch.packages.default];
   programs.zsh = {
     enable = true;

@@ -23,7 +23,7 @@
           MANGOHUD = true;
           # adding `windows` fixes "Failed to initialize dependencies" error on sea of theves (probably on other EAC games too)
           # https://www.reddit.com/r/linux_gaming/comments/1cvrvyg/psa_easy_anticheat_eac_failed_to_initialize/
-          SDL_VIDEODRIVER = "x11,wayland,windows"; 
+          SDL_VIDEODRIVER = "x11,wayland,windows";
         };
         extraLibraries = ps: with ps; [atk];
       };

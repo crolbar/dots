@@ -16,8 +16,8 @@
     };
 
     fontDir = {
-        enable = true;
-        decompressFonts = true;
+      enable = true;
+      decompressFonts = true;
     };
   };
 }
