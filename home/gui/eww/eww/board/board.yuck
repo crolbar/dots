@@ -7,7 +7,7 @@
 ;time
 (defpoll time :interval "10s" "date '+%I:%M %p %A %d.%m.%y'")
 ;weather
-(defpoll weather :interval "555h" `~/scripts/eww/weather`)
+(defpoll weather :interval "555h" :initial "" `~/scripts/eww/weather`)
 
 ;network
 (defpoll upSpeed :interval "1s" `eww get EWW_NET | jq '.eno1.NET_UP' | awk '{ printf "%.2f MiB/s", $1 / 1024 }'`)

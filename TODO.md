@@ -47,6 +47,7 @@
 - [x] better java formatter ? urgent !!! (this google bullshit is being timeouted for being slow jesus)
 
 - https://github.com/cynicsketch/nix-mineral
+- https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/profiles/hardened.nix
 - https://github.com/the-nix-way/dev-templates/blob/main/rust/flake.nix#L15
 
 - [x] firefox update fucked simplefox. fix that ?
