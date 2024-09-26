@@ -1,0 +1,49 @@
+name: nix-checks
+
+on:
+  push:
+    paths:
+      - "**/*.nix"
+  pull_request:
+    paths:
+      - "**/*.nix"
+
+jobs:
+  flake-check:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        token: "${{ secrets.PAT }}"
+
+    - name: Install Nix
+      uses: cachix/install-nix-action@v27
+      with:
+        github_access_token: ${{ secrets.PAT }}
+
+    - name: Run nix flake check
+      run: |
+        sed -i 's/git+file:.\/home\/cli\/neovim\/nvim/github:crolbar\/nvim/g' flake.nix
+        nix flake check --all-systems
+
+  alejandra-check:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        token: "${{ secrets.PAT }}"
+
+    - name: Install Nix
+      uses: cachix/install-nix-action@v27
+      with:
+        github_access_token: ${{ secrets.PAT }}
+
+    - name: Install Alejandra
+      run: nix profile install nixpkgs#alejandra
+
+    - name: Check formatting with Alejandra
+      run: alejandra --check .
