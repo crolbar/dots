@@ -8,7 +8,7 @@
       };
       displayManager = {
         startx.enable = true;
-        xterm.enable = false;
+        #xterm.enable = false;
       };
     };
 
