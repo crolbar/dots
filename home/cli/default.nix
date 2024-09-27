@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./btop.nix
     ./git.nix
     ./zsh.nix
     ./starship.nix
@@ -13,7 +14,6 @@
   home.packages = with pkgs; [
     ffmpeg
     fd
-    btop
     htop
     pamixer
     tldr
