@@ -11,6 +11,7 @@
         ./hosts
         ./devShell.nix
         ./checks
+        ./templates
       ];
     };
 
