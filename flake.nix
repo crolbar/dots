@@ -10,6 +10,7 @@
         ./home
         ./hosts
         ./devShell.nix
+        ./checks
       ];
     };
 

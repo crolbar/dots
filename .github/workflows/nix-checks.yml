@@ -12,7 +12,6 @@ jobs:
   flake-check:
     runs-on: ubuntu-latest
     steps:
-
     - name: Checkout
       uses: actions/checkout@v4
       with:
@@ -31,7 +30,6 @@ jobs:
   alejandra-check:
     runs-on: ubuntu-latest
     steps:
-
     - name: Checkout
       uses: actions/checkout@v4
       with:
@@ -42,8 +40,5 @@ jobs:
       with:
         github_access_token: ${{ secrets.PAT }}
 
-    - name: Install Alejandra
-      run: nix profile install nixpkgs#alejandra
-
-    - name: Check formatting with Alejandra
-      run: alejandra --check .
+    - name: Run alejandra check
+      run: nix build .#checks.$(nix eval --raw --impure --expr builtins.currentSystem).alejandra
