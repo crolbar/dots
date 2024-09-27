@@ -8,13 +8,10 @@
     recursive = true;
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    extraPackages = with pkgs; [
-      ripgrep
-      gcc
-      fd
-    ];
-  };
+  home.packages = with pkgs; [
+    neovim.unwrapped
+    ripgrep
+    gcc
+    fd
+  ];
 }
