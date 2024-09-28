@@ -9,6 +9,7 @@
     ./audio.nix
     ./user.nix
     ./servers
+    ./programs.nix
   ];
   environment.defaultPackages = with pkgs; [leftwm];
 }

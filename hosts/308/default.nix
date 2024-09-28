@@ -9,5 +9,6 @@
     ./audio.nix
     ./user.nix
     ./servers
+    ./programs.nix
   ];
 }
