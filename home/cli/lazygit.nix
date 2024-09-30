@@ -10,6 +10,9 @@
         authorColors = {
           "*" = "white";
         };
+        theme = {
+          selectedLineBgColor = ["#393939"];
+        };
       };
       git = {
         autoFetch = false;
@@ -18,6 +21,7 @@
         universal = {
           prevScreenMode = "-";
           goInto = "l";
+          prevBlock-alt = "";
         };
       };
     };
