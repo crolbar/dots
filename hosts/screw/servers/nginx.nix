@@ -8,13 +8,15 @@ in {
       extraConfig = ''
         client_max_body_size 512M;
       '';
-
-      locations."/dns" = {
-        # TODO: do better
-        return = "http://screw.rs:${toString grafana_port}";
-      };
       locations."/" = {
         proxyPass = "http://127.0.0.1:${toString forgejo_port}";
+      };
+    };
+
+    virtualHosts."graf.screw.rs" = {
+      locations."/" = {
+        proxyPass = "http://0.0.0.0:${toString grafana_port}";
+        extraConfig = "proxy_set_header Host $host;";
       };
     };
   };
