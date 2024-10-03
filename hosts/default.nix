@@ -40,6 +40,7 @@ in {
       system = "aarch64-linux";
       modules = [
         ./shared/cli
+        ./shared/agenix.nix
       ];
     };
   };

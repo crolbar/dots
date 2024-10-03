@@ -6,5 +6,6 @@
     ./nginx.nix
     ./prometheus.nix
     ./nfs.nix
+    ./freshrss.nix
   ];
 }
