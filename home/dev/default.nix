@@ -39,5 +39,7 @@
 
     jetbrains.idea-community
     jdt-language-server
+
+    phpactor
   ];
 }
