@@ -46,7 +46,7 @@
 
 - [x] better java formatter ? urgent !!! (this google bullshit is being timeouted for being slow jesus)
 
-- [ ] recolor lazygit
+- [x] recolor lazygit
 - [x] nvim_tree open all dirs with git changes
 
 - https://github.com/cynicsketch/nix-mineral

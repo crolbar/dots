@@ -12,6 +12,9 @@
         };
         theme = {
           selectedLineBgColor = ["#393939"];
+          activeBorderColor = ["#999999" "bold"];
+          inactiveBorderColor = ["#393939"];
+          optionsTextColor = ["#797979"];
         };
       };
       git = {
