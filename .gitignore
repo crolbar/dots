@@ -1,3 +1,4 @@
 .stfolder
 .stignore
 /result
+*target*
