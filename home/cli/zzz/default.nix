@@ -5,5 +5,6 @@
     tt-rs
     npassm
     lobster
+    gazi
   ];
 }
