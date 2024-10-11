@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = [
-    #(pkgs.callPackage ../../../drvs/rmpc.nix {})
-    pkgs.rmpc
+    (pkgs.callPackage ../../../derivations/rmpc.nix {})
+    #pkgs.rmpc
   ];
 
   xdg.configFile."rmpc/config.ron".source = ./config.ron;

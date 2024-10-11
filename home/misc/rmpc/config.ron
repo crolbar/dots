@@ -7,6 +7,7 @@
     cache_dir: None,
     on_song_change: ["~/.config/rmpc/notify.sh"],
     volume_step: 5,
+    enable_mouse: true,
     status_update_interval_ms: 1000,
     select_current_song_on_change: true,
     album_art: (
@@ -74,4 +75,44 @@
             "d":       Delete,
         },
     ),
+    tabs: [
+        (
+            name: "Queue",
+            border_type: None,
+            pane: Split(
+                direction: Horizontal,
+                panes: [(size: "80%", pane: Pane(Queue)), (size: "20%", pane: Pane(AlbumArt))],
+            ),
+        ),
+        (
+            name: "Directories",
+            border_type: None,
+            pane: Pane(Directories),
+        ),
+        (
+            name: "Artists",
+            border_type: None,
+            pane: Pane(Artists),
+        ),
+        (
+            name: "Album Artists",
+            border_type: None,
+            pane: Pane(AlbumArtists),
+        ),
+        (
+            name: "Albums",
+            border_type: None,
+            pane: Pane(Albums),
+        ),
+        (
+            name: "Playlists",
+            border_type: None,
+            pane: Pane(Playlists),
+        ),
+        (
+            name: "Search",
+            border_type: None,
+            pane: Pane(Search),
+        ),
+    ],
 )

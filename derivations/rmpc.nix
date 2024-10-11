@@ -5,14 +5,14 @@
 }:
 rustPlatform.buildRustPackage {
   pname = "rmpc";
-  version = "d7d5b5c276295b7ba356661d65f622e47b37902a";
+  version = "git";
 
   src = fetchFromGitHub {
     owner = "mierak";
     repo = "rmpc";
-    rev = "d7d5b5c276295b7ba356661d65f622e47b37902a";
-    sha256 = "sha256-PqdgF3XOGaio9tp5/dt6xWBSYT+x/WPkk4JQOBbbaKA=";
+    rev = "9247ba618f8e9148e9e674f919d34b051bccab37";
+    sha256 = "sha256-Z+Iz29pnpqakQozkcHtahDiQXLbgZAkIn6LtMe6ropQ=";
   };
 
-  cargoHash = "sha256-RojhQ8539w+ifQBw/wBX7xw31Vx26NSPz1KYpvBBjT0=";
+  cargoHash = "sha256-HGmmJrsDsfgjMw/db9b7JzA2Pp/jgWM/dKB7n13+AGE=";
 }

@@ -36,6 +36,6 @@
     pulseaudioFull # for pactl
     cachix
     cyme
-    #(pkgs.callPackage ../../drvs/binsider.nix {})
+    #(pkgs.callPackage ../../derivations/binsider.nix {})
   ];
 }
