@@ -25,6 +25,21 @@
           prevScreenMode = "-";
           goInto = "l";
           prevBlock-alt = "";
+
+          refresh = "";
+
+          gotoTop = "g";
+          gotoBottom = "G";
+        };
+        stash = {
+          popStash = "<enter>";
+        };
+        commits = {
+          viewResetOptions = "R";
+          renameCommitWithEditor = "";
+        };
+        branches = {
+          renameBranch = "<c-R>";
         };
       };
     };
