@@ -10,6 +10,9 @@
         else
             cd "$(dirname "$output")" || exit
         fi
+        if [ -n "$TMUX" ]; then
+            tmux rename-window "$(basename "$PWD")"
+        fi
         if [[ $1 != "cd" ]]; then
             if [[ -e $output/flake.nix ]]; then
                 nix develop --command bash -c "SHELL=zsh && nvim ."
