@@ -1,4 +1,8 @@
-{username, ...}: {
+{
+  username,
+  pkgs,
+  ...
+}: {
   services = {
     sshd.enable = true;
     ddccontrol.enable = true;
@@ -28,5 +32,10 @@
     };
 
     getty.autologinUser = username;
+
+    mysql = {
+      enable = true;
+      package = pkgs.mariadb;
+    };
   };
 }
