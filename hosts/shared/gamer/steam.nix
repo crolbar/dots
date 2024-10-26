@@ -7,8 +7,6 @@
 
   environment.defaultPackages = [pkgs.lutris];
 
-  services.auto-cpufreq.enable = true;
-
   programs = {
     steam = {
       enable = true;
