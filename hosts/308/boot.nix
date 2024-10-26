@@ -12,7 +12,7 @@
       grub = {
         enable = true;
         efiSupport = false;
-        device = "/dev/sdb";
+        device = "/dev/nvme0n1";
 
         darkmatter-theme = {
           enable = true;
