@@ -1101,11 +1101,11 @@
     "nvim_conf": {
       "flake": false,
       "locked": {
-        "lastModified": 1728940863,
-        "narHash": "sha256-D1ZZA+hFZ9VHSr45RJfAGqHCSHEPipEqh4fGP/idDpk=",
+        "lastModified": 1729963783,
+        "narHash": "sha256-pgecqoF/cA8CQdUVxsn/skxSqC/EnoS/OZaTlZCNYjE=",
         "ref": "refs/heads/master",
-        "rev": "f4718941c5b3d278561416866a9565c8a6572171",
-        "revCount": 115,
+        "rev": "173e8b5c4190a9381b1196d747f427cfdc94d87f",
+        "revCount": 117,
         "type": "git",
         "url": "file:./home/cli/neovim/nvim"
       },
