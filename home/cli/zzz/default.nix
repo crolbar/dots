@@ -6,5 +6,6 @@
     npassm
     lobster
     gazi
+    gql
   ];
 }

@@ -54,6 +54,7 @@
     tt-rs.url = "github:crolbar/tt-rs";
     npassm.url = "github:crolbar/npassm";
     gazi.url = "github:crolbar/gazi";
+    gql.url = "github:crolbar/gql";
 
     lobster = {
       url = "github:justchokingaround/lobster";
