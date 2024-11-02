@@ -1624,11 +1624,11 @@
         "rust-overlay": "rust-overlay_5"
       },
       "locked": {
-        "lastModified": 1725433225,
-        "narHash": "sha256-rVD7lxQhCwc53r179N5ZAjsGcfKOzZR6fWaz3Xkj2ws=",
+        "lastModified": 1728152662,
+        "narHash": "sha256-pVvoUyGzxUIdjPNkQ+fhppwvWuEYKY8hj1f7vZryVrg=",
         "owner": "crolbar",
         "repo": "tt-rs",
-        "rev": "2ebee78bfe2e2e516346d0b64b318f603d9b0e6f",
+        "rev": "80e75b7c525abd68d9aec5903d8927b0e2285cd7",
         "type": "github"
       },
       "original": {
