@@ -37,5 +37,9 @@
       enable = true;
       package = pkgs.mariadb;
     };
+
+    postgresql = {
+      enable = true;
+    };
   };
 }
