@@ -500,11 +500,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1730471019,
-        "narHash": "sha256-Z0dY3ZL4qd0SwEY0vOwLR+48XN4EUH+jwIQM/GDo3m4=",
+        "lastModified": 1730888092,
+        "narHash": "sha256-6hlcXB0MimO49RQtIcOFzfhJnMO7DkoICqJ/R0KBcN4=",
         "owner": "crolbar",
         "repo": "gql",
-        "rev": "1b95a6e589003d74dd647f28f4d516485fdf75f5",
+        "rev": "6d951a91680ccaf1f6e05988bfe3e206320af88e",
         "type": "github"
       },
       "original": {
@@ -1157,11 +1157,11 @@
     "nvim_conf": {
       "flake": false,
       "locked": {
-        "lastModified": 1729963783,
-        "narHash": "sha256-pgecqoF/cA8CQdUVxsn/skxSqC/EnoS/OZaTlZCNYjE=",
+        "lastModified": 1731234944,
+        "narHash": "sha256-KMYxVxYBD0TxsV33IvIy2yoizKFcUifSiDOiJcPNN/s=",
         "ref": "refs/heads/master",
-        "rev": "173e8b5c4190a9381b1196d747f427cfdc94d87f",
-        "revCount": 117,
+        "rev": "23e9d82c12aaeb5d66b613d99fbd0a60bcc92100",
+        "revCount": 119,
         "type": "git",
         "url": "file:./home/cli/neovim/nvim"
       },
@@ -1624,11 +1624,11 @@
         "rust-overlay": "rust-overlay_5"
       },
       "locked": {
-        "lastModified": 1728152662,
-        "narHash": "sha256-pVvoUyGzxUIdjPNkQ+fhppwvWuEYKY8hj1f7vZryVrg=",
+        "lastModified": 1730835918,
+        "narHash": "sha256-FnysuB+p10yx0ZWuJoTzrms9dZTi2AmZmvDXHJZxnVA=",
         "owner": "crolbar",
         "repo": "tt-rs",
-        "rev": "80e75b7c525abd68d9aec5903d8927b0e2285cd7",
+        "rev": "693d3f92ecc46bafca9328f6abcafabb8bc7f3d6",
         "type": "github"
       },
       "original": {
