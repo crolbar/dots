@@ -16,18 +16,14 @@
     fd
     htop
     pamixer
-    tldr
     fzf
     zip
     unzip
     tree
-    xorg.xev
     gdu
-    skim
     jq
     duf
     bottom
-    xorg.xmodmap
     ripgrep
     socat
     ddccontrol
@@ -36,6 +32,7 @@
     pulseaudioFull # for pactl
     cachix
     cyme
+    yt-dlp
     #(pkgs.callPackage ../../derivations/binsider.nix {})
   ];
 }
