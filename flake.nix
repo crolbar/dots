@@ -85,7 +85,6 @@
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     darkmatter-grub-theme = {
