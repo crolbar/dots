@@ -5,7 +5,7 @@
     enable = true;
 
     security = {
-      sanitizeOnShutdown = false;
+      sanitizeOnShutdown.enable = false;
       userAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0";
       sandbox = false;
     };
@@ -170,6 +170,8 @@
       # enables ctrl + shift + alt + i
       "devtools.debugger.remote-enabled" = true;
       "devtools.chrome.enabled" = true;
+
+      "privacy.resistFingerprinting.letterboxing" = false;
     };
 
     theme = let
