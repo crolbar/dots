@@ -6,11 +6,12 @@
     ];
     bind = [
       # app binds
-      "SUPER, x, exec, alacritty"
+      "SUPER, x, exec, ghostty"
       "SUPER SHIFT, x, exec, foot"
       "SUPER, b, exec, schizofox"
       "SUPER, m, exec, spotify"
       "SUPER, r, exec, anyrun"
+      "SUPER, e, exec, emacsclient -c"
 
       # EWW
       "SUPER, s, exec, eww open board --toggle"
