@@ -8,6 +8,7 @@
     ./term_emulators
     ./zoho.nix
     ./nextcloud.nix
+    ./emacs.nix
   ];
 
   home.packages = with pkgs; [
@@ -26,7 +27,6 @@
     qemu # maybe make virt category ?
     arduino-ide
     obsidian
-    emacs
     networkmanagerapplet
     vesktop
     pwvucontrol # go to audio

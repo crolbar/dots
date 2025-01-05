@@ -146,5 +146,7 @@
         darwin.follows = "";
       };
     };
+
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 }

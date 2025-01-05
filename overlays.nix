@@ -3,6 +3,7 @@
   rust-overlay,
   leftwm,
   ristate,
+  emacs-overlay,
   ...
 }: let
   ovrls =
@@ -18,5 +19,6 @@ in {
     ristate.overlays.default
     leftwm.overlays.default
     rust-overlay.overlays.default
+    emacs-overlay.overlays.default
   ];
 }
