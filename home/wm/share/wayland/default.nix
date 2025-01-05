@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs',
+  lib,
+  ...
+}: let
+  hyprpicker = inputs'.hyprpicker.packages.default;
+in {
   imports = [
     ./anyrun.nix
   ];
@@ -17,7 +24,7 @@
     hyprpicker = {
       name = "HyprPicker";
       genericName = "Terminal";
-      exec = "sh -c \"wl-copy \\$(hyprpicker)\"";
+      exec = "sh -c \"wl-copy \\$(${lib.getExe hyprpicker})\"";
       terminal = false;
       icon = "xcolor";
     };

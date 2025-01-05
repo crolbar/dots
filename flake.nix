@@ -42,6 +42,12 @@
       submodules = true;
     };
 
+    hyprpicker = {
+      type = "git";
+      url = "https://github.com/hyprwm/hyprpicker";
+      rev = "444c40e5e3dc4058a6a762ba5e73ada6d6469055";
+    };
+
     yazi.url = "github:sxyazi/yazi";
 
     # not sure how caching works exacly but with my testing I find out that:
