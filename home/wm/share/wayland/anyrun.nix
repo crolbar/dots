@@ -1,6 +1,6 @@
 {
   anyrun,
-  pkgs,
+  inputs',
   ...
 }: {
   imports = [anyrun.homeManagerModules.default];
@@ -8,7 +8,7 @@
   programs.anyrun = {
     enable = true;
     config = {
-      plugins = [anyrun.packages.${pkgs.system}.applications];
+      plugins = [inputs'.anyrun.packages.applications];
 
       x = {fraction = 0.922;};
       width = {absolute = 400;};
@@ -21,16 +21,19 @@
           background-color: rgba(0, 0, 0, 0);
           font-size: 16px;
       }
+
+      list#main,
+      entry,
       list#plugin {
-          background-color: rgba(0, 0, 0, 0);
+          background-color: #161616;
       }
+
       entry {
-          background-color: rgba(0, 0, 0, 0.749);
           border: none;
           border-radius: 0;
       }
-      list#main {
-          background-color: rgba(0, 0, 0, 0.749);
+      #match:selected {
+          background: #303030;
       }
     '';
 
