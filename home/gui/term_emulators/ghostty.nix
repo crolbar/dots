@@ -1,8 +1,7 @@
-{inputs', ...}: {
+{...}: {
   programs.ghostty = {
     enable = true;
     clearDefaultKeybinds = true;
-    package = inputs'.ghostty.packages.default;
 
     settings = {
       theme = "crolbar";
