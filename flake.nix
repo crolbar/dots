@@ -140,5 +140,7 @@
         darwin.follows = "";
       };
     };
+
+    ghostty.url = "github:ghostty-org/ghostty";
   };
 }
