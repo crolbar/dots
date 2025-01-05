@@ -5,6 +5,7 @@
     ./cli/leetcode_cli.nix
     ./misc/agenix.nix
     ./gui
+    ./editors
     ./dev
     ./wm/bsp
     ./wm/hypr
@@ -20,6 +21,7 @@
     ./cli/leetcode_cli.nix
     ./misc/agenix.nix
     ./gui
+    ./editors
     ./dev
     ./wm/left
     ./wm/river
@@ -31,6 +33,7 @@
   kubo = [
     ./cli
     ./dev
+    ./editors
 
     ./gui/term_emulators/alacritty.nix
     ./gui/zathura.nix
@@ -44,5 +47,6 @@
 
   screw = [
     ./cli
+    ./editors
   ];
 }

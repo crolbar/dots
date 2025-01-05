@@ -8,7 +8,6 @@
     ./gitui.nix
     ./lazygit.nix
     ./zellij.nix
-    ./neovim
   ];
 
   home.packages = with pkgs; [

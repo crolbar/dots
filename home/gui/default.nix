@@ -8,7 +8,6 @@
     ./term_emulators
     ./zoho.nix
     ./nextcloud.nix
-    ./emacs.nix
   ];
 
   home.packages = with pkgs; [

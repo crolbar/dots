@@ -1305,11 +1305,11 @@
         "rev": "f6e1299dd7fc33dca136c4c0924e358225689c00",
         "revCount": 120,
         "type": "git",
-        "url": "file:./home/cli/neovim/nvim"
+        "url": "file:./home/editors/neovim/nvim"
       },
       "original": {
         "type": "git",
-        "url": "file:./home/cli/neovim/nvim"
+        "url": "file:./home/editors/neovim/nvim"
       }
     },
     "ristate": {

@@ -70,7 +70,7 @@
     };
 
     nvim_conf = {
-      url = "git+file:./home/cli/neovim/nvim";
+      url = "git+file:./home/editors/neovim/nvim";
       flake = false;
     };
 
