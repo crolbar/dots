@@ -24,7 +24,7 @@ jobs:
 
     - name: Run nix flake check
       run: |
-        sed -i 's/git+file:.\/home\/cli\/neovim\/nvim/github:crolbar\/nvim/g' flake.nix
+        sed -i 's/git+file:.\/home\/editors\/neovim\/nvim/github:crolbar\/nvim/g' flake.nix
         nix flake check --all-systems
 
   alejandra-check:

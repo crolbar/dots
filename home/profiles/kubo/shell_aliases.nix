@@ -1,6 +1,6 @@
 {
   programs.zsh.shellAliases = {
-    vimc = "cd ~/Github/dots/home/cli/neovim/nvim && nvim .";
+    vimc = "cd ~/Github/dots/home/editors/neovim/nvim && nvim .";
 
     ns = "nix-shell";
 
