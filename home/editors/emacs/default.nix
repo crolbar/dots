@@ -54,6 +54,7 @@ in {
       evil
       evil-collection
       evil-surround
+      evil-goggles
     ]
     ++ [
       epkgs."ido-completing-read+"

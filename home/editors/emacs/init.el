@@ -130,7 +130,7 @@
 (require 'corfu-popupinfo)
 
 (global-corfu-mode)
-(setq corfu-auto t)
+(setq corfu-auto nil)
 (setq corfu-popupinfo-mode t)
 (setq corfu-popupinfo-delay 0.2)
 
@@ -240,10 +240,14 @@
 (require 'evil)
 (require 'evil-collection)
 (require 'evil-surround)
+(require 'evil-goggles)
 
 (evil-mode 1)
 (evil-collection-init)
 (global-evil-surround-mode 1)
+(setq evil-goggles-enable-delete nil)
+(setq evil-goggles-enable-delete nil)
+(evil-goggles-mode)
 (evil-set-undo-system 'undo-tree)
 
 ;; evil binds
