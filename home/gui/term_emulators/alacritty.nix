@@ -2,7 +2,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      live_config_reload = true;
+      general.live_config_reload = true;
 
       window = {
         opacity = 0.8;
