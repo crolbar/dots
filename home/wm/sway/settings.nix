@@ -42,5 +42,9 @@ in {
     };
   };
 
+  bars = [
+    {statusCommand = "${lib.getExe pkgs.i3status}";}
+  ];
+
   inherit keybindings;
 }
