@@ -8,9 +8,6 @@
 in {
   "${mod}+x" = "exec ${lib.getExe pkgs.foot}";
   "${mod}+r" = "exec ${lib.getExe pkgs.anyrun}";
-  XF86AudioPlay = "exec ${lib.getExe pkgs.playerctl} play-pause";
-  XF86AudioNext = "exec ${lib.getExe pkgs.playerctl} next";
-  XF86AudioPrev = "exec ${lib.getExe pkgs.playerctl} previous";
 
   "${mod}+Shift+q" = "kill";
 
@@ -56,4 +53,21 @@ in {
   "${mod}+Shift+j" = "resize shrink height 10px";
   "${mod}+Shift+k" = "resize grow height 10px";
   "${mod}+Shift+l" = "resize grow width 10px";
+
+  "${mod}+a" = "exec ~/scripts/wall.sh f";
+  "${mod}+SHIFT+a" = "exec ~/scripts/wall.sh b";
+
+  XF86AudioPlay = "exec ${lib.getExe pkgs.playerctl} play-pause";
+  XF86AudioNext = "exec ${lib.getExe pkgs.playerctl} next";
+  XF86AudioPrev = "exec ${lib.getExe pkgs.playerctl} previous";
+
+  XF86AudioLowerVolume = "exec pamixer -d 5";
+  XF86AudioRaiseVolume = "exec pamixer -i 5";
+
+  "${mod}+Shift+Alt+F11" = "exec ~/.config/hypr/scripts/volume.sh music-";
+  "${mod}+Shift+Alt+F12" = "exec ~/.config/hypr/scripts/volume.sh music+";
+  "${mod}+Shift+Alt+F7" = "exec ~/scripts/eww/volume.sh music mute";
+  "${mod}+Shift+Alt+F9" = "exec ~/.config/hypr/scripts/volume.sh browser-";
+  "${mod}+Shift+Alt+F10" = "exec ~/.config/hypr/scripts/volume.sh browser+";
+  "${mod}+Shift+Alt+F8" = "exec ~/scripts/eww/volume.sh browser mute";
 }

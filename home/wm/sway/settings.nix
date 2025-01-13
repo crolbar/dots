@@ -1,10 +1,25 @@
-let
-  keybindings = ./binds.nix;
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  keybindings = import ./binds.nix {inherit config lib pkgs;};
 in {
   modifier = "Mod4";
   window.titlebar = false;
   floating.titlebar = false;
   gaps.smartBorders = "on";
+
+  startup = let
+    mk = cmd: {command = cmd;};
+  in [
+    (mk "${lib.getExe pkgs.playerctl} daemon")
+    (mk "~/scripts/wall.sh i")
+    (mk "${lib.getExe' pkgs.swww "swww-daemon"}")
+    (mk "${lib.getExe' pkgs.networkmanagerapplet "nm-applet"}")
+    (mk "${lib.getExe pkgs.dunst}")
+  ];
 
   input = {
     "*" = {

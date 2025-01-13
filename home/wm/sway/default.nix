@@ -1,10 +1,18 @@
-{...}: let
-  config = ./settings.nix;
-in {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ../share/wayland
+    ../share/wall
+  ];
+
   wayland.windowManager.sway = {
     enable = true;
 
-    inherit config;
+    config = import ./settings.nix {inherit config lib pkgs;};
 
     extraOptions = ["--unsupported-gpu"];
   };
