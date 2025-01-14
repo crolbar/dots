@@ -1,11 +1,22 @@
-{
+{pkgs, ...}: {
   programs.lazygit = {
     enable = true;
+    package = pkgs.lazygit.overrideAttrs (oldAttrs: rec {
+      version = "0.45.0";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "jesseduffield";
+        repo = "lazygit";
+        rev = "v${version}";
+        hash = "sha256-hGJDsx0klccbueP7h5HtcYioFLL4gf3W3lbOHIA36FA=";
+      };
+    });
     settings = {
       gui = {
         scrollPastBottom = false;
         scrollOffMargin = 15;
         nerdFontsVersion = "3";
+        switchTabsWithPanelJumpKeys = false;
         splitDiff = "always";
         authorColors = {
           "*" = "white";
