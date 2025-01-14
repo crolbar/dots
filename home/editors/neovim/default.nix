@@ -1,6 +1,7 @@
 {
   pkgs,
   nvim_conf,
+  inputs',
   ...
 }: {
   xdg.configFile.nvim = {
@@ -27,8 +28,17 @@
         (#set! injection.language php))
   '';
 
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    package = inputs'.neovim-overlay.packages.default;
+
+    withRuby = false;
+    withPython3 = false;
+    withNodeJs = false;
+  };
+
   home.packages = with pkgs; [
-    neovim.unwrapped
     ripgrep
     gcc
     fd

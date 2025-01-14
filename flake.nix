@@ -74,6 +74,8 @@
       flake = false;
     };
 
+    neovim-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
     swww = {
       url = "github:LGFae/swww";
       inputs.nixpkgs.follows = "nixpkgs";
