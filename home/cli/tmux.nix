@@ -1,9 +1,10 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: let
-  gitFrontend = lib.getExe pkgs.lazygit;
+  gitFrontend = lib.getExe config.programs.lazygit.package;
 
   gitScript = pkgs.writers.writeBash "git.sh" ''
     if ! tmux has-session -t git 2>/dev/null; then
