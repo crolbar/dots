@@ -24,6 +24,7 @@
     # TODO?
     moveWindow
     resizeWindow
+    workspace
     ;
 
   helpers = {
@@ -40,9 +41,9 @@
     # ];
     # takes a list of mods at index 0 that is an list of modifiyers and
     # `cmdSet` at index 1 that is an attr set with fields up, down, left, right
-    vimBinds = ops: let
-      cmdSet = builtins.elemAt ops 1;
-      mods = builtins.elemAt ops 0;
+    vim = opts: let
+      cmdSet = builtins.elemAt opts 1;
+      mods = builtins.elemAt opts 0;
     in
       map (key: let
         cmdMap = {
@@ -52,6 +53,25 @@
           "l" = cmdSet.right;
         };
       in [mods key cmdMap.${key}]) ["k" "j" "h" "l"];
+
+    # generates binds for workspaces from 1 - 10
+    # takes a list of modifiyers at index 0 and a cmd at index 1
+    # which is a function that takes the number of the workspace
+    # and outputs the cmd
+    workspaces = opts: let
+      mods = builtins.elemAt opts 0;
+      cmd = builtins.elemAt opts 1;
+    in (lib.concatMap
+      (
+        i: let
+          num = toString i;
+          workspaceNum =
+            if i == 0
+            then "10"
+            else num;
+        in [[mods num (cmd workspaceNum)]]
+      )
+      (builtins.genList (i: i) 10));
   };
 
   homeDir = config.home.homeDirectory;
@@ -109,9 +129,18 @@
       [[mod] "z" floatingToggle]
     ];
 
-    focus = helpers.vimBinds [[mod] moveFocus];
-    move = helpers.vimBinds [[mod ctrl] moveWindow];
-    resize = helpers.vimBinds [[mod shift] resizeWindow];
+    focus = helpers.vim [[mod] moveFocus];
+    move = helpers.vim [[mod ctrl] moveWindow];
+    resize = helpers.vim [[mod shift] resizeWindow];
+  };
+
+  workspaces = {
+    focus =
+      [[[mod] "grave" (workspace.focus "0")]]
+      ++ (helpers.workspaces [[mod] workspace.focus]);
+    move =
+      [[[mod shift] "grave" (workspace.moveWindowTo "0")]]
+      ++ (helpers.workspaces [[mod shift] workspace.moveWindowTo]);
   };
 in
   spawners
@@ -122,3 +151,5 @@ in
   ++ mediaControl.music
   ++ mediaControl.browser
   ++ mediaControl.system
+  ++ workspaces.focus
+  ++ workspaces.move
