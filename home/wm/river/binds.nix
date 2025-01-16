@@ -28,6 +28,10 @@ in {
       // {
         # Super Shift Alt Control
         "Super x" = "spawn alacritty";
+
+        "Super f" = "toggle-fullscreen";
+
+
         "Super+Shift X" = "spawn foot";
         "Super b" = "spawn schizofox";
         "Super m" = "spawn spotify";
@@ -36,7 +40,6 @@ in {
         # Window control
         "Super+Shift Q" = "close";
         "Super z" = "toggle-float";
-        "Super f" = "toggle-fullscreen";
 
         "Super j" = "focus-view next";
         "Super k" = "focus-view previous";

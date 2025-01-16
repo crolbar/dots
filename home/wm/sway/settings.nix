@@ -3,8 +3,8 @@
   lib,
   pkgs,
   ...
-}: let
-  keybindings = import ./binds.nix {inherit config lib pkgs;};
+} @ attrs: let
+  keybindings = import ./binds.nix attrs;
 in {
   modifier = "Mod4";
   window.titlebar = false;
@@ -36,6 +36,7 @@ in {
   output = {
     "DP-1" = {
       mode = "1920x1080@144Hz";
+      #mode = "1024x768@119.989Hz";
       position = "0,0";
       scale = "1.0";
       transform = "normal";

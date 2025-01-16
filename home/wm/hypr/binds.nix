@@ -7,6 +7,10 @@
     bind = [
       # app binds
       "SUPER, x, exec, ghostty"
+
+      "SUPER, f, fullscreen"
+
+
       "SUPER SHIFT, x, exec, foot"
       "SUPER, b, exec, schizofox"
       "SUPER, m, exec, spotify"
