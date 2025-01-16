@@ -30,9 +30,13 @@
       translate = bind: let
         key = builtins.elemAt bind 1;
         cmd = builtins.elemAt bind 2;
+        mods = builtins.elemAt bind 0;
 
-        mods = lib.concatStringsSep "+" (builtins.elemAt bind 0);
-      in {"${mods}+${key}" = cmd;};
+        ftmMods = lib.concatStringsSep "+" mods;
+      in
+        if builtins.length mods > 0
+        then {"${ftmMods}+${key}" = cmd;}
+        else {"${key}" = cmd;};
 
       # just combines the list of attr sets
       # that we get from (map translate []) into one attr set
@@ -67,4 +71,14 @@
 
   translateBinds = lib.getAttr wm wm_translaters;
 in
-  translateBinds (import ../home/wm/binds.nix attrs)
+  translateBinds
+  # expects an list of lists which have:
+  # [mods key cmd]
+  # mods is a list of modifiers like `[mod shift]`
+  #
+  # key is a string like `"z"`
+  #
+  # cmd is an a command that the wm will execute that beeing
+  # a custom exec command or a wm command
+  # like `fullscreen toggle` in sway for example
+  (import ../home/wm/binds.nix attrs)

@@ -15,6 +15,14 @@
         mod = config.wayland.windowManager.sway.config.modifier;
         shift = "Shift";
         ctrl = "Ctrl";
+        alt = "Alt";
+        media = {
+          play = "XF86AudioPlay";
+          next = "XF86AudioNext";
+          prev = "XF86AudioPrev";
+          lowerVolume = "XF86AudioLowerVolume";
+          raiseVolume = "XF86AudioRaiseVolume";
+        };
       };
 
       cmds = {
@@ -45,36 +53,6 @@
   };
 in
   clib.genBinds (genBindsSettings // attrs)
-  // {
-
-    XF86AudioPlay = "exec ${lib.getExe pkgs.playerctl} play-pause";
-    XF86AudioNext = "exec ${lib.getExe pkgs.playerctl} next";
-    XF86AudioPrev = "exec ${lib.getExe pkgs.playerctl} previous";
-
-    XF86AudioLowerVolume = "exec pamixer -d 5";
-    XF86AudioRaiseVolume = "exec pamixer -i 5";
-
-    "${mod}+Shift+Alt+F11" = "exec ~/.config/hypr/scripts/volume.sh music-";
-    "${mod}+Shift+Alt+F12" = "exec ~/.config/hypr/scripts/volume.sh music+";
-    "${mod}+Shift+Alt+F7" = "exec ~/scripts/eww/volume.sh music mute";
-    "${mod}+Shift+Alt+F9" = "exec ~/.config/hypr/scripts/volume.sh browser-";
-    "${mod}+Shift+Alt+F10" = "exec ~/.config/hypr/scripts/volume.sh browser+";
-    "${mod}+Shift+Alt+F8" = "exec ~/scripts/eww/volume.sh browser mute";
-
-    #"${mod}+x" = "exec ${lib.getExe pkgs.foot}";
-    #"${mod}+f" = "fullscreen toggle";
-    #"${mod}+r" = "exec ${lib.getExe pkgs.anyrun}";
-    #"${mod}+Shift+q" = "kill";
-    #"${mod}+z" = "floating toggle";
-    #"${mod}+h" = "focus left";
-    #"${mod}+j" = "focus down";
-    #"${mod}+k" = "focus up";
-    #"${mod}+l" = "focus right";
-    #"${mod}+Ctrl+h" = "move left";
-    #"${mod}+Ctrl+j" = "move down";
-    #"${mod}+Ctrl+k" = "move up";
-    #"${mod}+Ctrl+l" = "move right";
-  }
   // {
     "${mod}+grave" = "workspace number 0";
     "${mod}+1" = "workspace number 1";
