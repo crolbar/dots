@@ -36,6 +36,7 @@ in {
 
       # fmt
       clang-format
+      format-all
 
       # git
       magit

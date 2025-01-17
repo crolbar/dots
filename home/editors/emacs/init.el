@@ -145,6 +145,12 @@
 ;;  |_| |_|_|_\__|
 
 (require 'clang-format)
+(require 'format-all)
+
+(format-all-mode)
+
+(setq-default format-all-formatters
+      '(("Nix" (alejandra))))
 
 (setq-default clang-format-style "{BasedOnStyle: Mozilla, IndentWidth: 4}")
 
@@ -276,6 +282,8 @@
   (define-key evil-insert-state-map (kbd "C-y") 'corfu-insert)
   (define-key evil-insert-state-map (kbd "C-c") 'completion-at-point)
 
+  ;; cmp
+  (define-key evil-normal-state-map (kbd "M-f") 'format-all-buffer)
 
   ;; harpoon
   (define-key evil-normal-state-map (kbd "SPC z") 'harpoon-toggle-file)
@@ -289,6 +297,7 @@
 
 
   ;; misc
+  (define-key evil-insert-state-map (kbd "C-S-v") 'evil-paste-after)
   (define-key evil-normal-state-map (kbd "SPC w w") 'maximize-window)
   (define-key evil-normal-state-map (kbd "C-x C-c") 'compile)
   (define-key evil-normal-state-map (kbd "C-x C-r") 'recompile))
