@@ -32,6 +32,7 @@ in {
           ++ [
             ../home/profiles/${username}
             ../home/profiles/home.nix
+            ../modules/hm
           ];
       });
 
@@ -70,6 +71,7 @@ in {
                   ++ [
                     ../home/profiles/${username}
                     ../home/profiles/home.nix
+                    ../modules/hm
                   ];
               };
             }
@@ -79,7 +81,7 @@ in {
             ../hosts/shared/locales.nix
             ../hosts/shared/env.nix
             ../hosts/shared/nix.nix
-            ../modules
+            ../modules/nixos
           ];
       });
 }
