@@ -7,7 +7,7 @@
     ./gui
     ./editors
     ./dev
-    ./wm/xfwm
+    ./wm/bsp
     ./wm/hypr
     ./wm/sway
     ./misc

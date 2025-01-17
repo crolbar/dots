@@ -58,24 +58,39 @@
     anyrun = lib.getExe config.programs.anyrun.package;
     playerctl = lib.getExe pkgs.playerctl;
     pamixer = lib.getExe pkgs.pamixer;
+    emacs = lib.getExe' config.programs.emacs.package "emacsclient";
+    eww = lib.getExe config.programs.eww.package;
+    swww = lib.getExe pkgs.swww;
+    openrgb = lib.getExe pkgs.openrgb;
+    pavucontrol = lib.getExe pkgs.pavucontrol;
   };
 
   scripts = {
     wall = config.home.homeDirectory + "/scripts/wall.sh"; # from ./share/wall/wall.nix
     volume = homeDir + "/.config/hypr/scripts/volume.sh"; # move out of hypr ?
     volumeEww = homeDir + "/scripts/eww/volume.sh"; # move out of eww ?
+    rgb = homeDir + "/.config/hypr/scripts/rgb.sh"; # move out of hypr
+    defaultSink = homeDir + "/.config/hypr/scripts/default-sink.sh"; # move out of hypr
+    vm = let
+      name = "ubuntu23.10";
+    in {
+      start = ''
+        sudo virsh net-start --network default; \
+        sudo virsh start ${name}; \
+        virt-manager --connect qemu:///system --show-domain-console "${name}"
+      '';
+      stop = "sudo virsh shutdown ${name}";
+    };
   };
 
-  generator = {
-    keys,
-    cmds,
-  } @ settings: let
+  generator = settings: let
     inherit
       (settings.keys)
       mod
       shift
       ctrl
       alt
+      print
       media
       ;
 
@@ -86,18 +101,48 @@
       killFocused
       floatingToggle
       moveFocus
-      # TODO?
       moveWindow
       resizeWindow
       workspace
+      toggleBar
+      focusLast
+      lock
+      killWM
+      screenshotRegion
+      screenshotScreen
+      notifyLayoutSwitch
       ;
 
     spawners = [
       [[mod] "x" "${exec} ${bins.foot}"]
       [[mod] "r" "${exec} ${bins.anyrun}"]
+      [[mod] "e" "${exec} ${bins.emacs} -c"]
 
       [[mod] "a" "${exec} ${scripts.wall} f"]
       [[mod shift] "a" "${exec} ${scripts.wall} b"]
+      [[mod alt] "q" ''${exec} pgrep "pavucontrol" > /dev/null && pkill pavucontrol || ${bins.pavucontrol} &'']
+
+      [[] "${print}" "${exec} ${screenshotRegion}"]
+      [[shift] "${print}" "${exec} ${screenshotScreen}"]
+    ];
+
+    eww = [
+      # needs ../../../gui/eww/eww
+      [[mod] "s" "${exec} ${bins.eww} open board --toggle"]
+      [[mod shift] "s" "${exec} pkill eww"]
+      [[mod shift] "d" "${exec} ${bins.eww} open set_board --toggle"]
+      [[mod] "w" "${exec} ${toggleBar}"]
+      [[mod] "c" "${exec} ${bins.swww} clear"]
+    ];
+
+    virtualMachines = [
+      [[mod ctrl alt] "v" "${exec} ${builtins.replaceStrings ["\n" "\\"] ["" ""] scripts.vm.start}"]
+      [[mod shift ctrl alt] "v" "${exec} ${scripts.vm.stop}"]
+    ];
+
+    rgb = [
+      [[mod ctrl] "a" "${exec} ${scripts.rgb}"]
+      [[mod ctrl alt] "a" "${exec} ${bins.openrgb} -p black"]
     ];
 
     mediaControl = {
@@ -121,16 +166,29 @@
         [[] media.prev "${exec} ${bins.playerctl} previous"]
         [[] media.lowerVolume "${exec} ${bins.pamixer} -d 5"]
         [[] media.raiseVolume "${exec} ${bins.pamixer} -i 5"]
+        [[mod shift] "F12" "${exec} ${scripts.defaultSink}"]
+        [[mod] "F8" "${exec} ${bins.pamixer} --default-source -t"]
       ];
     };
 
     window = {
       # window control
-      control = [
-        [[mod] "f" fullScreen]
-        [[mod shift] "q" killFocused]
-        [[mod] "z" floatingToggle]
-      ];
+      control = let
+        switchSplitOrientationOpt =
+          if builtins.hasAttr "switchSplitOrientation" settings.cmds
+          then [
+            [[mod shift] "r" settings.cmds.switchSplitOrientation]
+            [[mod shift] "p" settings.cmds.switchSplitOrientation]
+          ]
+          else [];
+      in
+        [
+          [[mod] "f" fullScreen]
+          [[mod shift] "q" killFocused]
+          [[mod] "z" floatingToggle]
+          [[alt] "TAB" focusLast]
+        ]
+        ++ switchSplitOrientationOpt;
 
       focus = helpers.vim [[mod] moveFocus];
       move = helpers.vim [[mod ctrl] moveWindow];
@@ -145,6 +203,13 @@
         [[[mod shift] "grave" (workspace.moveWindowTo "0")]]
         ++ (helpers.workspaces [[mod shift] workspace.moveWindowTo]);
     };
+
+    system = [
+      [[mod shift alt ctrl] "l" "${exec} ${lock}"]
+      [[mod shift alt ctrl] "s" "${exec} ${lock} & systemctl suspend &"]
+      [[mod shift alt ctrl] "q" "${killWM}"]
+      [[mod] "Space" "${exec} ${notifyLayoutSwitch}"]
+    ];
   in
     spawners
     ++ window.control
@@ -155,7 +220,11 @@
     ++ mediaControl.browser
     ++ mediaControl.system
     ++ workspaces.focus
-    ++ workspaces.move;
+    ++ workspaces.move
+    ++ eww
+    ++ virtualMachines
+    ++ rgb
+    ++ system;
 in {
   cbinds.generate = generator;
 }

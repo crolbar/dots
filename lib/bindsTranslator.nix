@@ -14,6 +14,12 @@
 #
 # `mod` would be set to `SUPER` and `execCmd` would be set to `exec,` (the comma is weird but it helps be stay sane)
 {lib, ...}: let
+  bindFromListToSet = bind: let
+    mods = builtins.elemAt bind 0;
+    key = builtins.elemAt bind 1;
+    cmd = builtins.elemAt bind 2;
+  in {inherit mods key cmd;};
+
   # needs to be called with `wm`(string). that is the name
   # of the window manager that has a field in `wm_translators`
   # and has to output an attr set with an function `translateBinds`
@@ -28,33 +34,36 @@
       #   "${mod}+f" = "fullscreen toggle";
       # }
       sway = let
-        translate = bind: let
-          key = builtins.elemAt bind 1;
-          cmd = builtins.elemAt bind 2;
-          mods = builtins.elemAt bind 0;
-
-          ftmMods = lib.concatStringsSep "+" mods;
+        translate = b: let
+          bind = bindFromListToSet b;
+          fmtMods = lib.concatStringsSep "+" bind.mods;
         in
-          if builtins.length mods > 0
-          then {"${ftmMods}+${key}" = cmd;}
-          else {"${key}" = cmd;};
+          if builtins.length bind.mods > 0
+          then {"${fmtMods}+${bind.key}" = bind.cmd;}
+          else {"${bind.key}" = bind.cmd;};
 
         # just combines the list of attr sets
         # that we get from (map translate []) into one attr set
         combine = lib.zipAttrsWith (x: y: lib.head y);
-
-        translateBinds = binds: combine (map translate binds);
       in
-        translateBinds;
+        binds: combine (map translate binds);
 
+      # example what it needs to output
+      # [
+      #   "SUPER SHIFT, x, exec, foot"
+      #
+      #   "SUPER, f, fullscreen"
+      # ]
       hypr = let
-        translate = bind: let
-          mods = lib.concatStringsSep " " bind.mods;
-        in "${mods}, ${bind.key}, ${bind.cmd}";
-
-        translateBinds = binds: map translate binds;
+        translate = b: let
+          bind = bindFromListToSet b;
+          fmtMods = lib.concatStringsSep " " bind.mods;
+        in
+          if builtins.length bind.mods > 0
+          then "${fmtMods}, ${bind.key}, ${bind.cmd}"
+          else ", ${bind.key}, ${bind.cmd}";
       in
-        translateBinds;
+        binds: map translate binds;
 
       river = let
         translate = bind: let
@@ -64,10 +73,8 @@
         # just combines the list of attr sets
         # that we get from (map translate []) into one attr set
         combine = lib.zipAttrsWith (x: y: lib.head y);
-
-        translateBinds = binds: combine (map translate binds);
       in
-        translateBinds;
+        binds: combine (map translate binds);
     };
   in
     lib.getAttr wm wm_translators;

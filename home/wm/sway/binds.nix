@@ -8,6 +8,7 @@
       shift = "Shift";
       ctrl = "Ctrl";
       alt = "Alt";
+      print = "Print";
       media = {
         play = "XF86AudioPlay";
         next = "XF86AudioNext";
@@ -22,6 +23,13 @@
       exec = "exec";
       killFocused = "kill";
       floatingToggle = "floating toggle";
+      focusLast = "focus next"; # no alt tab in sway..
+      toggleBar = "swaymsg bar bar-0 mode toggle";
+      killWM = "exit";
+      lock = "swaylock -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3";
+      screenshotRegion = ''grim -g "$(slurp)" - | wl-copy && wl-paste -n > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify "Screenshot of the region taken" -t 1000'';
+      screenshotScreen = ''grim - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify "Screenshot of whole screen taken" -t 1000'';
+      notifyLayoutSwitch = ''dunstify layout "Changed to: $(swaymsg -t get_inputs | jq -r '.[] | select(.type == "keyboard" and .name == "crolbar YUKI") | .xkb_active_layout_name')"'';
       moveFocus = {
         up = "focus up";
         down = "focus down";

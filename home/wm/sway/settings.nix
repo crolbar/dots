@@ -29,6 +29,11 @@
         accel_profile = "adaptive";
         pointer_accel = "-0.2";
       };
+      "type:keyboard" = {
+        xkb_layout = "us,us,bg";
+        xkb_options = "grp:win_space_toggle";
+        xkb_variant = ",dvorak,phonetic";
+      };
     };
 
     output = {

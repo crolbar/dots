@@ -90,5 +90,11 @@
     in
       (clib.translateBinds wm)
       (cfg.generate cfg.windowManager.${wm}.settings);
+
+    wayland.windowManager.hyprland.settings.bind = let
+      wm = "hypr";
+    in
+      (clib.translateBinds wm)
+      (cfg.generate cfg.windowManager.${wm}.settings);
   };
 }
