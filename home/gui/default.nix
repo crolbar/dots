@@ -31,5 +31,6 @@
     pwvucontrol # go to audio
     celluloid
     loupe
+    calibre
   ];
 }
