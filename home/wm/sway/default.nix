@@ -5,6 +5,7 @@
 
     ../share/wayland
     ../share/wall
+    ../share/scripts
   ];
 
   wayland.windowManager.sway = {

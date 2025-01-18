@@ -1,5 +1,5 @@
-{pkgs, ...} @ args: {
-  xdg.configFile."hypr/scripts/rgb.sh".source = pkgs.writers.writeBash "rgb.sh" ''
+{pkgs, ...}: {
+  home.file."scripts/rgb.sh".source = pkgs.writers.writeBash "rgb.sh" ''
     case $1 in
         s)
             if pgrep -f "KeyboardVisualizer" > /dev/null; then
@@ -11,15 +11,15 @@
     esac
 
     profiles=$(ls ~/.config/OpenRGB | wc -l) && ((profiles -= 3))
-    curr_profile=$(cat ~/.config/hypr/.rgb_profile)
+    curr_profile=$(cat ~/scripts/.rgb_profile)
 
     ((curr_profile += 1))
 
     if [ "$curr_profile" -gt "$profiles" ]; then
-        echo 1 > ~/.config/hypr/.rgb_profile
+        echo 1 > ~/scripts/.rgb_profile
         curr_profile=1
     else
-        echo $curr_profile > ~/.config/hypr/.rgb_profile
+        echo $curr_profile > ~/scripts/.rgb_profile
     fi
 
     case $curr_profile in

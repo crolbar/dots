@@ -23,18 +23,22 @@
     };
 
     cmds = {
-      fullScreen = "fullscreen";
+      killWM = "exit";
       exec = "exec,";
+      fullScreen = "fullscreen";
       killFocused = "killactive";
       floatingToggle = "togglefloating";
-      switchSplitOrientation = "togglesplit"; # OPTIONAL SETTING
       focusLast = "focuscurrentorlast";
+
+      switchSplitOrientation = "togglesplit"; # OPTIONAL SETTING
+
       toggleBar = "eww -c ~/.config/hypr/eww/ open bar --toggle";
-      killWM = "exit";
       lock = "swaylock -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3";
+      notifyLayoutSwitch = ''dunstify layout "Changed to: $(hyprctl devices -j | jq '.keyboards[] | select(.name == "crolbar-yuki") | .active_keymap')"'';
+
       screenshotRegion = ''grim -g "$(slurp)" - | wl-copy && wl-paste -n > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify "Screenshot of the region taken" -t 1000'';
       screenshotScreen = ''grim - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify "Screenshot of whole screen taken" -t 1000'';
-      notifyLayoutSwitch = ''dunstify layout "Changed to: $(hyprctl devices -j | jq '.keyboards[] | select(.name == "crolbar-yuki") | .active_keymap')"'';
+
       moveFocus = {
         up = "movefocus, u";
         down = "movefocus, d";

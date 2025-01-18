@@ -1,5 +1,5 @@
 {pkgs, ...} @ args: {
-  xdg.configFile."hypr/scripts/volume.sh".source = pkgs.writers.writeBash "volume.sh" ''
+  home.file."scripts/volume.sh".source = pkgs.writers.writeBash "volume.sh" ''
     music_application_name="${args.musicPlayer}"
     browser_application_name="${args.browser}"
 

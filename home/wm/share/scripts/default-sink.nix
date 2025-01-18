@@ -1,5 +1,11 @@
-{pkgs, ...} @ args: {
-  xdg.configFile."hypr/scripts/default-sink.sh".source = pkgs.writers.writeBash "default-sink.sh" ''
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  pactl = lib.getExe' pkgs.pulseaudioFull "pactl";
+in {
+  home.file."scripts/default-sink.sh".source = pkgs.writers.writeBash "default-sink.sh" ''
     # change the default output device to the other avalable
     mapfile -t sinks < <(pactl list short sinks | awk '{print $2}')
 

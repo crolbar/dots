@@ -10,6 +10,7 @@
     ./eww
     ./scripts
 
+    ../share/scripts
     ../share/wayland
     ../share/dunst.nix
     ../share/wall

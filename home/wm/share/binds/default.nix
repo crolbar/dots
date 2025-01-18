@@ -66,11 +66,11 @@
   };
 
   scripts = {
-    wall = config.home.homeDirectory + "/scripts/wall.sh"; # from ./share/wall/wall.nix
-    volume = homeDir + "/.config/hypr/scripts/volume.sh"; # move out of hypr ?
+    wall = config.home.homeDirectory + "/scripts/wall.sh"; # from ../wall/wall.nix
+    volume = homeDir + "/scripts/volume.sh";
     volumeEww = homeDir + "/scripts/eww/volume.sh"; # move out of eww ?
-    rgb = homeDir + "/.config/hypr/scripts/rgb.sh"; # move out of hypr
-    defaultSink = homeDir + "/.config/hypr/scripts/default-sink.sh"; # move out of hypr
+    rgb = homeDir + "/scripts/rgb.sh";
+    defaultSink = homeDir + "/scripts/default-sink.sh";
     vm = let
       name = "ubuntu23.10";
     in {
