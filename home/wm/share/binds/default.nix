@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  clib,
   ...
 }: let
   helpers = {
@@ -49,9 +50,29 @@
         in [[mods num (cmd workspaceNum)]]
       )
       (builtins.genList (i: i) 10));
-  };
 
-  homeDir = config.home.homeDirectory;
+    # given a list of binds
+    # which command that they execute can be missing from `settings.cmds`
+    # output the binds if the cmd exists else
+    # output empty list. so it can be used to exdend the final binds
+    mkOptionalBind = settings: binds: let
+      cmd = builtins.elemAt (builtins.elemAt binds 0) 2;
+      # im passing just the cmd name as an str. so I need to get the actual cmd
+      setCmdFormStr = binds: (
+        map (bind: (map (
+            bindPart:
+              if bindPart == cmd
+              then settings.cmds.${cmd}
+              else bindPart
+          )
+          bind))
+        binds
+      );
+    in
+      if builtins.hasAttr cmd settings.cmds
+      then setCmdFormStr binds
+      else [];
+  };
 
   bins = {
     foot = lib.getExe config.programs.foot.package;
@@ -65,21 +86,26 @@
     pavucontrol = lib.getExe pkgs.pavucontrol;
   };
 
-  scripts = {
-    wall = config.home.homeDirectory + "/scripts/wall.sh"; # from ../wall/wall.nix
-    volume = homeDir + "/scripts/volume.sh";
-    volumeEww = homeDir + "/scripts/eww/volume.sh"; # move out of eww ?
-    rgb = homeDir + "/scripts/rgb.sh";
-    defaultSink = homeDir + "/scripts/default-sink.sh";
+  scripts = let
+    # getScriptPath
+    gSP = path: config.home.file."${path}".source;
+  in {
+    wall = gSP "scripts/wall.sh";
+    volume = gSP "scripts/volume.sh";
+    volumeEww = gSP "scripts/eww/volume.sh";
+    rgb = gSP "scripts/rgb.sh";
+    defaultSink = gSP "scripts/default-sink.sh";
     vm = let
       name = "ubuntu23.10";
+      virsh = lib.getExe' pkgs.libvirt "virsh";
+      virt-manager = lib.getExe pkgs.virt-manager;
     in {
       start = ''
-        sudo virsh net-start --network default; \
-        sudo virsh start ${name}; \
-        virt-manager --connect qemu:///system --show-domain-console "${name}"
+        sudo ${virsh} net-start --network default; \
+        sudo ${virsh} start ${name}; \
+        ${virt-manager} --connect qemu:///system --show-domain-console '${name}'
       '';
-      stop = "sudo virsh shutdown ${name}";
+      stop = "sudo ${virsh} shutdown ${name}";
     };
   };
 
@@ -104,23 +130,34 @@
       moveWindow
       resizeWindow
       workspace
-      toggleBar
       focusLast
-      lock
       killWM
-      screenshotRegion
-      screenshotScreen
-      notifyLayoutSwitch
       ;
 
-    spawners = [
+    inherit
+      (settings.cmds.bin)
+      toggleBar
+      lock
+      notifyLayoutSwitch
+      screenshotRegion
+      screenshotScreen
+      ;
+
+    spawners = let
+      nextWallpaper = "${exec} ${scripts.wall} f";
+      prevWallpaper = "${exec} ${scripts.wall} b";
+      clearWallpaper = "${exec} ${bins.swww} clear";
+      toggleVolControl = ''${exec} pgrep "pavucontrol" > /dev/null && pkill pavucontrol || ${bins.pavucontrol} &'';
+    in [
       [[mod] "x" "${exec} ${bins.foot}"]
       [[mod] "r" "${exec} ${bins.anyrun}"]
       [[mod] "e" "${exec} ${bins.emacs} -c"]
 
-      [[mod] "a" "${exec} ${scripts.wall} f"]
-      [[mod shift] "a" "${exec} ${scripts.wall} b"]
-      [[mod alt] "q" ''${exec} pgrep "pavucontrol" > /dev/null && pkill pavucontrol || ${bins.pavucontrol} &'']
+      [[mod] "a" nextWallpaper]
+      [[mod shift] "a" prevWallpaper]
+      [[mod] "c" clearWallpaper]
+
+      [[mod alt] "q" toggleVolControl]
 
       [[] "${print}" "${exec} ${screenshotRegion}"]
       [[shift] "${print}" "${exec} ${screenshotScreen}"]
@@ -132,12 +169,14 @@
       [[mod shift] "s" "${exec} pkill eww"]
       [[mod shift] "d" "${exec} ${bins.eww} open set_board --toggle"]
       [[mod] "w" "${exec} ${toggleBar}"]
-      [[mod] "c" "${exec} ${bins.swww} clear"]
     ];
 
-    virtualMachines = [
-      [[mod ctrl alt] "v" "${exec} ${builtins.replaceStrings ["\n" "\\"] ["" ""] scripts.vm.start}"]
-      [[mod shift ctrl alt] "v" "${exec} ${scripts.vm.stop}"]
+    virtualMachines = let
+      startVm = ''${exec} bash -c "${clib.mk1lnrCmd scripts.vm.start}"'';
+      stopVm = "${exec} ${scripts.vm.stop}";
+    in [
+      [[mod ctrl alt] "v" startVm]
+      [[mod shift ctrl alt] "v" stopVm]
     ];
 
     rgb = [
@@ -174,13 +213,10 @@
     window = {
       # window control
       control = let
-        switchSplitOrientationOpt =
-          if builtins.hasAttr "switchSplitOrientation" settings.cmds
-          then [
-            [[mod shift] "r" settings.cmds.switchSplitOrientation]
-            [[mod shift] "p" settings.cmds.switchSplitOrientation]
-          ]
-          else [];
+        switchSplitOrientation = helpers.mkOptionalBind settings [
+          [[mod shift] "r" "switchSplitOrientation"]
+          [[mod shift] "p" "switchSplitOrientation"]
+        ];
       in
         [
           [[mod] "f" fullScreen]
@@ -188,7 +224,7 @@
           [[mod] "z" floatingToggle]
           [[alt] "TAB" focusLast]
         ]
-        ++ switchSplitOrientationOpt;
+        ++ switchSplitOrientation;
 
       focus = helpers.vim [[mod] moveFocus];
       move = helpers.vim [[mod ctrl] moveWindow];

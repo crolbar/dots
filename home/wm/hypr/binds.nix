@@ -1,4 +1,10 @@
 {
+  clib,
+  lib,
+  pkgs,
+  config,
+  ...
+}: {
   wayland.windowManager.hyprland.settings = {
     bindm = [
       "SUPER, mouse:272, movewindow"
@@ -32,12 +38,37 @@
 
       switchSplitOrientation = "togglesplit"; # OPTIONAL SETTING
 
-      toggleBar = "eww -c ~/.config/hypr/eww/ open bar --toggle";
-      lock = "swaylock -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3";
-      notifyLayoutSwitch = ''dunstify layout "Changed to: $(hyprctl devices -j | jq '.keyboards[] | select(.name == "crolbar-yuki") | .active_keymap')"'';
+      bin = let
+        eww = lib.getExe config.programs.eww.package;
+        swaylock = lib.getExe config.programs.swaylock.package;
+        dunstify = lib.getExe' config.services.dunst.package "dunstify";
+        hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
+        jq = lib.getExe pkgs.jq;
+        grim = lib.getExe pkgs.grim;
+        slurp = lib.getExe pkgs.slurp;
+        wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
+        wl-paste = lib.getExe' pkgs.wl-clipboard "wl-paste";
+      in {
+        toggleBar = "${eww} -c ~/.config/hypr/eww/ open bar --toggle";
+        lock = "${swaylock} -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3";
+        notifyLayoutSwitch = clib.mk1lnrCmd ''
+          ${dunstify} layout "Changed to: $(${hyprctl} devices -j | \
+          ${jq} '.keyboards[] | select(.name == "crolbar-yuki") | .active_keymap')"
+        '';
 
-      screenshotRegion = ''grim -g "$(slurp)" - | wl-copy && wl-paste -n > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify "Screenshot of the region taken" -t 1000'';
-      screenshotScreen = ''grim - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify "Screenshot of whole screen taken" -t 1000'';
+        screenshotRegion = clib.mk1lnrCmd ''
+          ${grim} -g "$(${slurp})" - | \
+          ${wl-copy} && \
+          ${wl-paste} -n > ~/Screenshots/Screenshot-$(date +%F_%T).png | \
+          ${dunstify} "Screenshot of the region taken" -t 1000
+        '';
+        screenshotScreen = clib.mk1lnrCmd ''
+          ${grim} - | \
+          ${wl-copy} && \
+          ${wl-paste} > ~/Screenshots/Screenshot-$(date +%F_%T).png | \
+          ${dunstify} "Screenshot of whole screen taken" -t 1000
+        '';
+      };
 
       moveFocus = {
         up = "movefocus, u";
@@ -58,15 +89,17 @@
         left = "resizeactive,-70 0";
       };
 
-      workspace = {
+      workspace = let
+        dispatch = config.xdg.configFile."hypr/scripts/dispatch".source;
+      in {
         focus = num:
           if num == "0"
           then "workspace, name:0"
-          else "exec, ~/.config/hypr/scripts/dispatch ${num} f";
+          else "exec, ${dispatch} ${num} f";
         moveWindowTo = num:
           if num == "0"
           then "movetoworkspacesilent, name:0"
-          else "exec, ~/.config/hypr/scripts/dispatch ${num} s";
+          else "exec, ${dispatch} ${num} s";
       };
     };
   };
