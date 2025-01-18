@@ -65,10 +65,19 @@
       in
         binds: map translate binds;
 
+      # example what it needs to output
+      # {
+      #   "Super+Shift x" = "spawn foot";
+      #   "Super f" = "toggle-fullscreen";
+      # }
       river = let
-        translate = bind: let
-          mods = lib.concatStringsSep "+" bind.mods;
-        in {"${mods} ${bind.key}" = bind.cmd;};
+        translate = b: let
+          bind = bindFromListToSet b;
+          fmtMods = lib.concatStringsSep "+" bind.mods;
+        in
+          if builtins.length bind.mods > 0
+          then {"${fmtMods} ${bind.key}" = "${bind.cmd}";}
+          else {"None ${bind.key}" = "${bind.cmd}";};
 
         # just combines the list of attr sets
         # that we get from (map translate []) into one attr set

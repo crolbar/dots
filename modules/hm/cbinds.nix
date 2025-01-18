@@ -96,5 +96,11 @@
     in
       (clib.translateBinds wm)
       (cfg.generate cfg.windowManager.${wm}.settings);
+
+    wayland.windowManager.river.settings.map.normal = let
+      wm = "river";
+    in
+      (clib.translateBinds wm)
+      (cfg.generate cfg.windowManager.${wm}.settings);
   };
 }

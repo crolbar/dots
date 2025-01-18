@@ -13,6 +13,7 @@
   };
 
   cbinds.windowManager.hypr.settings = {
+    isHyprland = true;
     keys = {
       mod = "SUPER";
       shift = "SHIFT";

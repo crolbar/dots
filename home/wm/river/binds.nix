@@ -1,125 +1,125 @@
-{lib, ...}: let
-  op = n:
-    if n == 0
-    then 1
-    else 2 * (op (n - 1));
-
-  tagBinds = lib.listToAttrs (
-    lib.concatMap (
-      i: let
-        index = toString i;
-        tag = toString (op (i - 1));
-      in [
-        {
-          name = "Super " + index;
-          value = "set-focused-tags" + " " + tag;
-        }
-        {
-          name = "Super+Shift " + index;
-          value = "set-view-tags" + " " + tag;
-        }
-      ]
-    ) (builtins.genList (i: i + 1) 10)
-  );
-in {
+{
+  clib,
+  lib,
+  pkgs,
+  config,
+  ...
+}: {
   wayland.windowManager.river.settings = {
-    map.normal =
-      tagBinds
-      // {
-        # Super Shift Alt Control
-        "Super x" = "spawn alacritty";
-
-        "Super f" = "toggle-fullscreen";
-
-
-        "Super+Shift X" = "spawn foot";
-        "Super b" = "spawn schizofox";
-        "Super m" = "spawn spotify";
-        "Super r" = "spawn anyrun";
-
-        # Window control
-        "Super+Shift Q" = "close";
-        "Super z" = "toggle-float";
-
-        "Super j" = "focus-view next";
-        "Super k" = "focus-view previous";
-        "Super h" = "focus-view next";
-        "Super l" = "focus-view previous";
-
-        "Super+Shift J" = "swap next";
-        "Super+Shift K" = "swap previous";
-
-        "Super+Shift H" = "send-layout-cmd wideriver '--ratio -0.05'";
-        "Super+Shift L" = "send-layout-cmd wideriver '--ratio +0.05'";
-
-        "Super n" = "send-layout-cmd wideriver '--count -1'";
-        "Super+Shift n" = "send-layout-cmd wideriver '--count +1'";
-
-        "Super Up" = "send-layout-cmd wideriver '--layout top'";
-        "Super Right" = "send-layout-cmd wideriver '--layout right'";
-        "Super Down" = "send-layout-cmd wideriver '--layout bottom'";
-        "Super Left" = "send-layout-cmd wideriver '--layout left'";
-
-        # Floats
-        "Super+Control H" = "move left 100";
-        "Super+Control J" = "move down 100";
-        "Super+Control K" = "move up 100";
-        "Super+Control L" = "move right 100";
-
-        "Super+Control+Shift H" = "resize horizontal -100";
-        "Super+Control+Shift J" = "resize vertical 100";
-        "Super+Control+Shift K" = "resize vertical -100";
-        "Super+Control+Shift L" = "resize horizontal 100";
-
-        # Output
-        "Super Period" = "focus-output next";
-        "Super Comma" = "focus-output previous";
-
-        "Super+Shift Period" = "send-to-output next";
-        "Super+Shift Comma" = "send-to-output previous";
-
-        # EWW
-        "Super s" = "spawn \"eww open board --toggle\"";
-        "Super p" = "spawn \"eww -c ~/.config/river/eww open btm_tray --toggle\"";
-        "Super w" = "spawn \"eww -c ~/.config/river/eww open tags --toggle\"";
-        "Super+Shift s" = "spawn \"pkill eww\"";
-
-        # Wall
-        "Super a" = "spawn \"~/scripts/wall.sh f\"";
-        "Super+Shift a" = "spawn \"~/scripts/wall.sh b\"";
-        "Super+ALT a" = "spawn \"~/scripts/wall.sh f f\"";
-        "Super+Shift+Alt A" = "spawn \"~/scripts/wall.sh b f\"";
-        "Super c" = "spawn \"swww clear\"";
-
-        # MEDIA & LIGHT
-        "None XF86MonBrightnessDown" = "spawn 'sudo light -U 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"'";
-        "None XF86MonBrightnessUp" = "spawn 'sudo light -A 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"'";
-
-        "Super F2" = "spawn \"brightnessctl -d asus::kbd_backlight set 33%-\"";
-        "Super F3" = "spawn \"brightnessctl -d asus::kbd_backlight set +33%\"";
-
-        "None XF86AudioLowerVolume" = "spawn 'amixer set Master 5%- && dunstctl close-all && dunstify \"Volume at: $(pamixer --get-volume-human)\"'";
-        "None XF86AudioRaiseVolume" = "spawn 'amixer set Master 5%+ && dunstctl close-all && dunstify \"Volume at: $(pamixer --get-volume-human)\"'";
-        "None XF86AudioMute" = "spawn 'amixer set Master toggle && dunstify \"Volume at: $(pamixer --get-volume-human)\"'";
-        "None XF86AudioMicMute" = "spawn 'amixer set Capture toggle && dunstify \"Mic at: $(pamixer --get-volume-human --default-source)\"'";
-        "None XF86AudioPrev" = "spawn 'playerctl previous'";
-        "None XF86AudioNext" = "spawn 'playerctl next'";
-        "None XF86AudioPlay" = "spawn 'playerctl play-pause'";
-
-        # MISC
-        "Super+Shift+Alt+Control q" = "exit";
-        "Super+Shift+Alt+Control l" = "spawn \"swaylock -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3\"";
-        "Super+Shift+Alt+Control s" = "spawn \"sudo systemctl suspend && swaylock -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3\"";
-
-        "None PRINT" = "spawn 'grim -g \"$(slurp)\" - | wl-copy && wl-paste -n > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of the region taken\" -t 1000 # screenshot of a region'";
-        "Shift PRINT" = "spawn 'grim - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of whole screen taken\" -t 1000 # screenshot of the whole screen'";
-
-        "Super space" = "spawn 'dunstify layout changed'";
-      };
-
     map-pointer.normal = {
       "Super BTN_LEFT" = "move-view";
       "Super BTN_RIGHT" = "resize-view";
+    };
+  };
+
+  cbinds.windowManager.river.settings = {
+    keys = {
+      mod = "Super";
+      shift = "Shift";
+      ctrl = "Control";
+      alt = "Alt";
+      print = "PRINT";
+      media = {
+        play = "XF86AudioPlay";
+        next = "XF86AudioNext";
+        prev = "XF86AudioPrev";
+        lowerVolume = "XF86AudioLowerVolume";
+        raiseVolume = "XF86AudioRaiseVolume";
+      };
+    };
+
+    cmds = {
+      exec = "spawn";
+      killWM = "exit";
+      killFocused = "close";
+      fullScreen = "toggle-fullscreen";
+      floatingToggle = "toggle-float";
+      focusLast = "focus-view next"; # no alt tab in river..
+
+      bin = let
+        eww = lib.getExe config.programs.eww.package;
+        swaylock = lib.getExe config.programs.swaylock.package;
+        dunstify = lib.getExe' config.services.dunst.package "dunstify";
+        grim = lib.getExe pkgs.grim;
+        slurp = lib.getExe pkgs.slurp;
+        wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
+        wl-paste = lib.getExe' pkgs.wl-clipboard "wl-paste";
+      in {
+        toggleBar = "${eww} -c ~/.config/river/eww open tags --toggle";
+        lock = "${swaylock} -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3";
+        notifyLayoutSwitch = "${dunstify} layout changed";
+
+        screenshotRegion = clib.mk1lnrCmd ''
+          ${grim} -g "$(${slurp})" - | \
+          ${wl-copy} && \
+          ${wl-paste} -n > ~/Screenshots/Screenshot-$(date +%F_%T).png | \
+          ${dunstify} "Screenshot of the region taken" -t 1000
+        '';
+        screenshotScreen = clib.mk1lnrCmd ''
+          ${grim} - | \
+          ${wl-copy} && \
+          ${wl-paste} > ~/Screenshots/Screenshot-$(date +%F_%T).png | \
+          ${dunstify} "Screenshot of whole screen taken" -t 1000
+        '';
+      };
+
+      increaseMasterWindows = "send-layout-cmd wideriver '--count +1'";
+      decreaseMasterWindows = "send-layout-cmd wideriver '--count -1'";
+
+      moveMasterTop = "send-layout-cmd wideriver '--layout top'";
+      moveMasterBottom = "send-layout-cmd wideriver '--layout bottom'";
+      moveMasterRight = "send-layout-cmd wideriver '--layout right'";
+      moveMasterLeft = "send-layout-cmd wideriver '--layout left'";
+
+      resizeFloatUp = "resize vertical -100";
+      resizeFloatDown = "resize vertical 100";
+      resizeFloatRight = "resize horizontal 100";
+      resizeFloatLeft = "resize horizontal -100";
+
+      focusNextOutput = "focus-output next";
+      focusPrevOutput = "focus-output previous";
+
+      moveToNextOutput = "send-to-output next";
+      moveToPrevOutput = "send-to-output previous";
+
+      btmTrayToggle = "spawn 'eww -c ~/.config/river/eww open btm_tray --toggle'";
+
+      upMonBrightness = "spawn 'sudo light -U 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"'";
+      downMonBrightness = "spawn 'sudo light -A 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"'";
+
+      downKeebBrightness = "spawn 'brightnessctl -d asus::kbd_backlight set 33%-'";
+      upKeebBrightness = "spawn 'brightnessctl -d asus::kbd_backlight set +33%'";
+
+      muteAudio = "spawn 'amixer set Master toggle && dunstify \"Volume at: $(pamixer --get-volume-human)\"'";
+      muteMic = "spawn 'amixer set Capture toggle && dunstify \"Mic at: $(pamixer --get-volume-human --default-source)\"'";
+
+      moveFocus = {
+        up = "focus-view previous";
+        down = "focus-view next";
+        right = "focus-view previous";
+        left = "focus-view next";
+      };
+      moveWindow = {
+        up = "move up 100";
+        down = "move down 100";
+        right = "move right 100";
+        left = "move left 100";
+      };
+      resizeWindow = {
+        up = "swap previous"; # not resize but im used to this
+        down = "swap next";
+        right = "send-layout-cmd wideriver '--ratio +0.05'";
+        left = "send-layout-cmd wideriver '--ratio -0.05'";
+      };
+      workspace = let
+        getPOT = n:
+          if n <= 0
+          then 1
+          else 2 * (getPOT (n - 1));
+      in {
+        focus = num: "set-focused-tags ${toString (getPOT ((lib.toInt num) - 1))}";
+        moveWindowTo = num: "set-view-tags ${toString (getPOT ((lib.toInt num) - 1))}";
+      };
     };
   };
 }
