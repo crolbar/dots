@@ -5,6 +5,9 @@
   config,
   ...
 }: {
+  # make sure binds generator is imported
+  imports = [../share/binds];
+
   wayland.windowManager.hyprland.settings = {
     bindm = [
       "SUPER, mouse:272, movewindow"

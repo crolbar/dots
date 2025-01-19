@@ -5,6 +5,9 @@
   config,
   ...
 }: {
+  # make sure binds generator is imported
+  imports = [../share/binds];
+
   wayland.windowManager.river.settings = {
     map-pointer.normal = {
       "Super BTN_LEFT" = "move-view";
