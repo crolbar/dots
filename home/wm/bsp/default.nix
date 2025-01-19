@@ -5,7 +5,6 @@
 }: {
   imports = [
     ./sxhkd.nix
-    ./polybar.nix
 
     ../share/dunst.nix
     ../share/picom.nix
@@ -28,19 +27,14 @@
     dbus-daemon --session --address="unix:path=$XDG_RUNTIME_DIR/bus" &
     xrdb ~/.Xresources &
     ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
-    xautolock -locker "i3lock -c 000000" -notifier "dunstify 'locking in 5'" -notify 300 &
     exec bspwm
   '';
-
-  xdg.configFile."bspwm/scripts".source = ./bspwm/scripts;
 
   xsession.windowManager.bspwm = {
     enable = true;
     extraConfigEarly = ''
-      PATH="$HOME/.config/bspwm/scripts:$PATH"
-
       for monitor in $(bspc query -M); do
-          bspc monitor $monitor -d {1,2,3,4,5,6,7}
+          bspc monitor $monitor -d {0,1,2,3,4,5,6,7,8,9,10}
       done
     '';
 
@@ -70,7 +64,7 @@
     };
 
     extraConfig = ''
-      processes=("picom" "polybar" "sxhkd" "dunst")
+      processes=("picom" "sxhkd" "dunst")
       for process in "''${processes[@]}"; do
         if pidof -q "$process"; then
          pkill -9 "$process" > /dev/null; sleep 0.1
@@ -79,9 +73,10 @@
 
       sxhkd &
       dunst &
-      polybar &
       picom &
       ~/scripts/wall.sh i &
+
+      xset r rate 300 50
     '';
   };
 }

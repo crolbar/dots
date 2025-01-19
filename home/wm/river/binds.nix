@@ -22,6 +22,8 @@
       ctrl = "Control";
       alt = "Alt";
       print = "PRINT";
+      tab = "TAB";
+      space = "Space";
       media = {
         play = "XF86AudioPlay";
         next = "XF86AudioNext";

@@ -4,7 +4,7 @@
   config,
   clib,
   ...
-} @ attrs: let
+}: let
   helpers = {
     # from
     # vimBinds [[mod] moveFocus]
@@ -79,16 +79,26 @@
         binds;
     in
       map setCmdFormBind filteredBinds;
+
+    has = field: attrSet:
+      builtins.hasAttr field attrSet;
   };
 
   bins = {
     foot = lib.getExe config.programs.foot.package;
+    alacritty = lib.getExe config.programs.alacritty.package;
+
     anyrun = lib.getExe config.programs.anyrun.package;
+    rofi = lib.getExe config.programs.rofi.package;
+
     playerctl = lib.getExe pkgs.playerctl;
     pamixer = lib.getExe pkgs.pamixer;
+
     emacs = lib.getExe' config.programs.emacs.package "emacsclient";
+
     eww = lib.getExe config.programs.eww.package;
     swww = lib.getExe pkgs.swww;
+
     openrgb = lib.getExe pkgs.openrgb;
     pavucontrol = lib.getExe pkgs.pavucontrol;
   };
@@ -125,6 +135,8 @@
       alt
       print
       media
+      tab
+      space
       ;
 
     inherit
@@ -149,22 +161,36 @@
       screenshotScreen
       ;
 
-    # apparently hyprland does not like quotes after exec,
-    execHyprland = shellCmd: "${settings.cmds.exec} ${shellCmd}";
+    inherit (helpers) has;
 
-    exec = shellCmd:
-      if builtins.hasAttr "isHyprland" settings
-      then execHyprland shellCmd
-      else "${settings.cmds.exec} '${shellCmd}'";
+    exec = shellCmd: let
+      s =
+        # apparently hyprland does not like quotes after exec,
+        # also sxhkd has a problem with single quotes...
+        if has "isHyprland" settings || has "isBsp" settings
+        then ""
+        else "'";
+    in "${settings.cmds.exec} ${s}${shellCmd}${s}";
 
     spawners = let
       nextWallpaper = exec "${scripts.wall} f";
       prevWallpaper = exec "${scripts.wall} b";
+      # put in wall script
       clearWallpaper = exec "${bins.swww} clear";
       toggleVolControl = exec ''pgrep "pavucontrol" > /dev/null && pkill pavucontrol || ${bins.pavucontrol} &'';
+
+      term =
+        if has "isX11" settings
+        then bins.alacritty
+        else bins.foot;
+
+      runner =
+        if has "isX11" settings
+        then "${bins.rofi} -show drun -show-icons"
+        else bins.anyrun;
     in [
-      [[mod] "x" (exec "${bins.foot}")]
-      [[mod] "r" (exec "${bins.anyrun}")]
+      [[mod] "x" (exec term)]
+      [[mod] "r" (exec runner)]
       [[mod] "e" (exec "${bins.emacs} -c")]
 
       [[mod] "a" nextWallpaper]
@@ -173,8 +199,8 @@
 
       [[mod alt] "q" toggleVolControl]
 
-      [[] "${print}" (exec "${screenshotRegion}")]
-      [[shift] "${print}" (exec "${screenshotScreen}")]
+      [[] "${print}" (exec screenshotRegion)]
+      [[shift] "${print}" (exec screenshotScreen)]
     ];
 
     eww = [
@@ -182,7 +208,7 @@
       [[mod] "s" (exec "${bins.eww} open board --toggle")]
       [[mod shift] "s" (exec "pkill eww")]
       [[mod shift] "d" (exec "${bins.eww} open set_board --toggle")]
-      [[mod] "w" (exec "${toggleBar}")]
+      [[mod] "w" (exec toggleBar)]
     ];
 
     virtualMachines = let
@@ -194,7 +220,7 @@
     ];
 
     rgb = [
-      [[mod ctrl] "a" (exec "${scripts.rgb}")]
+      [[mod ctrl] "a" (exec scripts.rgb)]
       [[mod ctrl alt] "a" (exec "${bins.openrgb} -p black")]
     ];
 
@@ -236,7 +262,7 @@
           [[mod] "f" fullScreen]
           [[mod shift] "q" killFocused]
           [[mod] "z" floatingToggle]
-          [[alt] "TAB" focusLast]
+          [[alt] tab focusLast]
         ]
         ++ switchSplitOrientation;
 
@@ -254,13 +280,16 @@
         ++ (helpers.workspaces [[mod shift] workspace.moveWindowTo]);
     };
 
-    system = [
-      [[mod shift alt ctrl] "l" (exec "${lock}")]
-      [[mod shift alt ctrl] "s" (exec "${lock} & systemctl suspend &")]
-      [[mod shift alt ctrl] "q" killWM]
-      # may need to ad an var space (in river space is with a lowercase s)
-      [[mod] "Space" (exec "${notifyLayoutSwitch}")]
-    ];
+    system =
+      [
+        [[mod shift alt ctrl] "l" (exec lock)]
+        [[mod shift alt ctrl] "s" (exec "${lock} & systemctl suspend &")]
+        [[mod shift alt ctrl] "q" killWM]
+        [[mod] space (exec notifyLayoutSwitch)]
+      ]
+      ++ helpers.mkOptionalBinds settings [
+        [[mod ctrl] "r" "refreshBinds"]
+      ];
 
     river = helpers.mkOptionalBinds settings (import ./river.nix settings);
   in

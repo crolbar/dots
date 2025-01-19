@@ -19,7 +19,7 @@
 
       confirm-close-surface = false;
 
-      custom-shader = toString ./ghostty_shaders/snow.glsl;
+      #custom-shader = toString ./ghostty_shaders/snow.glsl;
 
       keybind = [
         "shift+ctrl+c=copy_to_clipboard"

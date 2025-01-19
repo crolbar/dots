@@ -3,7 +3,7 @@
     xclip
     xcolor
     i3lock
-    flameshot
+    shutter
     feh
 
     lxappearance # maybe unneeded

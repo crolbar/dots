@@ -102,5 +102,11 @@
     in
       (clib.translateBinds wm)
       (cfg.generate cfg.windowManager.${wm}.settings);
+
+    services.sxhkd.keybindings = let
+      wm = "bsp";
+    in
+      (clib.translateBinds wm)
+      (cfg.generate cfg.windowManager.${wm}.settings);
   };
 }

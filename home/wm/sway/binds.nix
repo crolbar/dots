@@ -15,6 +15,8 @@
       ctrl = "Ctrl";
       alt = "Alt";
       print = "Print";
+      tab = "TAB";
+      space = "Space";
       media = {
         play = "XF86AudioPlay";
         next = "XF86AudioNext";
