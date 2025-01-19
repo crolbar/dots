@@ -43,7 +43,7 @@
       bin = let
         dunstify = lib.getExe' config.services.dunst.package "dunstify";
       in {
-        toggleBar = "pkill polybar";
+        toggleBar = "eww -c ~/.config/bspwm/eww open bar --toggle";
         lock = "i3lock -c 000000";
 
         notifyLayoutSwitch = "${dunstify} layout changed";

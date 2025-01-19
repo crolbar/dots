@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./sxhkd.nix
+    ./eww
 
     ../share/dunst.nix
     ../share/picom.nix
@@ -32,11 +33,7 @@
 
   xsession.windowManager.bspwm = {
     enable = true;
-    extraConfigEarly = ''
-      for monitor in $(bspc query -M); do
-          bspc monitor $monitor -d {0,1,2,3,4,5,6,7,8,9,10}
-      done
-    '';
+    monitors.DP-0 = ["0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "10"];
 
     settings = {
       border_width = 2;
@@ -64,7 +61,7 @@
     };
 
     extraConfig = ''
-      processes=("picom" "sxhkd" "dunst")
+      processes=("picom" "eww" "sxhkd" "dunst")
       for process in "''${processes[@]}"; do
         if pidof -q "$process"; then
          pkill -9 "$process" > /dev/null; sleep 0.1
@@ -74,7 +71,9 @@
       sxhkd &
       dunst &
       picom &
-      ~/scripts/wall.sh i &
+      eww -c ~/.config/bspwm/eww open bar
+
+      ~/scripts/wall.sh i
 
       xset r rate 300 50
     '';
