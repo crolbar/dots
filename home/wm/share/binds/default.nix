@@ -225,7 +225,7 @@
     ];
 
     mediaControl = {
-      # music player defined in ./hypr/scripts/default.nix
+      # music player defined in ../scripts/default.nix
       music = [
         [[mod shift alt] "F11" (exec "${scripts.volume} music-")]
         [[mod shift alt] "F12" (exec "${scripts.volume} music+")]

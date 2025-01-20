@@ -20,7 +20,7 @@
     search = rec {
       defaultSearchEngine = "Searxng";
       removeEngines = ["Bing" "Amazon.com" "eBay" "Twitter"];
-      searxUrl = "https://search.notashelf.dev";
+      searxUrl = "https://searx.rhscz.eu";
       searxQuery = "${searxUrl}/search?q={searchTerms}&categories=general";
       addEngines = [
         {
