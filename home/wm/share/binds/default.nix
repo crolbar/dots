@@ -82,6 +82,9 @@
 
     has = field: attrSet:
       builtins.hasAttr field attrSet;
+
+    escapeQuotes = str:
+      builtins.replaceStrings ["\""] ["\\\""] str;
   };
 
   bins = {
@@ -163,21 +166,20 @@
 
     inherit (helpers) has;
 
-    exec = shellCmd: let
-      s =
-        # apparently hyprland does not like quotes after exec,
-        # also sxhkd has a problem with single quotes...
-        if has "isHyprland" settings || has "isBsp" settings
-        then ""
-        else "'";
-    in "${settings.cmds.exec} ${s}${shellCmd}${s}";
+    # apparently hyprland does not like quotes after exec,
+    # also sxhkd has a problem with single quotes...
+    exec = shellCmd:
+      if has "isHyprland" settings || has "isBsp" settings
+      then "${settings.cmds.exec} ${shellCmd}"
+      else if has "isLeft" settings
+      then [settings.cmds.exec (helpers.escapeQuotes shellCmd)] # escaping because `value` is wrapped with double quotes
+      else "${settings.cmds.exec} '${shellCmd}'";
 
     spawners = let
       nextWallpaper = exec "${scripts.wall} f";
       prevWallpaper = exec "${scripts.wall} b";
-      # put in wall script
       clearWallpaper = exec "${bins.swww} clear";
-      toggleVolControl = exec ''pgrep "pavucontrol" > /dev/null && pkill pavucontrol || ${bins.pavucontrol} &'';
+      toggleVolControl = exec ''pgrep pavucontrol > /dev/null && pkill pavucontrol || ${bins.pavucontrol} &'';
 
       term =
         if has "isX11" settings
@@ -220,7 +222,7 @@
     ];
 
     rgb = [
-      [[mod ctrl] "a" (exec scripts.rgb)]
+      [[mod ctrl] "a" (exec "${scripts.rgb}")]
       [[mod ctrl alt] "a" (exec "${bins.openrgb} -p black")]
     ];
 
@@ -291,6 +293,7 @@
         [[mod ctrl] "r" "refreshBinds"]
       ];
 
+    # not used only by river
     river = helpers.mkOptionalBinds settings (import ./river.nix settings);
   in
     spawners

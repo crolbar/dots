@@ -19,7 +19,10 @@
           ((lib.length bind) == 3)
           && (builtins.isList (bindScheme.mods bind))
           && (builtins.isString (bindScheme.key bind))
-          && (builtins.isString (bindScheme.cmd bind));
+          && (
+            (builtins.isString (bindScheme.cmd bind))
+            || (builtins.isList (bindScheme.cmd bind))
+          );
       in
         mkOptionType {
           name = "bind";
@@ -105,6 +108,12 @@
 
     services.sxhkd.keybindings = let
       wm = "bsp";
+    in
+      (clib.translateBinds wm)
+      (cfg.generate cfg.windowManager.${wm}.settings);
+
+    programs.leftwm.settings.keybind = let
+      wm = "leftwm";
     in
       (clib.translateBinds wm)
       (cfg.generate cfg.windowManager.${wm}.settings);

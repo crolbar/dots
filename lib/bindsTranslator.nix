@@ -104,6 +104,41 @@
         combine = lib.zipAttrsWith (x: y: lib.head y);
       in
         binds: combine (map translate binds);
+
+      # example what it needs to output
+      #[
+      #  { command = "Execute"; value = "alacritty"; modifier = ["modkey"]; key = "x"; }
+      #  { command = "ToggleFullScreen"; modifier = ["modkey"]; key = "f"; }
+      #]
+      leftwm = let
+        translate = b: let
+          bind = bindFromListToSet b;
+          mods =
+            if builtins.isString bind.mods
+            then bind.mods
+            else if builtins.length bind.mods < 1
+            then []
+            else bind.mods;
+        in
+          # with some commands it is possible that they will require
+          # an value field, so when they do `bind.cmd` will be a list with [cmd value]
+          # else it will be just the cmd as a string
+          if builtins.isList bind.cmd
+          then let
+            command = builtins.elemAt bind.cmd 0;
+            value = builtins.elemAt bind.cmd 1;
+          in {
+            inherit value command;
+            modifier = mods;
+            key = bind.key;
+          }
+          else {
+            command = bind.cmd;
+            modifier = mods;
+            key = bind.key;
+          };
+      in
+        binds: map translate binds;
     };
   in
     lib.getAttr wm wm_translators;

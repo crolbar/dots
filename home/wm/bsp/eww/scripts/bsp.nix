@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   xdg.configFile."bspwm/eww/scripts/bsp.sh".source = pkgs.writers.writeBash "bsp.sh" ''
     print() {
         workspaces=$(bspc query -D --names | jq -R -s -c 'split("\n")[:-1]')

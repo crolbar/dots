@@ -1,7 +1,6 @@
 {
   inputs',
   rust-overlay,
-  leftwm,
   ristate,
   emacs-overlay,
   ...
@@ -17,7 +16,6 @@ in {
   nixpkgs.overlays = [
     (final: prev: ovrls)
     ristate.overlays.default
-    leftwm.overlays.default
     rust-overlay.overlays.default
     emacs-overlay.overlays.default
   ];

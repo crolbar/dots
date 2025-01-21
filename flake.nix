@@ -129,7 +129,7 @@
       };
     };
 
-    leftwm.url = "github:leftwm/leftwm";
+    leftwm-flake.url = "github:crolbar/leftwm-flake";
 
     ristate = {
       url = "github:crolbar/ristate";
