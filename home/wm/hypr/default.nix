@@ -1,10 +1,5 @@
-{
-  hyprland,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
-    hyprland.homeManagerModules.default
     ./binds.nix
     ./settings.nix
     ./eww

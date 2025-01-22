@@ -3,8 +3,6 @@
   pkgs,
   ...
 }: {
-  imports = [spicetify-nix.homeManagerModules.default];
-
   programs.spicetify = let
     spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
   in {

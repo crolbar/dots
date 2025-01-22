@@ -1,10 +1,4 @@
-{
-  anyrun,
-  inputs',
-  ...
-}: {
-  imports = [anyrun.homeManagerModules.default];
-
+{inputs', ...}: {
   programs.anyrun = {
     enable = true;
     config = {

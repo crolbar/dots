@@ -1,7 +1,6 @@
 {
   pkgs,
   username,
-  leftwm-flake,
   ...
 }: {
   imports = [
@@ -15,7 +14,6 @@
     ../share/x11
     ../share/wall
     ../share/binds
-    leftwm-flake.homeManagerModules.default
   ];
 
   home.packages = with pkgs; [
