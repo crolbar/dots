@@ -988,11 +988,11 @@
         "leftwm": "leftwm"
       },
       "locked": {
-        "lastModified": 1737410473,
-        "narHash": "sha256-hXSu/Hxg0QFRkCX046HL5mDuT3c8b6YxIy+p5P0Do/Y=",
+        "lastModified": 1737613230,
+        "narHash": "sha256-ng4AmM65YvTnKS/VU8h25uiCNj0ZNTa/CmxLD50MWG0=",
         "owner": "crolbar",
         "repo": "leftwm-flake",
-        "rev": "70150f92c5f3b932c39aa0266c7fc9d8acf0b70e",
+        "rev": "d005f97cb4cacdd08ff782f4dd106608bbcd8013",
         "type": "github"
       },
       "original": {

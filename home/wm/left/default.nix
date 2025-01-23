@@ -16,16 +16,6 @@
     ../share/binds
   ];
 
-  home.packages = with pkgs; [
-    eww
-    xautolock
-    polkit_gnome
-
-    brightnessctl
-    light
-    alsa-utils # amixer
-  ];
-
   home.file.".Xresources".text =
     if username == "plier"
     then "Xft.dpi: 192"
@@ -50,6 +40,15 @@
     enable = true;
     package = pkgs.leftwm;
 
+    extraPackages = with pkgs; [
+      eww
+      polkit_gnome
+
+      brightnessctl
+      light
+      alsa-utils # amixer
+    ];
+
     theme = {
       border_width = 1;
       margin = 0;
@@ -57,6 +56,15 @@
       floating_border_color = "#DE64AC";
       focused_border_color = "#DE64AC";
     };
+
+    startupPrograms = [
+      "picom"
+      "~/scripts/wall.sh i"
+      "eww open btm_tray -c ~/.config/leftwm/themes/current/eww"
+      "eww open tags -c ~/.config/leftwm/themes/current/eww"
+      "dunst"
+    ];
+
     up = ''
       export SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
@@ -74,12 +82,6 @@
       ln -s $SCRIPTPATH/down /tmp/leftwm-theme-down
 
       leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
-
-      picom &
-      ~/scripts/wall.sh i &
-      eww open btm_tray -c ~/.config/leftwm/themes/current/eww
-      eww open tags -c ~/.config/leftwm/themes/current/eww
-      dunst &
     '';
 
     down = ''
