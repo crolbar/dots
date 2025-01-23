@@ -32,6 +32,6 @@ in [
   [[mod] "F2" "downKeebBrightness"]
   [[mod] "F3" "upKeebBrightness"]
 
-  [[mod] "XF86AudioMute" "muteAudio"]
-  [[mod] "XF86AudioMicMute" "muteMic"]
+  [[] "XF86AudioMute" "muteAudio"]
+  [[] "XF86AudioMicMute" "muteMic"]
 ]
