@@ -35,6 +35,7 @@
 
 ## Misc
 
+-   [x] gitui config/theme in nix not ron
 -   [x] fix rust overlay in dev without including overlays.nix fails
 -   [x] default sys apps for all hosts (git, vim, ..)
 -   [x] themes, icons & cursor (gtk, qt)

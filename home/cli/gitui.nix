@@ -1,53 +1,55 @@
-{
+{clib, ...}: {
   programs.gitui = {
     enable = true;
 
-    keyConfig = ''
-      (
-       move_left: Some((code: Char('h'), modifiers: "")),
-       move_right: Some((code: Char('l'), modifiers: "")),
-       move_up: Some((code: Char('k'), modifiers: "")),
-       move_down: Some((code: Char('j'), modifiers: "")),
+    keyConfig = let
+      Char = ch: n: "Char('${ch}')";
+      F = num: n: "F(${toString num})";
+      setMods = modifiers: code: {inherit code modifiers;};
+      noMods = code: setMods "" code;
+      shift = code: setMods "SHIFT" code;
+      ctrl = code: setMods "CONTROL" code;
+    in
+      clib.toRonImpSome {
+        move_up = noMods (Char "k");
+        move_down = noMods (Char "j");
+        move_left = noMods (Char "h");
+        move_right = noMods (Char "l");
 
-       shift_up: Some((code: Char('g'), modifiers: "")),
-       shift_down: Some((code: Char('G'), modifiers: "SHIFT")),
+        shift_up = noMods (Char "g");
+        shift_down = shift (Char "g");
+        page_down = ctrl (Char "u");
 
-       page_down: Some((code: Char('d'), modifiers: "CONTROL")),
-       page_up: Some((code: Char('u'), modifiers: "CONTROL")),
+        stash_open = noMods (Char "l");
+        open_help = noMods (F 1);
 
-       stash_open: Some((code: Char('l'), modifiers: "")),
-       open_help: Some((code: F(1), modifiers: "")),
+        status_reset_item = shift (Char "U");
+      };
 
-       status_reset_item: Some((code: Char('U'), modifiers: "SHIFT")),
-      )
-    '';
-
-    theme = ''
-      (
-        selected_tab: Some("Reset"),
-        command_fg: Some("White"),
-        selection_bg: Some("DarkGray"),
-        selection_fg: Some("White"),
-        cmdbar_bg: Some("Reset"),
-        cmdbar_extra_lines_bg: Some("Black"),
-        disabled_fg: Some("DarkGray"),
-        diff_line_add: Some("Green"),
-        diff_line_delete: Some("Red"),
-        diff_file_added: Some("LightGreen"),
-        diff_file_removed: Some("LightRed"),
-        diff_file_moved: Some("LightMagenta"),
-        diff_file_modified: Some("Cyan"),
-        commit_hash: Some("Green"),
-        commit_time: Some("Blue"),
-        commit_author: Some("Gray"),
-        danger_fg: Some("Red"),
-        push_gauge_bg: Some("Blue"),
-        push_gauge_fg: Some("Reset"),
-        tag_fg: Some("LightMagenta"),
-        branch_fg: Some("Red"),
-        line_break: Some("¶"),
-        block_title_focused: Some("Reset"),
-      )
-    '';
+    theme = clib.toRonImpSome {
+      selected_tab = "Reset";
+      command_fg = "White";
+      selection_bg = "DarkGray";
+      selection_fg = "White";
+      cmdbar_bg = "Reset";
+      cmdbar_extra_lines_bg = "Black";
+      disabled_fg = "DarkGray";
+      diff_line_add = "Green";
+      diff_line_delete = "Red";
+      diff_file_added = "LightGreen";
+      diff_file_removed = "LightRed";
+      diff_file_moved = "LightMagenta";
+      diff_file_modified = "Cyan";
+      commit_hash = "Green";
+      commit_time = "Blue";
+      commit_author = "Gray";
+      danger_fg = "Red";
+      push_gauge_bg = "Blue";
+      push_gauge_fg = "Reset";
+      tag_fg = "LightMagenta";
+      branch_fg = "Red";
+      line_break = "¶";
+      block_title_focused = "Reset";
+    };
   };
 }
