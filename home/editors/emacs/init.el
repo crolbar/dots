@@ -301,4 +301,6 @@
   (define-key evil-insert-state-map (kbd "C-S-v") 'evil-paste-after)
   (define-key evil-normal-state-map (kbd "SPC w w") 'maximize-window)
   (define-key evil-normal-state-map (kbd "C-x C-c") 'compile)
-  (define-key evil-normal-state-map (kbd "C-x C-r") 'recompile))
+  (define-key evil-normal-state-map (kbd "C-x C-r") 'recompile)
+
+  (define-key evil-normal-state-map (kbd "-") 'dired-jump))
