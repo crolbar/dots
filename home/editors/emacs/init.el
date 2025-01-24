@@ -235,6 +235,7 @@
 
 (require 'harpoon)
 (require 'popwin)
+(require 'ispell)
 
 (popwin-mode 1)
 

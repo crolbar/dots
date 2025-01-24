@@ -56,6 +56,9 @@ in {
       evil-collection
       evil-surround
       evil-goggles
+
+      # misc
+      (pkgs.ispell)
     ]
     ++ [
       epkgs."ido-completing-read+"
