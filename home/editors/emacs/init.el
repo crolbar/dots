@@ -44,7 +44,7 @@
 
 (setq echo-keystrokes 0.3)
 
-;;  _    _         _    
+;;  _    _         _
 ;; | |__(_)_ _  __| |___
 ;; | '_ \ | ' \/ _` (_-<
 ;; |_.__/_|_||_\__,_/__/
@@ -60,16 +60,16 @@
 
 (global-set-key (kbd "C-s") nil)
 
-;;;         _           
+;;;         _
 ;;;    _ __| |____ _ ___
 ;;;   | '_ \ / / _` (_-<
 ;;;   | .__/_\_\__, /__/
-;;;   |_|      |___/    
+;;;   |_|      |___/
 
 ;;(load "~/.emacs.d/pkg.el")
 ;;(load "~/.emacs.d/tmp.el")
 
-;;                _        
+;;                _
 ;;  _ __  ___  __| |___ ___
 ;; | '  \/ _ \/ _` / -_|_-<
 ;; |_|_|_\___/\__,_\___/__/
@@ -84,8 +84,8 @@
 (require 'rust-mode)
 
 
-;;              _   
-;;  _ _ _  _ __| |_ 
+;;              _
+;;  _ _ _  _ __| |_
 ;; | '_| || (_-<  _|
 ;; |_|  \_,_/__/\__|
 
@@ -95,7 +95,7 @@
 
 
 
-;;   __ 
+;;   __
 ;;  / _|
 ;;  \__|
 
@@ -105,11 +105,11 @@
             (c-toggle-comment-style -1)))
 
 
-;;  _         
-;; | |____ __ 
+;;  _
+;; | |____ __
 ;; | (_-< '_ \
 ;; |_/__/ .__/
-;;      |_|   
+;;      |_|
 
 (require 'eglot)
 
@@ -121,10 +121,10 @@
 (setq eldoc-echo-area-use-multiline-p nil)
 
 
-;;   __ _ __  _ __ 
+;;   __ _ __  _ __
 ;;  / _| '  \| '_ \
 ;;  \__|_|_|_| .__/
-;;           |_|   
+;;           |_|
 
 (require 'corfu)
 (require 'corfu-popupinfo)
@@ -139,8 +139,8 @@
 (setq yas-keymap nil)
 (custom-set-faces '(yas-field-highlight-face ((t ()))))
 
-;;    __      _   
-;;   / _|_ __| |_ 
+;;    __      _
+;;   / _|_ __| |_
 ;;  |  _| '  \  _|
 ;;  |_| |_|_|_\__|
 
@@ -163,11 +163,11 @@
           (lambda () (interactive)
             (local-set-key (kbd "M-f") 'clang-format-buffer)))
 
-;;        _ _   
-;;   __ _(_) |_ 
+;;        _ _
+;;   __ _(_) |_
 ;;  / _` | |  _|
 ;;  \__, |_|\__|
-;;  |___/       
+;;  |___/
 (require 'magit)
 (require 'diff-hl)
 (require 'dired-gitignore)
@@ -186,8 +186,8 @@
 (global-set-key (kbd "C-x i") 'dired-gitignore-global-mode)
 
 
-;;               _     
-;;  _  _ _ _  __| |___ 
+;;               _
+;;  _  _ _ _  __| |___
 ;; | || | ' \/ _` / _ \
 ;;  \_,_|_||_\__,_\___/
 (require 'undo-tree)
@@ -196,7 +196,7 @@
 (global-undo-tree-mode)
 
 
-;;   __ _         _ 
+;;   __ _         _
 ;;  / _(_)_ _  __| |
 ;; |  _| | ' \/ _` |
 ;; |_| |_|_||_\__,_|
@@ -228,8 +228,8 @@
 
 
 
-;;        _        
-;;  _ __ (_)___ __ 
+;;        _
+;;  _ __ (_)___ __
 ;; | '  \| (_-</ _|
 ;; |_|_|_|_/__/\__|
 
@@ -238,9 +238,9 @@
 
 (popwin-mode 1)
 
-;;  _____   _____ _    
-;; | __\ \ / /_ _| |   
-;; | _| \ V / | || |__ 
+;;  _____   _____ _
+;; | __\ \ / /_ _| |
+;; | _| \ V / | || |__
 ;; |___| \_/ |___|____|
 (setq-default evil-want-keybinding nil)
 
@@ -302,5 +302,5 @@
   (define-key evil-normal-state-map (kbd "SPC w w") 'maximize-window)
   (define-key evil-normal-state-map (kbd "C-x C-c") 'compile)
   (define-key evil-normal-state-map (kbd "C-x C-r") 'recompile)
-
+  (define-key evil-normal-state-map (kbd "C-b g") 'magit)
   (define-key evil-normal-state-map (kbd "-") 'dired-jump))
