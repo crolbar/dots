@@ -236,6 +236,8 @@
 (require 'harpoon)
 (require 'popwin)
 (require 'ispell)
+(require 'elcord)
+(elcord-mode)
 
 (popwin-mode 1)
 

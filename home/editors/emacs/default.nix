@@ -59,6 +59,7 @@ in {
 
       # misc
       (pkgs.ispell)
+      elcord
     ]
     ++ [
       epkgs."ido-completing-read+"
