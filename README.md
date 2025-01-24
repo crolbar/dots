@@ -12,6 +12,392 @@
 
 </details>
 
+
+<details>
+    <summary><h1>Repository Tree</h1></summary>
+
+```nix
+.
+├── checks
+│   └── default.nix
+├── derivations
+│   ├── binsider.nix
+│   ├── KeyboardVisualizer.nix
+│   ├── rmpc.nix
+│   └── zohoMail.nix
+├── home
+│   ├── cli
+│   │   ├── zzz
+│   │   │   ├── dapu.nix
+│   │   │   └── default.nix
+│   │   ├── btop.nix
+│   │   ├── default.nix
+│   │   ├── git.nix
+│   │   ├── gitui.nix
+│   │   ├── lazygit.nix
+│   │   ├── leetcode_cli.nix
+│   │   ├── starship.nix
+│   │   ├── tmux.nix
+│   │   ├── zellij.nix
+│   │   └── zsh.nix
+│   ├── dev
+│   │   ├── c.nix
+│   │   ├── default.nix
+│   │   ├── go.nix
+│   │   ├── java.nix
+│   │   ├── js.nix
+│   │   ├── lua.nix
+│   │   ├── nix.nix
+│   │   ├── php.nix
+│   │   ├── python.nix
+│   │   └── rust.nix
+│   ├── editors
+│   │   ├── emacs
+│   │   │   ├── default.nix
+│   │   │   └── init.el
+│   │   ├── neovim
+│   │   │   ├── nvim
+│   │   │   │   ├── lua
+│   │   │   │   │   ├── lib
+│   │   │   │   │   │   └── nivm_tree_git_open.lua
+│   │   │   │   │   ├── plugins
+│   │   │   │   │   │   ├── brrr.lua
+│   │   │   │   │   │   ├── cmp.lua
+│   │   │   │   │   │   ├── colorizer.lua
+│   │   │   │   │   │   ├── comment.lua
+│   │   │   │   │   │   ├── conform.lua
+│   │   │   │   │   │   ├── discord.lua
+│   │   │   │   │   │   ├── dressing.lua
+│   │   │   │   │   │   ├── feline.lua
+│   │   │   │   │   │   ├── gitsigns.lua
+│   │   │   │   │   │   ├── harpoon.lua
+│   │   │   │   │   │   ├── ibl.lua
+│   │   │   │   │   │   ├── init.lua
+│   │   │   │   │   │   ├── lsp.lua
+│   │   │   │   │   │   ├── markdown_preview.lua
+│   │   │   │   │   │   ├── noice.lua
+│   │   │   │   │   │   ├── nvimtree.lua
+│   │   │   │   │   │   ├── oil.lua
+│   │   │   │   │   │   ├── telescope.lua
+│   │   │   │   │   │   ├── term.lua
+│   │   │   │   │   │   ├── theme.lua
+│   │   │   │   │   │   ├── treesitter.lua
+│   │   │   │   │   │   └── zen.lua
+│   │   │   │   │   ├── binds.lua
+│   │   │   │   │   ├── init_lazy.lua
+│   │   │   │   │   └── set.lua
+│   │   │   │   ├── init.lua
+│   │   │   │   ├── lazy-lock.json
+│   │   │   │   └── LICENSE
+│   │   │   └── default.nix
+│   │   └── default.nix
+│   ├── gui
+│   │   ├── eww
+│   │   │   ├── eww
+│   │   │   │   ├── board
+│   │   │   │   │   ├── board.scss
+│   │   │   │   │   ├── board.yuck
+│   │   │   │   │   ├── player-info.scss
+│   │   │   │   │   ├── player-info.yuck
+│   │   │   │   │   ├── power_menu.scss
+│   │   │   │   │   └── power_menu.yuck
+│   │   │   │   ├── images
+│   │   │   │   │   ├── alacritty.png
+│   │   │   │   │   ├── discord.png
+│   │   │   │   │   ├── gimp.png
+│   │   │   │   │   ├── github.png
+│   │   │   │   │   ├── gpt.png
+│   │   │   │   │   ├── lutris.png
+│   │   │   │   │   ├── mousepad.png
+│   │   │   │   │   ├── nvim.png
+│   │   │   │   │   ├── qute.png
+│   │   │   │   │   ├── reddit.png
+│   │   │   │   │   ├── schizofox.png
+│   │   │   │   │   ├── spotify.png
+│   │   │   │   │   ├── steam.png
+│   │   │   │   │   ├── thunar.png
+│   │   │   │   │   ├── twitch.png
+│   │   │   │   │   ├── twitter.png
+│   │   │   │   │   ├── vbox.png
+│   │   │   │   │   ├── vscodium.png
+│   │   │   │   │   ├── x.png
+│   │   │   │   │   └── youtube.png
+│   │   │   │   ├── settings_board
+│   │   │   │   │   ├── set_board.scss
+│   │   │   │   │   └── set_board.yuck
+│   │   │   │   ├── eww.scss
+│   │   │   │   └── eww.yuck
+│   │   │   ├── scripts
+│   │   │   │   ├── dcc.nix
+│   │   │   │   ├── default.nix
+│   │   │   │   ├── player.nix
+│   │   │   │   ├── volume.nix
+│   │   │   │   └── weather.c
+│   │   │   └── default.nix
+│   │   ├── term_emulators
+│   │   │   ├── ghostty_shaders
+│   │   │   │   ├── crt.glsl
+│   │   │   │   └── snow.glsl
+│   │   │   ├── alacritty.nix
+│   │   │   ├── default.nix
+│   │   │   ├── foot.nix
+│   │   │   ├── ghostty.nix
+│   │   │   └── wezterm.nix
+│   │   ├── default.nix
+│   │   ├── KeyboardVisualizer.nix
+│   │   ├── nextcloud.nix
+│   │   ├── obs.nix
+│   │   ├── schizofox.nix
+│   │   ├── spotify.nix
+│   │   ├── zathura.nix
+│   │   └── zoho.nix
+│   ├── misc
+│   │   ├── rmpc
+│   │   │   ├── config.ron
+│   │   │   ├── default.nix
+│   │   │   └── theme.ron
+│   │   ├── agenix.nix
+│   │   ├── default.nix
+│   │   ├── gtk.nix
+│   │   ├── mangohud.nix
+│   │   ├── mpd.nix
+│   │   └── xdg.nix
+│   ├── profiles
+│   │   ├── crolbar
+│   │   │   ├── default.nix
+│   │   │   └── shell_aliases.nix
+│   │   ├── kubo
+│   │   │   ├── default.nix
+│   │   │   └── shell_aliases.nix
+│   │   ├── plier
+│   │   │   ├── default.nix
+│   │   │   └── shell_aliases.nix
+│   │   ├── screw
+│   │   │   ├── default.nix
+│   │   │   └── shell_aliases.nix
+│   │   └── home.nix
+│   ├── wm
+│   │   ├── bsp
+│   │   │   ├── eww
+│   │   │   │   ├── scripts
+│   │   │   │   │   ├── bsp.nix
+│   │   │   │   │   ├── default.nix
+│   │   │   │   │   └── pulse.nix
+│   │   │   │   ├── default.nix
+│   │   │   │   ├── eww.scss
+│   │   │   │   └── eww.yuck
+│   │   │   ├── default.nix
+│   │   │   ├── polybar.nix
+│   │   │   └── sxhkd.nix
+│   │   ├── hypr
+│   │   │   ├── eww
+│   │   │   │   ├── scripts
+│   │   │   │   │   ├── default.nix
+│   │   │   │   │   ├── hyprland.c
+│   │   │   │   │   ├── hyprland.nix
+│   │   │   │   │   ├── pulse.nix
+│   │   │   │   │   ├── workspace_scroll.c
+│   │   │   │   │   └── workspace_scroll.nix
+│   │   │   │   ├── default.nix
+│   │   │   │   ├── eww.scss
+│   │   │   │   └── eww.yuck
+│   │   │   ├── scripts
+│   │   │   │   ├── default.nix
+│   │   │   │   ├── dispatch.c
+│   │   │   │   └── dispatch.nix
+│   │   │   ├── binds.nix
+│   │   │   ├── default.nix
+│   │   │   └── settings.nix
+│   │   ├── left
+│   │   │   ├── eww
+│   │   │   │   ├── btm_tray
+│   │   │   │   │   ├── btm_tray.scss
+│   │   │   │   │   └── btm_tray.yuck
+│   │   │   │   ├── tags
+│   │   │   │   │   ├── tags.scss
+│   │   │   │   │   └── tags.yuck
+│   │   │   │   ├── eww.scss
+│   │   │   │   ├── eww.yuck
+│   │   │   │   ├── tr.scss
+│   │   │   │   └── tr.yuck
+│   │   │   ├── binds.nix
+│   │   │   ├── default.nix
+│   │   │   ├── kb.nix
+│   │   │   └── settings.nix
+│   │   ├── river
+│   │   │   ├── eww
+│   │   │   │   ├── btm_tray
+│   │   │   │   │   ├── btm_tray.scss
+│   │   │   │   │   └── btm_tray.yuck
+│   │   │   │   ├── scripts
+│   │   │   │   │   ├── default.nix
+│   │   │   │   │   ├── ristate.c
+│   │   │   │   │   └── ristate.nix
+│   │   │   │   ├── tags
+│   │   │   │   │   ├── tags.scss
+│   │   │   │   │   └── tags.yuck
+│   │   │   │   ├── default.nix
+│   │   │   │   ├── eww.scss
+│   │   │   │   └── eww.yuck
+│   │   │   ├── binds.nix
+│   │   │   ├── default.nix
+│   │   │   ├── kanshi.nix
+│   │   │   ├── settings.nix
+│   │   │   └── way_displays.nix
+│   │   ├── share
+│   │   │   ├── binds
+│   │   │   │   ├── default.nix
+│   │   │   │   └── river.nix
+│   │   │   ├── rofi
+│   │   │   │   ├── default.nix
+│   │   │   │   └── spotlight-dark.rasi
+│   │   │   ├── scripts
+│   │   │   │   ├── default.nix
+│   │   │   │   ├── default-sink.nix
+│   │   │   │   ├── rgb.nix
+│   │   │   │   └── volume.nix
+│   │   │   ├── wall
+│   │   │   │   ├── wallpapers
+│   │   │   │   │   ├── wall0.png
+│   │   │   │   │   ├── wall1.png
+│   │   │   │   │   └── wall3.png
+│   │   │   │   ├── default.nix
+│   │   │   │   └── wall.nix
+│   │   │   ├── wayland
+│   │   │   │   ├── anyrun.nix
+│   │   │   │   └── default.nix
+│   │   │   ├── x11
+│   │   │   │   └── default.nix
+│   │   │   ├── dunst.nix
+│   │   │   └── picom.nix
+│   │   ├── sway
+│   │   │   ├── binds.nix
+│   │   │   ├── default.nix
+│   │   │   └── settings.nix
+│   │   └── xfwm
+│   │       └── default.nix
+│   ├── default.nix
+│   └── user_modules.nix
+├── hosts
+│   ├── 308
+│   │   ├── servers
+│   │   │   ├── default.nix
+│   │   │   └── syncthing.nix
+│   │   ├── audio.nix
+│   │   ├── boot.nix
+│   │   ├── default.nix
+│   │   ├── fs.nix
+│   │   ├── hardware.nix
+│   │   ├── net.nix
+│   │   ├── programs.nix
+│   │   ├── security.nix
+│   │   ├── services.nix
+│   │   └── user.nix
+│   ├── plier
+│   │   ├── servers
+│   │   │   ├── default.nix
+│   │   │   └── syncthing.nix
+│   │   ├── audio.nix
+│   │   ├── boot.nix
+│   │   ├── default.nix
+│   │   ├── fs.nix
+│   │   ├── hardware.nix
+│   │   ├── net.nix
+│   │   ├── programs.nix
+│   │   ├── security.nix
+│   │   ├── services.nix
+│   │   └── user.nix
+│   ├── screw
+│   │   ├── servers
+│   │   │   ├── blocky.nix
+│   │   │   ├── default.nix
+│   │   │   ├── forge.nix
+│   │   │   ├── freshrss.nix
+│   │   │   ├── grafana.nix
+│   │   │   ├── nfs.nix
+│   │   │   ├── nginx.nix
+│   │   │   └── prometheus.nix
+│   │   ├── boot.nix
+│   │   ├── default.nix
+│   │   ├── fs.nix
+│   │   ├── hardware.nix
+│   │   ├── net.nix
+│   │   ├── security.nix
+│   │   ├── services.nix
+│   │   └── user.nix
+│   ├── shared
+│   │   ├── cli
+│   │   │   ├── default.nix
+│   │   │   ├── yazi.nix
+│   │   │   └── zsh.nix
+│   │   ├── dev
+│   │   │   └── default.nix
+│   │   ├── gamer
+│   │   │   ├── default.nix
+│   │   │   └── steam.nix
+│   │   ├── gui
+│   │   │   ├── default.nix
+│   │   │   ├── fonts.nix
+│   │   │   ├── qt.nix
+│   │   │   ├── thunar.nix
+│   │   │   └── xdg.nix
+│   │   ├── virt
+│   │   │   └── default.nix
+│   │   ├── agenix.nix
+│   │   ├── default.nix
+│   │   ├── env.nix
+│   │   ├── locales.nix
+│   │   └── nix.nix
+│   ├── vm
+│   │   ├── boot.nix
+│   │   ├── default.nix
+│   │   ├── fs.nix
+│   │   ├── net.nix
+│   │   ├── security.nix
+│   │   ├── services.nix
+│   │   └── user.nix
+│   └── default.nix
+├── lib
+│   ├── bindsTranslator.nix
+│   ├── default.nix
+│   ├── sys_builders.nix
+│   ├── utils.nix
+│   └── writers.nix
+├── modules
+│   ├── hm
+│   │   ├── cbinds.nix
+│   │   └── default.nix
+│   └── nixos
+│       ├── default.nix
+│       └── syncthing.nix
+├── secrets
+│   ├── freshRSSpass.age
+│   ├── git.age
+│   ├── leet.age
+│   └── secrets.nix
+├── templates
+│   ├── rust-parts
+│   │   ├── src
+│   │   │   └── main.rs
+│   │   ├── Cargo.lock
+│   │   ├── Cargo.toml
+│   │   └── flake.nix
+│   └── default.nix
+├── devShell.nix
+├── flake.lock
+├── flake.nix
+├── LICENSE
+├── overlays.nix
+├── README.md
+├── shell.nix
+└── TODO.md
+
+79 directories, 295 files
+
+```
+
+</details>
+
 # Hosts
 
 -   **308**: Desktop PC with a Ryzen 5 3600 and a 1060 3bg (old but does the job for me). Running Hyprland.

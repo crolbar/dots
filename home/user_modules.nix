@@ -7,10 +7,9 @@
     ./gui
     ./editors
     ./dev
-    #./wm/bsp
+    ./wm/bsp
     ./wm/hypr
     ./wm/sway
-    ./wm/left
     ./misc
     ../overlays.nix
     ./misc/mangohud.nix
