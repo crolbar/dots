@@ -28,7 +28,7 @@
       eww = lib.getExe config.programs.eww.package;
     in rec {
       exec = "Execute";
-      killWM = ["Execute" "pkill leftwm"];
+      killWM = [exec "pkill leftwm"];
       killFocused = "CloseWindow";
       fullScreen = "ToggleFullScreen";
       floatingToggle = "ToggleFloating";

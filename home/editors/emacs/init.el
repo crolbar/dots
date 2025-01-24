@@ -150,7 +150,8 @@
 (format-all-mode)
 
 (setq-default format-all-formatters
-      '(("Nix" (alejandra))))
+              '(("Nix" (alejandra))
+                ("Markdown" (prettier "--tab-width=4"))))
 
 (setq-default clang-format-style "{BasedOnStyle: Mozilla, IndentWidth: 4}")
 
