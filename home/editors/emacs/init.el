@@ -299,6 +299,10 @@
 
 
   ;; misc
+  (define-key evil-normal-state-map (kbd "SPC t") (lambda () (interactive) (shell-command "tmux send-keys -t dev:1 ' t'")))
+  (define-key evil-normal-state-map (kbd "SPC l") (lambda () (interactive) (shell-command "tmux send-keys -t dev:1 '\x17l\x17q'")))
+  (define-key evil-normal-state-map (kbd "C-x C-g") (lambda () (interactive) (shell-command "tmux send-keys -t dev:1 ' t tIIggW ga'")))
+
   (define-key evil-insert-state-map (kbd "C-S-v") 'evil-paste-after)
   (define-key evil-normal-state-map (kbd "SPC w w") 'maximize-window)
   (define-key evil-normal-state-map (kbd "C-x C-c") 'compile)
