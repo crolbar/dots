@@ -56,6 +56,10 @@ in {
           printf "\e[32mUpdating depression..\e[0m\n"
           playlist_url="https://open.spotify.com/playlist/0nQBrSpBDGaYNrOzSzetWw?si=e8a2781a7138451e"
           playlist_dir="$HOME/Music/depression"
+      elif [[ "$1" == l* ]]; then
+          printf "\e[32mUpdating lockedIn..\e[0m\n"
+          playlist_url="https://open.spotify.com/playlist/3vLZcjS0IcZmpqjWcGVwU2?si=12fff29bc4184dae"
+          playlist_dir="$HOME/Music/lockedIn"
       else
           echo "Not a valit playlist idiot" && exit
       fi
