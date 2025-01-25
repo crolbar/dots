@@ -78,10 +78,10 @@
         left = "move left";
       };
       resizeWindow = {
-        up = "resize grow height 20px";
-        down = "resize shrink height 20px";
-        right = "resize grow width 20px";
-        left = "resize shrink width 20px";
+        up = "resize grow height 50px";
+        down = "resize shrink height 50px";
+        right = "resize grow width 50px";
+        left = "resize shrink width 50px";
       };
       workspace = {
         focus = num: "workspace number ${num}";
