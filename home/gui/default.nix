@@ -32,5 +32,6 @@
     celluloid
     loupe
     calibre
+    xfce.xfce4-dict
   ];
 }

@@ -44,9 +44,17 @@
 
       output = {
         "DP-1" = {
-          mode = "1920x1080@144Hz";
           #mode = "1024x768@119.989Hz";
+          mode = "1920x1080@144Hz";
           position = "0,0";
+          #position = "1080,1080";
+          scale = "1.0";
+          transform = "normal";
+        };
+        "DP-2" = {
+          mode = "1920x1080@60Hz";
+          #position = "1080,0";
+          position = "1920,0";
           scale = "1.0";
           transform = "normal";
         };
