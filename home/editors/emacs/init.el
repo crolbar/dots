@@ -144,24 +144,14 @@
 ;;  |  _| '  \  _|
 ;;  |_| |_|_|_\__|
 
-(require 'clang-format)
 (require 'format-all)
 
 (format-all-mode)
 
 (setq-default format-all-formatters
               '(("Nix" (alejandra))
-                ("Markdown" (prettier "--tab-width=4"))))
-
-(setq-default clang-format-style "{BasedOnStyle: Mozilla, IndentWidth: 4}")
-
-(add-hook 'c-mode-hook
-          (lambda () (interactive)
-            (local-set-key (kbd "M-f") 'clang-format-buffer)))
-
-(add-hook 'java-mode-hook
-          (lambda () (interactive)
-            (local-set-key (kbd "M-f") 'clang-format-buffer)))
+                ("Markdown" (prettier "--tab-width=4"))
+                ("Java" (clang-format "--style={\"BasedOnStyle\": \"Mozilla\", \"IndentWidth\": 4}"))))
 
 ;;        _ _
 ;;   __ _(_) |_
