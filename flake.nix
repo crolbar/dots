@@ -61,6 +61,7 @@
     npassm.url = "github:crolbar/npassm";
     gazi.url = "github:crolbar/gazi";
     gql.url = "github:crolbar/gql";
+    salg.url = "github:crolbar/salg";
 
     lobster = {
       url = "github:justchokingaround/lobster";

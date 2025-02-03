@@ -1274,6 +1274,21 @@
     },
     "nixpkgs_12": {
       "locked": {
+        "lastModified": 1738410390,
+        "narHash": "sha256-xvTo0Aw0+veek7hvEVLzErmJyQkEcRk6PSR4zsRQFEc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_13": {
+      "locked": {
         "lastModified": 1735834308,
         "narHash": "sha256-dklw3AXr3OGO4/XT1Tu3Xz9n/we8GctZZ75ZWVqAVhk=",
         "owner": "NixOS",
@@ -1288,7 +1303,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_13": {
+    "nixpkgs_14": {
       "locked": {
         "lastModified": 1723637854,
         "narHash": "sha256-med8+5DSWa2UnOqtdICndjDAEjxr5D7zaIiK4pn0Q7c=",
@@ -1304,7 +1319,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_14": {
+    "nixpkgs_15": {
       "locked": {
         "lastModified": 1729265718,
         "narHash": "sha256-4HQI+6LsO3kpWTYuVGIzhJs1cetFcwT7quWCk/6rqeo=",
@@ -1320,7 +1335,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_15": {
+    "nixpkgs_16": {
       "locked": {
         "lastModified": 1735834308,
         "narHash": "sha256-dklw3AXr3OGO4/XT1Tu3Xz9n/we8GctZZ75ZWVqAVhk=",
@@ -1547,6 +1562,7 @@
         "nvim_conf": "nvim_conf",
         "ristate": "ristate",
         "rust-overlay": "rust-overlay_4",
+        "salg": "salg",
         "schizofox": "schizofox",
         "spicetify-nix": "spicetify-nix",
         "swww": "swww",
@@ -1703,6 +1719,24 @@
         "type": "github"
       }
     },
+    "salg": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_12"
+      },
+      "locked": {
+        "lastModified": 1738501168,
+        "narHash": "sha256-51cwDiJFoUfdQ/6pX6KmlcIoBQLBhcr0Rrrx9BgyFLo=",
+        "owner": "crolbar",
+        "repo": "salg",
+        "rev": "a330cd814b23804f722afe59e8ad7c9cda7e4f37",
+        "type": "github"
+      },
+      "original": {
+        "owner": "crolbar",
+        "repo": "salg",
+        "type": "github"
+      }
+    },
     "schizofox": {
       "inputs": {
         "flake-compat": "flake-compat_4",
@@ -1757,7 +1791,7 @@
     "spicetify-nix": {
       "inputs": {
         "flake-compat": "flake-compat_5",
-        "nixpkgs": "nixpkgs_12"
+        "nixpkgs": "nixpkgs_13"
       },
       "locked": {
         "lastModified": 1736050526,
@@ -1968,7 +2002,7 @@
     },
     "tt-rs": {
       "inputs": {
-        "nixpkgs": "nixpkgs_13",
+        "nixpkgs": "nixpkgs_14",
         "rust-overlay": "rust-overlay_5"
       },
       "locked": {
@@ -2091,7 +2125,7 @@
     "yazi": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_14",
+        "nixpkgs": "nixpkgs_15",
         "rust-overlay": "rust-overlay_6"
       },
       "locked": {
@@ -2113,7 +2147,7 @@
         "flake-compat": "flake-compat_7",
         "flake-utils": "flake-utils_3",
         "multitask": "multitask",
-        "nixpkgs": "nixpkgs_15",
+        "nixpkgs": "nixpkgs_16",
         "rust-overlay": "rust-overlay_7",
         "zellij": "zellij_2"
       },
