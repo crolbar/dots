@@ -17,18 +17,16 @@
       contextMenu.enable = true;
     };
 
-    search = rec {
-      defaultSearchEngine = "Searxng";
+    search = {
+      defaultSearchEngine = "DuckDuckGo";
       removeEngines = ["Bing" "Amazon.com" "eBay" "Twitter"];
-      searxUrl = "https://searx.rhscz.eu";
-      searxQuery = "${searxUrl}/search?q={searchTerms}&categories=general";
       addEngines = [
         {
-          Name = "Searxng";
-          Description = "Decentralized search engine";
-          Alias = "sx";
+          Name = "DuckDuckGo";
+          Description = "duck";
+          Alias = "dk";
           Method = "GET";
-          URLTemplate = "${searxQuery}";
+          URLTemplate = "https://duckduckgo.com/?q={searchTerm}";
         }
         {
           Name = "Yandex";
