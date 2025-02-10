@@ -151,7 +151,8 @@
 (setq-default format-all-formatters
               '(("Nix" (alejandra))
                 ("Markdown" (prettier "--tab-width=4"))
-                ("Java" (clang-format "--style={\"BasedOnStyle\": \"Mozilla\", \"IndentWidth\": 4}"))))
+                ("Java" (clang-format "--style={\"BasedOnStyle\": \"Mozilla\", \"IndentWidth\": 4}"))
+                ("Go" (gofmt))))
 
 ;;        _ _
 ;;   __ _(_) |_
@@ -227,8 +228,12 @@
 (require 'popwin)
 (require 'ispell)
 (require 'elcord)
-(elcord-mode)
+(require 'org-fragtog)
+(require 'nerd-icons)
+(require 'nerd-icons-dired)
 
+(add-hook 'dired-mode-hook #'nerd-icons-dired-mode)
+(elcord-mode)
 (popwin-mode 1)
 
 ;;  _____   _____ _

@@ -1724,11 +1724,11 @@
         "nixpkgs": "nixpkgs_12"
       },
       "locked": {
-        "lastModified": 1738501168,
-        "narHash": "sha256-51cwDiJFoUfdQ/6pX6KmlcIoBQLBhcr0Rrrx9BgyFLo=",
+        "lastModified": 1738966174,
+        "narHash": "sha256-R9Fhmatk5NaR2O1k98xk113iCK8VGQ5EIUvPs252jhw=",
         "owner": "crolbar",
         "repo": "salg",
-        "rev": "a330cd814b23804f722afe59e8ad7c9cda7e4f37",
+        "rev": "89f3bc4f09054228cb70ae58cb8226eef3f01880",
         "type": "github"
       },
       "original": {

@@ -60,8 +60,12 @@ in {
       # misc
       (pkgs.ispell)
       elcord
+      org-fragtog
+      nerd-icons
+      nerd-icons-dired
     ]
     ++ [
+      pkgs.tetex
       epkgs."ido-completing-read+"
     ];
 

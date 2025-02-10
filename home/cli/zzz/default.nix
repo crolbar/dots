@@ -7,5 +7,6 @@
     lobster
     gazi
     gql
+    salg
   ];
 }
