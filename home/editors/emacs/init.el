@@ -7,6 +7,17 @@
    '(mode-line ((t (:background "gray15" ))))
    '(minibuffer-prompt ((t (:foreground "peru" :weight bold))))))
 
+(with-eval-after-load 'org
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+  (set-face-attribute 'org-level-1 nil :height 1.5 :weight 'bold)
+  (set-face-attribute 'org-level-2 nil :height 1.3 :weight 'bold)
+  (set-face-attribute 'org-level-3 nil :height 1.1 :weight 'bold))
+
+;;(set-frame-parameter nil 'alpha-background 70)
+;;(set-frame-parameter nil 'alpha-background 100)
+;;(setq compilation-environment '("TERM=xterm-257color"))
+;;(setq compilation-environment nil)
+
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (add-hook 'after-init-hook (lambda () (scroll-bar-mode -1)))
