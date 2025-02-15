@@ -44,6 +44,10 @@
 
 (setq echo-keystrokes 0.3)
 
+(setq ls-lisp-dirs-first t)
+(setq ls-lisp-use-insert-directory-program nil)
+(setq dired-listing-switches "-al")
+
 ;;  _    _         _
 ;; | |__(_)_ _  __| |___
 ;; | '_ \ | ' \/ _` (_-<
@@ -52,8 +56,22 @@
 ;; rebind M-t because it looks usefull
 (global-set-key (kbd "M-y") 'transpose-words)
 
-(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
-(global-set-key (kbd "C-x b") 'list-buffers)
+(defun crol-buffer-switch ()
+  "ido switch outside of project & only project buffers inside one"
+  (interactive)
+  (if (project-current)
+      (project-switch-to-buffer (project--read-project-buffer))
+    (ido-switch-buffer)))
+
+(defun crol-list-buffer ()
+  "list all duffers outside of project & only project buffers inside one"
+  (interactive)
+  (if (project-current)
+      (project-list-buffers)
+    (list-buffers)))
+
+(global-set-key (kbd "C-x C-b") 'crol-buffer-switch)
+(global-set-key (kbd "C-x b") 'crol-list-buffer)
 
 (global-set-key (kbd "C-k") 'previous-error)
 (global-set-key (kbd "C-j") 'next-error)
@@ -305,4 +323,5 @@
   (define-key evil-normal-state-map (kbd "C-x C-c") 'compile)
   (define-key evil-normal-state-map (kbd "C-x C-r") 'recompile)
   (define-key evil-normal-state-map (kbd "C-b g") 'magit)
+  (define-key evil-normal-state-map (kbd "Tab") nil)
   (define-key evil-normal-state-map (kbd "-") 'dired-jump))

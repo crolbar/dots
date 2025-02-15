@@ -35,6 +35,8 @@
 
 ## Misc
 
+-   [ ] sway polkit bruh
+-   [x] emacs per project buffers or something like that
 -   [x] gitui config/theme in nix not ron
 -   [x] fix rust overlay in dev without including overlays.nix fails
 -   [x] default sys apps for all hosts (git, vim, ..)
