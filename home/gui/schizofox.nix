@@ -80,10 +80,6 @@
             name = "darkreader";
           }
           {
-            id = "{1018e4d6-728f-4b20-ad56-37578a4de76}";
-            name = "flagfox";
-          }
-          {
             id = "{74145f27-f039-47ce-a470-a662b129930a}";
             name = "clearurls";
           }
@@ -110,6 +106,10 @@
           {
             id = "idcac-pub@guus.ninja";
             name = "istilldontcareaboutcookies";
+          }
+          {
+            id = "Tab-Session-Manager@sienori";
+            name = "Tab-Session-Manager";
           }
         ];
 
