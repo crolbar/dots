@@ -67,6 +67,7 @@ in {
     ++ [
       pkgs.tetex
       epkgs."ido-completing-read+"
+      pkgs.perl # magit needs
     ];
 
   home.file.".emacs.d/init.el".source = ./init.el;
