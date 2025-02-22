@@ -2,7 +2,6 @@
   spicetify-nix,
   leftwm-flake,
   anyrun,
-  hyprland,
   agenix,
   ...
 }: let
@@ -14,7 +13,6 @@ in {
     (defaultHmMod leftwm-flake)
     (defaultHmMod spicetify-nix)
     (defaultHmMod anyrun)
-    (defaultHmMod hyprland)
     (defaultHmMod agenix)
   ];
 }

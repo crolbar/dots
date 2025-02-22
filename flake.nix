@@ -16,7 +16,7 @@
     };
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -33,13 +33,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
-    };
-
-    hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
-      ref = "refs/tags/v0.43.0";
-      submodules = true;
     };
 
     hyprpicker = {

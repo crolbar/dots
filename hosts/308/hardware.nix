@@ -6,7 +6,7 @@
   hardware = {
     bluetooth.enable = false;
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
       nvidiaSettings = true;
       open = false;
       modesetting.enable = true;

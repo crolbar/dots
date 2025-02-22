@@ -43,6 +43,11 @@ in {
       "move 960 30, pavucontrol"
     ];
 
+    workspace = [
+      "w[tv1], gapsout:0, gapsin:0"
+      "f[1], gapsout:0, gapsin:0"
+    ];
+
     windowrulev2 = [
       "float, title:(enc) "
       "float, title:(crolk) "
@@ -50,6 +55,11 @@ in {
       "opacity 0.9 0.9,class:^(mousepad)$"
       "workspace 4, initialTitle:(Spotify)"
       "workspace 8, initialTitle:(Steam)"
+
+      "bordersize 0, floating:0, onworkspace:w[tv1]"
+      "rounding 0, floating:0, onworkspace:w[tv1]"
+      "bordersize 0, floating:0, onworkspace:f[1]"
+      "rounding 0, floating:0, onworkspace:f[1]"
     ];
 
     # env vars
@@ -111,7 +121,7 @@ in {
 
     decoration = {
       rounding = 4;
-      drop_shadow = false;
+      shadow.enabled = false;
       blur.enabled = false;
     };
 
@@ -140,7 +150,6 @@ in {
     dwindle = {
       pseudotile = true;
       preserve_split = true;
-      no_gaps_when_only = true;
     };
   };
 }
