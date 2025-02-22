@@ -3,12 +3,12 @@
   epkgs = pkgs.emacsPackages;
 
   corfu = epkgs.corfu.overrideAttrs (oldAttrs: {
-    version = "1";
+    version = "1.7";
     src = pkgs.fetchFromGitHub {
       owner = "minad";
       repo = "corfu";
-      rev = "ec846c6aa373931508cc078b49a3a8ba8265c453";
-      sha256 = "sha256-UNykfsL3J+LX6AJmKeWaPZx5zUru3nNO/zSwPdSI830=";
+      rev = "2c476b442ccfda9935e472b26d9cd60d45726560";
+      sha256 = "sha256-Y+dcVX2zXkYaHvsS+SuhqqCnwwm188dj0VJf7BYxzHs=";
     };
   });
 in {

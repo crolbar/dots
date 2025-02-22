@@ -22,6 +22,8 @@
 (menu-bar-mode -1)
 (add-hook 'after-init-hook (lambda () (scroll-bar-mode -1)))
 
+(blink-cursor-mode -1)
+
 ;; font
 (setq default-frame-alist '((font . "Hack")))
 (set-face-attribute 'default nil :font "Hack" :height 150)
@@ -141,6 +143,7 @@
 ;;      |_|
 
 (require 'eglot)
+(add-hook 'prog-mode-hook 'eglot-ensure)
 
 ;; disable ref highligth & inlay hint
 (setq eglot-ignored-server-capabilites '(:documentHighlightProvider :inlayHintProvider))
@@ -148,6 +151,8 @@
 ;; make docs in echo area smaller
 (setq eldoc-echo-area-prefer-doc-buffer t)
 (setq eldoc-echo-area-use-multiline-p nil)
+(setq eglot-send-changes-idle-time 0.2)
+(setq eldoc-idle-delay 0.2)
 
 
 ;;   __ _ __  _ __
@@ -161,7 +166,7 @@
 (global-corfu-mode)
 (setq corfu-auto nil)
 (setq corfu-popupinfo-mode t)
-(setq corfu-popupinfo-delay 0.2)
+(setq corfu-popupinfo-delay 0.5)
 
 (require 'yasnippet)
 ;; idk how to disable this crap so..
