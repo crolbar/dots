@@ -47,8 +47,9 @@
         toggleBar = "${swaymsg} bar bar-0 mode toggle";
         lock = "${swaylock} -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3";
         notifyLayoutSwitch = clib.mk1lnrCmd ''
-          ${dunstify} layout "Changed to: $(${swaymsg} -t get_inputs | \
-          ${jq} -r '.[] | select(.type == "keyboard" and .name == "crolbar YUKI") | .xkb_active_layout_name')"
+          bash -c layout=$(${swaymsg} -t get_inputs | \
+          ${jq} -r ".[] | select(.type == \"keyboard\" and .name == \"crolbar YUKI\") | .xkb_active_layout_name") && \
+          ${dunstify} layout "Changed to: $layout"
         '';
 
         screenshotRegion = clib.mk1lnrCmd ''
