@@ -33,9 +33,9 @@
                  ("" mode-line-mule-info mode-line-client mode-line-modified
                   mode-line-remote mode-line-window-dedicated)
                  display (min-width (6.0)))
-                 mode-line-frame-identification mode-line-buffer-identification " "
-                 " (%l,%c) " (:eval (crol-evil-visual-selection-info))
-                 mode-line-position evil-mode-line-tag
+                mode-line-frame-identification mode-line-buffer-identification " "
+                " (%l,%c) " (:eval (crol-evil-visual-selection-info))
+                mode-line-position evil-mode-line-tag
                 (project-mode-line project-mode-line-format) (vc-mode vc-mode) "  "
                 mode-line-modes mode-line-misc-info mode-line-end-spaces))
 
@@ -290,6 +290,27 @@
 (add-hook 'dired-mode-hook #'nerd-icons-dired-mode)
 (elcord-mode)
 (popwin-mode 1)
+
+
+
+(require 'ansi-color)
+
+(defvar crol-colorize-compilation-buffer-enabled t)
+(defun crol-colorize-compilation-buffer ()
+  (when crol-colorize-compilation-buffer-enabled
+    (let ((inhibit-read-only t))
+      (ansi-color-apply-on-region (point-min) (point-max)))))
+
+(defun crol-toggle-colorize-compilation-buffer ()
+  (interactive)
+  (setq crol-colorize-compilation-buffer-enabled
+        (not crol-colorize-compilation-buffer-enabled))
+  (if crol-colorize-compilation-buffer-enabled
+      (add-hook 'compilation-filter-hook 'crol-colorize-compilation-buffer)
+    (remove-hook 'compilation-filter-hook #'crol-colorize-compilation-buffer))
+  (message "Colorizing compilation buffer: %s"
+           (if crol-colorize-compilation-buffer-enabled "ON" "OFF")))
+
 
 ;;  _____   _____ _
 ;; | __\ \ / /_ _| |
