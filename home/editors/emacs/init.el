@@ -18,6 +18,27 @@
 ;;(setq compilation-environment '("TERM=xterm-257color"))
 ;;(setq compilation-environment nil)
 
+(defun crol-evil-visual-selection-info ()
+  "Show the number of selected characters/lines in visual mode."
+  (when (evil-visual-state-p)
+    (let* ((beg (region-beginning))
+           (end (region-end))
+           (lines (count-lines beg end))
+           (chars (- end beg)))
+      (format " [V:%dL %dC] " (1+ lines) (1+ chars)))))
+
+(setq-default mode-line-format
+              '("%e" mode-line-front-space
+                (:propertize
+                 ("" mode-line-mule-info mode-line-client mode-line-modified
+                  mode-line-remote mode-line-window-dedicated)
+                 display (min-width (6.0)))
+                 mode-line-frame-identification mode-line-buffer-identification " "
+                 " (%l,%c) " (:eval (crol-evil-visual-selection-info))
+                 mode-line-position evil-mode-line-tag
+                (project-mode-line project-mode-line-format) (vc-mode vc-mode) "  "
+                mode-line-modes mode-line-misc-info mode-line-end-spaces))
+
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (add-hook 'after-init-hook (lambda () (scroll-bar-mode -1)))
