@@ -143,7 +143,6 @@
 │   │   │   ├── foot.nix
 │   │   │   ├── ghostty.nix
 │   │   │   └── wezterm.nix
-│   │   ├── activitywatch.nix
 │   │   ├── default.nix
 │   │   ├── KeyboardVisualizer.nix
 │   │   ├── nextcloud.nix
@@ -393,7 +392,7 @@
 ├── shell.nix
 └── TODO.md
 
-79 directories, 296 files
+79 directories, 295 files
 
 ```
 
