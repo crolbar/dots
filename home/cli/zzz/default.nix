@@ -8,5 +8,6 @@
     gazi
     gql
     salg
+    go29
   ];
 }

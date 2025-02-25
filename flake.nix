@@ -55,6 +55,7 @@
     gazi.url = "github:crolbar/gazi";
     gql.url = "github:crolbar/gql";
     salg.url = "github:crolbar/salg";
+    go29.url = "github:crolbar/go29";
 
     lobster = {
       url = "github:justchokingaround/lobster";

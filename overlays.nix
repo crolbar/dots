@@ -10,7 +10,7 @@
     (
       map (pname: {
         "${pname}" = inputs'."${pname}".packages.default;
-      }) ["dapu" "matm" "tt-rs" "npassm" "lobster" "swww" "gazi" "gql" "salg"]
+      }) ["dapu" "matm" "tt-rs" "npassm" "lobster" "swww" "gazi" "gql" "salg" "go29"]
     );
 in {
   nixpkgs.overlays = [
