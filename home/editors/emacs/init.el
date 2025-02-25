@@ -224,6 +224,8 @@
 (diff-hl-flydiff-mode)
 (global-diff-hl-mode)
 
+(setq magit-no-confirm '(stage-all-changes unstage-all-changes))
+
 ;; set fringe color back to background
 (set-face-background 'fringe "gray20")
 (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
@@ -295,7 +297,7 @@
 
 (require 'ansi-color)
 
-(defvar crol-colorize-compilation-buffer-enabled t)
+(defvar crol-colorize-compilation-buffer-enabled nil)
 (defun crol-colorize-compilation-buffer ()
   (when crol-colorize-compilation-buffer-enabled
     (let ((inhibit-read-only t))
