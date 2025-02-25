@@ -1,25 +1,40 @@
-{pkgs, ...} @ args: {
-  home.file."scripts/volume.sh".source = pkgs.writers.writeBash "volume.sh" ''
-    music_application_name="${args.musicPlayer}"
-    browser_application_name="${args.browser}"
+{
+  pkgs,
+  clib,
+  ...
+} @ args: {
+  home.file."scripts/volume".source = (clib.writers pkgs).writeGo "volume" ''
+    package main
 
-    music_index=$(pactl list sink-inputs | awk -v m_app="$music_application_name" '/Sink Input #/{gsub("#","",$NF); m_id=$NF} /application.name/{if ($0~m_app) print m_id}')
-    browser_indexes=$(pactl list sink-inputs | awk -v b_app="$browser_application_name" '/Sink Input #/{gsub("#","",$NF); b_id=$NF} /application.name/{if ($0~b_app) print b_id}')
+    import (
+    	"net"
+    	"os"
+    )
 
-    case "$1" in
-      music+)
-        pactl set-sink-input-volume "$music_index" +4%;;
-      music-)
-        pactl set-sink-input-volume "$music_index" -4%;;
-      browser+)
-        for index in $browser_indexes; do
-           pactl set-sink-input-volume "$index" +2%
-        done;;
-      browser-)
-        for index in $browser_indexes; do
-          pactl set-sink-input-volume "$index" -2%
-        done;;
-    esac
+    func main() {
+    	conn, err := net.Dial("unix", "/tmp/volSock")
+    	if err != nil {
+    		panic("Error connecting to socket:" + err.Error())
+    	}
+    	defer conn.Close()
 
+    	conn.Write([]byte(os.Args[1]))
+    }
   '';
+
+  systemd.user.services = let
+    volSockBin = (clib.writers pkgs).writeGo "volSock" (import ./volSock.nix args);
+  in {
+    volSock = {
+      Unit = {
+        Description = "volSock";
+        Wants = ["default.target"];
+      };
+
+      Service = {
+        ExecStart = toString volSockBin;
+        Restart = "always";
+      };
+    };
+  };
 }

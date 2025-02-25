@@ -111,7 +111,7 @@
     gSP = path: config.home.file."${path}".source;
   in {
     wall = gSP "scripts/wall.sh";
-    volume = gSP "scripts/volume.sh";
+    volume = gSP "scripts/volume";
     volumeEww = gSP "scripts/eww/volume.sh";
     rgb = gSP "scripts/rgb.sh";
     defaultSink = gSP "scripts/default-sink.sh";
@@ -229,15 +229,15 @@
     mediaControl = {
       # music player defined in ../scripts/default.nix
       music = [
-        [[mod shift alt] "F11" (exec "${scripts.volume} music-")]
-        [[mod shift alt] "F12" (exec "${scripts.volume} music+")]
+        [[mod shift alt] "F11" (exec "${scripts.volume} md")]
+        [[mod shift alt] "F12" (exec "${scripts.volume} mu")]
         [[mod shift alt] "F7" (exec "${scripts.volumeEww} music mute")]
       ];
 
       # (browser defined in ./hypr/scripts/default.nix)
       browser = [
-        [[mod shift alt] "F9" (exec "${scripts.volume} browser-")]
-        [[mod shift alt] "F10" (exec "${scripts.volume} browser+")]
+        [[mod shift alt] "F9" (exec "${scripts.volume} bd")]
+        [[mod shift alt] "F10" (exec "${scripts.volume} bu")]
         [[mod shift alt] "F8" (exec "${scripts.volumeEww} browser mute")]
       ];
 

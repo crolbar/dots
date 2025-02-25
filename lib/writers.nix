@@ -17,5 +17,18 @@
       contents;
 
     writeCBin = name: writeC "/bin/${name}";
+
+    writeGo = name: contents:
+      pkgs.writers.makeBinWriter {
+        compileScript = ''
+          export GOCACHE=$TMPDIR/go-build
+          cp "$contentPath" tmp.go
+          ${pkgs.go}/bin/go build -o $out tmp.go
+        '';
+      }
+      name
+      contents;
+
+    writeGoBin = name: writeGo "/bin/${name}";
   };
 }

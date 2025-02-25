@@ -255,6 +255,7 @@
 │   │   │   │   ├── default.nix
 │   │   │   │   ├── default-sink.nix
 │   │   │   │   ├── rgb.nix
+│   │   │   │   ├── volSock.nix
 │   │   │   │   └── volume.nix
 │   │   │   ├── wall
 │   │   │   │   ├── wallpapers
@@ -392,7 +393,7 @@
 ├── shell.nix
 └── TODO.md
 
-79 directories, 295 files
+79 directories, 296 files
 
 ```
 
