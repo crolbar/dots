@@ -33,6 +33,6 @@
     cyme
     yt-dlp
     license-generator
-    #(pkgs.callPackage ../../derivations/binsider.nix {})
+    gocryptfs
   ];
 }

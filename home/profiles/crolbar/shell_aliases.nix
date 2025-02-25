@@ -25,6 +25,9 @@ in {
     kubo = "ssh kubo@crolbar.xyz";
     vm = "ssh crolbar@192.168.122.140";
 
+    mdec = "gocryptfs /mnt/nas/enc ~/dec";
+    umdec = "fusermount -u ~/dec";
+
     mnas = "sudo mount -t nfs 192.168.1.11:/nas /mnt/nas -o rw -o async";
     umnas = "sudo umount /mnt/nas";
     nas = "cd /mnt/nas";
