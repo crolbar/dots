@@ -23,7 +23,10 @@
       };
     };
 
-    blacklistedKernelModules = ["uvcvideo"];
+    blacklistedKernelModules = [
+      "nouveau"
+      "uvcvideo"
+    ];
     kernelParams = [
       "quiet"
       "acpi_enforce_resources=lax" # needed for openrgb in aorus MOBOs
