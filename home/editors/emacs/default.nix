@@ -63,6 +63,7 @@ in {
       org-fragtog
       nerd-icons
       nerd-icons-dired
+      vterm
     ]
     ++ [
       pkgs.tetex

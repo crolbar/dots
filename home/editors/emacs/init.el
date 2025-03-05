@@ -288,6 +288,7 @@
 (require 'org-fragtog)
 (require 'nerd-icons)
 (require 'nerd-icons-dired)
+(require 'vterm)
 
 (add-hook 'dired-mode-hook #'nerd-icons-dired-mode)
 (elcord-mode)
@@ -327,6 +328,7 @@
 
 (evil-mode 1)
 (evil-collection-init)
+(evil-set-initial-state 'vterm-mode 'emacs)
 (global-evil-surround-mode 1)
 (setq evil-goggles-enable-delete nil)
 (setq evil-goggles-enable-delete nil)
