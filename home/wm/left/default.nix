@@ -31,6 +31,11 @@
       ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
 
       xset r rate 300 50
+
+      YUKI_MOUSE_ID=$(xinput list | grep "crolbar YUKI" | grep "pointer" | sed -n 's/.*id=\([0-9]*\).*/\1/p')
+      xinput --set-prop $YUKI_MOUSE_ID "libinput Accel Profile Enabled" 1 0
+      xinput --set-prop $YUKI_MOUSE_ID "libinput Accel Speed" 1
+
       exec leftwm
     '';
 
