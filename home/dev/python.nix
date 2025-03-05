@@ -4,6 +4,7 @@
       with ppkgs; [
         requests
         pip
+        sympy
       ]))
     pyright
   ];

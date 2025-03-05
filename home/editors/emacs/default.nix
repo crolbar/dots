@@ -75,6 +75,7 @@ in {
   services.emacs = {
     enable = true;
     package = emacs;
+    startWithUserSession = "graphical";
   };
 
   programs.emacs = {

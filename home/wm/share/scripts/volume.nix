@@ -28,7 +28,9 @@
     volSock = {
       Unit = {
         Description = "volSock";
-        Wants = ["default.target"];
+      };
+      Install = {
+        WantedBy = ["graphical-session.target"];
       };
 
       Service = {

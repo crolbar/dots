@@ -557,11 +557,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1740662257,
-        "narHash": "sha256-nncydDOUA+94i/4zt0cvcZEE2nMD9aips+XmAH6t4c8=",
+        "lastModified": 1740867701,
+        "narHash": "sha256-Bl2YoWCmMKcu0PVjRUIC0UDfCubydK7MSrQA50J82ls=",
         "owner": "crolbar",
         "repo": "go29",
-        "rev": "574b155b628f4c1315bfe268a4cbe811e981c249",
+        "rev": "798e9e387af22031577e6a9b2670f36fa76bf141",
         "type": "github"
       },
       "original": {
