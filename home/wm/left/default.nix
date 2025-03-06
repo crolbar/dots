@@ -6,6 +6,7 @@
   imports = [
     ./binds.nix
     ./kb.nix
+    ./workspace_scroll.nix
 
     ../share/scripts
     ../share/picom.nix

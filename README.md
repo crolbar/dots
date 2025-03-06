@@ -217,13 +217,12 @@
 │   │   │   │   │   ├── tags.scss
 │   │   │   │   │   └── tags.yuck
 │   │   │   │   ├── eww.scss
-│   │   │   │   ├── eww.yuck
-│   │   │   │   ├── tr.scss
-│   │   │   │   └── tr.yuck
+│   │   │   │   └── eww.yuck
 │   │   │   ├── binds.nix
 │   │   │   ├── default.nix
 │   │   │   ├── kb.nix
-│   │   │   └── settings.nix
+│   │   │   ├── settings.nix
+│   │   │   └── workspace_scroll.nix
 │   │   ├── river
 │   │   │   ├── eww
 │   │   │   │   ├── btm_tray
@@ -393,7 +392,7 @@
 ├── shell.nix
 └── TODO.md
 
-79 directories, 296 files
+79 directories, 295 files
 
 ```
 

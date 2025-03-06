@@ -3,12 +3,13 @@
 (defwidget workspaces []
     (box :class "workspaces"
       (box (for tag in '${wmstate.workspaces[0].tags}'
-          (button
+          (eventbox
             :class {tag.mine ? "ws-button-mine" :
                     tag.visible ? "ws-button-visible" :
                     tag.urgent ? "ws-button-urgent" :
                     tag.busy ? "ws-button-busy" : "ws-button"}
             :onclick "leftwm-command \"SendWorkspaceToTag 0 ${tag.index}\""
+            :onscroll "~/.config/leftwm/themes/current/ws {}"
             {!tag.mine && !tag.busy && !tag.visible && !tag.urgent ?  "" : "${tag.name}"})))))
 
 
