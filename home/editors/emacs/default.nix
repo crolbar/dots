@@ -22,6 +22,7 @@ in {
       php-mode
       rust-mode
       groovy-mode
+      yuck-mode
 
       # non programming
       ron-mode

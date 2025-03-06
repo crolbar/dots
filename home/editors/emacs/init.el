@@ -134,6 +134,8 @@
 (require 'ron-mode)
 (require 'markdown-mode)
 (require 'rust-mode)
+(require 'yuck-mode)
+
 
 
 ;;              _
