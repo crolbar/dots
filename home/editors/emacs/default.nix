@@ -65,6 +65,7 @@ in {
       nerd-icons
       nerd-icons-dired
       vterm
+      direnv
     ]
     ++ [
       pkgs.tetex

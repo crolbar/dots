@@ -291,6 +291,8 @@
 (require 'nerd-icons)
 (require 'nerd-icons-dired)
 (require 'vterm)
+(require 'direnv)
+(direnv-mode)
 
 (add-hook 'dired-mode-hook #'nerd-icons-dired-mode)
 (elcord-mode)

@@ -34,5 +34,6 @@
     yt-dlp
     license-generator
     gocryptfs
+    direnv
   ];
 }
