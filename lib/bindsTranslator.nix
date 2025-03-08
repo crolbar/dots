@@ -1,5 +1,5 @@
 # very basic binds translator functions which let me have one global file for
-# all of my binds (../home/wm/binds.nix) instead of one for each wm/compositor.
+# all of my binds (../home/wm/share/binds/default.nix) instead of one for each wm/compositor.
 #
 # all it is doing is taking this for example
 # [

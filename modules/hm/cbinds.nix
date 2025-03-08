@@ -87,41 +87,15 @@
 
   config = let
     cfg = config.cbinds;
+    gen = wm:
+      (clib.translateBinds wm)
+      (cfg.generate cfg.windowManager.${wm}.settings);
   in {
-    wayland.windowManager.sway.config.keybindings = let
-      wm = "sway";
-    in
-      (clib.translateBinds wm)
-      (cfg.generate cfg.windowManager.${wm}.settings);
-
-    wayland.windowManager.hyprland.settings.bind = let
-      wm = "hypr";
-    in
-      (clib.translateBinds wm)
-      (cfg.generate cfg.windowManager.${wm}.settings);
-
-    wayland.windowManager.river.settings.map.normal = let
-      wm = "river";
-    in
-      (clib.translateBinds wm)
-      (cfg.generate cfg.windowManager.${wm}.settings);
-
-    services.sxhkd.keybindings = let
-      wm = "bsp";
-    in
-      (clib.translateBinds wm)
-      (cfg.generate cfg.windowManager.${wm}.settings);
-
-    programs.leftwm.settings.keybind = let
-      wm = "leftwm";
-    in
-      (clib.translateBinds wm)
-      (cfg.generate cfg.windowManager.${wm}.settings);
-
-    xsession.windowManager.i3.config.keybindings = let
-      wm = "i3";
-    in
-      (clib.translateBinds wm)
-      (cfg.generate cfg.windowManager.${wm}.settings);
+    wayland.windowManager.sway.config.keybindings = gen "sway";
+    wayland.windowManager.hyprland.settings.bind = gen "hypr";
+    wayland.windowManager.river.settings.map.normal = gen "river";
+    services.sxhkd.keybindings = gen "bsp";
+    programs.leftwm.settings.keybind = gen "leftwm";
+    xsession.windowManager.i3.config.keybindings = gen "i3";
   };
 }
