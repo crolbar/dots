@@ -14,6 +14,7 @@
 (defwindow power-menu 
     :monitor 0 
     :windowtype "dock"
+    :wm-ignore true
     :geometry (geometry :x "0px"
                         :y "0px"
                         :width "450px"

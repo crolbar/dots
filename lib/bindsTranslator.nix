@@ -139,6 +139,26 @@
           };
       in
         binds: map translate binds;
+
+      # example what it needs to output
+      # {
+      #   "${modifier}+Shift+x" = "exec foot";
+      #   "${modifier}+f" = "fullscreen toggle";
+      # }
+      i3 = let
+        translate = b: let
+          bind = bindFromListToSet b;
+          fmtMods = lib.concatStringsSep "+" bind.mods;
+        in
+          if builtins.length bind.mods > 0
+          then {"${fmtMods}+${bind.key}" = bind.cmd;}
+          else {"${bind.key}" = bind.cmd;};
+
+        # just combines the list of attr sets
+        # that we get from (map translate []) into one attr set
+        combine = lib.zipAttrsWith (x: y: lib.head y);
+      in
+        binds: combine (map translate binds);
     };
   in
     lib.getAttr wm wm_translators;

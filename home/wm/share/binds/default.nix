@@ -85,6 +85,9 @@
 
     escapeQuotes = str:
       builtins.replaceStrings ["\""] ["\\\""] str;
+
+    fixI3 = str:
+      builtins.replaceStrings ["\""] ["'"] str;
   };
 
   bins = {
@@ -171,6 +174,8 @@
     exec = shellCmd:
       if has "isHyprland" settings || has "isBsp" settings
       then "${settings.cmds.exec} ${shellCmd}"
+      else if has "isI3" settings
+      then "${settings.cmds.exec} \"${helpers.fixI3 shellCmd}\""
       else if has "isLeft" settings
       then [settings.cmds.exec (helpers.escapeQuotes shellCmd)] # escaping because `value` is wrapped with double quotes
       else "${settings.cmds.exec} '${shellCmd}'";
@@ -259,6 +264,9 @@
           [[mod shift] "r" "switchSplitOrientation"]
           [[mod shift] "p" "switchSplitOrientation"]
         ];
+        switchLayout = helpers.mkOptionalBinds settings [
+          [[mod] "t" "switchLayoutTabbed"]
+        ];
       in
         [
           [[mod] "f" fullScreen]
@@ -266,7 +274,8 @@
           [[mod] "z" floatingToggle]
           [[alt] tab focusLast]
         ]
-        ++ switchSplitOrientation;
+        ++ switchSplitOrientation
+        ++ switchLayout;
 
       focus = helpers.vim [[mod] moveFocus];
       move = helpers.vim [[mod ctrl] moveWindow];

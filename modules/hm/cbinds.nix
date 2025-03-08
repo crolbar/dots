@@ -117,5 +117,11 @@
     in
       (clib.translateBinds wm)
       (cfg.generate cfg.windowManager.${wm}.settings);
+
+    xsession.windowManager.i3.config.keybindings = let
+      wm = "i3";
+    in
+      (clib.translateBinds wm)
+      (cfg.generate cfg.windowManager.${wm}.settings);
   };
 }

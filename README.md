@@ -208,6 +208,10 @@
 │   │   │   ├── binds.nix
 │   │   │   ├── default.nix
 │   │   │   └── settings.nix
+│   │   ├── i3
+│   │   │   ├── binds.nix
+│   │   │   ├── default.nix
+│   │   │   └── kb.nix
 │   │   ├── left
 │   │   │   ├── eww
 │   │   │   │   ├── btm_tray
@@ -392,7 +396,7 @@
 ├── shell.nix
 └── TODO.md
 
-79 directories, 295 files
+80 directories, 298 files
 
 ```
 
