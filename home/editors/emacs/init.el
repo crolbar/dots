@@ -13,6 +13,8 @@
   (set-face-attribute 'org-level-2 nil :height 1.3 :weight 'bold)
   (set-face-attribute 'org-level-3 nil :height 1.1 :weight 'bold))
 
+(setq org-startup-with-latex-preview t)
+
 ;;(set-frame-parameter nil 'alpha-background 70)
 ;;(set-frame-parameter nil 'alpha-background 100)
 ;;(setq compilation-environment '("TERM=xterm-257color"))
@@ -70,13 +72,14 @@
 (setq hscroll-step 1)
 (setq auto-window-vscroll nil)
 (setq scroll-conservatively 101)
+(setq fast-but-imprecise-scrolling t)
 
 ;; normal tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
 
-(setq echo-keystrokes 0.3)
+(setq echo-keystrokes 0.02)
 
 (setq ls-lisp-dirs-first t)
 (setq ls-lisp-use-insert-directory-program nil)
@@ -292,7 +295,8 @@
 (require 'nerd-icons-dired)
 (require 'vterm)
 (require 'direnv)
-(direnv-mode)
+
+(add-hook 'org-mode-hook 'org-fragtog-mode)
 
 (add-hook 'dired-mode-hook #'nerd-icons-dired-mode)
 (elcord-mode)
@@ -319,6 +323,21 @@
            (if crol-colorize-compilation-buffer-enabled "ON" "OFF")))
 
 
+(require 'gcmh)
+
+(setq gcmh-idle-delay 5)
+(setq gcmh-high-cons-threshold (* (expt 2 20) 16))  ; 16MB
+
+(gcmh-mode 1)
+
+(setq gc-cons-threshold most-positive-fixnum)
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* (expt 2 20) 16))))
+
+
+
+
 ;;  _____   _____ _
 ;; | __\ \ / /_ _| |
 ;; | _| \ V / | || |__
@@ -335,7 +354,7 @@
 (evil-set-initial-state 'vterm-mode 'emacs)
 (global-evil-surround-mode 1)
 (setq evil-goggles-enable-delete nil)
-(setq evil-goggles-enable-delete nil)
+(setq evil-goggles-enable-change nil)
 (evil-goggles-mode)
 (evil-set-undo-system 'undo-tree)
 

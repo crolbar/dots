@@ -66,6 +66,7 @@ in {
       nerd-icons-dired
       vterm
       direnv
+      gcmh
     ]
     ++ [
       pkgs.tetex
