@@ -1,3 +1,4 @@
+(setq-default evil-want-keybinding nil)
 (load "~/.emacs.d/crol.el")
 (load "~/.emacs.d/pkgs.el")
 
@@ -235,7 +236,6 @@
 ;; | __\ \ / /_ _| |
 ;; | _| \ V / | || |__
 ;; |___| \_/ |___|____|
-(setq-default evil-want-keybinding nil)
 
 (evil-mode 1)
 
