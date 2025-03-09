@@ -286,7 +286,6 @@
 ;; | '  \| (_-</ _|
 ;; |_|_|_|_/__/\__|
 
-(require 'harpoon)
 (require 'popwin)
 (require 'ispell)
 (require 'elcord)
@@ -386,17 +385,6 @@
 
   ;; cmp
   (define-key evil-normal-state-map (kbd "M-f") 'format-all-buffer)
-
-  ;; harpoon
-  (define-key evil-normal-state-map (kbd "SPC z") 'harpoon-toggle-file)
-  (define-key evil-normal-state-map (kbd "SPC a") 'harpoon-add-file)
-  (define-key evil-normal-state-map (kbd "M-a") 'harpoon-go-to-1)
-  (define-key evil-normal-state-map (kbd "M-o") 'harpoon-go-to-2)
-  (define-key evil-normal-state-map (kbd "M-e") 'harpoon-go-to-3)
-  (define-key evil-normal-state-map (kbd "M-u") 'harpoon-go-to-4)
-  (define-key evil-normal-state-map (kbd "M-i") 'harpoon-go-to-5)
-  (define-key evil-normal-state-map (kbd "M-d") 'harpoon-go-to-6)
-
 
   ;; misc
   (define-key evil-normal-state-map (kbd "SPC t") (lambda () (interactive) (shell-command "tmux send-keys -t dev:1 ' t'")))

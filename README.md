@@ -53,6 +53,7 @@
 │   │   └── rust.nix
 │   ├── editors
 │   │   ├── emacs
+│   │   │   ├── crol.el
 │   │   │   ├── default.nix
 │   │   │   └── init.el
 │   │   ├── neovim
@@ -396,7 +397,7 @@
 ├── shell.nix
 └── TODO.md
 
-80 directories, 298 files
+80 directories, 299 files
 
 ```
 

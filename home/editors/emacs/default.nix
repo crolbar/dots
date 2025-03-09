@@ -50,7 +50,6 @@ in {
       rg
       smex
 
-      harpoon
       popwin
 
       evil
