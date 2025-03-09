@@ -55,6 +55,7 @@
 │   │   ├── emacs
 │   │   │   ├── crol.el
 │   │   │   ├── default.nix
+│   │   │   ├── epkgs.nix
 │   │   │   └── init.el
 │   │   ├── neovim
 │   │   │   ├── nvim
@@ -397,7 +398,7 @@
 ├── shell.nix
 └── TODO.md
 
-80 directories, 299 files
+80 directories, 300 files
 
 ```
 
