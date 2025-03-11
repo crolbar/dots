@@ -10,8 +10,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "minad";
       repo = "corfu";
-      rev = "2c476b442ccfda9935e472b26d9cd60d45726560";
-      sha256 = "sha256-Y+dcVX2zXkYaHvsS+SuhqqCnwwm188dj0VJf7BYxzHs=";
+      rev = "c302b0526ad9d0c99d1d0639df63f6ca65accfc3";
+      sha256 = "sha256-bdlL4MkcXmP1019RYB+58QJ3Ak5tPslunSpE3gta1zw=";
     };
   });
 
