@@ -33,6 +33,7 @@
 
       # lsp
       eglot
+      eldoc-box
 
       # cmp
       corfu

@@ -124,6 +124,8 @@
 (setq eglot-send-changes-idle-time 0.2)
 (setq eldoc-idle-delay 0.2)
 
+(set-face-attribute 'eldoc-box-border nil :background "gray35")
+(setq eldoc-box-cleanup-interval 0.1)
 
 ;;   __ _ __  _ __
 ;;  / _| '  \| '_ \
@@ -240,8 +242,9 @@
 (evil-mode 1)
 
 ;; evil-collection
-(evil-collection-init)
 (evil-set-initial-state 'vterm-mode 'emacs)
+(setq evil-collection-key-blacklist '("K"))
+(evil-collection-init)
 
 ;; evil-surround
 (global-evil-surround-mode 1)
@@ -275,8 +278,9 @@
   (define-key evil-normal-state-map (kbd "SPC r n") 'eglot-rename)
   (define-key evil-normal-state-map (kbd "[ d") 'flymake-goto-prev-error)
   (define-key evil-normal-state-map (kbd "] d") 'flymake-goto-next-error)
-  (define-key evil-insert-state-map (kbd "C-h") 'eldoc)
   (define-key evil-normal-state-map (kbd "SPC c a") 'eglot-code-actions)
+  (define-key evil-insert-state-map (kbd "C-h") 'eldoc-box-help-at-point)
+  (define-key evil-normal-state-map (kbd "K") 'eldoc-box-help-at-point) ; replaces `eldoc-doc-buffer
 
   ;; cmp
   (define-key evil-insert-state-map (kbd "C-y") 'corfu-insert)
@@ -286,10 +290,6 @@
   (define-key evil-normal-state-map (kbd "M-f") 'format-all-buffer)
 
   ;; misc
-  (define-key evil-normal-state-map (kbd "SPC t") (lambda () (interactive) (shell-command "tmux send-keys -t dev:1 ' t'")))
-  (define-key evil-normal-state-map (kbd "SPC l") (lambda () (interactive) (shell-command "tmux send-keys -t dev:1 '\x17l\x17q'")))
-  (define-key evil-normal-state-map (kbd "C-x C-g") (lambda () (interactive) (shell-command "tmux send-keys -t dev:1 ' t tIIggW ga'")))
-
   (define-key evil-insert-state-map (kbd "C-S-v") 'evil-paste-after)
   (define-key evil-normal-state-map (kbd "SPC w w") 'maximize-window)
   (define-key evil-normal-state-map (kbd "C-x C-c") 'compile)
