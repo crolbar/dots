@@ -35,5 +35,6 @@
     license-generator
     gocryptfs
     direnv
+    evemu
   ];
 }
