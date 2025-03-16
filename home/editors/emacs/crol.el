@@ -42,3 +42,15 @@
   (if (project-current)
       (project-list-buffers)
     (list-buffers)))
+
+
+
+(defun crol-hex-to-dec (hex)
+  "hex to dec convert"
+  (interactive "sEnter hex (without 0x): ")
+  (message "Dec: %d" (string-to-number hex 16)))
+
+(defun crol-dec-to-hex (dec)
+  "dec to hex convert"
+  (interactive "nEnter dec: ")
+  (message "Hex: %x" dec))
