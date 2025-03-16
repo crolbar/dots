@@ -1810,11 +1810,11 @@
         "rust-overlay": "rust-overlay_5"
       },
       "locked": {
-        "lastModified": 1734373142,
-        "narHash": "sha256-7PlXZ5m+xtdGtwSSvKsRh9VTqKGCVpNYuSyVUY+FPCg=",
+        "lastModified": 1741940620,
+        "narHash": "sha256-YJMEfv2S/9egd++3VXxaYlQrdrAhSf4IBJtmiuYosUM=",
         "owner": "crolbar",
         "repo": "tt-rs",
-        "rev": "ab81a2102718dd4173e53b1f4635c619b094d311",
+        "rev": "fc50b2b3bcebc0dba09880381bb227bc32313bb1",
         "type": "github"
       },
       "original": {
