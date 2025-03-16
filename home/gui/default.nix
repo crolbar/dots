@@ -33,5 +33,6 @@
     loupe
     calibre
     xfce.xfce4-dict
+    kicad
   ];
 }
