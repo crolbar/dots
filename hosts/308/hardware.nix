@@ -7,13 +7,11 @@
   hardware = {
     bluetooth.enable = false;
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
       nvidiaSettings = true;
       open = false;
       modesetting.enable = true;
       powerManagement.enable = true;
-      nvidiaPersistenced = true;
-      forceFullCompositionPipeline = true;
     };
 
     graphics.extraPackages = with pkgs; [nvidia-vaapi-driver];

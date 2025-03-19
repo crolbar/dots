@@ -29,7 +29,18 @@
 
       dpi = 96;
       screenSection = ''
-        Option "metamodes" "DP-0: 1920x1080_144 +1080+1080 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, HDMI-0: nvidia-auto-select +0+70 {rotation=right, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-2: nvidia-auto-select +1080+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+        Option "metamodes" "DP-0: 1920x1080_144 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, HDMI-0: nvidia-auto-select +0+70 {rotation=right, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-2: nvidia-auto-select +1080+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+      '';
+
+      monitorSection = ''
+        Option "DPMS" "false"
+      '';
+
+      serverFlagsSection = ''
+        Option "StandbyTime" "0"
+        Option "SuspendTime" "0"
+        Option "OffTime" "0"
+        Option "BlankTime" "0"
       '';
 
       videoDrivers = ["nvidia"];
@@ -50,5 +61,7 @@
     postgresql = {
       enable = true;
     };
+
+    udev.packages = with pkgs; [oversteer];
   };
 }
