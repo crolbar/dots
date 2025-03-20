@@ -1,8 +1,12 @@
 {
   browser,
   musicPlayer,
+  pkgs,
+  lib,
   ...
-}: ''
+}: let
+  pactl = lib.getExe' pkgs.pulseaudioFull "pactl";
+in ''
   package main
 
   import (
@@ -27,7 +31,7 @@
   )
 
   func updateIndexes() {
-  	cmd := exec.Command("pactl", "list", "sink-inputs")
+  	cmd := exec.Command("${pactl}", "list", "sink-inputs")
   	out, err := cmd.Output()
   	if err != nil {
   		fmt.Println("err:", err)
@@ -64,7 +68,7 @@
   		return errors.New("id empty")
   	}
 
-  	return exec.Command("pactl", "set-sink-input-volume", id, "+4%").Run()
+  	return exec.Command("${pactl}", "set-sink-input-volume", id, "+4%").Run()
   }
 
   func downVol(id string) error {
@@ -72,7 +76,7 @@
   		return errors.New("id empty")
   	}
 
-  	return exec.Command("pactl", "set-sink-input-volume", id, "-4%").Run()
+  	return exec.Command("${pactl}", "set-sink-input-volume", id, "-4%").Run()
   }
 
   func retryMusic(c func(string) error) {
