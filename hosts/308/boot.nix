@@ -1,13 +1,7 @@
-{
-  pkgs,
-  darkmatter-grub-theme,
-  ...
-}: {
+{darkmatter-grub-theme, ...}: {
   imports = [darkmatter-grub-theme.nixosModule];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
-
     loader = {
       grub = {
         enable = true;

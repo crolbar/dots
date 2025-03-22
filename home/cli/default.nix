@@ -30,7 +30,6 @@
     trash-cli
     pulseaudioFull # for pactl
     cachix
-    cyme
     yt-dlp
     license-generator
     gocryptfs

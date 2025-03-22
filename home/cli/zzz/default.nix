@@ -4,7 +4,6 @@
     matm
     tt-rs
     npassm
-    lobster
     gazi
     gql
     salg

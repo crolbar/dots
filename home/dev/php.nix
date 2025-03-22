@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    phpactor
+    #phpactor
     php83Packages.composer
     php83
   ];

@@ -5,7 +5,10 @@
       font-awesome #icon
       roboto # sans serif
 
-      nerd-fonts.symbols-only
+      #nerd-fonts.symbols-only
+      (nerdfonts.override {
+        fonts = ["NerdFontsSymbolsOnly"];
+      })
     ];
 
     fontconfig.defaultFonts = {

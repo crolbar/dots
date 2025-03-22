@@ -16,7 +16,7 @@
     };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -24,7 +24,7 @@
     };
 
     hm = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -57,13 +57,6 @@
     salg.url = "github:crolbar/salg";
     go29.url = "github:crolbar/go29";
 
-    lobster = {
-      url = "github:justchokingaround/lobster";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
     nvim_conf = {
       url = "git+file:./home/editors/neovim/nvim";
       flake = false;
@@ -75,8 +68,6 @@
       url = "github:LGFae/swww";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    zellij.url = "github:a-kenji/zellij-nix";
 
     schizofox = {
       url = "github:schizofox/schizofox";
@@ -116,14 +107,6 @@
       };
     };
 
-    wezterm = {
-      url = "github:wez/wezterm?dir=nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
-
     leftwm-flake.url = "github:crolbar/leftwm-flake";
 
     ristate = {
@@ -145,5 +128,7 @@
     };
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+
+    ghostty.url = "github:ghostty-org/ghostty";
   };
 }
