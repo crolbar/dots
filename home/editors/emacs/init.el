@@ -242,9 +242,9 @@
 (evil-mode 1)
 
 ;; evil-collection
-(evil-set-initial-state 'vterm-mode 'emacs)
 (setq evil-collection-key-blacklist '("K" "(" ")" "C-j" "C-k"))
 (evil-collection-init)
+(evil-set-initial-state 'vterm-mode 'emacs)
 
 ;; evil-surround
 (global-evil-surround-mode 1)
@@ -304,4 +304,5 @@
   (define-key evil-motion-state-map (kbd "TAB") nil)
   (define-key evil-insert-state-map (kbd "TAB") (lambda () (interactive) (insert "  ")))
 
+  (define-key evil-normal-state-map (kbd "M-`") 'vterm)
   (define-key evil-normal-state-map (kbd "-") 'dired-jump))
