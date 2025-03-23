@@ -243,7 +243,7 @@
 
 ;; evil-collection
 (evil-set-initial-state 'vterm-mode 'emacs)
-(setq evil-collection-key-blacklist '("K"))
+(setq evil-collection-key-blacklist '("K" "(" ")" "C-j" "C-k"))
 (evil-collection-init)
 
 ;; evil-surround
@@ -295,6 +295,10 @@
   (define-key evil-normal-state-map (kbd "C-x C-c") 'compile)
   (define-key evil-normal-state-map (kbd "C-x C-r") 'recompile)
   (define-key evil-normal-state-map (kbd "C-b g") 'magit)
+
+  (define-key evil-motion-state-map (kbd "(") nil)
+  (define-key evil-motion-state-map (kbd ")") nil)
+
 
   ;; unbind tab
   (define-key evil-motion-state-map (kbd "TAB") nil)
