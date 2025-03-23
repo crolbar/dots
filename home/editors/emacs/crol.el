@@ -54,3 +54,11 @@
   "dec to hex convert"
   (interactive "nEnter dec: ")
   (message "Hex: %x" dec))
+
+
+(defun crol-toggle-line-numbers ()
+  "toggles on/off line numbers"
+  (interactive)
+  (if display-line-numbers-type
+      (setq display-line-numbers-type nil)
+    (setq display-line-numbers-type 'relative)))
