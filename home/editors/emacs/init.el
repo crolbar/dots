@@ -97,6 +97,8 @@
 
 (global-set-key (kbd "C-s") nil)
 
+(global-set-key (kbd "C-c d u") #'direnv-update-environment)
+
 ;;   __
 ;;  / _|
 ;;  \__|
@@ -155,7 +157,8 @@
  '(("Nix" (alejandra))
    ("Markdown" (prettier "--tab-width=4"))
    ("Java" (clang-format "--style={\"BasedOnStyle\": \"Mozilla\", \"IndentWidth\": 4}"))
-   ("Go" (gofmt))))
+   ("Go" (gofmt))
+   ("C" (clang-format "--style={\"BasedOnStyle\": \"Mozilla\", \"IndentWidth\": 4}"))))
 
 ;;        _ _
 ;;   __ _(_) |_
