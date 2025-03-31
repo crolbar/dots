@@ -8,5 +8,6 @@
     gql
     salg
     go29
+    auvi
   ];
 }

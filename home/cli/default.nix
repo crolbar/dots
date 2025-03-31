@@ -35,5 +35,6 @@
     gocryptfs
     direnv
     evemu
+    openssl
   ];
 }
