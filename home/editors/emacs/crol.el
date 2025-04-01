@@ -62,3 +62,30 @@
   (if display-line-numbers-type
       (setq display-line-numbers-type nil)
     (setq display-line-numbers-type 'relative)))
+
+
+(defun move-text-get-region-and-prefix ()
+  (list (when (use-region-p) (region-beginning))
+        (when (use-region-p) (region-end))
+        (prefix-numeric-value current-prefix-arg)))
+
+(defun move-text-region (start end n)
+  (let ((line-text (delete-and-extract-region start end)))
+    (forward-line n)
+    (let ((start (point)))
+      (insert line-text)
+      (set-mark start)
+      (setq deactivate-mark nil)
+      (when (and (bound-and-true-p evil-mode) (string= evil-state "visual"))
+        (evil-visual-make-selection (mark) (point)))
+      (backward-char 1))))
+
+(defun crol-move-text-region-up (start end n)
+  "Move the current region up by n lines"
+  (interactive (move-text-get-region-and-prefix))
+  (move-text-region start end (- n)))
+
+(defun crol-move-text-region-down (start end n)
+  "Move the current region down by n lines"
+  (interactive (move-text-get-region-and-prefix))
+  (move-text-region start end n))

@@ -302,6 +302,8 @@
   (define-key evil-motion-state-map (kbd "(") nil)
   (define-key evil-motion-state-map (kbd ")") nil)
 
+  (define-key evil-visual-state-map (kbd "M-j") 'crol-move-text-region-down)
+  (define-key evil-visual-state-map (kbd "M-k") 'crol-move-text-region-up)
 
   ;; unbind tab
   (define-key evil-motion-state-map (kbd "TAB") nil)
