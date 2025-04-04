@@ -40,7 +40,6 @@
       yasnippet
 
       # fmt
-      clang-format
       format-all
 
       # git
