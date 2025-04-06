@@ -99,6 +99,18 @@
 
 (global-set-key (kbd "C-c d u") #'direnv-update-environment)
 
+;; window movement
+
+(define-key vterm-mode-map (kbd "M-H") nil)
+(define-key vterm-mode-map (kbd "M-J") nil)
+(define-key vterm-mode-map (kbd "M-K") nil)
+(define-key vterm-mode-map (kbd "M-L") nil)
+
+(global-set-key (kbd "M-H") 'windmove-left)
+(global-set-key (kbd "M-J") 'windmove-down)
+(global-set-key (kbd "M-K") 'windmove-up)
+(global-set-key (kbd "M-L") 'windmove-right)
+
 ;;   __
 ;;  / _|
 ;;  \__|
@@ -269,12 +281,6 @@
   ;; "unbind" 'K' and 'J' in visual
   (define-key evil-visual-state-map (kbd "K") 'evil-previous-line)
   (define-key evil-visual-state-map (kbd "J") 'evil-next-line)
-
-  ;; window movement
-  (global-set-key (kbd "M-H") 'evil-window-left)
-  (global-set-key (kbd "M-J") 'evil-window-down)
-  (global-set-key (kbd "M-K") 'evil-window-up)
-  (global-set-key (kbd "M-L") 'evil-window-right)
 
   ;; lsp binds
   (define-key evil-normal-state-map (kbd "SPC r n") 'eglot-rename)
