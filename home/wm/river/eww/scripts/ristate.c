@@ -1,12 +1,16 @@
-#include <string.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
-#include <signal.h>
 
-void stop(int sig) {exit(0);}
+void
+stop(int sig)
+{
+    exit(0);
+}
 
-int 
+int
 main()
 {
     signal(SIGINT, stop);
@@ -16,17 +20,23 @@ main()
 
     char* buffer = malloc(8192);
 
-    while (fgets(buffer, 8192, p))
-    {
+    while (fgets(buffer, 8192, p)) {
         int ft = -1;
         {
             char* needle = "\"focused_tags\":{\"SamsungDisplayCorp.\":[\"";
             char* str_ft = strstr(buffer, needle);
 
-            if (str_ft) 
-            {
+            if (str_ft) {
                 str_ft += strlen(needle);
-                ft = *str_ft - '0';
+
+                int tag = 0;
+                while (*str_ft >= '0' && *str_ft <= '9') {
+                    tag *= 10;
+                    tag += *str_ft - '0';
+                    str_ft++;
+                }
+
+                ft = tag;
             }
         }
 
@@ -35,10 +45,17 @@ main()
             char* needle = "\"urgency\":{\"SamsungDisplayCorp.\":[\"";
             char* str_ut = strstr(buffer, needle);
 
-            if (str_ut) 
-            {
+            if (str_ut) {
                 str_ut += strlen(needle);
-                ut = *str_ut - '0';
+
+                int tag = 0;
+                while (*str_ut >= '0' && *str_ut <= '9') {
+                    tag *= 10;
+                    tag += *str_ut - '0';
+                    str_ut++;
+                }
+
+                ut = tag;
             }
         }
 
@@ -47,20 +64,25 @@ main()
         {
             char* needle = "\"view_tags\":{\"SamsungDisplayCorp.\":[";
             char* str_tags = strstr(buffer, needle);
-            if (!str_tags) continue;
+            if (!str_tags)
+                continue;
 
             str_tags += strlen(needle);
 
-
             do {
-                if (*str_tags > '9' || *str_tags < '0') 
+                if (*str_tags > '9' || *str_tags < '0')
                     continue;
 
-                int tag = *str_tags - '0';
+                int tag = 0;
+                while (*str_tags >= '0' && *str_tags <= '9') {
+                    tag *= 10;
+                    tag += *str_tags - '0';
+                    str_tags++;
+                }
 
                 int has = 0;
-                for (int i = 0; i < tags_num; i++) 
-                    if (tags[i] == tag) 
+                for (int i = 0; i < tags_num; i++)
+                    if (tags[i] == tag)
                         has = 1;
 
                 if (!has)
@@ -73,15 +95,12 @@ main()
                 if (tags[i] == ft)
                     tags_has_ft = 1;
 
-            if (!tags_has_ft) 
+            if (!tags_has_ft)
                 tags[tags_num++] = ft;
 
-            for (int i = 0; i < tags_num; i++) 
-            {
-                for (int j = 0; j < tags_num - 1 - i; j++) 
-                {
-                    if (tags[j] > tags[j + 1]) 
-                    {
+            for (int i = 0; i < tags_num; i++) {
+                for (int j = 0; j < tags_num - 1 - i; j++) {
+                    if (tags[j] > tags[j + 1]) {
                         int tmp = tags[j];
                         tags[j] = tags[j + 1];
                         tags[j + 1] = tmp;
@@ -89,12 +108,12 @@ main()
                 }
             }
         }
-        
+
         printf("{\"tags\":[");
-        for (int i = 0; i < tags_num; i++) 
-        {
+        for (int i = 0; i < tags_num; i++) {
             printf("%d", tags[i]);
-            if (i < tags_num - 1) printf(",");
+            if (i < tags_num - 1)
+                printf(",");
         }
         printf("]");
         printf(",\"urgent\":\"%d\"", ut);
