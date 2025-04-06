@@ -66,6 +66,10 @@
         ENABLED_ISSUE_BY_LABEL = true;
       };
 
+      actions = {
+        ENABLED = false;
+      };
+
       other = {
         SHOW_FOOTER_VERSION = false;
         SHOW_FOOTER_POWERED_BY = false;
