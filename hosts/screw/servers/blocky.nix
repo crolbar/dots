@@ -8,6 +8,10 @@
         http = 4000;
       };
 
+      log = {
+        level = "warn";
+      };
+
       upstreams = {
         groups = {
           default = [
@@ -42,13 +46,15 @@
             "https://blocklistproject.github.io/Lists/tracking.txt"
           ];
 
-          cringe = [
+          socialMedia = [
             ''
               /youtube/
+              /twitch/
+              /reddit/
             ''
           ];
         };
-        clientGroupsBlock.default = ["blocks" "cringe"];
+        clientGroupsBlock.default = ["blocks" "socialMedia"];
       };
 
       customDNS = {
