@@ -292,7 +292,7 @@
   (define-key evil-normal-state-map (kbd "M-f") 'format-all-buffer)
 
   ;; misc
-  (define-key evil-insert-state-map (kbd "C-S-v") 'evil-paste-after)
+  (define-key evil-insert-state-map (kbd "C-S-v") (lambda () (interactive) (progn (evil-paste-before 1) (evil-forward-char 1))))
   (define-key evil-normal-state-map (kbd "SPC w w") 'maximize-window)
   (define-key evil-normal-state-map (kbd "C-x C-c") 'compile)
   (define-key evil-normal-state-map (kbd "C-x C-r") 'recompile)
