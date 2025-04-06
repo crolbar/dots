@@ -221,7 +221,6 @@
 (add-hook 'org-mode-hook 'org-fragtog-mode)
 
 (add-hook 'dired-mode-hook #'nerd-icons-dired-mode)
-(elcord-mode)
 (popwin-mode 1)
 
 
