@@ -43,7 +43,10 @@
       for_window [class="pavucontrol"] floating enable
     '';
 
-    config = {
+    config = let
+      accentColor = "#c83232"; #5f00ff
+      dark = "#3C0F0F";
+    in {
       workspaceLayout = "default"; # "default", "stacking", "tabbed"
       window = {
         titlebar = true;
@@ -68,8 +71,27 @@
 
       modifier = "Mod4";
 
+      colors = {
+        focused = {
+          border = "#333333";
+          background = dark;
+          text = "#ffffff";
+          indicator = "#4fcf90";
+          childBorder = accentColor;
+        };
+      };
+
       bars = [
-        {statusCommand = "${lib.getExe pkgs.i3status}";}
+        {
+          statusCommand = "${lib.getExe pkgs.i3status}";
+          colors = {
+            focusedWorkspace = {
+              border = "#333333";
+              background = accentColor;
+              text = "#ffffff";
+            };
+          };
+        }
       ];
     };
   };
