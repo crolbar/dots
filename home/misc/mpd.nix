@@ -9,7 +9,7 @@ in {
 
   services = {
     mpd-discord-rpc = {
-      enable = true;
+      enable = false;
       settings = {
         id = 1283875986626187304;
       };
@@ -33,7 +33,7 @@ in {
         replaygain_limit "no"
       '';
     };
-    mpdris2.enable = true; # fixes playerctl
+    mpdris2.enable = true; # enables playerctl
   };
 
   home.packages = [
