@@ -1271,11 +1271,11 @@
     "nvim_conf": {
       "flake": false,
       "locked": {
-        "lastModified": 1737734053,
-        "narHash": "sha256-UyycDbljkkzn17T8IKmChdZMr9uNU2rcLbmsq/Y2n6Q=",
+        "lastModified": 1744371911,
+        "narHash": "sha256-Wo25Vtnyp4G0P15zE4MxLEsHYUf7WR7BPqlwx1Ptwos=",
         "ref": "refs/heads/master",
-        "rev": "c06cd6c3e8f6599e6f63c43bad859a6e3403dee7",
-        "revCount": 125,
+        "rev": "5e962a80f1a0126849d9cf9f83ff6f5ef758bb87",
+        "revCount": 126,
         "type": "git",
         "url": "file:./home/editors/neovim/nvim"
       },
