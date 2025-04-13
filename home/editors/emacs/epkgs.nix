@@ -60,6 +60,9 @@
       evil-surround
       evil-goggles
 
+      # brrr
+      avy
+
       # misc
       (pkgs.ispell)
       elcord

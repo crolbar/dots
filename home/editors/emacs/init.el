@@ -310,6 +310,9 @@
   (define-key evil-visual-state-map (kbd "M-j") 'crol-move-text-region-down)
   (define-key evil-visual-state-map (kbd "M-k") 'crol-move-text-region-up)
 
+  ;; brrr
+  (define-key evil-normal-state-map (kbd "s") 'avy-goto-char-2)
+
   ;; unbind tab
   (define-key evil-motion-state-map (kbd "TAB") nil)
   (define-key evil-insert-state-map (kbd "TAB") (lambda () (interactive) (insert "  ")))
