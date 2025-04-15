@@ -81,7 +81,7 @@ in {
       rm ~/Music/playlists/*
 
       printf "\e[32mStarting mpd services..\e[0m\n"
-      systemctl start --user mpd-discord-rpc.service mpdris2.service mpd.service
+      systemctl start --user mpdris2.service mpd.service
     '')
   ];
 }

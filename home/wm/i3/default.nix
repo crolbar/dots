@@ -33,6 +33,7 @@
     xinput --set-prop $YUKI_MOUSE_ID "libinput Accel Profile Enabled" 1 0
     xinput --set-prop $YUKI_MOUSE_ID "libinput Accel Speed" 1
 
+    sudo systemctl start volSock
     exec i3
   '';
 

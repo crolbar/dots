@@ -9,5 +9,6 @@
     salg
     go29
     auvi
+    vbz
   ];
 }

@@ -57,6 +57,7 @@
     salg.url = "github:crolbar/salg";
     go29.url = "github:crolbar/go29";
     auvi.url = "github:crolbar/auvi";
+    vbz.url = "github:crolbar/vbz";
 
     nvim_conf = {
       url = "git+file:./home/editors/neovim/nvim";
