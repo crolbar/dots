@@ -7,5 +7,6 @@
     ./prometheus.nix
     ./nfs.nix
     ./freshrss.nix
+    ./tailscale.nix
   ];
 }

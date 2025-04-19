@@ -4,19 +4,24 @@
 in {
   services.nginx = {
     enable = true;
-    virtualHosts."screw.rs" = {
-      extraConfig = ''
-        client_max_body_size 512M;
-      '';
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString forgejo_port}";
+    virtualHosts = let
+      root = {
+        extraConfig = ''
+          client_max_body_size 512M;
+        '';
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:${toString forgejo_port}";
+        };
       };
-    };
+    in {
+      "screw.rs" = root;
+      "screw.sh" = root;
 
-    virtualHosts."graf.screw.rs" = {
-      locations."/" = {
-        proxyPass = "http://0.0.0.0:${toString grafana_port}";
-        extraConfig = "proxy_set_header Host $host;";
+      "graf.screw.rs" = {
+        locations."/" = {
+          proxyPass = "http://0.0.0.0:${toString grafana_port}";
+          extraConfig = "proxy_set_header Host $host;";
+        };
       };
     };
   };
