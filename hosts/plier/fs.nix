@@ -11,9 +11,14 @@
     };
 
     "/mnt/nas" = {
-      device = "192.168.1.11:/nas";
+      device = "screw:/nas";
       fsType = "nfs";
-      options = ["rw"];
+      options = [
+        "rw"
+        "noauto"
+        "x-systemd.automount" # mount on access
+        "x-systemd.device-timeout=5"
+      ];
     };
   };
 }

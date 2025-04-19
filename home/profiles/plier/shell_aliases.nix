@@ -20,7 +20,7 @@ in {
     vreb = "cd ~/Github/dots && nix flake update nvim_conf && hreb && rm -rf ~/.cache/nvim";
 
     crol = "ssh crolbar@192.168.1.12";
-    screw = "ssh screw@192.168.1.11";
+    screw = "ssh screw@screw";
     kubo = "ssh kubo@crolbar.xyz";
     vm = "ssh crolbar@192.168.122.140";
 

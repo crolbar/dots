@@ -3,6 +3,7 @@
     sshd.enable = true;
     gvfs.enable = true;
     playerctld.enable = true;
+    tailscale.enable = true;
 
     xserver = {
       enable = true;
