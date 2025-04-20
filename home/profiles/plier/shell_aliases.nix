@@ -5,7 +5,7 @@
 }: let
   zsh = "${lib.getExe pkgs.zsh}";
 in {
-  home.packages = [pkgs.dig];
+  home.packages = with pkgs; [dig nfs-utils];
 
   programs.zsh.shellAliases = {
     vimc = "cd ~/Github/dots/home/editors/neovim/nvim && nvim .";
@@ -27,7 +27,7 @@ in {
     mdec = "gocryptfs /mnt/nas/enc ~/dec";
     umdec = "fusermount -u ~/dec";
 
-    mnas = "sudo mount -t nfs 192.168.1.11:/nas /mnt/nas -o rw -o async";
+    mnas = "sudo mount.nfs screw:/nas /mnt/nas -o rw";
     umnas = "sudo umount /mnt/nas";
     nas = "cd /mnt/nas";
 

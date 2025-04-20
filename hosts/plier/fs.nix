@@ -10,15 +10,15 @@
       fsType = "vfat";
     };
 
-    "/mnt/nas" = {
-      device = "screw:/nas";
-      fsType = "nfs";
-      options = [
-        "rw"
-        "noauto"
-        "x-systemd.automount" # mount on access
-        "x-systemd.device-timeout=5"
-      ];
-    };
+    #"/mnt/nas" = {
+    #  device = "screw:/nas";
+    #  fsType = "nfs";
+    #  options = [
+    #    "rw"
+    #    "noauto"
+    #    "x-systemd.automount" # mount on access
+    #    "x-systemd.device-timeout=5"
+    #  ];
+    #};
   };
 }
