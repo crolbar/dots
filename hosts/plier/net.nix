@@ -4,7 +4,7 @@
 
     networkmanager = {
       enable = true;
-      insertNameservers = ["9.9.9.9"];
+      appendNameservers = ["9.9.9.9"];
     };
     wireless.userControlled.enable = false;
 
