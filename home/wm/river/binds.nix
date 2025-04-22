@@ -76,6 +76,8 @@
       moveMasterRight = "send-layout-cmd wideriver '--layout right'";
       moveMasterLeft = "send-layout-cmd wideriver '--layout left'";
 
+      switchLayoutMonocle = "send-layout-cmd wideriver '--layout monocle'";
+
       resizeFloatUp = "resize vertical -100";
       resizeFloatDown = "resize vertical 100";
       resizeFloatRight = "resize horizontal 100";

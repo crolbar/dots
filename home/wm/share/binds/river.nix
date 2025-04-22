@@ -14,6 +14,8 @@ in [
   [[mod] "Right" "moveMasterRight"]
   [[mod] "Left" "moveMasterLeft"]
 
+  [[mod] "t" "switchLayoutMonocle"]
+
   [[mod shift ctrl] "k" "resizeFloatUp"]
   [[mod shift ctrl] "j" "resizeFloatDown"]
   [[mod shift ctrl] "l" "resizeFloatRight"]
