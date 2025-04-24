@@ -34,5 +34,6 @@
     calibre
     xfce.xfce4-dict
     kicad
+    blueman
   ];
 }

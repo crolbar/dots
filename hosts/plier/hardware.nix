@@ -4,7 +4,7 @@
   ...
 }: {
   hardware = {
-    bluetooth.enable = false;
+    bluetooth.enable = true;
 
     enableRedistributableFirmware = lib.mkDefault true;
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
