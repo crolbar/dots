@@ -31,6 +31,9 @@ in [
   [[] "XF86MonBrightnessDown" "upMonBrightness"]
   [[] "XF86MonBrightnessUp" "downMonBrightness"]
 
+  [[mod] "F4" "upMonBrightness"]
+  [[mod] "F5" "downMonBrightness"]
+
   [[mod] "F2" "downKeebBrightness"]
   [[mod] "F3" "upKeebBrightness"]
 
