@@ -317,27 +317,6 @@
     },
     "flake-parts_4": {
       "inputs": {
-        "nixpkgs-lib": [
-          "gql",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1727826117,
-        "narHash": "sha256-K5ZLCyfO/Zj9mPFldf3iwS6oZStJcU4tSpiXTMYaaL0=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "3d04084d54bedc3d6b8b736c70ef449225c361b1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
-    "flake-parts_5": {
-      "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
@@ -354,7 +333,7 @@
         "type": "github"
       }
     },
-    "flake-parts_6": {
+    "flake-parts_5": {
       "inputs": {
         "nixpkgs-lib": [
           "matm",
@@ -375,7 +354,7 @@
         "type": "github"
       }
     },
-    "flake-parts_7": {
+    "flake-parts_6": {
       "inputs": {
         "nixpkgs-lib": [
           "neovim-overlay",
@@ -396,7 +375,7 @@
         "type": "github"
       }
     },
-    "flake-parts_8": {
+    "flake-parts_7": {
       "inputs": {
         "nixpkgs-lib": [
           "neovim-overlay",
@@ -417,7 +396,7 @@
         "type": "indirect"
       }
     },
-    "flake-parts_9": {
+    "flake-parts_8": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib_2"
       },
@@ -578,15 +557,14 @@
     },
     "gql": {
       "inputs": {
-        "flake-parts": "flake-parts_4",
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1730888092,
-        "narHash": "sha256-6hlcXB0MimO49RQtIcOFzfhJnMO7DkoICqJ/R0KBcN4=",
+        "lastModified": 1745607081,
+        "narHash": "sha256-CuNUz/Is7BxgC1D1L9fP6+/1ysLH3F+MWj0fwVwo+rA=",
         "owner": "crolbar",
         "repo": "gql",
-        "rev": "6d951a91680ccaf1f6e05988bfe3e206320af88e",
+        "rev": "d089fe016895c4a54ed6b7e57867c52cddcf075c",
         "type": "github"
       },
       "original": {
@@ -597,7 +575,7 @@
     },
     "hercules-ci-effects": {
       "inputs": {
-        "flake-parts": "flake-parts_8",
+        "flake-parts": "flake-parts_7",
         "nixpkgs": [
           "neovim-overlay",
           "nixpkgs"
@@ -760,7 +738,7 @@
     "leftwm": {
       "inputs": {
         "crane": "crane",
-        "flake-parts": "flake-parts_5",
+        "flake-parts": "flake-parts_4",
         "nixpkgs": "nixpkgs_8",
         "rust-overlay": "rust-overlay_2"
       },
@@ -798,7 +776,7 @@
     },
     "matm": {
       "inputs": {
-        "flake-parts": "flake-parts_6",
+        "flake-parts": "flake-parts_5",
         "nixpkgs": "nixpkgs_9",
         "rust-overlay": "rust-overlay_3"
       },
@@ -839,7 +817,7 @@
     "neovim-overlay": {
       "inputs": {
         "flake-compat": "flake-compat_3",
-        "flake-parts": "flake-parts_7",
+        "flake-parts": "flake-parts_6",
         "git-hooks": "git-hooks",
         "hercules-ci-effects": "hercules-ci-effects",
         "neovim-src": "neovim-src",
@@ -1205,11 +1183,11 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1728241625,
-        "narHash": "sha256-yumd4fBc/hi8a9QgA9IT8vlQuLZ2oqhkJXHPKxH/tRw=",
+        "lastModified": 1745391562,
+        "narHash": "sha256-sPwcCYuiEopaafePqlG826tBhctuJsLx/mhKKM5Fmjo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c31898adf5a8ed202ce5bea9f347b1c6871f32d1",
+        "rev": "8a2f738d9d1f1d986b5a4cd2fd2061a7127237d7",
         "type": "github"
       },
       "original": {
@@ -1535,7 +1513,7 @@
     "searx-randomizer": {
       "inputs": {
         "crane": "crane_2",
-        "flake-parts": "flake-parts_9",
+        "flake-parts": "flake-parts_8",
         "nixpkgs": [
           "schizofox",
           "nixpkgs"
@@ -1779,11 +1757,11 @@
         "nixpkgs": "nixpkgs_16"
       },
       "locked": {
-        "lastModified": 1744740868,
-        "narHash": "sha256-7cgFxbUbrpvef1hHMS7rL+o26AXYoKixehO2FFR2lDg=",
+        "lastModified": 1745516304,
+        "narHash": "sha256-Fw73IS8whhrWEMTGqAMGm4OtadoAitdXUVBmbcgdGyw=",
         "owner": "crolbar",
         "repo": "vbz",
-        "rev": "e421bb1525c6b738aa3526fc04c93488a1250fa9",
+        "rev": "2c2fe59ec0a7e77ec955f520ea2298e19fabe94a",
         "type": "github"
       },
       "original": {
