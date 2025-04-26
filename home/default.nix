@@ -21,5 +21,10 @@ in {
       system = "aarch64-linux";
       username = "screw";
     };
+
+    pvm = mkHome {
+      system = "x86_64-linux";
+      username = "pvm";
+    };
   };
 }

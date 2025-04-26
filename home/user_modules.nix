@@ -50,4 +50,11 @@
     ./cli
     ./editors
   ];
+
+  pvm = [
+    ./cli
+    ./editors
+    ./dev
+    ./misc/agenix
+  ];
 }
