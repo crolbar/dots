@@ -4,6 +4,8 @@
   ...
 }: let
   zsh = "${lib.getExe pkgs.zsh}";
+  virsh = lib.getExe' pkgs.libvirt "virsh";
+  virt-manager = lib.getExe pkgs.virt-manager;
 in {
   home.packages = with pkgs; [dig nfs-utils];
 
@@ -22,7 +24,9 @@ in {
     crol = "ssh crolbar@192.168.1.12";
     screw = "ssh screw@screw";
     kubo = "ssh kubo@crolbar.xyz";
-    vm = "ssh crolbar@192.168.122.140";
+
+    v = "sudo ${virsh}";
+    vm = "${virt-manager} --connect qemu:///system --show-domain-console";
 
     mdec = "gocryptfs /mnt/nas/enc ~/dec";
     umdec = "fusermount -u ~/dec";
