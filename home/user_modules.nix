@@ -54,7 +54,8 @@
   pvm = [
     ./cli
     ./editors
-    ./dev
-    ./misc/agenix
+    ./misc/agenix.nix
+    ./cli/zzz
+    ../overlays.nix
   ];
 }

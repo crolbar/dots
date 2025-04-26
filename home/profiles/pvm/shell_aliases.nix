@@ -5,9 +5,16 @@
 }: let
   zsh = "${lib.getExe pkgs.zsh}";
 in {
-  home.packages = with pkgs; [dig nfs-utils];
+  home.packages = with pkgs; [dig nfs-utils lsd];
 
   programs.zsh.shellAliases = {
+    ls = "lsd -a --group-directories-first";
+    ll = "lsd -la --group-directories-first";
+
+    vim = "nvim";
+    ssc = "sudo systemctl";
+    scu = "systemctl --user";
+
     vimc = "cd ~/Github/dots/home/editors/neovim/nvim && nvim .";
 
     n = "cd ~/Github/dots && vim .";
