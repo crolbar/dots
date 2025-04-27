@@ -36,5 +36,6 @@
     direnv
     evemu
     openssl
+    sqlite
   ];
 }
