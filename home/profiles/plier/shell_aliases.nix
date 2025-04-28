@@ -47,4 +47,10 @@ in {
 
     fmon = "systemctl start --user kanshi";
   };
+
+  programs.zsh.initExtra = ''
+    it() {
+        nix flake init -t github:crolbar/dots#$1
+    }
+  '';
 }
