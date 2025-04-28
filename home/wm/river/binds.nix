@@ -4,7 +4,40 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  keyboardToggler = (clib.writers pkgs).writeGo "keyboardToggler" ''
+    package main
+
+    import (
+        "os/exec"
+        "strings"
+    )
+
+    func main() {
+        out, err := exec.Command("riverctl", "list-input-configs").Output()
+        if err != nil {
+            return
+        }
+        outStr := string(out)
+        name := "keyboard-1-1-AT_Translated_Set_2_keyboard"
+
+        sp := strings.Index(outStr, name)
+
+        sp += len(name)+1
+
+        ep := strings.Index(outStr[sp:], "\n")
+
+        status := strings.TrimSpace(outStr[sp:sp+ep])
+
+        switch status {
+        case "events: enabled":
+            exec.Command("riverctl", "input", "keyboard-1-1-AT_Translated_Set_2_keyboard", "events", "disabled").Run()
+        case "events: disabled":
+            exec.Command("riverctl", "input", "keyboard-1-1-AT_Translated_Set_2_keyboard", "events", "enabled").Run()
+        }
+    }
+  '';
+in {
   # make sure binds generator is imported
   imports = [../share/binds];
 
@@ -99,6 +132,8 @@
 
       muteAudio = "spawn 'amixer set Master toggle && dunstify \"Volume at: $(pamixer --get-volume-human)\"'";
       muteMic = "spawn 'amixer set Capture toggle && dunstify \"Mic at: $(pamixer --get-volume-human --default-source)\"'";
+
+      toggleKeyboardInput = "spawn '${toString keyboardToggler}'";
 
       moveFocus = {
         up = "focus-view previous";

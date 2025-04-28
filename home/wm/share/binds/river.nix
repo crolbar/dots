@@ -14,6 +14,8 @@ in [
   [[mod] "Right" "moveMasterRight"]
   [[mod] "Left" "moveMasterLeft"]
 
+  [[mod] "F10" "toggleKeyboardInput"]
+
   [[mod] "t" "switchLayoutMonocle"]
 
   [[mod shift ctrl] "k" "resizeFloatUp"]
