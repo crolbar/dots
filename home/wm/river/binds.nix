@@ -34,6 +34,8 @@
             exec.Command("riverctl", "input", "keyboard-1-1-AT_Translated_Set_2_keyboard", "events", "disabled").Run()
         case "events: disabled":
             exec.Command("riverctl", "input", "keyboard-1-1-AT_Translated_Set_2_keyboard", "events", "enabled").Run()
+        default:
+            exec.Command("riverctl", "input", "keyboard-1-1-AT_Translated_Set_2_keyboard", "events", "disabled").Run()
         }
     }
   '';
