@@ -28,8 +28,8 @@ in {
     v = "sudo ${virsh}";
     vm = "${virt-manager} --connect qemu:///system --show-domain-console";
 
-    mdec = "gocryptfs /mnt/nas/enc ~/dec";
-    umdec = "fusermount -u ~/dec";
+    mdec = "gocryptfs /mnt/nas/enc ~/dec/n";
+    umdec = "fusermount -u ~/dec/n";
 
     mnas = "sudo mount.nfs screw:/nas /mnt/nas -o rw";
     umnas = "sudo umount /mnt/nas";
