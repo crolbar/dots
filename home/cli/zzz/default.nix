@@ -10,5 +10,6 @@
     go29
     auvi
     vbz
+    stray
   ];
 }

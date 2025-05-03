@@ -3,6 +3,7 @@
   lib,
   pkgs,
   config,
+  username,
   ...
 }: let
   keyboardToggler = (clib.writers pkgs).writeGo "keyboardToggler" ''
@@ -30,12 +31,22 @@
         status := strings.TrimSpace(outStr[sp:sp+ep])
 
         switch status {
-        case "events: enabled":
-            exec.Command("riverctl", "input", "keyboard-1-1-AT_Translated_Set_2_keyboard", "events", "disabled").Run()
         case "events: disabled":
             exec.Command("riverctl", "input", "keyboard-1-1-AT_Translated_Set_2_keyboard", "events", "enabled").Run()
+            exec.Command("sh", "-c", "kill $(cat /tmp/stray-keyboardToggler.pid)").Run()
+        case "events: enabled":
+            fallthrough
         default:
             exec.Command("riverctl", "input", "keyboard-1-1-AT_Translated_Set_2_keyboard", "events", "disabled").Run()
+            exec.Command("stray",
+                "--add-item",
+                "enable keeb",
+                "riverctl input keyboard-1-1-AT_Translated_Set_2_keyboard events enabled && kill $(cat /tmp/stray-keyboardToggler.pid)",
+                "--name",
+                "keyboardToggler",
+                "--icon",
+                "/home/${username}/keyboardToggler.png",
+            ).Run()
         }
     }
   '';
