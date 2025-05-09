@@ -99,6 +99,11 @@
 
 (global-set-key (kbd "C-c d u") #'direnv-update-environment)
 
+(with-eval-after-load 'evil
+                      (global-set-key (kbd "C-S-v") (lambda () (interactive) (progn (evil-paste-before 1) (evil-forward-char 1)))))
+(global-set-key (kbd "C-x C-c") 'compile)
+(global-set-key (kbd "C-x C-r") 'recompile)
+
 ;; window movement
 
 (define-key vterm-mode-map (kbd "M-H") nil)
@@ -298,10 +303,7 @@
   (define-key evil-normal-state-map (kbd "M-f") 'format-all-buffer)
 
   ;; misc
-  (define-key evil-insert-state-map (kbd "C-S-v") (lambda () (interactive) (progn (evil-paste-before 1) (evil-forward-char 1))))
   (define-key evil-normal-state-map (kbd "SPC w w") 'maximize-window)
-  (define-key evil-normal-state-map (kbd "C-x C-c") 'compile)
-  (define-key evil-normal-state-map (kbd "C-x C-r") 'recompile)
   (define-key evil-normal-state-map (kbd "C-b g") 'magit)
 
   (define-key evil-motion-state-map (kbd "(") nil)
