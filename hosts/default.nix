@@ -31,6 +31,7 @@ in {
         ./shared/gui
         ./shared/cli
         ../overlays.nix
+        ./shared/gamer/nix-ld.nix
       ];
     };
 
