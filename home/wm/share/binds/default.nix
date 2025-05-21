@@ -254,6 +254,7 @@
         [[] media.raiseVolume (exec "${bins.pamixer} -i 5")]
         [[mod shift] "F12" (exec "${scripts.defaultSink}")]
         [[mod] "F8" (exec "${bins.pamixer} --default-source -t")]
+        [[mod] "F9" (exec "${bins.pamixer} -t")]
       ];
     };
 
