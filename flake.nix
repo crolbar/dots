@@ -16,7 +16,7 @@
     };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -24,7 +24,7 @@
     };
 
     hm = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -40,8 +40,6 @@
       url = "https://github.com/hyprwm/hyprpicker";
       rev = "444c40e5e3dc4058a6a762ba5e73ada6d6469055";
     };
-
-    yazi.url = "github:sxyazi/yazi";
 
     # not sure how caching works exacly but with my testing I find out that:
     # If in the input flake the nixpkgs are overritten for all other inputs (not 100% sure but in pkgs that I don't override them it always triggers compilation)
@@ -112,14 +110,7 @@
 
     leftwm-flake.url = "github:crolbar/leftwm-flake";
 
-    ristate = {
-      url = "github:crolbar/ristate";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
+    ristate.url = "github:crolbar/ristate";
 
     agenix = {
       url = "github:ryantm/agenix";

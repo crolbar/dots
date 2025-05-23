@@ -1,7 +1,6 @@
 {
   spicetify-nix,
   leftwm-flake,
-  anyrun,
   agenix,
   ...
 }: let
@@ -12,7 +11,6 @@ in {
     ./cbinds.nix
     (defaultHmMod leftwm-flake)
     (defaultHmMod spicetify-nix)
-    (defaultHmMod anyrun)
     (defaultHmMod agenix)
   ];
 }

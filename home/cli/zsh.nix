@@ -11,6 +11,6 @@
 
     autocd = true;
 
-    initExtra = "microfetch";
+    initContent = "microfetch";
   };
 }

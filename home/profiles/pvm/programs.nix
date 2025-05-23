@@ -2,7 +2,7 @@
   programs.zsh = {
     enable = true;
 
-    initExtra = ''
+    initContent = ''
       bindkey -v
 
       # Ctrl + right
