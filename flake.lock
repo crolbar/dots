@@ -560,11 +560,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1745703742,
-        "narHash": "sha256-lI0G2OnZDxFcge4T+/u/RDPGm1GeVXazsd9gER6/30M=",
+        "lastModified": 1747922934,
+        "narHash": "sha256-KTZiOq/026MVelZyCysUtdem8jM5q/ppyiqothdNkcQ=",
         "owner": "crolbar",
         "repo": "gql",
-        "rev": "80b5589587bd4fb5739f8e0fa6ed6dbff2d9c151",
+        "rev": "dcf6322c754de3a67c87dbb714633e62218a1de4",
         "type": "github"
       },
       "original": {
