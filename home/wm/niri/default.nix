@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./binds.nix
     #./settings.nix
@@ -36,6 +40,7 @@
       prefer-no-csd = true;
 
       workspaces = {
+        "0" = {};
         "1" = {};
         "2" = {};
         "3" = {};
@@ -45,9 +50,12 @@
         "7" = {};
         "8" = {};
         "9" = {};
-        "0" = {};
-        "10" = {};
+        # apperantly order of workspaces in the kbl file matters
+        # and nix attrsets are just sorted alphabetically
+        # a > 9.. so 10 is after 9 not after 1
+        "a" = {name = "10";};
       };
+
       input = {
         keyboard = {
           repeat-rate = 50;

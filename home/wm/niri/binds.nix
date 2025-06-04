@@ -143,8 +143,8 @@ in {
       #toggleKeyboardInput = "spawn '${toString keyboardToggler}'";
 
       moveFocus = {
-        up = "focus-window-up";
-        down = "focus-window-down";
+        up = "focus-workspace-up";
+        down = "focus-workspace-down";
         right = "focus-column-right";
         left = "focus-column-left";
       };
