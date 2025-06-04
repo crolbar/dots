@@ -97,6 +97,6 @@
     services.sxhkd.keybindings = gen "bsp";
     programs.leftwm.settings.keybind = gen "leftwm";
     xsession.windowManager.i3.config.keybindings = gen "i3";
-    programs.niri.settings.binds = gen "niri";
+    programs.niri.settings.binds = lib.mkIf config.programs.niri.enable (gen "niri");
   };
 }
