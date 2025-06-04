@@ -178,6 +178,8 @@
       then "${settings.cmds.exec} \"${helpers.fixI3 shellCmd}\""
       else if has "isLeft" settings
       then [settings.cmds.exec (helpers.escapeQuotes shellCmd)] # escaping because `value` is wrapped with double quotes
+      else if has "isNiri" settings
+      then [settings.cmds.exec ["sh" "-c" shellCmd]]
       else "${settings.cmds.exec} '${shellCmd}'";
 
     spawners = let

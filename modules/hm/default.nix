@@ -2,6 +2,7 @@
   spicetify-nix,
   leftwm-flake,
   agenix,
+  niri,
   ...
 }: let
   defaultHmMod = flake:
@@ -12,5 +13,6 @@ in {
     (defaultHmMod leftwm-flake)
     (defaultHmMod spicetify-nix)
     (defaultHmMod agenix)
+    niri.homeModules.niri
   ];
 }

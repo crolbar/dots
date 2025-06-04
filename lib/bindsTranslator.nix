@@ -159,6 +159,39 @@
         combine = lib.zipAttrsWith (x: y: lib.head y);
       in
         binds: combine (map translate binds);
+
+      # example what it needs to output
+      # {
+      #   "${modifier}+Shift+x".action.spawn = "foot";
+      #   "${modifier}+f".action.fullscreen-window = {};
+      # }
+      niri = let
+        translate = b: let
+          # the name of the field in the action attrset
+          # will be the first item in the cmd set
+          bind = bindFromListToSet b;
+          fmtMods = lib.concatStringsSep "+" bind.mods;
+
+          # mods + keys
+          name =
+            if builtins.length bind.mods > 0
+            then "${fmtMods}+${bind.key}"
+            else bind.key;
+        in
+          if builtins.isList bind.cmd
+          then let
+            action = builtins.elemAt bind.cmd 0;
+            args = builtins.elemAt bind.cmd 1;
+          in {
+            "${name}".action.${action} = args;
+          }
+          else {
+            "${name}".action."${bind.cmd}" = {};
+          };
+
+        combine = lib.zipAttrsWith (x: y: lib.head y);
+      in
+        binds: combine (map translate binds);
     };
   in
     lib.getAttr wm wm_translators;

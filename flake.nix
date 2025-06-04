@@ -124,5 +124,7 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     ghostty.url = "github:ghostty-org/ghostty";
+
+    niri.url = "github:sodiboo/niri-flake";
   };
 }

@@ -27,6 +27,7 @@
     ./wm/left
     ./wm/river
     ./wm/hypr
+    ./wm/niri
     ./misc
     ../overlays.nix
   ];
