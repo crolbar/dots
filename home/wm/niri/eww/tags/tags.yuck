@@ -1,0 +1,23 @@
+(deflisten workspaces-status "./scripts/workspaces.sh")
+
+(defwidget workspaces []
+ (box :class "workspaces"
+  (box (for tag in '${workspaces-status}'
+        (button
+         :class {tag.is_active == true ? "tag-button-mine" : "tag-button"}
+         :onclick "niri msg action focus-workspace ${tag.idx}"
+         {"${tag.name}"}
+        )
+       )
+  )
+ )
+)
+
+(defwindow tags
+    :monitor 0
+    :stacking "fg"
+    :exclusive false
+    :focusable false
+    :geometry (geometry :anchor "top right")
+    (workspaces)
+)

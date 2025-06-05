@@ -22,6 +22,8 @@
       pkgs.writers.makeBinWriter {
         compileScript = ''
           export GOCACHE=$TMPDIR/go-build
+          export CGO_ENABLED=1
+          export CC=${pkgs.gcc}/bin/gcc
           cp "$contentPath" tmp.go
           ${pkgs.go}/bin/go build -o $out tmp.go
         '';

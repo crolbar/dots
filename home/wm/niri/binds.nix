@@ -5,50 +5,20 @@
   config,
   username,
   ...
-}: let
-  keyboardToggler = (clib.writers pkgs).writeGo "keyboardToggler" ''
-    package main
-
-    import (
-        "os/exec"
-        "strings"
-    )
-
-    func main() {
-        out, err := exec.Command("riverctl", "list-input-configs").Output()
-        if err != nil {
-            return
-        }
-        outStr := string(out)
-        name := "keyboard-1-1-AT_Translated_Set_2_keyboard"
-
-        sp := strings.Index(outStr, name)
-
-        sp += len(name)+1
-
-        ep := strings.Index(outStr[sp:], "\n")
-
-        status := strings.TrimSpace(outStr[sp:sp+ep])
-
-        switch status {
-        case "events: disabled":
-            exec.Command("riverctl", "input", "keyboard-1-1-AT_Translated_Set_2_keyboard", "events", "enabled").Run()
-            exec.Command("sh", "-c", "kill $(cat /tmp/stray-keyboardToggler.pid)").Run()
-        case "events: enabled":
-            fallthrough
-        default:
-            exec.Command("riverctl", "input", "keyboard-1-1-AT_Translated_Set_2_keyboard", "events", "disabled").Run()
-            exec.Command("stray",
-                "--add-item",
-                "enable keeb",
-                "riverctl input keyboard-1-1-AT_Translated_Set_2_keyboard events enabled && kill $(cat /tmp/stray-keyboardToggler.pid)",
-                "--name",
-                "keyboardToggler",
-                "--icon",
-                "/home/${username}/keyboardToggler.png",
-            ).Run()
-        }
-    }
+} @ attr: let
+  keebName = "AT Translated Set 2 keyboard";
+  keyboardGrabber = import ./keyboardGrabber.nix ({inherit keebName;} // attr);
+  stray = lib.getExe' pkgs.stray "stray";
+  keyboardToggler = pkgs.writers.writeBash "keyboardToggler-niri" ''
+    if pgrep -f "keyboardGrabber" > /dev/null; then
+        sudo pkill -f "keyboardGrabber"
+        kill $(cat /tmp/stray-keyboardToggler-niri.pid)
+        dunstify "keyboard ungrabbed"
+    else
+        sudo ${keyboardGrabber} &
+        ${stray} --add-item "enable keeb" "sudo pkill -f keyboardGrabber && kill $(cat /tmp/stray-keyboardToggler-niri.pid)" --name keyboardToggler-niri --icon /home/${username}/keyboardToggler.png &
+        dunstify "keyboard grabbed"
+    fi
   '';
 in {
   imports = [../share/binds];
@@ -92,7 +62,7 @@ in {
         wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
         wl-paste = lib.getExe' pkgs.wl-clipboard "wl-paste";
       in {
-        toggleBar = "${eww} -c ~/.config/river/eww open tags --toggle";
+        toggleBar = "${eww} -c ~/.config/niri/eww open tags --toggle";
         lock = "${swaylock} -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3";
         notifyLayoutSwitch = "${dunstify} layout changed";
 
@@ -131,7 +101,7 @@ in {
       #moveToNextOutput = "send-to-output next";
       #moveToPrevOutput = "send-to-output previous";
 
-      #btmTrayToggle = "spawn 'eww -c ~/.config/river/eww open btm_tray --toggle'";
+      btmTrayToggle = sh "eww -c ~/.config/niri/eww open btm_tray --toggle";
 
       upMonBrightness = sh "sudo light -U 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"";
       downMonBrightness = sh "sudo light -A 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"";
@@ -142,7 +112,7 @@ in {
       #muteAudio = "spawn 'amixer set Master toggle && dunstify \"Volume at: $(pamixer --get-volume-human)\"'";
       #muteMic = "spawn 'amixer set Capture toggle && dunstify \"Mic at: $(pamixer --get-volume-human --default-source)\"'";
 
-      #toggleKeyboardInput = "spawn '${toString keyboardToggler}'";
+      toggleKeyboardInput = sh "${toString keyboardToggler}";
 
       moveFocus = {
         up = "focus-workspace-up";

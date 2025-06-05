@@ -6,7 +6,7 @@
   imports = [
     ./binds.nix
     #./settings.nix
-    #./eww
+    ./eww
 
     ../share/wayland
     ../share/dunst.nix
