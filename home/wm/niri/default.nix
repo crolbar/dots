@@ -1,8 +1,6 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: let
+  cursor = "capitaine-cursors-white";
+in {
   imports = [
     ./binds.nix
     #./settings.nix
@@ -26,18 +24,27 @@
         DISPLAY = ":0";
       };
 
+      hotkey-overlay.skip-at-startup = true;
+
+      prefer-no-csd = true;
+
+      cursor = {
+        hide-after-inactive-ms = 5000;
+        size = 24;
+        theme = cursor;
+      };
+
       spawn-at-startup = [
+        {command = ["sh" "-c" ''dbus-daemon --session --address="unix:path=$XDG_RUNTIME_DIR/bus"''];}
         {command = ["xwayland-satellite"];}
+
         {command = ["playerctld" "daemon"];}
         {command = ["dunst"];}
         {command = ["~/scripts/wall.sh i"];}
         {command = ["${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"];}
         {command = ["nm-applet"];}
         {command = ["swww-daemon"];}
-        {command = ["sh" "-c" ''dbus-daemon --session --address="unix:path=$XDG_RUNTIME_DIR/bus"''];}
       ];
-
-      prefer-no-csd = true;
 
       workspaces = {
         "0" = {};
@@ -59,7 +66,6 @@
       input = {
         warp-mouse-to-focus = true;
         focus-follows-mouse.enable = true;
-
 
         keyboard = {
           repeat-rate = 50;
