@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   browser = ["Schizofox.desktop"];
@@ -52,6 +53,8 @@ in {
     configHome = "${config.home.homeDirectory}/.config";
     dataHome = "${config.home.homeDirectory}/.local/share";
     stateHome = "${config.home.homeDirectory}/.local/state";
+
+    portal.enable = lib.mkForce false;
 
     userDirs = {
       enable = true;
