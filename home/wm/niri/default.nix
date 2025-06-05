@@ -82,6 +82,25 @@
           natural-scroll = false;
         };
       };
+
+      outputs = {
+        eDP-1 = {
+          position = {
+            x = 0;
+            y = 0;
+          };
+          transform = {
+            flipped = false;
+            rotation = 0;
+          };
+          mode = {
+            width = 3200;
+            height = 2000;
+            refresh = 120.000;
+          };
+          scale = 2.0;
+        };
+      };
     };
   };
 }
