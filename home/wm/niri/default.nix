@@ -57,9 +57,29 @@
       };
 
       input = {
+        warp-mouse-to-focus = true;
+        focus-follows-mouse.enable = true;
+
+
         keyboard = {
           repeat-rate = 50;
           repeat-delay = 300;
+          xkb = {
+            layout = "us,us,bg";
+            variant = ",dvorak,phonetic";
+            options = "grp:win_space_toggle";
+          };
+        };
+
+        mouse = {
+          #accel-profile = "adaptive"; # flat/adaptive
+          #accel-speed = -0.4;
+        };
+
+        touchpad = {
+          accel-profile = "adaptive"; # flat/adaptive
+          accel-speed = -0.4;
+          natural-scroll = false;
         };
       };
     };

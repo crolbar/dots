@@ -72,8 +72,11 @@ in {
       };
     };
 
-    cmds = {
+    cmds = let
       exec = "spawn";
+      sh = cmd: [exec ["sh" "-c" cmd]];
+    in {
+      inherit exec;
       killWM = "quit";
       killFocused = "close-window";
       fullScreen = "fullscreen-window";
@@ -108,8 +111,7 @@ in {
         '';
       };
 
-      #increaseMasterWindows = "send-layout-cmd wideriver '--count +1'";
-      #decreaseMasterWindows = "send-layout-cmd wideriver '--count -1'";
+      #toggleOverview = "toggle-overview";
 
       #moveMasterTop = "send-layout-cmd wideriver '--layout top'";
       #moveMasterBottom = "send-layout-cmd wideriver '--layout bottom'";
@@ -131,11 +133,11 @@ in {
 
       #btmTrayToggle = "spawn 'eww -c ~/.config/river/eww open btm_tray --toggle'";
 
-      #upMonBrightness = "spawn 'sudo light -U 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"'";
-      #downMonBrightness = "spawn 'sudo light -A 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"'";
+      upMonBrightness = sh "sudo light -U 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"";
+      downMonBrightness = sh "sudo light -A 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"";
 
-      #downKeebBrightness = "spawn 'brightnessctl -d asus::kbd_backlight set 33%-'";
-      #upKeebBrightness = "spawn 'brightnessctl -d asus::kbd_backlight set +33%'";
+      downKeebBrightness = sh "brightnessctl -d asus::kbd_backlight set 33%-";
+      upKeebBrightness = sh "brightnessctl -d asus::kbd_backlight set +33%";
 
       #muteAudio = "spawn 'amixer set Master toggle && dunstify \"Volume at: $(pamixer --get-volume-human)\"'";
       #muteMic = "spawn 'amixer set Capture toggle && dunstify \"Mic at: $(pamixer --get-volume-human --default-source)\"'";
