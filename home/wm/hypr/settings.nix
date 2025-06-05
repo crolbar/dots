@@ -34,15 +34,6 @@ in {
       "swww-daemon"
     ];
 
-    # windowrules
-    windowrule = [
-      "float, feh"
-      "float, pavucontrol"
-      "float, mousepad"
-      "float, steam"
-      "move 960 30, pavucontrol"
-    ];
-
     workspace = [
       "w[tv1], gapsout:0, gapsin:0"
       "f[1], gapsout:0, gapsin:0"
