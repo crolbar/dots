@@ -81,25 +81,11 @@ in {
         '';
       };
 
-      #toggleOverview = "toggle-overview";
+      focusNextOutput = "focus-monitor-next";
+      focusPrevOutput = "focus-monitor-previous";
 
-      #moveMasterTop = "send-layout-cmd wideriver '--layout top'";
-      #moveMasterBottom = "send-layout-cmd wideriver '--layout bottom'";
-      #moveMasterRight = "send-layout-cmd wideriver '--layout right'";
-      #moveMasterLeft = "send-layout-cmd wideriver '--layout left'";
-
-      #switchLayoutMonocle = "send-layout-cmd wideriver '--layout monocle'";
-
-      #resizeFloatUp = "resize vertical -100";
-      #resizeFloatDown = "resize vertical 100";
-      #resizeFloatRight = "resize horizontal 100";
-      #resizeFloatLeft = "resize horizontal -100";
-
-      #focusNextOutput = "focus-output next";
-      #focusPrevOutput = "focus-output previous";
-
-      #moveToNextOutput = "send-to-output next";
-      #moveToPrevOutput = "send-to-output previous";
+      moveToNextOutput = "move-window-to-monitor-next";
+      moveToPrevOutput = "move-window-to-monitor-previous";
 
       btmTrayToggle = sh "eww -c ~/.config/niri/eww open btm_tray --toggle";
 
@@ -109,20 +95,32 @@ in {
       downKeebBrightness = sh "brightnessctl -d asus::kbd_backlight set 33%-";
       upKeebBrightness = sh "brightnessctl -d asus::kbd_backlight set +33%";
 
-      #muteAudio = "spawn 'amixer set Master toggle && dunstify \"Volume at: $(pamixer --get-volume-human)\"'";
-      #muteMic = "spawn 'amixer set Capture toggle && dunstify \"Mic at: $(pamixer --get-volume-human --default-source)\"'";
+      muteAudio = sh "amixer set Master toggle && dunstify \"Volume at: $(pamixer --get-volume-human)\"";
+      muteMic = sh "amixer set Capture toggle && dunstify \"Mic at: $(pamixer --get-volume-human --default-source)\"";
+
+      # monoclce/tabbed
+      switchLayoutMonocle = "toggle-column-tabbed-display";
+
+      maximize = "maximize-column";
+
+      centerCol = "center-column";
+
+      floatingFocusToggle = "switch-focus-between-floating-and-tiling";
+
+      addWindowToTab = "consume-window-into-column";
+      removeWindowFromTab = "expel-window-from-column";
 
       toggleKeyboardInput = sh "${toString keyboardToggler}";
 
       moveFocus = {
-        up = "focus-workspace-up";
-        down = "focus-workspace-down";
+        up = "focus-window-or-workspace-up";
+        down = "focus-window-or-workspace-down";
         right = "focus-column-right";
         left = "focus-column-left";
       };
       moveWindow = {
-        up = "move-window-up";
-        down = "move-window-down";
+        up = "move-window-up-or-to-workspace-up";
+        down = "move-window-down-or-to-workspace-down";
         right = "move-column-right";
         left = "move-column-left";
       };

@@ -41,4 +41,11 @@ in [
 
   [[] "XF86AudioMute" "muteAudio"]
   [[] "XF86AudioMicMute" "muteMic"]
+
+  [[mod] "m" "maximize"]
+  [[mod ctrl] "c" "centerCol"]
+  [[mod ctrl] "z" "floatingFocusToggle"]
+
+  [[mod shift ctrl] "h" "addWindowToTab"]
+  [[mod shift ctrl] "l" "removeWindowFromTab"]
 ]
