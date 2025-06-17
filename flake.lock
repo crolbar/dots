@@ -54,11 +54,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1743724974,
-        "narHash": "sha256-8XvjbBDAXFJ+2P+PblDvmIm8OogRP/4HCDnbU9s+7CA=",
+        "lastModified": 1750150917,
+        "narHash": "sha256-BGUODFoeVie84UI2eTSZER5PJs30o4CeEIOZJ9l20DM=",
         "owner": "crolbar",
         "repo": "auvi",
-        "rev": "8d74df4cec77d241265d9b6efc2ad83ffd57ebc3",
+        "rev": "0f155bca58b4eebc9000da04117837033a6eb862",
         "type": "github"
       },
       "original": {
