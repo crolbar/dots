@@ -122,5 +122,7 @@ in {
 
       gaps = 15;
     };
+
+    gestures.hot-corners.enable = false;
   };
 }

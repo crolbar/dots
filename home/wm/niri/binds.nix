@@ -81,6 +81,8 @@ in {
         '';
       };
 
+      toggleOverview = "toggle-overview";
+
       focusNextOutput = "focus-monitor-next";
       focusPrevOutput = "focus-monitor-previous";
 

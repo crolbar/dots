@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, inputs', ...}: {
   imports = [
     ./binds.nix
     ./settings.nix
@@ -15,5 +15,6 @@
 
   programs.niri = {
     enable = true;
+    package = inputs'.niri.packages.niri-unstable;
   };
 }

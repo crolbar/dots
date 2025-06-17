@@ -48,4 +48,6 @@ in [
 
   [[mod shift ctrl] "h" "addWindowToTab"]
   [[mod shift ctrl] "l" "removeWindowFromTab"]
+
+  [[mod ctrl] "o" "toggleOverview"]
 ]
