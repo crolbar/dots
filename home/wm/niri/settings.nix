@@ -5,6 +5,7 @@ in {
     environment = {
       MOZ_ENABLE_WAYLAND = "1";
       DISPLAY = ":0";
+      NIXOS_OZONE_WL = "1";
     };
 
     hotkey-overlay.skip-at-startup = true;
