@@ -30,6 +30,9 @@
       bindkey "^E" edit-command-line
       bindkey -M vicmd "^E" edit-command-line
 
+      bindkey -M viins '^R' history-incremental-search-backward
+      bindkey -M vicmd '^R' history-incremental-search-backward
+
       setopt PROMPT_SUBST        # enable command substitution in prompt
       setopt MENU_COMPLETE       # Automatically highlight first element of completion menu
 
