@@ -27,6 +27,7 @@
       groovy-mode
       yuck-mode
       yaml-mode
+      typst-ts-mode
 
       # non programming
       ron-mode

@@ -146,6 +146,11 @@
 (set-face-attribute 'eldoc-box-border nil :background "gray35")
 (setq eldoc-box-cleanup-interval 0.1)
 
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '((typst-mode typst-ts-mode) . ("tinymist"))))
+
+
 ;;   __ _ __  _ __
 ;;  / _| '  \| '_ \
 ;;  \__|_|_|_| .__/

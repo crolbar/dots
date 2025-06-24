@@ -1,4 +1,8 @@
-{pkgs, inputs', ...}: {
+{
+  pkgs,
+  inputs',
+  ...
+}: {
   imports = [
     ./binds.nix
     ./settings.nix
