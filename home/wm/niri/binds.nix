@@ -57,6 +57,8 @@ in {
         eww = lib.getExe config.programs.eww.package;
         swaylock = lib.getExe config.programs.swaylock.package;
         dunstify = lib.getExe' config.services.dunst.package "dunstify";
+        niri = lib.getExe config.programs.niri.package;
+        jq = lib.getExe pkgs.jq;
         grim = lib.getExe pkgs.grim;
         slurp = lib.getExe pkgs.slurp;
         wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
@@ -64,7 +66,9 @@ in {
       in {
         toggleBar = "${eww} -c ~/.config/niri/eww open tags --toggle";
         lock = "${swaylock} -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3";
-        notifyLayoutSwitch = "${dunstify} layout changed";
+        notifyLayoutSwitch = ''
+          ${dunstify} layout "Changed to: $(${niri} msg -j keyboard-layouts | ${jq} '.names[.current_idx]')"
+        '';
 
         screenshotRegion = clib.mk1lnrCmd ''
           ${grim} -g "$(${slurp})" - | \
