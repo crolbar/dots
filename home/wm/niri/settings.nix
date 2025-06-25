@@ -58,7 +58,7 @@ in {
         xkb = {
           layout = "us,us,bg";
           variant = ",dvorak,phonetic";
-          options = "grp:win_space_toggle";
+          options = "grp:win_space_toggle, ctrl:swap_ralt_rctl";
         };
       };
 
