@@ -8,6 +8,7 @@
     ./gitui.nix
     ./lazygit.nix
     ./zellij.nix
+    ./age.nix
   ];
 
   home.packages = with pkgs; [
