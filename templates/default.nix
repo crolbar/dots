@@ -21,5 +21,11 @@ in {
       inherit welcomeText;
       path = ./bbe;
     };
+
+    c-make = {
+      description = "full c + make minimal template";
+      inherit welcomeText;
+      path = ./c-make;
+    };
   };
 }
