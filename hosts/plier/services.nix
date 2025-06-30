@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   services = {
     sshd.enable = true;
     gvfs.enable = true;
@@ -14,6 +14,11 @@
       displayManager = {
         startx.enable = true;
       };
+    };
+
+    printing = {
+      enable = true;
+      drivers = [pkgs.splix];
     };
   };
 }
