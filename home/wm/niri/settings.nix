@@ -49,7 +49,7 @@ in {
     };
 
     input = {
-      warp-mouse-to-focus = true;
+      warp-mouse-to-focus.enable = true;
       focus-follows-mouse.enable = true;
 
       keyboard = {
@@ -124,5 +124,20 @@ in {
     };
 
     gestures.hot-corners.enable = false;
+
+    window-rules = let
+      app = app-id: rules:
+        {matches = [{inherit app-id;}];}
+        // builtins.foldl' (acc: e: acc // e) {} rules;
+
+      block = {block-out-from = "screen-capture";};
+      float = {open-floating = true;};
+      unfocused = {open-focused = false;};
+    in [
+      (app "hooktty" [float block unfocused])
+      (app "KeePassXC" [block])
+    ];
+
+    screenshot-path = "~/Screenshots/Screenshot-%F_%T.png";
   };
 }

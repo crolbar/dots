@@ -59,10 +59,6 @@ in {
         dunstify = lib.getExe' config.services.dunst.package "dunstify";
         niri = lib.getExe config.programs.niri.package;
         jq = lib.getExe pkgs.jq;
-        grim = lib.getExe pkgs.grim;
-        slurp = lib.getExe pkgs.slurp;
-        wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
-        wl-paste = lib.getExe' pkgs.wl-clipboard "wl-paste";
       in {
         toggleBar = "${eww} -c ~/.config/niri/eww open tags --toggle";
         lock = "${swaylock} -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3";
@@ -70,19 +66,8 @@ in {
           ${dunstify} layout "Changed to: $(${niri} msg -j keyboard-layouts | ${jq} '.names[.current_idx]')"
         '';
 
-        screenshotRegion = clib.mk1lnrCmd ''
-          ${grim} -g "$(${slurp})" - | \
-          ${wl-copy} && \
-          ${wl-paste} -n > ~/Screenshots/Screenshot-$(date +%F_%T).png | \
-          ${dunstify} "Screenshot of the region taken" -t 1000
-        '';
-
-        screenshotScreen = clib.mk1lnrCmd ''
-          ${grim} - | \
-          ${wl-copy} && \
-          ${wl-paste} > ~/Screenshots/Screenshot-$(date +%F_%T).png | \
-          ${dunstify} "Screenshot of whole screen taken" -t 1000
-        '';
+        screenshotRegion = "${niri} msg action screenshot";
+        screenshotScreen = "${niri} msg action screenshot-window";
       };
 
       toggleOverview = "toggle-overview";

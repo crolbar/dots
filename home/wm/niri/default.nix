@@ -19,6 +19,6 @@
 
   programs.niri = {
     enable = true;
-    package = inputs'.niri.packages.niri-unstable;
+    package = inputs'.niri.packages.niri-stable;
   };
 }
