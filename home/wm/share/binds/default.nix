@@ -92,6 +92,7 @@
 
   bins = {
     foot = lib.getExe config.programs.foot.package;
+    ghostty = lib.getExe config.programs.ghostty.package;
     alacritty = lib.getExe config.programs.alacritty.package;
 
     anyrun = lib.getExe config.programs.anyrun.package;
@@ -191,7 +192,7 @@
       term =
         if has "isX11" settings
         then bins.alacritty
-        else bins.foot;
+        else bins.ghostty;
 
       runner =
         if has "isX11" settings

@@ -7,6 +7,8 @@
       theme = "crolbar";
       background-opacity = 0.8;
 
+      gtk-single-instance = true;
+
       window-decoration = false;
 
       cursor-style = "block";
