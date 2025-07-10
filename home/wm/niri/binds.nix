@@ -89,8 +89,7 @@ in {
       muteAudio = sh "amixer set Master toggle && dunstify \"Volume at: $(pamixer --get-volume-human)\"";
       muteMic = sh "amixer set Capture toggle && dunstify \"Mic at: $(pamixer --get-volume-human --default-source)\"";
 
-      # monoclce/tabbed
-      switchLayoutMonocle = "toggle-column-tabbed-display";
+      switchLayoutTabbed = "toggle-column-tabbed-display";
 
       maximize = "maximize-column";
 
