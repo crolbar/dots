@@ -136,6 +136,8 @@ in {
     in [
       (app "hooktty" [float block unfocused])
       (app "KeePassXC" [block])
+
+      (app "com.mitchellh.ghostty" [{draw-border-with-background = false;}])
     ];
 
     screenshot-path = "~/Screenshots/Screenshot-%F_%T.png";
