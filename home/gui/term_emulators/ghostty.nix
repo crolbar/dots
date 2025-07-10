@@ -6,6 +6,7 @@
     settings = {
       theme = "crolbar";
       background-opacity = 0.8;
+      app-notifications = ["no-clipboard-copy"];
 
       gtk-single-instance = true;
 
