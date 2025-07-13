@@ -30,6 +30,7 @@
 │   │   ├── zzz
 │   │   │   ├── dapu.nix
 │   │   │   └── default.nix
+│   │   ├── age.nix
 │   │   ├── btop.nix
 │   │   ├── default.nix
 │   │   ├── git.nix
@@ -50,7 +51,8 @@
 │   │   ├── nix.nix
 │   │   ├── php.nix
 │   │   ├── python.nix
-│   │   └── rust.nix
+│   │   ├── rust.nix
+│   │   └── zig.nix
 │   ├── editors
 │   │   ├── emacs
 │   │   │   ├── crol.el
@@ -174,6 +176,10 @@
 │   │   ├── plier
 │   │   │   ├── default.nix
 │   │   │   └── shell_aliases.nix
+│   │   ├── pvm
+│   │   │   ├── default.nix
+│   │   │   ├── programs.nix
+│   │   │   └── shell_aliases.nix
 │   │   ├── screw
 │   │   │   ├── default.nix
 │   │   │   └── shell_aliases.nix
@@ -229,6 +235,24 @@
 │   │   │   ├── kb.nix
 │   │   │   ├── settings.nix
 │   │   │   └── workspace_scroll.nix
+│   │   ├── niri
+│   │   │   ├── eww
+│   │   │   │   ├── btm_tray
+│   │   │   │   │   ├── btm_tray.scss
+│   │   │   │   │   └── btm_tray.yuck
+│   │   │   │   ├── scripts
+│   │   │   │   │   ├── default.nix
+│   │   │   │   │   └── workspaces.nix
+│   │   │   │   ├── tags
+│   │   │   │   │   ├── tags.scss
+│   │   │   │   │   └── tags.yuck
+│   │   │   │   ├── default.nix
+│   │   │   │   ├── eww.scss
+│   │   │   │   └── eww.yuck
+│   │   │   ├── binds.nix
+│   │   │   ├── default.nix
+│   │   │   ├── keyboardGrabber.nix
+│   │   │   └── settings.nix
 │   │   ├── river
 │   │   │   ├── eww
 │   │   │   │   ├── btm_tray
@@ -252,6 +276,7 @@
 │   │   ├── share
 │   │   │   ├── binds
 │   │   │   │   ├── default.nix
+│   │   │   │   ├── helpers.nix
 │   │   │   │   └── river.nix
 │   │   │   ├── rofi
 │   │   │   │   ├── default.nix
@@ -322,7 +347,8 @@
 │   │   │   ├── grafana.nix
 │   │   │   ├── nfs.nix
 │   │   │   ├── nginx.nix
-│   │   │   └── prometheus.nix
+│   │   │   ├── prometheus.nix
+│   │   │   └── tailscale.nix
 │   │   ├── boot.nix
 │   │   ├── default.nix
 │   │   ├── fs.nix
@@ -340,6 +366,7 @@
 │   │   │   └── default.nix
 │   │   ├── gamer
 │   │   │   ├── default.nix
+│   │   │   ├── nix-ld.nix
 │   │   │   └── steam.nix
 │   │   ├── gui
 │   │   │   ├── default.nix
@@ -382,6 +409,15 @@
 │   ├── leet.age
 │   └── secrets.nix
 ├── templates
+│   ├── bb
+│   │   └── flake.nix
+│   ├── bbe
+│   │   └── flake.nix
+│   ├── c-make
+│   │   ├── flake.nix
+│   │   ├── main.c
+│   │   ├── Makefile
+│   │   └── package.nix
 │   ├── rust-parts
 │   │   ├── src
 │   │   │   └── main.rs
@@ -398,7 +434,7 @@
 ├── shell.nix
 └── TODO.md
 
-80 directories, 300 files
+89 directories, 327 files
 
 ```
 
