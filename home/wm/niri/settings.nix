@@ -91,6 +91,17 @@ in {
         };
         scale = 2.0;
       };
+      DP-1 = {
+        position = {
+          x = 1080;
+          y = 1080;
+        };
+        mode = {
+          width = 1920;
+          height = 1080;
+          refresh = 144.000;
+        };
+      };
     };
 
     layout = {
