@@ -21,4 +21,18 @@
     enable = true;
     package = inputs'.niri.packages.niri-stable;
   };
+
+  systemd.user.targets.niri-session = {
+    Unit = {
+      Description = "niri compositor session";
+      Documentation = ["man:systemd.special(7)"];
+      BindsTo = ["graphical-session.target"];
+      Wants = [
+        "graphical-session-pre.target"
+        "xdg-desktop-autostart.target"
+      ];
+      After = ["graphical-session-pre.target"];
+      Before = ["xdg-desktop-autostart.target"];
+    };
+  };
 }

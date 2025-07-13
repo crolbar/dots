@@ -29,6 +29,7 @@ in {
       {command = ["nm-applet"];}
       {command = ["swww-daemon"];}
       {command = ["sh" "-c" "eww -c ~/.config/niri/eww daemon && eww -c ~/.config/niri/eww open btm_tray & eww -c ~/.config/niri/eww open tags &"];}
+      {command = ["sh" "-c" "systemctl --user stop niri-session.target && systemctl --user start niri-session.target"];}
     ];
 
     workspaces = {
@@ -63,8 +64,8 @@ in {
       };
 
       mouse = {
-        #accel-profile = "adaptive"; # flat/adaptive
-        #accel-speed = -0.4;
+        accel-profile = "adaptive"; # flat/adaptive
+        accel-speed = -0.9;
       };
 
       touchpad = {
@@ -134,7 +135,7 @@ in {
       gaps = 15;
     };
 
-    gestures.hot-corners.enable = false;
+    gestures.hot-corners.enable = true;
 
     window-rules = let
       app = app-id: rules:

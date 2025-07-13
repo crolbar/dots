@@ -2,6 +2,7 @@
   programs = {
     hyprland.enable = true;
     sway.enable = true;
+    niri.enable = true;
   };
 
   environment = {
