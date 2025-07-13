@@ -105,6 +105,16 @@
         focus = helpers.vim [[mod] moveFocus];
         move = helpers.vim [[mod ctrl] moveWindow];
         resize = helpers.vim [[mod shift] resizeWindow];
+
+        wheelFocus =
+          if (has "isNiri" settings)
+          then [
+            [[mod] wheel.up moveFocus.up]
+            [[mod] wheel.down moveFocus.down]
+            [[mod shift] wheel.down moveFocus.right]
+            [[mod shift] wheel.up moveFocus.left]
+          ]
+          else [];
       };
 
       workspaces = {
@@ -141,6 +151,7 @@
       media
       tab
       space
+      wheel
       ;
 
     inherit

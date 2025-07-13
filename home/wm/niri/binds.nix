@@ -40,6 +40,10 @@ in {
         lowerVolume = "XF86AudioLowerVolume";
         raiseVolume = "XF86AudioRaiseVolume";
       };
+      wheel = {
+        down = "WheelScrollDown";
+        up = "WheelScrollUp";
+      };
     };
 
     cmds = let
