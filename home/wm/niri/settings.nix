@@ -103,6 +103,17 @@ in {
           refresh = 144.000;
         };
       };
+      DP-2 = {
+        position = {
+          x = 1080;
+          y = 0;
+        };
+        mode = {
+          width = 1920;
+          height = 1080;
+          refresh = 60.000;
+        };
+      };
     };
 
     layout = {
@@ -145,9 +156,12 @@ in {
       block = {block-out-from = "screen-capture";};
       float = {open-floating = true;};
       unfocused = {open-focused = false;};
+      workspace = w: {open-on-workspace = w;};
     in [
       (app "hooktty" [float block unfocused])
       (app "KeePassXC" [block])
+
+      (app "steam" [(workspace "8")])
 
       (app "com.mitchellh.ghostty" [{draw-border-with-background = false;}])
     ];
