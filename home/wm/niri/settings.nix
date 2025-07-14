@@ -1,4 +1,10 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  username,
+  lib,
+  config,
+  ...
+}: let
   cursor = "capitaine-cursors-white";
 in {
   programs.niri.settings = {
@@ -18,18 +24,35 @@ in {
       theme = cursor;
     };
 
-    spawn-at-startup = [
-      {command = ["sh" "-c" ''dbus-daemon --session --address="unix:path=$XDG_RUNTIME_DIR/bus"''];}
-      {command = ["xwayland-satellite"];}
+    spawn-at-startup = let
+      sh = cmd: {command = ["sh" "-c" cmd];};
+      c = cmd: {command = [cmd];};
+      xwayland-satellite = lib.getExe pkgs.xwayland-satellite;
+      playerctld = lib.getExe' pkgs.playerctl "playerctld";
+      eww = lib.getExe pkgs.eww;
+      dunst = lib.getExe pkgs.dunst;
+      wallI = "${config.home.file."scripts/wall.sh".source} i";
+      nm-applet = lib.getExe' pkgs.networkmanagerapplet "nm-applet";
+      swww-daemon = lib.getExe' pkgs.swww "swww-daemon";
 
-      {command = ["playerctld" "daemon"];}
-      {command = ["dunst"];}
-      {command = ["~/scripts/wall.sh i"];}
-      {command = ["${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"];}
-      {command = ["nm-applet"];}
-      {command = ["swww-daemon"];}
-      {command = ["sh" "-c" "eww -c ~/.config/niri/eww daemon && eww -c ~/.config/niri/eww open btm_tray & eww -c ~/.config/niri/eww open tags &"];}
-      {command = ["sh" "-c" "systemctl --user stop niri-session.target && systemctl --user start niri-session.target"];}
+      barOpen = let
+        ewwOpen = bar: "${eww} -c ~/.config/niri/eww open ${bar} &";
+      in
+        if username == "plier"
+        then (ewwOpen "tags") + " " + (ewwOpen "btm_tray")
+        else (ewwOpen "bar");
+    in [
+      (sh ''dbus-daemon --session --address="unix:path=$XDG_RUNTIME_DIR/bus"'')
+      (c xwayland-satellite)
+
+      {command = [playerctld "daemon"];}
+      (c dunst)
+      (c "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
+      (c nm-applet)
+      (c swww-daemon)
+      (c wallI)
+      (sh "${eww} -c ~/.config/niri/eww daemon && ${barOpen}")
+      (sh "systemctl --user stop niri-session.target && systemctl --user start niri-session.target")
     ];
 
     workspaces = {

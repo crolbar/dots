@@ -63,8 +63,13 @@ in {
         dunstify = lib.getExe' config.services.dunst.package "dunstify";
         niri = lib.getExe config.programs.niri.package;
         jq = lib.getExe pkgs.jq;
+
+        ewwBar =
+          if username == "plier"
+          then "tags"
+          else "bar";
       in {
-        toggleBar = "${eww} -c ~/.config/niri/eww open tags --toggle";
+        toggleBar = "${eww} -c ~/.config/niri/eww open ${ewwBar} --toggle";
         lock = "${swaylock} -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3";
         notifyLayoutSwitch = ''
           ${dunstify} layout "Changed to: $(${niri} msg -j keyboard-layouts | ${jq} '.names[.current_idx]')"
