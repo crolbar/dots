@@ -1,0 +1,36 @@
+name: up-repo-tree
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  up-repo-tree:
+    if: "!contains(github.event.head_commit.message, 'README: up Repository tree from CI')"
+
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        token: "${{ secrets.PAT }}"
+        submodules: true
+
+    - name: Install Nix
+      uses: cachix/install-nix-action@v26
+      with:
+        github_access_token: ${{ secrets.PAT }}
+
+    - uses: fregante/setup-git-user@v2
+
+    - name: Run up-README
+      run: |
+        nix run .#up-README
+
+    - name: commit changes
+      run: |
+        if [[ -n $(git status --porcelain) ]]; then
+          git add README.md
+          git commit -m "README: up Repository tree from CI"
+          git push
+        fi
