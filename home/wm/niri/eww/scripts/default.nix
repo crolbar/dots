@@ -1,3 +1,6 @@
 {
-  imports = [./niri.nix];
+  imports = [
+      ./niri.nix
+      ./workspace_scroll.nix
+  ];
 }

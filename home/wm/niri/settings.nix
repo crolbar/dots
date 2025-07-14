@@ -73,7 +73,7 @@ in {
     };
 
     input = {
-      warp-mouse-to-focus.enable = true;
+      warp-mouse-to-focus.enable = false;
       focus-follows-mouse.enable = true;
 
       keyboard = {

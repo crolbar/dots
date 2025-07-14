@@ -244,7 +244,8 @@
 │   │   │   │   │   └── btm_tray.yuck
 │   │   │   │   ├── scripts
 │   │   │   │   │   ├── default.nix
-│   │   │   │   │   └── niri.nix
+│   │   │   │   │   ├── niri.nix
+│   │   │   │   │   └── workspace_scroll.nix
 │   │   │   │   ├── tags
 │   │   │   │   │   ├── tags.scss
 │   │   │   │   │   └── tags.yuck
@@ -437,7 +438,7 @@
 ├── shell.nix
 └── TODO.md
 
-90 directories, 329 files
+90 directories, 330 files
 
 ```
 

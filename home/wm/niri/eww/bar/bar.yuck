@@ -9,7 +9,7 @@
 
 (defwidget bar []
     (eventbox
-        ;;:onscroll "./scripts/workspace_scroll {}"
+        :onscroll "./scripts/workspace_scroll.sh {}"
 
         (box :class "barr" :orientation "h"
             (box :space-evenly false :halign "start" (workspaces))
@@ -29,7 +29,7 @@
             (eventbox
                 :width 20
                 :class "workspace ${workspace.is_active == true ? "current" : ""}"
-                :onclick "niri msg action focus-workspace \"${workspace.name}\""
+                :onclick "niri msg action focus-workspace \"${workspace.idx}\""
                 "${workspace.name}"
             )
         )
