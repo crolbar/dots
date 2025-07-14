@@ -203,7 +203,6 @@
 │   │   │   │   │   ├── default.nix
 │   │   │   │   │   ├── hyprland.c
 │   │   │   │   │   ├── hyprland.nix
-│   │   │   │   │   ├── pulse.nix
 │   │   │   │   │   ├── workspace_scroll.c
 │   │   │   │   │   └── workspace_scroll.nix
 │   │   │   │   ├── default.nix
@@ -237,12 +236,15 @@
 │   │   │   └── workspace_scroll.nix
 │   │   ├── niri
 │   │   │   ├── eww
+│   │   │   │   ├── bar
+│   │   │   │   │   ├── bar.scss
+│   │   │   │   │   └── bar.yuck
 │   │   │   │   ├── btm_tray
 │   │   │   │   │   ├── btm_tray.scss
 │   │   │   │   │   └── btm_tray.yuck
 │   │   │   │   ├── scripts
 │   │   │   │   │   ├── default.nix
-│   │   │   │   │   └── workspaces.nix
+│   │   │   │   │   └── niri.nix
 │   │   │   │   ├── tags
 │   │   │   │   │   ├── tags.scss
 │   │   │   │   │   └── tags.yuck
@@ -284,6 +286,7 @@
 │   │   │   ├── scripts
 │   │   │   │   ├── default.nix
 │   │   │   │   ├── default-sink.nix
+│   │   │   │   ├── pulse.nix
 │   │   │   │   ├── rgb.nix
 │   │   │   │   ├── volSock.nix
 │   │   │   │   └── volume.nix
@@ -434,7 +437,7 @@
 ├── shell.nix
 └── TODO.md
 
-89 directories, 327 files
+90 directories, 329 files
 
 ```
 

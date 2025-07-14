@@ -1,5 +1,5 @@
 {pkgs, ...} @ args: {
-  xdg.configFile."hypr/eww/scripts/pulse.sh".source = pkgs.writers.writeBash "pulse.sh" ''
+  home.file."scripts/pulse.sh".source = pkgs.writers.writeBash "pulse.sh" ''
     print() {
         sink=$(pamixer --get-volume-human | tr -d '%')
         source=$(pamixer --get-volume-human --default-source | tr -d '%')

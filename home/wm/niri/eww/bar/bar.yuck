@@ -1,4 +1,3 @@
-(deflisten hyprland "./scripts/hyprland")
 (deflisten volume "~/scripts/pulse.sh")
 
 (defpoll short_time :interval "10s" "date '+%I:%M %p'")
@@ -10,7 +9,7 @@
 
 (defwidget bar []
     (eventbox
-        :onscroll "./scripts/workspace_scroll {}"
+        ;;:onscroll "./scripts/workspace_scroll {}"
 
         (box :class "barr" :orientation "h"
             (box :space-evenly false :halign "start" (workspaces))
@@ -21,51 +20,51 @@
 )
 
 (defwidget workspaces []
-    (box 
-        :orientation "h" 
-        :space-evenly false 
-        :class "workspaces" 
+    (box
+        :orientation "h"
+        :space-evenly false
+        :class "workspaces"
         :hexpand true
-        (for workspace in {hyprland.workspaces}
+        (for workspace in {niri.workspaces}
             (eventbox
                 :width 20
-                :class "workspace ${hyprland.active == workspace.id ? "current" : ""}"
-                :onclick "hyprctl dispatch workspace name:${workspace.name}"
+                :class "workspace ${workspace.is_active == true ? "current" : ""}"
+                :onclick "niri msg action focus-workspace \"${workspace.name}\""
                 "${workspace.name}"
             )
         )
     )
 )
 
-(defwidget currwin [] 
+(defwidget currwin []
     (box :class "currwin"
-        "${hyprland.currwin == "null" ? "" :
-            "${strlength(hyprland.currwin) >= 100 ? ".." :
-                "${hyprland.currwin}"
+        "${niri.currwin == "null" ? "" :
+            "${strlength(niri.currwin) >= 100 ? ".." :
+                "${niri.currwin}"
             }"
         }"
     )
 )
 
-(defwidget side [] 
-    (box 
+(defwidget side []
+    (box
         :orientation "h"
         :space-evenly false
         :spacing 10
 
-        "${hyprland.kb_layout}"
+        "${niri.kb_layout}"
 
         (eventbox
             :onclick "pamixer -t"
             :onmiddleclick "~/scripts/default-sink.sh"
             :onrightclick "pgrep pavucontrol > /dev/null && pkill pavucontrol || pavucontrol &"
-            :onscroll "eww update -c ~/.config/hypr/eww scroll={} && pamixer -${scroll == "up" ? "i" : "d"} 5"
+            :onscroll "eww update -c ~/.config/niri/eww scroll={} && pamixer -${scroll == "up" ? "i" : "d"} 5"
             "${volume.sink}"
         )
 
         (eventbox
             :onclick "pamixer --default-source -t"
-            :onscroll "eww update -c ~/.config/hypr/eww scroll={} && pamixer --default-source -${scroll == "up" ? "i" : "d"} 5"
+            :onscroll "eww update -c ~/.config/niri/eww scroll={} && pamixer --default-source -${scroll == "up" ? "i" : "d"} 5"
             "${volume.source}"
         )
 
@@ -87,7 +86,7 @@
 (defwindow bar
     :monitor 0
     :exclusive true
-    :geometry (geometry 
+    :geometry (geometry
         :x "0%"
         :y "0%"
         :width "100%"

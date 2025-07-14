@@ -1,8 +1,6 @@
-(deflisten workspaces-status "./scripts/workspaces.sh")
-
 (defwidget workspaces []
  (box :class "workspaces"
-  (box (for tag in '${workspaces-status}'
+  (box (for tag in '${niri.workspaces}'
         (button
          :class {tag.is_active == true ? "tag-button-mine" : "tag-button"}
          :onclick "niri msg action focus-workspace ${tag.idx}"

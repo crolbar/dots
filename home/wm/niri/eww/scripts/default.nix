@@ -1,3 +1,3 @@
 {
-  imports = [./workspaces.nix];
+  imports = [./niri.nix];
 }
