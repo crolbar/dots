@@ -38,5 +38,6 @@
     evemu
     openssl
     sqlite
+    onefetch
   ];
 }
