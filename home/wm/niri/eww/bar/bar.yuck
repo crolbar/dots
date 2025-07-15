@@ -12,14 +12,14 @@
         :onscroll "./scripts/workspace_scroll.sh {}"
 
         (box :class "barr" :orientation "h"
-            (box :space-evenly false :halign "start" (workspaces))
+            (box :space-evenly false :halign "start" (bar-workspaces))
             (box :space-evenly false :halign "center" (currwin))
             (box :space-evenly false :halign "end" (side))
         )
     )
 )
 
-(defwidget workspaces []
+(defwidget bar-workspaces []
     (box
         :orientation "h"
         :space-evenly false
