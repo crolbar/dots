@@ -1,4 +1,21 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  colors = [
+    [50 0 0]
+    [0 50 0]
+    [0 0 50]
+    [0 50 50]
+  ];
+
+  # Just because I have brain damage.
+  addColors =
+    "colors+=("
+    + (builtins.concatStringsSep ")\ncolors+=(" (
+      map
+      (c: ''"'' + (builtins.concatStringsSep " " (map (_c: toString _c) c)) + ''"'')
+      colors
+    ))
+    + ")";
+in {
   home.file."scripts/rgb.sh".source = pkgs.writers.writeBash "rgb.sh" ''
     case $1 in
         s)
@@ -10,41 +27,19 @@
             exit;;
     esac
 
-    profiles=$(ls ~/.config/OpenRGB | wc -l) && ((profiles -= 3))
-    curr_profile=$(cat ~/scripts/.rgb_profile)
+    colorFile="$HOME/scripts/.rgb_color"
 
-    ((curr_profile += 1))
+    colors=()
+    ${addColors}
 
-    if [ "$curr_profile" -gt "$profiles" ]; then
-        echo 1 > ~/scripts/.rgb_profile
-        curr_profile=1
-    else
-        echo $curr_profile > ~/scripts/.rgb_profile
+    colorIdx=0
+
+    if [ -f "$colorFile" ]; then
+        colorIdx=$(cat "$colorFile")
+        ((colorIdx = ((colorIdx + 1) % ''${#colors[@]})))
     fi
+    echo $colorIdx > "$colorFile"
 
-    case $curr_profile in
-        1)
-            curr_profile=red ;;
-        2)
-            curr_profile=white ;;
-        3)
-            curr_profile=yellow ;;
-        4)
-            curr_profile=black ;;
-        5)
-            curr_profile=yellow ;;
-        6)
-            curr_profile=yellow ;;
-        7)
-            curr_profile=yellow ;;
-        8)
-            curr_profile=yellow ;;
-        9)
-            curr_profile=yellow ;;
-        10)
-            curr_profile=yellow ;;
-    esac
-
-    openrgb -p $curr_profile
+    vbz --set-color ''${colors["$colorIdx"]}
   '';
 }
