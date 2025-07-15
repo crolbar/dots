@@ -42,4 +42,10 @@ in {
     pubip = "dig @resolver4.opendns.com myip.opendns.com +short";
     pubip6 = "dig @resolver1.ipv6-sandbox.opendns.com AAAA myip.opendns.com +short -6";
   };
+
+  programs.zsh.initContent = ''
+    it() {
+        nix flake init -t github:crolbar/dots#$1
+    }
+  '';
 }
