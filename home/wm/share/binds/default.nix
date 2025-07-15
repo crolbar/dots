@@ -52,7 +52,7 @@
 
       rgb = [
         [[mod ctrl] "a" (exec "${scripts.rgb}")]
-        [[mod ctrl alt] "a" (exec "${bins.openrgb} -p black")]
+        [[mod ctrl alt] "a" (exec "${bins.vbz} --off")]
       ];
 
       mediaControl = {
@@ -211,7 +211,7 @@
     eww = lib.getExe config.programs.eww.package;
     swww = lib.getExe pkgs.swww;
 
-    openrgb = lib.getExe pkgs.openrgb;
+    vbz = lib.getExe' pkgs.vbz "vbz";
     pavucontrol = lib.getExe pkgs.pavucontrol;
   };
 
