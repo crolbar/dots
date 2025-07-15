@@ -11,5 +11,6 @@
     auvi
     vbz
     stray
+    clare
   ];
 }
