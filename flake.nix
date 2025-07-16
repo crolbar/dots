@@ -127,5 +127,7 @@
     ghostty.url = "github:ghostty-org/ghostty";
 
     niri.url = "github:sodiboo/niri-flake";
+
+    helix.url = "github:helix-editor/helix";
   };
 }
