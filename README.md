@@ -59,8 +59,6 @@
 │   │   │   ├── default.nix
 │   │   │   ├── epkgs.nix
 │   │   │   └── init.el
-│   │   ├── helix
-│   │   │   └── default.nix
 │   │   ├── neovim
 │   │   │   ├── nvim
 │   │   │   │   ├── lua
@@ -440,7 +438,7 @@
 ├── shell.nix
 └── TODO.md
 
-91 directories, 331 files
+90 directories, 330 files
 
 ```
 
