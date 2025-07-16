@@ -5,6 +5,7 @@
   ...
 }: let
   gitFrontend = lib.getExe config.programs.lazygit.package;
+  fileExplorer = lib.getExe config.programs.yazi.package;
 
   gitScript = pkgs.writers.writeBash "git.sh" ''
     if ! tmux has-session -t git 2>/dev/null; then
@@ -20,6 +21,45 @@
         tmux switch-client -t git
     fi
   '';
+
+  mkPopupSession = session-name: command:
+    pkgs.writers.writeBash "${session-name}.sh" ''
+      client=$(tmux list-clients | grep 'tmux' | cut -d: -f1)
+
+      # popup is open; close it
+      if [ "$client" ]; then
+          tmux detach-client -t "$client"
+          exit
+      fi
+
+      session="${session-name}"
+
+      if ! tmux has-session -t "$session" &>/dev/null; then
+          tmux new-session -d -s "$session"
+      fi
+
+      id=$(tmux display-message -p \#D)
+
+      curr_path=$(tmux display-message -p '#{pane_current_path}')
+
+      # create toggle term window for this specific pane
+      if ! tmux has -t "$session":"$id" &>/dev/null; then
+          tmux new-window -t "$session" -n "$id" -c "$curr_path" "${command}"
+      fi
+
+
+      if [ "$(tmux display-message -p '#{pane_current_path}')" != "$(tmux display-message -t "$session":"$id" -p '#{pane_current_path}')" ]; then
+          tmux kill-window -t "$session":"$id"
+          tmux new-window -t "$session" -n "$id" -c "$curr_path" "${command}"
+       fi
+
+
+      tmux display-popup -E -w 90% -h 90% -B "tmux a -t $session":"$id" &
+    '';
+
+  fsExScript = mkPopupSession "file-ex" "${fileExplorer}; ${lib.getExe pkgs.zsh}";
+  # TODO: fix copying issue
+  toggleTermScript = mkPopupSession "toggle-term" "${lib.getExe pkgs.zsh}";
 in {
   programs.tmux = {
     enable = true;
@@ -102,6 +142,10 @@ in {
 
       bind b set-option -g status
       bind g run-shell "${gitScript}"
+      bind -n M-y run-shell "${fsExScript}"
+
+      bind -n M-` run-shell "${toggleTermScript}"
+      bind -n M-Escape copy-mode
     '';
   };
 }
