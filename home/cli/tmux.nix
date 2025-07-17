@@ -58,8 +58,15 @@
     '';
 
   fsExScript = mkPopupSession "file-ex" "${fileExplorer}; ${lib.getExe pkgs.zsh}";
-  # TODO: fix copying issue
   toggleTermScript = mkPopupSession "toggle-term" "${lib.getExe pkgs.zsh}";
+
+  copyScript = pkgs.writers.writeBash "tmux-copy.sh" ''
+    if command -v wl-copy >/dev/null 2>&1 && [ -n "$WAYLAND_DISPLAY" ]; then
+      wl-copy
+    elif command -v xclip >/dev/null 2>&1 && [ -n "$DISPLAY" ]; then
+      xclip -selection clipboard
+    fi
+  '';
 in {
   programs.tmux = {
     enable = true;
@@ -137,7 +144,7 @@ in {
 
       bind -T copy-mode-vi v send -X begin-selection
       bind -T copy-mode-vi C-v send -X rectangle-toggle
-      bind -T copy-mode-vi y send -X copy-selection-and-cancel
+      bind -T copy-mode-vi y send -X copy-pipe-and-cancel "${copyScript}"
       bind -T copy-mode-vi Escape send -X cancel
 
       bind b set-option -g status
