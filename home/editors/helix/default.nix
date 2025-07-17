@@ -51,9 +51,9 @@
       keys = let
         emacsSave = {C-x.C-s = ":w";};
         vimMoves = {
-          "$" = "goto_line_end";
-          "0" = "goto_line_start";
-          "_" = "goto_first_nonwhitespace";
+          "$" = "extend_to_line_end";
+          "0" = "extend_to_line_start";
+          "_" = "extend_to_first_nonwhitespace";
           "%" = "match_brackets";
         };
       in {
@@ -81,6 +81,8 @@
               c.a = "code_action";
               a = "no_op";
             };
+
+            esc = "collapse_selection";
           }
           // emacsSave
           // vimMoves;
