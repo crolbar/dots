@@ -55,6 +55,8 @@
           "0" = "extend_to_line_start";
           "_" = "extend_to_first_nonwhitespace";
           "%" = "match_brackets";
+          "}" = "goto_next_paragraph";
+          "{" = "goto_prev_paragraph";
         };
       in {
         normal =
