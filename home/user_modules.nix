@@ -45,6 +45,7 @@
     ./wm/bsp
     ./wm/hypr
     ./misc
+    ../overlays.nix
   ];
 
   screw = [

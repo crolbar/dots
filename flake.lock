@@ -1922,11 +1922,11 @@
         "nixpkgs": "nixpkgs_22"
       },
       "locked": {
-        "lastModified": 1745516304,
-        "narHash": "sha256-Fw73IS8whhrWEMTGqAMGm4OtadoAitdXUVBmbcgdGyw=",
+        "lastModified": 1752739556,
+        "narHash": "sha256-5jEnBakI5EfTqOdLDH17ocloTUt505DdyfZM+1NzACQ=",
         "owner": "crolbar",
         "repo": "vbz",
-        "rev": "2c2fe59ec0a7e77ec955f520ea2298e19fabe94a",
+        "rev": "3ec29e8e823a2770eda99a77729e7837f1619fcc",
         "type": "github"
       },
       "original": {
