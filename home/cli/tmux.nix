@@ -7,20 +7,23 @@
   gitFrontend = lib.getExe config.programs.lazygit.package;
   fileExplorer = lib.getExe config.programs.yazi.package;
 
-  gitScript = pkgs.writers.writeBash "git.sh" ''
-    if ! tmux has-session -t git 2>/dev/null; then
-        tmux new-session -d -s git -c "$(tmux display-message -p '#{pane_current_path}')" "${gitFrontend}; ${lib.getExe pkgs.zsh}"
-        tmux switch-client -t git
-    elif [ "$(tmux display-message -p '#S')" == "git" ]; then
-        tmux switch-client -l
-    else
-        if [ "$(tmux display-message -p '#{pane_current_path}')" != "$(tmux display-message -t git -p '#{pane_current_path}')" ]; then
-            tmux kill-session -t git
-            tmux new-session -d -s git -c "$(tmux display-message -p '#{pane_current_path}')" "${gitFrontend}; ${lib.getExe pkgs.zsh}"
-        fi
-        tmux switch-client -t git
-    fi
-  '';
+  gitScript = let
+    session-name = "__git";
+  in
+    pkgs.writers.writeBash "git.sh" ''
+      if ! tmux has-session -t ${session-name} 2>/dev/null; then
+          tmux new-session -d -s ${session-name} -c "$(tmux display-message -p '#{pane_current_path}')" "${gitFrontend}; ${lib.getExe pkgs.zsh}"
+          tmux switch-client -t ${session-name}
+      elif [ "$(tmux display-message -p '#S')" == "${session-name}" ]; then
+          tmux switch-client -l
+      else
+          if [ "$(tmux display-message -p '#{pane_current_path}')" != "$(tmux display-message -t ${session-name} -p '#{pane_current_path}')" ]; then
+              tmux kill-session -t ${session-name}
+              tmux new-session -d -s ${session-name} -c "$(tmux display-message -p '#{pane_current_path}')" "${gitFrontend}; ${lib.getExe pkgs.zsh}"
+          fi
+          tmux switch-client -t ${session-name}
+      fi
+    '';
 
   mkPopupSession = session-name: command:
     pkgs.writers.writeBash "${session-name}.sh" ''
@@ -57,8 +60,8 @@
       tmux display-popup -E -w 90% -h 90% -B "tmux a -t $session":"$id" &
     '';
 
-  fsExScript = mkPopupSession "file-ex" "${fileExplorer}; ${lib.getExe pkgs.zsh}";
-  toggleTermScript = mkPopupSession "toggle-term" "${lib.getExe pkgs.zsh}";
+  fsExScript = mkPopupSession "__file-ex" "${fileExplorer}; ${lib.getExe pkgs.zsh}";
+  toggleTermScript = mkPopupSession "__toggle-term" "${lib.getExe pkgs.zsh}";
 
   copyScript = pkgs.writers.writeBash "tmux-copy.sh" ''
     if command -v wl-copy >/dev/null 2>&1 && [ -n "$WAYLAND_DISPLAY" ]; then
