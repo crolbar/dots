@@ -133,6 +133,7 @@
         foldAll
         [
           [(lang "c") clang-format (indent 4 " ")]
+          [(lang "cpp") clang-format (indent 4 " ")]
           [(lang "java") clang-format (indent 4 " ")]
           [(lang "nix") (fmt "alejandra" []) (indent 2 " ")]
         ];
