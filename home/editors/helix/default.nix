@@ -6,6 +6,9 @@
   home.packages = [
     # :s/find/rep/g alternative
     (pkgs.writers.writeBashBin "s" ''sed "s/$1/g" '')
+
+    (pkgs.writers.writeBashBin "hx-compile" "$HOME/scripts/toggle-term && tmux send-keys -t __toggle-term:$(tmux display-message -p \\#D) up")
+    (pkgs.writers.writeBashBin "hx-recompile" "$HOME/scripts/toggle-term && tmux send-keys -t __toggle-term:$(tmux display-message -p \\#D) up Enter")
   ];
 
   programs.helix = {
@@ -63,8 +66,9 @@
             C-x = {
               C-s = ":w";
               C-x = "decrement";
-              C-c = ":sh ~/scripts/toggle-term && tmux send-keys -t toggle-term:$(tmux display-message -p \\#D) up";
-              C-r = ":sh ~/scripts/toggle-term && tmux send-keys -t toggle-term:$(tmux display-message -p \\#D) up Enter";
+              C-c = ":sh hx-compile";
+              C-r = ":sh hx-recompile";
+              C-b = "buffer_picker";
             };
             G = "goto_last_line";
 
@@ -86,6 +90,10 @@
             space = {
               c.a = "code_action";
               a = "no_op";
+              e = "no_op";
+              E = "no_op";
+              t = "file_explorer";
+              T = "file_explorer_in_current_buffer_directory";
             };
 
             esc = "collapse_selection";
