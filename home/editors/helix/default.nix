@@ -49,7 +49,6 @@
       };
 
       keys = let
-        emacsSave = {C-x.C-s = ":w";};
         vimMoves = {
           "$" = "extend_to_line_end";
           "0" = "extend_to_line_start";
@@ -61,8 +60,13 @@
       in {
         normal =
           {
+            C-x = {
+              C-s = ":w";
+              C-x = "decrement";
+              C-c = ":sh ~/scripts/toggle-term && tmux send-keys -t toggle-term:$(tmux display-message -p \\#D) up";
+              C-r = ":sh ~/scripts/toggle-term && tmux send-keys -t toggle-term:$(tmux display-message -p \\#D) up Enter";
+            };
             G = "goto_last_line";
-            C-x.C-x = "decrement";
 
             Z.Q = ":q!";
             C-t = "file_picker";
@@ -86,25 +90,23 @@
 
             esc = "collapse_selection";
           }
-          // emacsSave
           // vimMoves;
 
-        insert =
-          {
-            pageup = "no_op";
-            pagedown = "no_op";
-            home = "no_op";
-            end = "no_op";
+        insert = {
+          C-x.C-s = ":w";
+          pageup = "no_op";
+          pagedown = "no_op";
+          home = "no_op";
+          end = "no_op";
 
-            C-h = "signature_help";
-            C-c = "completion";
-          }
-          // emacsSave;
+          C-h = "signature_help";
+          C-c = "completion";
+        };
         select =
           {
+            C-x.C-s = ":w";
             G = "extend_to_last_line";
           }
-          // emacsSave
           // vimMoves;
       };
     };

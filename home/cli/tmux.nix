@@ -68,6 +68,9 @@
     fi
   '';
 in {
+  home.file."scripts/toggle-term".source = toggleTermScript;
+  home.file."scripts/file-ex".source = fsExScript;
+
   programs.tmux = {
     enable = true;
 
