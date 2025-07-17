@@ -159,6 +159,20 @@ in {
 
       bind -n M-` run-shell "${toggleTermScript}"
       bind -n M-Escape copy-mode
+
+      ${let
+        bindsUnderCX =
+          ["Any"]
+          ++ builtins.attrNames config.programs.helix.settings.keys.normal.C-x;
+
+        tmuxBinds =
+          map
+          (b: "bind-key -T CX ${b} set -g key-table root \\; set -g prefix C-b \\; send-keys ${b}")
+          bindsUnderCX;
+      in
+        lib.foldl' (a: e: a + "\n" + e) "" tmuxBinds}
+
+      bind-key -T root C-x set -g key-table CX \; set -g prefix C-a \; send-keys C-x
     '';
   };
 }
