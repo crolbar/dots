@@ -1,33 +1,36 @@
 * {
     all: unset;
-    font-size: 10px;
 }
 
-.tray menu {
-    border-radius: 10px;
-    border: solid 1px white;
-    padding: 5px 0px;
+.btm-tray {
+    font-size: 10px;
 
-    background-color: rgba(0, 0, 0, 0.8);
+    .tray menu {
+        border-radius: 10px;
+        border: solid 1px white;
+        padding: 5px 0px;
 
-    >menuitem {
-        padding: 0px 5px;
+        background-color: rgba(0, 0, 0, 0.8);
 
-        &:disabled label {
-            color: gray;
+        >menuitem {
+            padding: 0px 5px;
+
+            &:disabled label {
+                color: gray;
+            }
+
+            &:hover {
+              background-color: #252525;
+            }
         }
 
-        &:hover {
-          background-color: #252525;
-        }
-    }
+        separator {
+            background-color: #222222;
+            padding-top: 1px;
 
-    separator {
-        background-color: #222222;
-        padding-top: 1px;
-
-        &:last-child {
-            padding: unset;
+            &:last-child {
+                padding: unset;
+            }
         }
     }
 }

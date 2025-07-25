@@ -1,20 +1,20 @@
 * {
     all: unset;
+}
+
+
+.tags {
     font-size: 10px;
-}
 
-/*.workspaces button {*/
-/*  padding: 2px;*/
-/*}*/
+    button:hover {
+      color: #ffffff;
+    }
 
-.workspaces button:hover {
-  color: #ffffff;
-}
+    .tag-button {
+      color: gray;
+    }
 
-.tag-button {
-  color: gray;
-}
-
-.tag-button-mine {
-  color: #ffffff;
+    .tag-button-mine {
+      color: #ffffff;
+    }
 }

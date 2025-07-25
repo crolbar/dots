@@ -1,5 +1,5 @@
 (defwidget workspaces []
- (box :class "workspaces"
+ (box :class "tags"
   (box
    (for tag in {niri.workspaces}
     (button
