@@ -7,6 +7,7 @@
     sshd.enable = true;
     ddccontrol.enable = true;
     hardware.openrgb.enable = true;
+    tailscale.enable = false;
 
     gvfs.enable = true;
 
