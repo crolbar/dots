@@ -130,7 +130,7 @@ in {
         left = ["set-window-width" "-10%"];
       };
       workspace = {
-        focus = num: ["focus-workspace" num];
+        focus = num: [exec ["sh" "-c" ''niri msg action toggle-overview && sleep 0.04 && niri msg action focus-workspace '${toString ((builtins.fromJSON num) + 1)}' && sleep 0.04 && niri msg action toggle-overview'']];
         moveWindowTo = num: ["move-window-to-workspace" num];
       };
     };
