@@ -26,5 +26,10 @@ in {
       system = "x86_64-linux";
       username = "pvm";
     };
+
+    crolchy = mkHome {
+      system = "x86_64-linux";
+      username = "crolchy";
+    };
   };
 }

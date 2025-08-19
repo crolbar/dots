@@ -60,4 +60,12 @@
     ./cli/zzz
     ../overlays.nix
   ];
+
+  crolchy = [
+    ./cli
+    ./editors
+    ./misc/agenix.nix
+    ./cli/zzz
+    ../overlays.nix
+  ];
 }

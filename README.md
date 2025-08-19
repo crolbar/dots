@@ -172,6 +172,10 @@
 │   │   ├── crolbar
 │   │   │   ├── default.nix
 │   │   │   └── shell_aliases.nix
+│   │   ├── crolchy
+│   │   │   ├── default.nix
+│   │   │   ├── programs.nix
+│   │   │   └── shell_aliases.nix
 │   │   ├── kubo
 │   │   │   ├── default.nix
 │   │   │   └── shell_aliases.nix
@@ -440,7 +444,7 @@
 ├── shell.nix
 └── TODO.md
 
-91 directories, 331 files
+92 directories, 334 files
 
 ```
 
