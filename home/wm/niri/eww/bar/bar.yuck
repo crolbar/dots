@@ -8,15 +8,12 @@
 
 
 (defwidget bar []
-    (box :class "bar"
-        (eventbox
-            :onscroll "./scripts/workspace_scroll.sh {}"
-
-            (box :orientation "h"
-                (box :space-evenly false :halign "start" (bar-workspaces))
-                (box :space-evenly false :halign "center" (currwin))
-                (box :space-evenly false :halign "end" (side))
-            )
+    (overlay :class "bar"
+        (eventbox :onscroll "./scripts/workspace_scroll.sh {}" )
+        (box :orientation "h"
+            (box :space-evenly false :halign "start" (bar-workspaces))
+            (box :space-evenly false :halign "center" (currwin))
+            (box :space-evenly false :halign "end" (side))
         )
     )
 )
