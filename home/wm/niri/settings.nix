@@ -116,8 +116,10 @@ in {
       };
       DP-1 = {
         position = {
-          x = 1080;
-          y = 1080;
+          # x = 1080;
+          # y = 1080;
+          x = 0;
+          y = 0;
         };
         mode = {
           width = 1920;
@@ -166,6 +168,8 @@ in {
       };
 
       gaps = 15;
+
+      background-color = "transparent";
     };
 
     gestures.hot-corners.enable = true;
@@ -186,6 +190,13 @@ in {
       (app "steam" [(workspace "8")])
 
       (app "com.mitchellh.ghostty" [{draw-border-with-background = false;}])
+    ];
+
+    layer-rules = [
+      {
+        matches = [{namespace = "swww-daemon";}];
+        place-within-backdrop = true;
+      }
     ];
 
     screenshot-path = "~/Screenshots/Screenshot-%F_%T.png";
