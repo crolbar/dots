@@ -42,7 +42,6 @@ in {
         then (ewwOpen "tags") + " " + (ewwOpen "btm_tray")
         else (ewwOpen "bar");
     in [
-      (sh ''dbus-daemon --session --address="unix:path=$XDG_RUNTIME_DIR/bus"'')
       (c xwayland-satellite)
 
       {command = [playerctld "daemon"];}
