@@ -22,7 +22,7 @@
 
     settings = {
       yazi = {
-        manager = {
+        mgr = {
           show_hidden = true;
           linemode = "size";
         };
