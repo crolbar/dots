@@ -11,6 +11,7 @@
     ../share/wayland
     ../share/dunst.nix
     ../share/wall
+    ../share/scripts
   ];
 
   home.packages = with pkgs; [
@@ -19,7 +20,7 @@
 
   programs.niri = {
     enable = true;
-    package = inputs'.niri.packages.niri-stable;
+    # package = inputs'.niri.packages.niri-stable;
   };
 
   systemd.user.targets.niri-session = {
