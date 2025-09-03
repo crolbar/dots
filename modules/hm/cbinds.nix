@@ -92,7 +92,7 @@
       (cfg.generate cfg.windowManager.${wm}.settings);
   in {
     wayland.windowManager.sway.config.keybindings = gen "sway";
-    wayland.windowManager.hyprland.settings.bind = gen "hypr";
+    wayland.windowManager.hyprland.settings.bind = lib.mkIf config.wayland.windowManager.hyprland.enable (gen "hypr");
     wayland.windowManager.river.settings.map.normal = gen "river";
     services.sxhkd.keybindings = gen "bsp";
     programs.leftwm.settings.keybind = gen "leftwm";
