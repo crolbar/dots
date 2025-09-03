@@ -25,13 +25,13 @@ in {
     hreb = "home-manager switch --flake ~/Github/dots";
     vreb = "cd ~/Github/dots && nix flake update nvim_conf && hreb && rm -rf ~/.cache/nvim";
 
-    screw = "ssh screw@screw";
+    screw = "ssh screw@screw.rs";
     kubo = "ssh kubo@crolbar.xyz";
 
     mdec = "gocryptfs /mnt/nas/enc ~/dec";
     umdec = "fusermount -u ~/dec";
 
-    mnas = "sudo mount.nfs screw:/nas /mnt/nas -o rw";
+    mnas = "sudo mount.nfs screw.rs:/nas /mnt/nas -o rw";
     umnas = "sudo umount /mnt/nas";
     nas = "cd /mnt/nas";
 
