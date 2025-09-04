@@ -31,4 +31,22 @@
     else if builtins.isFunction value
     then value {}
     else abort "toRon: unsupported type";
+
+  _cIf = type: cond: val:
+    if cond
+    then val
+    else
+      (
+        if type == "string"
+        then ""
+        else if type == "list"
+        then []
+        else if type == "attrset"
+        then {}
+        else null
+      );
+
+  ifS = _cIf "string";
+  ifL = _cIf "list";
+  ifA = _cIf "attrset";
 }

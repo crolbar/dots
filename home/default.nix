@@ -25,11 +25,13 @@ in {
     pvm = mkHome {
       system = "x86_64-linux";
       username = "pvm";
+      nonNixOS = true;
     };
 
     crolchy = mkHome {
       system = "x86_64-linux";
       username = "crolchy";
+      nonNixOS = true;
     };
   };
 }

@@ -65,7 +65,11 @@
     ./cli
     ./editors
     ./misc/agenix.nix
+    ./misc/mpd.nix
+
     ./cli/zzz
     ../overlays.nix
+    ./dev/nix.nix
+    ./gui/zathura.nix
   ];
 }

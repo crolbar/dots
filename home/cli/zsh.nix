@@ -1,6 +1,13 @@
-{inputs', ...}: {
+{
+  inputs',
+  clib,
+  nonNixOS,
+  ...
+}: {
   home.packages = [inputs'.microfetch.packages.default];
-  programs.zsh = {
+  programs.zsh = let
+    hostConf = clib.ifA nonNixOS (import ../../hosts/shared/cli/zsh.nix).programs.zsh;
+  in {
     enable = true;
     dotDir = ".config/zsh";
 
@@ -11,6 +18,10 @@
 
     autocd = true;
 
-    initContent = "microfetch";
+    initContent =
+      (clib.ifS nonNixOS hostConf.shellInit)
+      + "microfetch";
+
+    syntaxHighlighting = clib.ifA nonNixOS hostConf.syntaxHighlighting;
   };
 }

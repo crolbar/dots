@@ -11,6 +11,7 @@ in {
   mkHome = {
     system,
     username,
+    nonNixOS ? false,
     ...
   } @ args:
     withSystem system ({
@@ -18,11 +19,14 @@ in {
       self',
       ...
     }: let
+      clib = self.outputs.clib;
+
       extraSpecialArgs =
         inputs
         // {inherit inputs';}
         // {inherit username;}
-        // {inherit (self.outputs) clib;};
+        // {inherit nonNixOS;}
+        // {inherit clib;};
     in
       inputs.hm.lib.homeManagerConfiguration {
         inherit extraSpecialArgs;
@@ -33,7 +37,8 @@ in {
             ../home/profiles/${username}
             ../home/profiles/home.nix
             ../modules/hm
-          ];
+          ]
+          ++ clib.ifL nonNixOS [../home/non_nixos];
       });
 
   mkNixosSys = {

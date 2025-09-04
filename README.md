@@ -168,13 +168,16 @@
 │   │   ├── mangohud.nix
 │   │   ├── mpd.nix
 │   │   └── xdg.nix
+│   ├── non_nixos
+│   │   ├── default.nix
+│   │   ├── nix.nix
+│   │   └── yazi.nix
 │   ├── profiles
 │   │   ├── crolbar
 │   │   │   ├── default.nix
 │   │   │   └── shell_aliases.nix
 │   │   ├── crolchy
 │   │   │   ├── default.nix
-│   │   │   ├── programs.nix
 │   │   │   └── shell_aliases.nix
 │   │   ├── kubo
 │   │   │   ├── default.nix
@@ -184,7 +187,6 @@
 │   │   │   └── shell_aliases.nix
 │   │   ├── pvm
 │   │   │   ├── default.nix
-│   │   │   ├── programs.nix
 │   │   │   └── shell_aliases.nix
 │   │   ├── screw
 │   │   │   ├── default.nix
@@ -444,7 +446,7 @@
 ├── shell.nix
 └── TODO.md
 
-92 directories, 334 files
+93 directories, 335 files
 
 ```
 
