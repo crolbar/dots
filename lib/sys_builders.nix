@@ -70,7 +70,7 @@ in {
 
             {
               home-manager = {
-                extraSpecialArgs = specialArgs;
+                extraSpecialArgs = specialArgs // {nonNixOS = false;};
                 users.${username}.imports =
                   user_modules."${username}"
                   ++ [
