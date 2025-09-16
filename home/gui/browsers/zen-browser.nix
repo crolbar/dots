@@ -76,6 +76,7 @@
         "zen.view.compact.hide-toolbar" = true;
         "zen.view.compact.animate-sidebar" = false;
         "zen.theme.content-element-separation" = 0;
+        "zen.urlbar.show-domain-only-in-sidebar" = false;
       };
 
       spacesForce = true;
