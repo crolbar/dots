@@ -98,6 +98,11 @@
 │   │   │   └── default.nix
 │   │   └── default.nix
 │   ├── gui
+│   │   ├── browsers
+│   │   │   ├── default.nix
+│   │   │   ├── extensions.nix
+│   │   │   ├── schizofox.nix
+│   │   │   └── zen-browser.nix
 │   │   ├── eww
 │   │   │   ├── eww
 │   │   │   │   ├── board
@@ -153,7 +158,6 @@
 │   │   ├── KeyboardVisualizer.nix
 │   │   ├── nextcloud.nix
 │   │   ├── obs.nix
-│   │   ├── schizofox.nix
 │   │   ├── spotify.nix
 │   │   ├── zathura.nix
 │   │   └── zoho.nix
@@ -446,7 +450,7 @@
 ├── shell.nix
 └── TODO.md
 
-93 directories, 335 files
+94 directories, 338 files
 
 ```
 

@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  browser = ["Schizofox.desktop"];
+  browser = [config.programs.zen-browser.package.meta.desktopFileName];
   fileManager = ["yazi.desktop"];
   imageViewer = ["org.gnome.Loupe"];
   videoPlayer = ["mpv.desktop"];
@@ -24,8 +24,8 @@
     "x-scheme-handler/unknown" = browser;
     "x-scheme-handler/chrome" = ["chromium-browser.desktop"];
 
-    "application/json" = browser;
-    "application/xhtml+xml" = browser;
+    "application/json" = textEditor;
+    "application/xhtml+xml" = textEditor;
     "application/x-extension-htm" = browser;
     "application/x-extension-html" = browser;
     "application/x-extension-shtml" = browser;

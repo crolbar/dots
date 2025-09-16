@@ -3,7 +3,7 @@
     ./zathura.nix
     ./eww
     ./spotify.nix
-    ./schizofox.nix
+    ./browsers
     ./obs.nix
     ./term_emulators
     ./zoho.nix

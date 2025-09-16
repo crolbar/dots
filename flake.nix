@@ -129,5 +129,7 @@
     niri.url = "github:sodiboo/niri-flake";
 
     helix.url = "github:helix-editor/helix";
+
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 }
