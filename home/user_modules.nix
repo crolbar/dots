@@ -40,7 +40,7 @@
     ./gui/term_emulators/alacritty.nix
     ./gui/zathura.nix
     ./gui/eww
-    ./gui/schizofox.nix
+    ./gui/browsers/schizofox.nix
 
     ./wm/bsp
     ./wm/hypr
