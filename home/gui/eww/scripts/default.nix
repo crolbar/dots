@@ -3,7 +3,7 @@
   clib,
   ...
 }: let
-  browser = "Firefox";
+  browser = "Twilight";
   music_player = "Music Player Daemon";
   args = {inherit pkgs browser music_player;};
 in {
