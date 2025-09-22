@@ -6,6 +6,7 @@
 }: let
   gitFrontend = lib.getExe config.programs.lazygit.package;
   fileExplorer = lib.getExe config.programs.yazi.package;
+  zsh = lib.getExe pkgs.zsh;
 
   gitScript = let
     session-name = "__git";
@@ -27,41 +28,33 @@
 
   mkPopupSession = session-name: command:
     pkgs.writers.writeBash "${session-name}.sh" ''
-      client=$(tmux list-clients | grep 'tmux' | cut -d: -f1)
+      nestedClient=$(tmux list-clients | grep 'tmux' | cut -d: -f1)
 
       # popup is open; close it
-      if [ "$client" ]; then
-          tmux detach-client -t "$client"
+      if [ "$nestedClient" ]; then
+          mainClient=$(tmux list-clients | grep -v 'tmux' | cut -d: -f1)
+          tmux display-popup -C -c "$mainClient"
           exit
       fi
 
       session="${session-name}"
+      id=$(tmux display-message -p \#D)
+      curr_path=$(tmux display-message -p '#{pane_current_path}')
 
       if ! tmux has-session -t "$session" &>/dev/null; then
           tmux new-session -d -s "$session"
       fi
-
-      id=$(tmux display-message -p \#D)
-
-      curr_path=$(tmux display-message -p '#{pane_current_path}')
 
       # create toggle term window for this specific pane
       if ! tmux has -t "$session":"$id" &>/dev/null; then
           tmux new-window -t "$session" -n "$id" -c "$curr_path" "${command}"
       fi
 
-
-      if [ "$(tmux display-message -p '#{pane_current_path}')" != "$(tmux display-message -t "$session":"$id" -p '#{pane_current_path}')" ]; then
-          tmux kill-window -t "$session":"$id"
-          tmux new-window -t "$session" -n "$id" -c "$curr_path" "${command}"
-       fi
-
-
       tmux display-popup -E -w 90% -h 90% -B "tmux a -t $session":"$id" &
     '';
 
-  fsExScript = mkPopupSession "__file-ex" "${fileExplorer}; ${lib.getExe pkgs.zsh}";
-  toggleTermScript = mkPopupSession "__toggle-term" "${lib.getExe pkgs.zsh}";
+  fsExScript = mkPopupSession "__file-ex" "${fileExplorer}; ${zsh}";
+  toggleTermScript = mkPopupSession "__toggle-term" "${zsh}";
 
   copyScript = pkgs.writers.writeBash "tmux-copy.sh" ''
     if command -v wl-copy >/dev/null 2>&1 && [ -n "$WAYLAND_DISPLAY" ]; then

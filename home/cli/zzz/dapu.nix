@@ -21,7 +21,10 @@ in {
             cd "$(dirname "$output")" || exit
         fi
         if [ -n "$TMUX" ]; then
-            ${tmux} rename-window "$(basename "$PWD")" # TODO: fix in toggle-term!!
+            tmux_session_name=$(tmux display-message -p \#S)
+            if [ "$tmux_session_name" != "__file-ex" ] && [ "$tmux_session_name" != "__toggle-term" ]; then
+                ${tmux} rename-window "$(basename "$PWD")"
+            fi
         fi
         if [[ $1 != "cd" ]]; then
             if [[ -e $output/flake.nix ]]; then
