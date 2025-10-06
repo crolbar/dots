@@ -43,7 +43,7 @@
 
         file-picker = {
           hidden = false;
-          git-ignore = false;
+          git-ignore = true;
         };
 
         inline-diagnostics = {

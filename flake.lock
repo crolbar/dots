@@ -580,11 +580,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1747922934,
-        "narHash": "sha256-KTZiOq/026MVelZyCysUtdem8jM5q/ppyiqothdNkcQ=",
+        "lastModified": 1759749908,
+        "narHash": "sha256-X1pd5SWAR2SFAhoQATAuU3HUZVousQsXVVZLMOafhsc=",
         "owner": "crolbar",
         "repo": "gql",
-        "rev": "dcf6322c754de3a67c87dbb714633e62218a1de4",
+        "rev": "722afa1391b9d656270961ea092e94386161b5fd",
         "type": "github"
       },
       "original": {
