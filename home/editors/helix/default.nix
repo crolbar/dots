@@ -136,6 +136,18 @@
           [(lang "cpp") clang-format (indent 4 " ")]
           [(lang "java") clang-format (indent 4 " ")]
           [(lang "nix") (fmt "alejandra" []) (indent 2 " ")]
+          [
+            (lang "ocaml")
+            (fmt "ocamlformat" [
+              "--profile=janestreet"
+              "--break-separators=after"
+              "--dock-collection-brackets"
+              "--type-decl=sparse"
+              "--margin=80"
+              "--name=foo.ml"
+              "-"
+            ])
+          ]
         ];
     };
   };

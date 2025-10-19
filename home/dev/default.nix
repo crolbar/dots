@@ -2,6 +2,7 @@
   imports = [
     ./c.nix
     ./go.nix
+    ./ocaml.nix
     ./java.nix
     ./js.nix
     ./lua.nix
