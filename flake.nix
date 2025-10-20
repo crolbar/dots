@@ -58,6 +58,7 @@
     vbz.url = "github:crolbar/vbz";
     stray.url = "github:crolbar/stray";
     clare.url = "github:crolbar/clare";
+    discaml.url = "github:crolbar/discaml";
 
     nvim_conf = {
       url = "git+file:./home/editors/neovim/nvim";
