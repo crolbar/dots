@@ -16,7 +16,7 @@
         term =
           if has "isX11" settings
           then bins.alacritty
-          else bins.ghostty;
+          else bins.foot;
 
         toggleVolControl = exec ''pgrep pavucontrol > /dev/null && pkill pavucontrol || ${bins.pavucontrol} &'';
       in [

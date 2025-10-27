@@ -101,6 +101,7 @@ in {
       switchLayoutTabbed = "toggle-column-tabbed-display";
 
       maximize = "maximize-column";
+      maximize-to-edges = "maximize-window-to-edges";
 
       centerCol = "center-column";
 

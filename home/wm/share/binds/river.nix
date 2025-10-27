@@ -43,6 +43,7 @@ in [
   [[] "XF86AudioMicMute" "muteMic"]
 
   [[mod] "m" "maximize"]
+  [[mod shift] "m" "maximize-to-edges"]
   [[mod ctrl] "c" "centerCol"]
   [[mod ctrl] "z" "floatingFocusToggle"]
 

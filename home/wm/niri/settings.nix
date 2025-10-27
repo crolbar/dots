@@ -98,6 +98,7 @@ in {
     };
 
     outputs = {
+      # plier
       eDP-1 = {
         position = {
           x = 0;
@@ -112,14 +113,32 @@ in {
           height = 2000;
           refresh = 120.000;
         };
-        scale = 2.0;
+        scale = 1.0;
       };
+
+      # 308
       DP-1 = {
         position = {
-          # x = 1080;
-          # y = 1080;
+          x = 1080;
+          y = 1080;
+          # x = 0;
+          # y = 0;
+        };
+        mode = {
+          width = 3840;
+          height = 2160;
+          refresh = 120.000;
+        };
+        scale = 1.5;
+      };
+      HDMI-A-1 = {
+        position = {
           x = 0;
-          y = 0;
+          y = 230;
+        };
+        transform = {
+          flipped = false;
+          rotation = 270;
         };
         mode = {
           width = 1920;

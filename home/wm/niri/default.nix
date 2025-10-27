@@ -20,7 +20,7 @@
 
   programs.niri = {
     enable = true;
-    # package = inputs'.niri.packages.niri-stable;
+    package = inputs'.niri-master.packages.default;
   };
 
   systemd.user.targets.niri-session = {
