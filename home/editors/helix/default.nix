@@ -137,6 +137,22 @@
           [(lang "java") clang-format (indent 4 " ")]
           [(lang "nix") (fmt "alejandra" []) (indent 2 " ")]
           [
+            (lang "typescript")
+            {
+              roots = [
+                "deno.json"
+                "deno.jsonc"
+                "package.json"
+              ];
+            }
+            {
+              language-servers = [
+                "typescript-language-server"
+                # "deno-lsp"
+              ];
+            }
+          ]
+          [
             (lang "ocaml")
             (fmt "ocamlformat" [
               "--profile=janestreet"
@@ -149,6 +165,14 @@
             ])
           ]
         ];
+
+      language-server = {
+        deno-lsp = {
+          command = "deno";
+          args = ["lsp"];
+          config.deno.enable = true;
+        };
+      };
     };
   };
 }
