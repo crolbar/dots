@@ -63,8 +63,12 @@
           "gfx.webrender.compositor.force-enabled" = true;
           "network.http.http3.enabled" = true;
 
+          # enables ctrl + shift + alt + i
           "devtools.debugger.remote-enabled" = true;
           "devtools.chrome.enabled" = true;
+
+          # enables userChrome
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         };
     };
 
@@ -232,6 +236,13 @@
           };
         };
       };
+
+      userChrome = ''
+        .zen-current-workspace-indicator,
+         #tabbrowser-arrowscrollbox-periphery {
+          display: none !important;
+        }
+      '';
     };
   };
 }
