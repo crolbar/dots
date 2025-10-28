@@ -9,7 +9,12 @@
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [22 6742 8000];
+      allowedTCPPorts = [
+        22
+        6742
+        8000
+        8081 # expo
+      ];
     };
   };
 }
