@@ -54,7 +54,7 @@ in {
     dataHome = "${config.home.homeDirectory}/.local/share";
     stateHome = "${config.home.homeDirectory}/.local/state";
 
-    portal.enable = lib.mkForce false;
+    # portal.enable = lib.mkForce false;
 
     userDirs = {
       enable = true;

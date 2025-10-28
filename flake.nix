@@ -16,7 +16,7 @@
     };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -24,7 +24,7 @@
     };
 
     hm = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -85,7 +85,7 @@
     };
 
     darkmatter-grub-theme = {
-      url = "gitlab:VandalByte/darkmatter-grub-theme";
+      url = "github:crolbar/darkmatter-grub-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -133,5 +133,7 @@
     helix.url = "github:helix-editor/helix";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
 }

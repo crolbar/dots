@@ -1,7 +1,17 @@
-{darkmatter-grub-theme, ...}: {
-  imports = [darkmatter-grub-theme.nixosModule];
+{
+  darkmatter-grub-theme,
+  chaotic,
+  pkgs,
+  ...
+}: {
+  imports = [
+    darkmatter-grub-theme.nixosModule
+    chaotic.nixosModules.default
+  ];
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_cachyos;
+
     loader = {
       grub = {
         enable = true;

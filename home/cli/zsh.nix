@@ -2,6 +2,7 @@
   inputs',
   clib,
   nonNixOS,
+  config,
   ...
 }: {
   home.packages = [inputs'.microfetch.packages.default];
@@ -9,7 +10,7 @@
     hostConf = clib.ifA nonNixOS (import ../../hosts/shared/cli/zsh.nix).programs.zsh;
   in {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
 
     history = {
       path = "$HOME/.config/zsh/zsh_history";
