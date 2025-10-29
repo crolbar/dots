@@ -76,7 +76,12 @@ in {
     historyLimit = 10000;
 
     terminal = "tmux-256color";
-    extraConfig = ''
+    extraConfig = let
+      bg = "black";
+      fg = "gray";
+      ac = "color244";
+      un = "color236";
+    in ''
       set -sg terminal-overrides ",*:RGB"
 
       set -g allow-passthrough on
@@ -96,19 +101,19 @@ in {
       set -g status-keys "vi"
       set -g mode-keys "vi"
 
-      set -g pane-border-style fg=black
-      set -g pane-active-border-style fg=grey
+      set -g pane-border-style fg=${bg}
+      set -g pane-active-border-style fg=${fg}
 
       # status bar
 
-      set-option -g status-bg black
-      set-option -g status-fg grey
+      set-option -g status-bg ${bg}
+      set-option -g status-fg ${fg}
 
-      set -g window-status-format "#{?window_last_flag,#[fg=black]\uE0B0 #[fg=black]#I #W #[bg=black]#[fg=color236]\uE0B0, #I #W }"
-      set -g window-status-current-format "#[fg=black,bg=color244]\uE0B0 #[fg=black,bg=color244]#I #W #[fg=color244,bg=black]\uE0B0"
+      set -g window-status-format "#{?window_last_flag,#[fg=${bg}]\uE0B0 #[fg=${bg}]#I #W #[bg=${bg}]#[fg=${un}]\uE0B0, #I #W }"
+      set -g window-status-current-format "#[fg=${bg},bg=${ac}]\uE0B0 #[fg=${bg},bg=${ac}]#I #W #[fg=${ac},bg=${bg}]\uE0B0"
 
-      set -g window-status-activity-style "fg=white,bg=#{?window_last_flag,color236,black},underscore"
-      set -g window-status-last-style fg=black,bg=color236,bold
+      set -g window-status-activity-style "fg=${fg},bg=#{?window_last_flag,${un},${bg}},underscore"
+      set -g window-status-last-style fg=${bg},bg=${un},bold
 
 
       set -g status-right "#{?client_prefix,,}  #{?mouse,🖱️,} \uE0B3 #(whoami) \uE0B3 %I:%M %p \uE0B3 %d %b"
