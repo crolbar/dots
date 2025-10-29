@@ -3,7 +3,11 @@
     variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
+      XDG_UTILS_DEFAULT_BROWSER = "zen-twilight";
+      XDG_UTILS_DEFAULT_TERMINAL = "foot";
+      XDG_UTILS_DEFAULT_FILE_MANAGER = "yazi";
       NIXPKGS_ALLOW_UNFREE = "1";
+      NIXOS_OZONE_WL = "1";
     };
 
     homeBinInPath = true;

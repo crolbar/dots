@@ -15,6 +15,7 @@
 
       remotePlay.openFirewall = false;
 
+      protontricks.enable = true;
       extraCompatPackages = [pkgs.proton-ge-bin.steamcompattool];
       package = pkgs.steam-small.override {
         extraEnv = {

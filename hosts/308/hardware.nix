@@ -4,6 +4,14 @@
   pkgs,
   ...
 }: {
+  zramSwap = {
+    enable = true;
+    memoryPercent = 100;
+
+    algorithm = "ztsd";
+    priority = 100;
+  };
+
   hardware = {
     bluetooth.enable = false;
     nvidia = {
