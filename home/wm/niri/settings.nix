@@ -186,12 +186,14 @@ in {
 
       tab-indicator = {
         enable = true;
-        corner-radius = 2;
-        gap = 4;
-        gaps-between-tabs = 0;
         hide-when-single-tab = false;
-        position = "left";
-        width = 6;
+        corner-radius = 0;
+        gap = 1;
+        gaps-between-tabs = 2;
+        position = "top";
+        length.total-proportion = 1.001000;
+        width = config.programs.niri.settings.layout.gaps;
+        inactive.color = "#282828";
       };
 
       gaps = 15;

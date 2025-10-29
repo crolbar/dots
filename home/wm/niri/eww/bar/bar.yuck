@@ -9,7 +9,12 @@
 
 (defwidget bar []
     (overlay :class "bar"
-        (eventbox :onscroll "./scripts/workspace_scroll.sh {}" )
+        (eventbox
+            :onscroll "./scripts/workspace_scroll.sh {}"
+            :onclick "niri msg action maximize-window-to-edges"
+            :onmiddleclick "niri msg action toggle-window-floating"
+            :onrightclick "niri msg action toggle-overview"
+        )
         (box :orientation "h"
             (box :space-evenly false :halign "start" (bar-workspaces))
             (box :space-evenly false :halign "center" (currwin))
