@@ -1,6 +1,6 @@
 {username, ...}: {
   syncthing = {
-    enable = true;
+    enable = false;
 
     settings = {
       gui = {

@@ -18,7 +18,7 @@
   ];
 
   home.file.".Xresources".text =
-    if username == "plier"
+    if username == "plier" || username == "crolbar"
     then "Xft.dpi: 192"
     else "";
 

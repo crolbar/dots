@@ -1,16 +1,12 @@
 {
   darkmatter-grub-theme,
-  chaotic,
   pkgs,
   ...
 }: {
-  imports = [
-    darkmatter-grub-theme.nixosModule
-    chaotic.nixosModules.default
-  ];
+  imports = [darkmatter-grub-theme.nixosModule];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_cachyos;
+    kernelPackages = pkgs.linuxPackages;
 
     # cachyos tweaks
     kernel.sysctl = {
@@ -81,13 +77,5 @@
       blacklist iTCO_wdt
       blacklist sp5100_tco
     '';
-  };
-
-  systemd.settings = {
-    Manager = {
-      DefaultTimeoutStartSec = "15s";
-      DefaultTimeoutStopSec = "10s";
-      DefaultLimitNOFILE = "2048:2097152";
-    };
   };
 }

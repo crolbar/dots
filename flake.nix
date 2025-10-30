@@ -16,7 +16,7 @@
     };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -24,7 +24,7 @@
     };
 
     hm = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -133,7 +133,5 @@
     helix.url = "github:helix-editor/helix";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
 }
