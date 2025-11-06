@@ -35,7 +35,7 @@
 
     gc = {
       automatic = true;
-      dates = "weekly";
+      dates = "2w";
       options = "--delete-older-than 15d";
     };
 
