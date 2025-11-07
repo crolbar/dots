@@ -258,6 +258,7 @@
 │   │   │   │   ├── scripts
 │   │   │   │   │   ├── default.nix
 │   │   │   │   │   ├── niri.nix
+│   │   │   │   │   ├── vram.nix
 │   │   │   │   │   └── workspace_scroll.nix
 │   │   │   │   ├── tags
 │   │   │   │   │   ├── tags.scss
@@ -451,7 +452,7 @@
 ├── shell.nix
 └── TODO.md
 
-94 directories, 339 files
+94 directories, 340 files
 
 ```
 

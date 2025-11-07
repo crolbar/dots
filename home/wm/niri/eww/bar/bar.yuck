@@ -1,4 +1,6 @@
 (deflisten volume "~/scripts/pulse.sh")
+(deflisten vram "./scripts/vram")
+(defvar is_vram_short true)
 
 (defpoll short_time :interval "10s" "date '+%I:%M %p'")
 (defpoll long_time :interval "10s" "date '+%A, %B %d, %Y %I:%M %p'")
@@ -74,6 +76,14 @@
 
         " ${round(EWW_CPU.avg, 0)}%"
         " ${round(EWW_RAM.used_mem_perc, 0)}%"
+        (button
+            :css "button {color: ${vram.perc < 40 ? "green" : (vram.perc < 75 ? "yellow" : "red")}}"
+            :onclick "${EWW_CMD} update is_vram_short=${is_vram_short ? false : true}"
+            "${is_vram_short
+                ? " ${vram.perc}%"
+                : " ${vram.used}MiB / ${vram.total}MiB"
+            }"
+        )
 
         (button
             :onclick "${EWW_CMD} update is_time_short=${is_time_short ? false : true}"
