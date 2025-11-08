@@ -157,6 +157,7 @@
 │   │   │   └── wezterm.nix
 │   │   ├── default.nix
 │   │   ├── KeyboardVisualizer.nix
+│   │   ├── mpv.nix
 │   │   ├── nextcloud.nix
 │   │   ├── obs.nix
 │   │   ├── spotify.nix
@@ -167,12 +168,14 @@
 │   │   │   ├── config.ron
 │   │   │   ├── default.nix
 │   │   │   └── theme.ron
+│   │   ├── xdg
+│   │   │   ├── associations.nix
+│   │   │   └── default.nix
 │   │   ├── agenix.nix
 │   │   ├── default.nix
 │   │   ├── gtk.nix
 │   │   ├── mangohud.nix
-│   │   ├── mpd.nix
-│   │   └── xdg.nix
+│   │   └── mpd.nix
 │   ├── non_nixos
 │   │   ├── default.nix
 │   │   ├── nix.nix
@@ -452,7 +455,7 @@
 ├── shell.nix
 └── TODO.md
 
-94 directories, 340 files
+95 directories, 342 files
 
 ```
 

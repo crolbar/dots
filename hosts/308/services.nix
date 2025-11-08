@@ -10,6 +10,8 @@
     tailscale.enable = false;
 
     gvfs.enable = true;
+    # thumbnails thunar + risteretto
+    tumbler.enable = true;
 
     playerctld.enable = true;
 

@@ -8,13 +8,13 @@
     ./term_emulators
     ./zoho.nix
     ./nextcloud.nix
+    ./mpv.nix
   ];
 
   home.packages = with pkgs; [
     chromium
     vscodium
     file-roller
-    mpv
     pavucontrol
     discord
     keepassxc
@@ -30,7 +30,7 @@
     vesktop
     pwvucontrol # go to audio
     celluloid
-    loupe
+    xfce.ristretto
     calibre
     xfce.xfce4-dict
     kicad

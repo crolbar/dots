@@ -2,7 +2,6 @@
   environment = {
     variables = {
       EDITOR = "nvim";
-      VISUAL = "nvim";
       XDG_UTILS_DEFAULT_BROWSER = "zen-twilight";
       XDG_UTILS_DEFAULT_TERMINAL = "foot";
       XDG_UTILS_DEFAULT_FILE_MANAGER = "yazi";
@@ -14,7 +13,7 @@
 
     defaultPackages = with pkgs; [
       home-manager # for some reason when using hm module uninstalls hm even with `programs.home-manager.enable = true;`
-      neovim
+      vim
       git
       lsd
     ];

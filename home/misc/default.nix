@@ -1,6 +1,6 @@
 {
   imports = [
-    ./xdg.nix
+    ./xdg
     ./gtk.nix
     ./mpd.nix
   ];
