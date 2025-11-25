@@ -1,0 +1,171 @@
+(defvar expanded false)
+(defvar brok "")
+
+
+(defwidget player-info
+  [id name status title artist artUri focusable]
+
+   (overlay
+    (box
+      :orientation "h"
+      :space-evenly false
+      :class "info-box"
+      :spacing 10
+
+      (image
+        :path "${strlength(artUri) == 0 ? "images/blank.png" : artUri}"
+        :image-width 95
+        :image-height 95
+        :class "info-art"
+      )
+
+      (box
+        :orientation "v"
+        :hexpand true
+        :width 150
+
+        :halign "start"
+        :class "info-text-box"
+
+        (label
+          :markup "${focusable && status == 0 ? "<b>" : ""}${title}${focusable && status == 0 ? "</b>" : ""}"
+        )
+
+        (box
+          :orientation "h"
+          :hexpand true
+          :space-evenly false
+          :spacing 20
+          :class "info-text-box"
+
+          (label
+            :halign "start"
+            :text "${name}"
+          )
+
+          (label
+            :halign "center"
+            :text "${artist}"
+          )
+        )
+      )
+    )
+    (eventbox
+      :class "${!focusable ? "" : "info-box-focus"}"
+      :onclick "${!focusable ? "" : "brokctl focus ${id}"}"
+      :onmiddleclick "${!focusable ? "${EWW_CMD} close brok && ${EWW_CMD} update expanded=false" : "brokctl focus ${id}"}"
+      :onrightclick "${!focusable ? "${EWW_CMD} close brok && ${EWW_CMD} update expanded=false" : "brokctl focus ${id}"}"
+    )
+  )
+)
+
+
+(defwidget brok []
+  (box
+    :orientation "h"
+    :space-evenly false
+
+    (eventbox
+      :class "button-cycle"
+      :onclick "brokctl focus ${brok[1].id}"
+
+      :width 30
+
+      :onhover "[ -f /tmp/brok-closer-pid ] && kill $(cat /tmp/brok-closer-pid) && rm /tmp/brok-closer-pid"
+      
+      ""
+    )
+
+    (box
+      :orientation "v"
+      :space-evenly false
+
+
+      (player-info
+        :id "${brok[0].id}"
+        :name "${brok[0].name}"
+        :status "${brok[0].status}"
+        :title "${brok[0].title}"
+        :artist "${brok[0].artist}"
+        :artUri "${brok[0].artUri}"
+        :focusable false
+      )
+
+      (box
+        :orientation "v"
+        :hexpand true
+        :halign "start"
+        :halign "center"
+        :space-evenly false
+
+        (box
+          :orientation "h"
+          :class "button-box"
+          :spacing 15
+          :width 300
+
+          (button
+            :class "button-prev"
+            :onclick "brokctl prev"
+            ""
+          )
+          (button
+            :class "button-pause-play"
+            :onclick "brokctl play-pause"
+            "${brok[0].status == 0 ? "" : ""}"
+          )
+          (button
+            :class "button-next"
+            :onclick "brokctl next"
+            ""
+          )
+        )
+
+
+        (eventbox
+          :class "button-expand"
+          :onclick "${EWW_CMD} update expanded=${expanded ? false : true}"
+
+          ;; scuffed  "focused detection" here and on cycle button
+          ;; we want to stop the closing of this window if we have focus on it
+          ;; but no good way of detecting if the eww window is focused atm (i may be stupid tho)
+          :onhover "[ -f /tmp/brok-closer-pid ] && kill $(cat /tmp/brok-closer-pid) && rm /tmp/brok-closer-pid"
+
+          ""
+        )
+
+        (expander
+          :expanded "${expanded}"
+
+          (box
+            :orientation "v"
+
+            (for player in {brok}
+              (player-info
+                :id "${player.id}"
+                :name "${player.name}"
+                :status "${player.status}"
+                :title "${player.title}"
+                :artist "${player.artist}"
+                :artUri "${player.artUri}"
+                :focusable true
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+(defwindow brok
+    :monitor 0 
+    :windowtype "dock"
+    :wm-ignore true
+    :stacking "overlay"
+    :geometry (geometry :x "25px"
+                        :y "25px"
+                        :width "300px"
+                        :height "160px"
+                        :anchor "top right")
+    (brok))

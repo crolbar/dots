@@ -35,7 +35,6 @@ in {
       sh = cmd: {command = ["sh" "-c" cmd];};
       c = cmd: {command = [cmd];};
       xwayland-satellite = lib.getExe pkgs.xwayland-satellite;
-      playerctld = lib.getExe' pkgs.playerctl "playerctld";
       eww = lib.getExe pkgs.eww;
       dunst = lib.getExe pkgs.dunst;
       wallI = "${config.home.file."scripts/wall.sh".source} i";
@@ -51,7 +50,6 @@ in {
     in [
       (c xwayland-satellite)
 
-      {command = [playerctld "daemon"];}
       (c dunst)
       (c "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
       (c nm-applet)

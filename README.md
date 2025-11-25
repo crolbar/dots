@@ -109,12 +109,16 @@
 │   │   │   │   ├── board
 │   │   │   │   │   ├── board.scss
 │   │   │   │   │   ├── board.yuck
-│   │   │   │   │   ├── player-info.scss
-│   │   │   │   │   ├── player-info.yuck
+│   │   │   │   │   ├── player-info.scss_b
+│   │   │   │   │   ├── player-info.yuck_b
 │   │   │   │   │   ├── power_menu.scss
 │   │   │   │   │   └── power_menu.yuck
+│   │   │   │   ├── brok
+│   │   │   │   │   ├── brok.scss
+│   │   │   │   │   └── brok.yuck
 │   │   │   │   ├── images
 │   │   │   │   │   ├── alacritty.png
+│   │   │   │   │   ├── blank.png
 │   │   │   │   │   ├── discord.png
 │   │   │   │   │   ├── gimp.png
 │   │   │   │   │   ├── github.png
@@ -140,6 +144,7 @@
 │   │   │   │   ├── eww.scss
 │   │   │   │   └── eww.yuck
 │   │   │   ├── scripts
+│   │   │   │   ├── brok.nix
 │   │   │   │   ├── dcc.nix
 │   │   │   │   ├── default.nix
 │   │   │   │   ├── player.nix
@@ -455,7 +460,7 @@
 ├── shell.nix
 └── TODO.md
 
-95 directories, 342 files
+96 directories, 346 files
 
 ```
 

@@ -1,15 +1,17 @@
 {
   pkgs,
+  lib,
   clib,
   ...
-}: let
+} @ attr: let
   browser = "Twilight";
   music_player = "Music Player Daemon";
-  args = {inherit pkgs browser music_player;};
+  args = {inherit browser music_player;} // attr;
 in {
   imports = [
     (import ./volume.nix args)
     (import ./player.nix args)
+    (import ./brok.nix args)
     ./dcc.nix
   ];
 

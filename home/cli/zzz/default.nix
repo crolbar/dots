@@ -2,12 +2,16 @@
   pkgs,
   lib,
   discaml,
+  brok,
   ...
 }: {
   imports = [
     ./dapu.nix
     discaml.homeManagerModules.default
+    brok.homeManagerModules.default
   ];
+
+  services.brok.enable = true;
 
   programs.discaml = {
     enable = true;

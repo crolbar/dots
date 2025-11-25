@@ -3,6 +3,7 @@
   lib,
   config,
   clib,
+  inputs',
   ...
 }: let
   generator = settings: let
@@ -39,6 +40,7 @@
         [[mod] "s" (exec "${bins.eww} open board --toggle")]
         [[mod shift] "s" (exec "pkill eww")]
         [[mod shift] "d" (exec "${bins.eww} open set_board --toggle")]
+        [[mod] "d" (exec "${bins.eww} open brok --toggle")]
         [[mod] "w" (exec toggleBar)]
       ];
 
@@ -71,9 +73,9 @@
         ];
 
         system = [
-          [[] media.play (exec "${bins.playerctl} play-pause")]
-          [[] media.next (exec "${bins.playerctl} next")]
-          [[] media.prev (exec "${bins.playerctl} previous")]
+          [[] media.play (exec "${bins.brokctl} play-pause")]
+          [[] media.next (exec "${bins.brokctl} next")]
+          [[] media.prev (exec "${bins.brokctl} previous")]
           [[] media.lowerVolume (exec "${bins.pamixer} -d 5")]
           [[] media.raiseVolume (exec "${bins.pamixer} -i 5")]
           [[mod shift] "F12" (exec "${scripts.defaultSink}")]
@@ -203,7 +205,7 @@
     anyrun = lib.getExe config.programs.anyrun.package;
     rofi = lib.getExe config.programs.rofi.package;
 
-    playerctl = lib.getExe pkgs.playerctl;
+    brokctl = lib.getExe' inputs'.brok.packages.brokctl "brokctl";
     pamixer = lib.getExe pkgs.pamixer;
 
     emacs = lib.getExe' config.programs.emacs.package "emacsclient";
