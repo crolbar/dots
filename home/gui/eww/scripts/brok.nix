@@ -93,9 +93,11 @@
           closerPID=""
         fi
 
+        # IF THE FILE IS NOT MISSING, DEYLAY THE CLOSING
+        #
         # this file would be missing only if we have remoed it
         # currently removing it from eww for this exact pourposue here
-        if [[ ! -f /tmp/brok-closer-pid ]]; then
+        if [[ -f /tmp/brok-closer-pid ]]; then
           # delay closing
           runAfter 2 ${eww} -c ~/.config/eww close brok
           closerPID=$!
