@@ -121,6 +121,16 @@ in {
         scale = 1.0;
       };
 
+      # plier
+      # HDMI-A-1 = {
+      #   mode = {
+      #     width = 3840;
+      #     height = 2160;
+      #     refresh = 60.000;
+      #   };
+      #   scale = 2.0;
+      # };
+
       # 308
       DP-1 = {
         position = {
@@ -209,8 +219,13 @@ in {
       float = {open-floating = true;};
       unfocused = {open-focused = false;};
       workspace = w: {open-on-workspace = w;};
+      float-pos = x: y: relative-to: {
+        default-floating-position = {
+          inherit x y relative-to;
+        };
+      };
     in [
-      (app "hooktty" [float block unfocused])
+      (app "hooktty" [float block unfocused (float-pos 0 0 "top-right") {draw-border-with-background = false;}])
       (app "KeePassXC" [block])
 
       (app "steam" [(workspace "8")])
