@@ -125,7 +125,7 @@ in {
   systemd.user.services.brok-eww = {
     Unit = {
       Description = "brok-eww";
-      After = ["graphical-session.target"];
+      After = ["graphical-session.target" "brokd.service"];
       PartOf = ["graphical-session.target"];
     };
     Service = {
