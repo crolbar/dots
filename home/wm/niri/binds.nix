@@ -1,26 +1,10 @@
 {
-  clib,
   lib,
   pkgs,
   config,
   username,
   ...
-} @ attr: let
-  keebName = "AT Translated Set 2 keyboard";
-  keyboardGrabber = import ./keyboardGrabber.nix ({inherit keebName;} // attr);
-  stray = lib.getExe' pkgs.stray "stray";
-  keyboardToggler = pkgs.writers.writeBash "keyboardToggler-niri" ''
-    if pgrep -f "keyboardGrabber" > /dev/null; then
-        sudo pkill -f "keyboardGrabber"
-        kill $(cat /tmp/stray-keyboardToggler-niri.pid)
-        dunstify "keyboard ungrabbed"
-    else
-        sudo ${keyboardGrabber} &
-        ${stray} --add-item "enable keeb" "sudo pkill -f keyboardGrabber && kill $(cat /tmp/stray-keyboardToggler-niri.pid)" --name keyboardToggler-niri --icon /home/${username}/keyboardToggler.png &
-        dunstify "keyboard grabbed"
-    fi
-  '';
-in {
+} @ attr: {
   imports = [../share/binds];
 
   cbinds.windowManager.niri.settings = {
@@ -110,7 +94,7 @@ in {
       addWindowToTab = "consume-window-into-column";
       removeWindowFromTab = "expel-window-from-column";
 
-      toggleKeyboardInput = sh "${toString keyboardToggler}";
+      toggleKeyboardInput = sh "${toString (import ../share/keyboardGrabber attr)}";
 
       moveFocus = {
         up = "focus-window-or-workspace-up";

@@ -1,9 +1,10 @@
 {
   pkgs,
   lib,
+  username,
   config,
   ...
-}: {
+} @ attr: {
   cbinds.windowManager.leftwm.settings = {
     isLeft = true;
     isX11 = true;
@@ -59,6 +60,8 @@
 
       muteAudio = [exec "spawn 'amixer set Master toggle && dunstify \\\"Volume at: $(pamixer --get-volume-human)\\\"'"];
       muteMic = [exec "spawn 'amixer set Capture toggle && dunstify \\\"Mic at: $(pamixer --get-volume-human --default-source)\\\"'"];
+
+      toggleKeyboardInput = [exec "${toString (import ../share/keyboardGrabber attr)}"];
 
       moveFocus = {
         up = "FocusWindowUp";

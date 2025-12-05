@@ -276,7 +276,6 @@
 │   │   │   │   └── eww.yuck
 │   │   │   ├── binds.nix
 │   │   │   ├── default.nix
-│   │   │   ├── keyboardGrabber.nix
 │   │   │   └── settings.nix
 │   │   ├── river
 │   │   │   ├── eww
@@ -303,6 +302,9 @@
 │   │   │   │   ├── default.nix
 │   │   │   │   ├── helpers.nix
 │   │   │   │   └── river.nix
+│   │   │   ├── keyboardGrabber
+│   │   │   │   ├── default.nix
+│   │   │   │   └── program.nix
 │   │   │   ├── rofi
 │   │   │   │   ├── default.nix
 │   │   │   │   └── spotlight-dark.rasi
@@ -460,7 +462,7 @@
 ├── shell.nix
 └── TODO.md
 
-96 directories, 346 files
+97 directories, 347 files
 
 ```
 

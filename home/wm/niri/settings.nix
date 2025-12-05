@@ -118,7 +118,7 @@ in {
           height = 2000;
           refresh = 120.000;
         };
-        scale = 1.0;
+        scale = 1.5;
       };
 
       # plier
@@ -225,7 +225,7 @@ in {
         };
       };
     in [
-      (app "hooktty" [float block unfocused (float-pos 0 0 "top-right") {draw-border-with-background = false;}])
+      # (app "hooktty" [float block unfocused (float-pos 0 0 "top-right") {draw-border-with-background = false;}])
       (app "KeePassXC" [block])
 
       (app "steam" [(workspace "8")])
