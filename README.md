@@ -103,6 +103,7 @@
 │   │   │   ├── default.nix
 │   │   │   ├── extensions.nix
 │   │   │   ├── schizofox.nix
+│   │   │   ├── vivaldi.nix
 │   │   │   └── zen-browser.nix
 │   │   ├── eww
 │   │   │   ├── eww
@@ -462,7 +463,7 @@
 ├── shell.nix
 └── TODO.md
 
-97 directories, 347 files
+96 directories, 347 files
 
 ```
 
