@@ -72,4 +72,10 @@
     ./dev/nix.nix
     ./gui/zathura.nix
   ];
+
+  win = [
+    ./cli
+    ./editors/helix
+    ./misc/agenix.nix
+  ];
 }

@@ -205,6 +205,9 @@
 │   │   ├── screw
 │   │   │   ├── default.nix
 │   │   │   └── shell_aliases.nix
+│   │   ├── win
+│   │   │   ├── default.nix
+│   │   │   └── shell_aliases.nix
 │   │   └── home.nix
 │   ├── wm
 │   │   ├── bsp
@@ -463,7 +466,7 @@
 ├── shell.nix
 └── TODO.md
 
-97 directories, 348 files
+98 directories, 350 files
 
 ```
 

@@ -33,5 +33,11 @@ in {
       username = "crolchy";
       nonNixOS = true;
     };
+
+    win = mkHome {
+      system = "x86_64-linux";
+      username = "win";
+      nonNixOS = true;
+    };
   };
 }
