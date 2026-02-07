@@ -164,9 +164,30 @@
               "-"
             ])
           ]
+
+          [
+            {
+              name = "php";
+              scope = "source.php";
+              injection-regex = "php";
+              file-types = ["php" "inc" "php4" "php5" "phtml" "ctp"];
+              shebangs = ["php"];
+              roots = ["composer.json" "index.php"];
+              comment-token = "//";
+              language-servers = ["phpactor"];
+              indent = {
+                tab-width = 4;
+                unit = "    ";
+              };
+            }
+          ]
         ];
 
       language-server = {
+        phpactor = {
+          command = "phpactor";
+          args = ["language-server"];
+        };
         deno-lsp = {
           command = "deno";
           args = ["lsp"];
