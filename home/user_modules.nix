@@ -67,10 +67,15 @@
     ./misc/agenix.nix
     ./misc/mpd.nix
 
-    ./cli/zzz
+    ./cli/zzz/dapu.nix
     ../overlays.nix
     ./dev/nix.nix
     ./gui/zathura.nix
+
+    # ./wm/niri
+    ./gui/eww
+    ./gui/spotify.nix
+    ./gui/browsers/zen-browser.nix
   ];
 
   win = [
