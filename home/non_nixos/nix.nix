@@ -8,15 +8,8 @@
       "daemonIOSchedClass"
       "daemonCPUSchedPolicy"
       "optimise"
+      "gc"
     ];
-
-  renameGCDate = let
-    oldGC = newOrigin.gc;
-    newGC =
-      (builtins.removeAttrs newOrigin.gc ["dates"])
-      // {frequency = oldGC.dates;};
-  in
-    (builtins.removeAttrs newOrigin ["gc"]) // {gc = newGC;};
 in {
-  nix = renameGCDate;
+  nix = newOrigin;
 }
