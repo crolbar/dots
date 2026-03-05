@@ -181,6 +181,16 @@
               };
             }
           ]
+
+          [
+            (lang "astro")
+            (fmt "prettier" [
+              "--plugin"
+              "prettier-plugin-astro"
+              "--parser"
+              "astro"
+            ])
+          ]
         ];
 
       language-server = {

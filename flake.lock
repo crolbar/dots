@@ -72,11 +72,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1764073040,
-        "narHash": "sha256-8eqiQV2SJwOZhrPqC5whPjwBRWwMWR7JYrn/LrvocT4=",
+        "lastModified": 1765039997,
+        "narHash": "sha256-KNywPHH+K/9R+H4JYpAMYgyXyDEDQ3r/JcXgQqiFRsI=",
         "owner": "crolbar",
         "repo": "brok",
-        "rev": "e1f56849409578d66c77c1e2bb8fccabc56f5e37",
+        "rev": "7cb07c597fca2d562a83f12aefe66c705ce42b8e",
         "type": "github"
       },
       "original": {
