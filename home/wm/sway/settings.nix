@@ -20,7 +20,7 @@
       in [
         (mk "${lib.getExe pkgs.playerctl} daemon")
         (mk "~/scripts/wall.sh i")
-        (mk "${lib.getExe' pkgs.swww "swww-daemon"}")
+        (mk "${lib.getExe' pkgs.awww "awww-daemon"}")
         (mk "${lib.getExe' pkgs.networkmanagerapplet "nm-applet"}")
         (mk "${lib.getExe pkgs.dunst}")
       ];

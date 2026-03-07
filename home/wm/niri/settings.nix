@@ -39,7 +39,7 @@ in {
       dunst = lib.getExe pkgs.dunst;
       wallI = "${config.home.file."scripts/wall.sh".source} i";
       nm-applet = lib.getExe' pkgs.networkmanagerapplet "nm-applet";
-      swww-daemon = lib.getExe' pkgs.swww "swww-daemon";
+      awww-daemon = lib.getExe' pkgs.awww "awww-daemon";
 
       barOpen = let
         ewwOpen = bar: "${eww} -c ~/.config/niri/eww open ${bar} &";
@@ -53,7 +53,7 @@ in {
       (c dunst)
       (c "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
       (c nm-applet)
-      (c swww-daemon)
+      (c awww-daemon)
       (c wallI)
       (sh "${eww} -c ~/.config/niri/eww daemon && ${barOpen}")
       (sh "systemctl --user stop niri-session.target && systemctl --user start niri-session.target")
@@ -235,7 +235,7 @@ in {
 
     layer-rules = [
       {
-        matches = [{namespace = "swww-daemon";}];
+        matches = [{namespace = "awww-daemon";}];
         place-within-backdrop = true;
       }
     ];

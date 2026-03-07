@@ -14,7 +14,7 @@ in {
         "~/scripts/wall.sh i"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         "nm-applet"
-        "swww-daemon"
+        "awww-daemon"
       ];
 
       # `lswt` to get id and name

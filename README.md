@@ -516,7 +516,7 @@ The software I use across my systems is:
 | [eww](https://github.com/elkowar/eww)               | widget system used mainly for bars            | [home/gui/eww](home/gui/eww) & [home/wm/hypr/eww](home/wm/hypr/eww) & [home/wm/left/leftwm/right/eww](home/wm/left/leftwm/right/eww) |
 | [rofi](https://github.com/davatorium/rofi)          | launcher for x11                              | [home/wm/share/rofi](home/wm/share/rofi)                                                                                             |
 | [anyrun](https://github.com/anyrun-org/anyrun)      | launcher for wayland                          | [home/wm/share/wayland/anyrun.nix](home/wm/share/wayland/anyrun.nix)                                                                 |
-| [swww](https://github.com/LGFae/swww)               | wallpaper solution for wayland                | [home/wm/share/wall](home/wm/share/wall)                                                                                             |
+| [awww](https://codeberg.org/LGFae/awww)             | wallpaper answer for wayland                  | [home/wm/share/wall](home/wm/share/wall)                                                                                             |
 | [feh](https://github.com/derf/feh)                  | wallpaper solution for x11                    | [home/wm/share/wall](home/wm/share/wall)                                                                                             |
 
 # Credits

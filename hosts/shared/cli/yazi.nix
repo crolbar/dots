@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   environment = {
     defaultPackages = with pkgs; [
       _7zz
@@ -30,7 +34,7 @@
         opener = {
           view = [
             {
-              run = ''feh "$0"'';
+              run = ''${lib.getExe pkgs.feh} "$0"'';
               block = false;
               orphan = true;
               desc = "View";
@@ -38,7 +42,7 @@
           ];
           edit_img = [
             {
-              run = ''gimp "$0"'';
+              run = ''${lib.getExe pkgs.gimp} "$0"'';
               block = false;
               orphan = true;
               desc = "edit";
@@ -46,13 +50,13 @@
           ];
           set_as_wall = [
             {
-              run = ''swww img "$0"'';
+              run = ''${lib.getExe pkgs.awww} img "$0"'';
               desc = "SetAsWall";
             }
           ];
           set_as_wall_fit = [
             {
-              run = ''swww img "$0" --resize fit'';
+              run = ''${lib.getExe pkgs.awww} img "$0" --resize fit'';
               desc = "SetAsWallFit";
             }
           ];
