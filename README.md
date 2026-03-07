@@ -23,6 +23,7 @@
 ├── derivations
 │   ├── binsider.nix
 │   ├── KeyboardVisualizer.nix
+│   ├── openrgb-9.nix
 │   ├── rmpc.nix
 │   └── zohoMail.nix
 ├── home
@@ -466,7 +467,7 @@
 ├── shell.nix
 └── TODO.md
 
-98 directories, 350 files
+98 directories, 351 files
 
 ```
 
