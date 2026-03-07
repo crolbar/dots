@@ -6,7 +6,7 @@
   ffmpeg_7-full,
   glib,
   gtk3,
-  wrapGAppsHook,
+  wrapGAppsHook3,
   nss,
   xdg-utils,
   nspr,
@@ -25,7 +25,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-pD3OgRLBTr5K2cDJ3p2LR8ASV4pUwRmo6ojXHH+KddY=";
   };
 
-  nativeBuildInputs = [autoPatchelfHook wrapGAppsHook];
+  nativeBuildInputs = [autoPatchelfHook wrapGAppsHook3];
 
   dontWrapGApps = true;
 

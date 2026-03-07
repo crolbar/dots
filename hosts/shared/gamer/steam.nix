@@ -17,7 +17,7 @@
 
       protontricks.enable = true;
       extraCompatPackages = [pkgs.proton-ge-bin.steamcompattool];
-      package = pkgs.steam-small.override {
+      package = pkgs.steam.override {
         extraEnv = {
           MANGOHUD = true;
           # adding `windows` fixes "Failed to initialize dependencies" error on sea of theves (probably on other EAC games too)

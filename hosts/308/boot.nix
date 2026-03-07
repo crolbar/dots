@@ -66,8 +66,8 @@
     extraModprobeConfig = ''
       # NVIDIA driver tweaks
       options nvidia NVreg_UsePageAttributeTable=1
-                    NVreg_InitializeSystemMemoryAllocations=0
-                    NVreg_DynamicPowerManagement=0x02
+      options nvidia NVreg_InitializeSystemMemoryAllocations=0
+      options nvidia NVreg_DynamicPowerManagement=0x02
 
       # Force AMDGPU on Southern Islands (GCN 1.0) and Sea Islands (GCN 2.0)
       options amdgpu si_support=1 cik_support=1

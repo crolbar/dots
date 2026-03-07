@@ -6,32 +6,50 @@
   cursor = "capitaine-cursors-white";
 in {
   wayland.windowManager.hyprland.settings = {
-    # monitors
-    monitor =
+    monitorv2 =
       if username == "plier"
-      then "eDP-1,3200x2000@120,0x0,2"
-      else #"DP-1,1920x1080@144,0x0,1";
-        [
-          "DP-1,3840x2160@120,1080x1080,1"
-          #"DP-1,1024x768@119.99,1080x1080,1"
-          "DP-2,1920x1080@75,1080x0,1"
-          "HDMI-A-1,1920x1080@60,0x70,1,transform,3"
-        ];
+      then [
+        {
+          output = "eDP-1";
+          mode = "3200x2000@120";
+          position = "0x0";
+          scale = 2;
+        }
+      ]
+      else if username == "crolbar"
+      then [
+        {
+          output = "DP-1";
+          mode = "3840x2160@120";
+          position = "1080x1080";
+          scale = 1.5;
+        }
 
-    #monitor = [
-    #  "HDMI-A-1,1920x1080@60,0x1080,1"
-    #  "DP-1,1920x1080@144,0x0,1"
-    #];
+        {
+          output = "DP-2";
+          mode = "1920x1080@75";
+          position = "1080x0";
+          scale = 1;
+        }
+
+        {
+          output = "HDMI-A-1";
+          mode = "1920x1080@144.00Hz";
+          position = "0x600";
+          scale = 1;
+          transform = 3;
+        }
+      ]
+      else [];
 
     # startup apps
     exec-once = [
-      "playerctld daemon"
       "dunst"
       "~/scripts/wall.sh i"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
       "nm-applet &"
-      "eww -c ~/.config/hypr/eww/ open bar"
-      "swww-daemon"
+      "eww -c ~/.config/hypr/eww open bar"
+      "awww-daemon"
     ];
 
     workspace = [
@@ -39,19 +57,19 @@ in {
       "f[1], gapsout:0, gapsin:0"
     ];
 
-    windowrulev2 = [
-      "float, title:(enc) "
-      "float, title:(crolk) "
-      "opacity 0.85 0.85, initialTitle:(Spotify)"
-      "opacity 0.9 0.9,class:^(mousepad)$"
-      "workspace 4, initialTitle:(Spotify)"
-      "workspace 8, initialTitle:(Steam)"
+    # windowrulev2 = [
+    #   "float, title:(enc) "
+    #   "float, title:(crolk) "
+    #   "opacity 0.85 0.85, initialTitle:(Spotify)"
+    #   "opacity 0.9 0.9,class:^(mousepad)$"
+    #   "workspace 4, initialTitle:(Spotify)"
+    #   "workspace 8, initialTitle:(Steam)"
 
-      "bordersize 0, floating:0, onworkspace:w[tv1]"
-      "rounding 0, floating:0, onworkspace:w[tv1]"
-      "bordersize 0, floating:0, onworkspace:f[1]"
-      "rounding 0, floating:0, onworkspace:f[1]"
-    ];
+    #   "bordersize 0, floating:0, onworkspace:w[tv1]"
+    #   "rounding 0, floating:0, onworkspace:w[tv1]"
+    #   "bordersize 0, floating:0, onworkspace:f[1]"
+    #   "rounding 0, floating:0, onworkspace:f[1]"
+    # ];
 
     # env vars
     env =
@@ -96,9 +114,9 @@ in {
       mouse_move_enables_dpms = true;
     };
 
-    render = {
-      explicit_sync = true;
-    };
+    # render = {
+    #   explicit_sync = true;
+    # };
 
     # variables
     general = {

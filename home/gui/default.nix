@@ -30,10 +30,10 @@
     vesktop
     pwvucontrol # go to audio
     celluloid
-    xfce.ristretto
+    ristretto
     calibre
-    xfce.xfce4-dict
-    kicad
+    xfce4-dict
+    # kicad
     blueman
   ];
 }

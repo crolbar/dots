@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    (python311.withPackages (ppkgs:
+    (python313.withPackages (ppkgs:
       with ppkgs; [
         requests
         pip

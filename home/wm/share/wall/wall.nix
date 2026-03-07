@@ -1,4 +1,8 @@
-{pkgs, ...} @ args: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   home.file."scripts/wall.sh".source = pkgs.writers.writeBash "wall.sh" ''
     mapfile -t out < <(ls ~/wallpapers ~/wallpapers/nixwalls)
     walls=()
@@ -58,7 +62,7 @@
             mode="max"
         fi
 
-        feh --bg-$mode "$wall" &
+        ${lib.getExe pkgs.feh} --bg-$mode "$wall" &
     else
         resize_mode="crop"
         if [ "$2" == "f" ]; then
@@ -66,9 +70,21 @@
         fi
 
         if [ "$1" == "b" ]; then
-            swww img "$wall" --resize $resize_mode --transition-type right --transition-fps 60 --transition-bezier 0.5,0.5,0.5,0.5 --transition-duration 0.1
+            ${lib.getExe pkgs.awww} img "$wall" \
+            --resize $resize_mode \
+            --transition-type right \
+            --transition-fps 120 \
+            --transition-wave 0,0 \
+            --transition-bezier 0.5,0.5,0.5,0.5 \
+            --transition-duration 0.1
         else
-            swww img "$wall" --resize $resize_mode --transition-type left --transition-fps 60 --transition-bezier 0.5,0.5,0.5,0.5 --transition-duration 0.1
+            ${lib.getExe pkgs.awww} img "$wall" \
+            --resize $resize_mode \
+            --transition-type left \
+            --transition-fps 120 \
+            --transition-wave 0,0 \
+            --transition-bezier 0.5,0.5,0.5,0.5 \
+            --transition-duration 0.1
         fi
     fi
   '';

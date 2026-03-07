@@ -1,5 +1,5 @@
 {config, ...}: let
-  browser = [config.programs.zen-browser.package.meta.desktopFileName];
+  browser = ["vivaldi.desktop"];
   thunar = ["thunar.desktop"];
   risteretto = ["org.xfce.ristretto.desktop"];
   mpv = ["mpv.desktop"];
@@ -44,7 +44,6 @@ in {
   "application/x-shellscript" = textEditor;
   "text/x-c" = textEditor;
   "text/x-c++" = textEditor;
-  
 
   "inode/directory" = thunar;
 

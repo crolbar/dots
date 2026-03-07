@@ -7,7 +7,7 @@
       lfs.enable = true;
 
       # settings = {
-      extraConfig = {
+      settings = {
         init = {defaultBranch = "master";};
 
         user = {

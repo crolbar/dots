@@ -90,13 +90,18 @@
     gen = wm:
       (clib.translateBinds wm)
       (cfg.generate cfg.windowManager.${wm}.settings);
-  in {
-    wayland.windowManager.sway.config.keybindings = gen "sway";
-    wayland.windowManager.hyprland.settings.bind = lib.mkIf config.wayland.windowManager.hyprland.enable (gen "hypr");
-    wayland.windowManager.river.settings.map.normal = gen "river";
-    services.sxhkd.keybindings = gen "bsp";
-    programs.leftwm.settings.keybind = gen "leftwm";
-    xsession.windowManager.i3.config.keybindings = gen "i3";
-    programs.niri.settings.binds = lib.mkIf config.programs.niri.enable (gen "niri");
-  };
+  in
+    {
+      wayland.windowManager.sway.config.keybindings = gen "sway";
+      wayland.windowManager.river.settings.map.normal = gen "river";
+      services.sxhkd.keybindings = gen "bsp";
+      programs.leftwm.settings.keybind = gen "leftwm";
+      xsession.windowManager.i3.config.keybindings = gen "i3";
+    }
+    // (lib.mkIf config.programs.niri.enable {
+      programs.niri.settings.binds = gen "niri";
+    })
+    // (lib.mkIf config.wayland.windowManager.hyprland.enable {
+      wayland.windowManager.hyprland.settings.bind = gen "hypr";
+    });
 }

@@ -27,7 +27,7 @@
 
         [[mod] "a" (exec "${scripts.wall} f")]
         [[mod shift] "a" (exec "${scripts.wall} b")]
-        [[mod] "c" (exec "${bins.swww} clear")]
+        [[mod] "c" (exec "${bins.awww} clear")]
 
         [[mod alt] "q" toggleVolControl]
 
@@ -211,7 +211,7 @@
     emacs = lib.getExe' config.programs.emacs.package "emacsclient";
 
     eww = lib.getExe config.programs.eww.package;
-    swww = lib.getExe pkgs.swww;
+    awww = lib.getExe pkgs.awww;
 
     vbz = lib.getExe' pkgs.vbz "vbz";
     pavucontrol = lib.getExe pkgs.pavucontrol;

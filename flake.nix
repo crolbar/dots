@@ -16,7 +16,7 @@
     };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -24,15 +24,12 @@
     };
 
     hm = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
     };
 
     hyprpicker = {
@@ -68,9 +65,9 @@
 
     neovim-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    swww = {
-      url = "github:LGFae/swww";
-      inputs.nixpkgs.follows = "nixpkgs";
+    awww = {
+      type = "git";
+      url = "https://codeberg.org/LGFae/awww";
     };
 
     schizofox = {

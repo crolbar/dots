@@ -10,7 +10,7 @@ in {
     ./anyrun.nix
   ];
   home.packages = with pkgs; [
-    swww
+    awww
     hyprpicker
     wl-clipboard
     grim
