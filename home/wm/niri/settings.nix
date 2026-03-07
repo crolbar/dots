@@ -90,10 +90,10 @@ in {
         };
       };
 
-      mouse = {
-        accel-profile = "adaptive"; # flat/adaptive
-        accel-speed = -0.9;
-      };
+      # mouse = {
+      #   accel-profile = "adaptive"; # flat/adaptive
+      #   accel-speed = -0.9;
+      # };
 
       touchpad = {
         accel-profile = "adaptive"; # flat/adaptive
@@ -231,6 +231,7 @@ in {
       (app "steam" [(workspace "8")])
 
       (app "com.mitchellh.ghostty" [{draw-border-with-background = false;}])
+      (app "hooktty" [{draw-border-with-background = false;}])
     ];
 
     layer-rules = [

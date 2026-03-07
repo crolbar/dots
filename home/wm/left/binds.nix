@@ -55,8 +55,8 @@
       downKeebBrightness = [exec "spawn 'brightnessctl -d asus::kbd_backlight set 33%-'"];
       upKeebBrightness = [exec "spawn 'brightnessctl -d asus::kbd_backlight set +33%'"];
 
-      upMonBrightness = [exec "spawn 'sudo light -U 5 && dunstctl close && dunstify \\\"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\\\"'"];
-      downMonBrightness = [exec "spawn 'sudo light -A 5 && dunstctl close && dunstify \\\"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\\\"'"];
+      upMonBrightness = [exec "spawn 'sudo brightnessctl s 5%+ && dunstctl close && dunstify \\\"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\\\"'"];
+      downMonBrightness = [exec "spawn 'sudo brightnessctl s 5%- && dunstctl close && dunstify \\\"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\\\"'"];
 
       muteAudio = [exec "spawn 'amixer set Master toggle && dunstify \\\"Volume at: $(pamixer --get-volume-human)\\\"'"];
       muteMic = [exec "spawn 'amixer set Capture toggle && dunstify \\\"Mic at: $(pamixer --get-volume-human --default-source)\\\"'"];

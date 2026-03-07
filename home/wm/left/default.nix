@@ -51,7 +51,6 @@
       polkit_gnome
 
       brightnessctl
-      light
       alsa-utils # amixer
     ];
 

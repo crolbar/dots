@@ -137,8 +137,8 @@ in {
 
       btmTrayToggle = "spawn 'eww -c ~/.config/river/eww open btm_tray --toggle'";
 
-      upMonBrightness = "spawn 'sudo light -U 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"'";
-      downMonBrightness = "spawn 'sudo light -A 5 && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"'";
+      upMonBrightness = "spawn 'sudo brightnessctl s 5%+ && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"'";
+      downMonBrightness = "spawn 'sudo brightnessctl s 5%- && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"'";
 
       downKeebBrightness = "spawn 'brightnessctl -d asus::kbd_backlight set 33%-'";
       upKeebBrightness = "spawn 'brightnessctl -d asus::kbd_backlight set +33%'";

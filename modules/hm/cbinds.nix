@@ -3,7 +3,12 @@
   config,
   clib,
   ...
-}: {
+}: let
+  cfg = config.cbinds;
+  gen = wm:
+    (clib.translateBinds wm)
+    (cfg.generate cfg.windowManager.${wm}.settings);
+in {
   options.cbinds = let
     inherit (lib) types mkOption mkOptionType;
   in {
@@ -53,6 +58,10 @@
       };
       type = types.attrsOf (types.submodule {
         options = {
+          enable = mkOption {
+            type = types.bool;
+            default = false;
+          };
           settings = mkOption {
             type = types.attrs;
             description = ''
@@ -85,23 +94,25 @@
     };
   };
 
-  config = let
-    cfg = config.cbinds;
-    gen = wm:
-      (clib.translateBinds wm)
-      (cfg.generate cfg.windowManager.${wm}.settings);
-  in
-    {
-      wayland.windowManager.sway.config.keybindings = gen "sway";
-      wayland.windowManager.river.settings.map.normal = gen "river";
-      services.sxhkd.keybindings = gen "bsp";
-      programs.leftwm.settings.keybind = gen "leftwm";
-      xsession.windowManager.i3.config.keybindings = gen "i3";
-    }
-    // (lib.mkIf config.programs.niri.enable {
-      programs.niri.settings.binds = gen "niri";
-    })
-    // (lib.mkIf config.wayland.windowManager.hyprland.enable {
-      wayland.windowManager.hyprland.settings.bind = gen "hypr";
-    });
+  config.programs.niri = lib.mkIf config.programs.niri.enable {
+    settings.binds = gen "niri";
+  };
+  config.wayland.windowManager.sway = lib.mkIf config.wayland.windowManager.sway.enable {
+    config.keybindings = gen "sway";
+  };
+  config.wayland.windowManager.river = lib.mkIf config.wayland.windowManager.river.enable {
+    settings.map.normal = gen "river";
+  };
+  config.services.sxhkd = lib.mkIf config.services.sxhkd.enable {
+    keybindings = gen "bsp";
+  };
+  config.programs.leftwm = lib.mkIf config.programs.leftwm.enable {
+    settings.keybind = gen "leftwm";
+  };
+  config.xsession.windowManager.i3 = lib.mkIf config.xsession.windowManager.i3.enable {
+    config.keybindings = gen "i3";
+  };
+  config.wayland.windowManager.hyprland = lib.mkIf config.wayland.windowManager.hyprland.enable {
+    settings.bind = gen "hypr";
+  };
 }

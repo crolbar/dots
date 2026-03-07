@@ -14,7 +14,7 @@
   programs.helix = {
     enable = true;
     defaultEditor = false;
-    package = inputs'.helix.packages.default;
+    # package = inputs'.helix.packages.default;
 
     settings = {
       theme = "gruvbox";
