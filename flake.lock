@@ -2041,11 +2041,11 @@
         "nixpkgs": "nixpkgs_27"
       },
       "locked": {
-        "lastModified": 1752739556,
-        "narHash": "sha256-5jEnBakI5EfTqOdLDH17ocloTUt505DdyfZM+1NzACQ=",
+        "lastModified": 1772995050,
+        "narHash": "sha256-DpXHc2vJOPG8CsTrIjnnmOsG6h8ZrDlCRoRf6i9nazA=",
         "owner": "crolbar",
         "repo": "vbz",
-        "rev": "3ec29e8e823a2770eda99a77729e7837f1619fcc",
+        "rev": "a0628202b374373d9d8bed0085aa62db52079a81",
         "type": "github"
       },
       "original": {

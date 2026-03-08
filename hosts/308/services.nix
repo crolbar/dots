@@ -6,10 +6,7 @@
   services = {
     sshd.enable = true;
     ddccontrol.enable = true;
-    hardware.openrgb = {
-      enable = true;
-      package = pkgs.callPackage ../../derivations/openrgb-9.nix {};
-    };
+    hardware.openrgb.enable = true;
     tailscale.enable = false;
 
     gvfs.enable = true;
