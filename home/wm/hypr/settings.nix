@@ -21,6 +21,8 @@ in {
         {
           output = "DP-1";
           mode = "3840x2160@120";
+          # mode = "2560x1440@120";
+          # mode = "1920x1080@120";
           position = "1080x1080";
           scale = 1.5;
         }
@@ -53,23 +55,23 @@ in {
     ];
 
     workspace = [
+      # no gaps on single workspace
       "w[tv1], gapsout:0, gapsin:0"
       "f[1], gapsout:0, gapsin:0"
     ];
 
-    # windowrulev2 = [
-    #   "float, title:(enc) "
-    #   "float, title:(crolk) "
-    #   "opacity 0.85 0.85, initialTitle:(Spotify)"
-    #   "opacity 0.9 0.9,class:^(mousepad)$"
-    #   "workspace 4, initialTitle:(Spotify)"
-    #   "workspace 8, initialTitle:(Steam)"
+    windowrule = [
+      # no border on single window on workspace
+      "border_size 0,match:workspace w[t1]"
 
-    #   "bordersize 0, floating:0, onworkspace:w[tv1]"
-    #   "rounding 0, floating:0, onworkspace:w[tv1]"
-    #   "bordersize 0, floating:0, onworkspace:f[1]"
-    #   "rounding 0, floating:0, onworkspace:f[1]"
-    # ];
+      "match:title crolk, float on"
+      "opacity 0.85 0.85, match:class spotify"
+      "opacity 0.9 0.9, match:class mousepad"
+      "workspace 4, match:class spotify"
+      "workspace 8, match:class steam"
+
+      "match:class ^(steam_app).*, immediate on"
+    ];
 
     # env vars
     env =
@@ -108,24 +110,35 @@ in {
       sensitivity = -0.2;
     };
 
+    general = {
+      gaps_in = 2;
+      gaps_out = 7;
+      border_size = 2;
+      layout = "dwindle";
+
+      "col.active_border" = "rgb(f5f5dc) rgb(e4b3a0) 45deg";
+      "col.inactive_border" = "rgb(000000)";
+    };
+
+    ecosystem = {
+      no_update_news = true;
+      no_donation_nag = true;
+      enforce_permissions = false;
+    };
+
     misc = {
       disable_hyprland_logo = true;
       background_color = "0x000000";
       mouse_move_enables_dpms = true;
+      enable_anr_dialog = true; # app not responding
     };
 
-    # render = {
-    #   explicit_sync = true;
-    # };
+    render = {
+      direct_scanout = 1; # 0 off, 1 on, 2 auto (on with content type ‘game’)
+    };
 
-    # variables
-    general = {
-      gaps_in = 2;
-      gaps_out = 2;
-      border_size = 1;
-      layout = "dwindle";
-      "col.active_border" = "rgba(EFBBFFee) rgba(BAE1FFee) -30deg";
-      "col.inactive_border" = "rgb(000000)";
+    xwayland = {
+      force_zero_scaling = true; # steam and games don't scale up good
     };
 
     decoration = {
@@ -138,27 +151,30 @@ in {
       enabled = true;
 
       bezier = [
-        "cubic, 0, 1, 0.1, 1"
-        "workspace, 0.3, 1, 0.3, 1"
+        "fast, 0, 1, 0.5, 1"
+        "zoom, 0, 0.5, 0.5, 1"
       ];
       animation = [
-        "windows, 1, 3, cubic"
-        "windowsIn, 1, 3, cubic, slide"
-        "windowsOut, 1, 3, cubic, slide"
-        "windowsMove, 1, 3, cubic, slide"
-        "fade, 1, 3, cubic"
+        "workspaces, 1, 1.5, fast, slidevert"
 
-        # idk if this is working on nvidia but
-        # on my laptop there is an anoing red bar on unfocused windows for 2 secs
-        "border, 0, 10, default"
-        "fade, 1, 3, workspace"
-        "workspaces, 1, 3, workspace"
+        "zoomFactor, 1, 2, zoom"
+
+        # windows
+        "windowsIn, 1, 3, fast, popin"
+        "fadeIn, 1, 2, fast"
+        "windowsOut, 1, 3, fast, slide"
+        "fadeOut, 1, 1, fast"
+        "windowsMove, 1, 3, fast, gnomed"
       ];
     };
 
     dwindle = {
       pseudotile = true;
       preserve_split = true;
+    };
+
+    binds = {
+      scroll_event_delay = 1;
     };
   };
 }
