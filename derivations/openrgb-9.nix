@@ -80,4 +80,6 @@ stdenv.mkDerivation (finalAttrs: {
             }/lib\\\""''
         ];
     });
+
+  meta.mainProgram = "openrgb";
 })
