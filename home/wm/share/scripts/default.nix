@@ -2,7 +2,7 @@
   # names are Properties.application.name from `pactl list sink-inputs`
   # musicPlayer = "Music Player Daemon";
   musicPlayer = "spotify";
-  browser = "Twilight";
+  browser = "Vivaldi";
   speakerSink = "GP106";
 in {
   imports = [

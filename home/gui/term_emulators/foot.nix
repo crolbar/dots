@@ -30,11 +30,7 @@
         selection-background = "525252";
         selection-foreground = regular7;
 
-        # cursor = "000000 ff7eb6";
-      };
-
-      cursor = {
-        color = "000000 ff7eb6";
+        cursor = "000000 ff7eb6";
       };
 
       main = {

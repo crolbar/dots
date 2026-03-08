@@ -11,7 +11,12 @@
     ../share/wall
   ];
 
-  home.packages = [pkgs.polkit_gnome];
+  home.packages = [
+    pkgs.polkit_gnome
+    (pkgs.writers.writeBashBin "hypr" ''
+      uwsm start hyprland.desktop
+    '')
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;
