@@ -4,7 +4,7 @@
   ...
 }: {
   programs.spicetify = let
-    spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
+    spicePkgs = spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   in {
     enable = true;
 

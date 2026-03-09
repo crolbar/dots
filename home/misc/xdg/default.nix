@@ -24,7 +24,7 @@ in {
       pictures = "${config.home.homeDirectory}/Pictures";
       videos = "${config.home.homeDirectory}/Videos";
       extraConfig = {
-        XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Screenshots";
+        SCREENSHOTS = "${config.home.homeDirectory}/Screenshots";
         #XDG_MAIL_DIR = "${config.home.homeDirectory}/Mail";
       };
     };

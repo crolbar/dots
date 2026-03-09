@@ -1,7 +1,7 @@
 {
   programs = {
     hyprland.enable = true;
-    river.enable = true;
+    river-classic.enable = true;
     niri.enable = true;
   };
 }

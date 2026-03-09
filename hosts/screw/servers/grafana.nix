@@ -1,10 +1,15 @@
 {
   services.grafana = {
     enable = true;
-    settings.server = {
-      http_port = 9002;
-      http_addr = "0.0.0.0";
+    settings = {
+      server = {
+        http_port = 9002;
+        http_addr = "0.0.0.0";
+      };
+
+      security.secret_key = "SW2YcwTIb9zpOOhoPsMm";
     };
+
     provision.datasources.settings = {
       apiVersion = 1;
       deleteDatasources = [
