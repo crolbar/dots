@@ -100,14 +100,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-gaming = {
-      url = "github:fufexan/nix-gaming";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-
     leftwm-flake.url = "github:crolbar/leftwm-flake";
 
     ristate.url = "github:crolbar/ristate";

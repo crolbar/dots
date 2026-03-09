@@ -1,17 +1,9 @@
-{
-  nix-gaming,
-  pkgs,
-  ...
-}: {
-  imports = [nix-gaming.nixosModules.platformOptimizations];
-
+{pkgs, ...}: {
   environment.defaultPackages = [pkgs.lutris];
 
   programs = {
     steam = {
       enable = true;
-
-      platformOptimizations.enable = true;
 
       remotePlay.openFirewall = false;
 

@@ -67,8 +67,8 @@ in {
       "match:title crolk, float on"
       "opacity 0.85 0.85, match:class spotify"
       "opacity 0.9 0.9, match:class mousepad"
-      "workspace 4, match:class spotify"
-      "workspace 8, match:class steam"
+      "workspace 4, no_initial_focus on, match:class spotify"
+      "workspace 8, no_initial_focus on, match:class steam"
 
       "match:class ^(steam_app).*, immediate on"
     ];
