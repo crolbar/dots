@@ -10,7 +10,7 @@
 
   environment = {
     systemPackages = with pkgs; [
-      nvtopPackages.nvidia # gpu monitor
+      nvtopPackages.full # gpu monitor
 
       # xfce.xfce4-systemload-plugin
     ];

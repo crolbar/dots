@@ -34,6 +34,9 @@
     xinput --set-prop $YUKI_MOUSE_ID "libinput Accel Speed" 1
 
     systemctl start --user volSock
+
+    xrandr --output DisplayPort-0 --mode 3840x2160 --rate 120.00
+
     exec i3
   '';
 

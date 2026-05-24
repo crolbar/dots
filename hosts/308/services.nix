@@ -32,7 +32,7 @@
 
       dpi = 96;
 
-      videoDrivers = ["nvidia"];
+      videoDrivers = ["amdgpu"];
     };
 
     libinput.mouse = {
