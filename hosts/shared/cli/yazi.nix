@@ -65,11 +65,6 @@
         open = {
           rules = [
             {
-              name = "*/";
-              use = ["edit" "open" "reveal"];
-            }
-
-            {
               mime = "text/*";
               use = ["edit" "open" "reveal"];
             }
