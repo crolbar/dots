@@ -27,6 +27,7 @@ in {
         SCREENSHOTS = "${config.home.homeDirectory}/Screenshots";
         #XDG_MAIL_DIR = "${config.home.homeDirectory}/Mail";
       };
+      setSessionVariables = true;
     };
 
     mimeApps = {

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   gtk = {
     enable = true;
     cursorTheme = {
@@ -16,4 +20,5 @@
       package = pkgs.materia-theme;
     };
   };
+  gtk.gtk4.theme = config.gtk.theme;
 }

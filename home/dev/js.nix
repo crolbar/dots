@@ -3,7 +3,7 @@
     nodejs
     yarn
     typescript-language-server
-    nodePackages.prettier
-    nodePackages.typescript
+    prettier
+    typescript
   ];
 }

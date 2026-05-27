@@ -14,7 +14,7 @@
   ];
 
   home.packages = with pkgs; [
-    nodePackages_latest.bash-language-server
-    nodePackages_latest.vscode-langservers-extracted
+    bash-language-server
+    vscode-langservers-extracted
   ];
 }

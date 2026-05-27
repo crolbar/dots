@@ -46,7 +46,7 @@
         icon_position = "left";
         min_icon_size = 42;
         max_icon_size = 128;
-        icon_path = "/usr/share/icons/Papirus-Dark/16x16/";
+        # icon_path = "/usr/share/icons/Papirus-Dark/16x16/";
         sticky_history = "yes";
         history_length = 20;
         dmenu = "/usr/bin/dmenu -p dunst:";

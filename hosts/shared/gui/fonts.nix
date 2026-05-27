@@ -5,6 +5,8 @@
       font-awesome #icon
       roboto # sans serif
 
+      noto-fonts-cjk-sans # cjk
+
       nerd-fonts.symbols-only
     ];
 

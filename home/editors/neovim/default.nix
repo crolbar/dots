@@ -31,7 +31,7 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    package = inputs'.neovim-overlay.packages.default;
+    # package = inputs'.neovim-overlay.packages.default;
 
     withRuby = false;
     withPython3 = false;

@@ -1,11 +1,11 @@
 {
-  inputs',
+  pkgs,
   clib,
   nonNixOS,
   config,
   ...
 }: {
-  home.packages = [inputs'.microfetch.packages.default];
+  home.packages = [pkgs.microfetch];
   programs.zsh = let
     hostConf = clib.ifA nonNixOS (import ../../hosts/shared/cli/zsh.nix).programs.zsh;
   in {

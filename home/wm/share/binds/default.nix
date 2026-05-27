@@ -87,10 +87,10 @@
       window = {
         # window control
         control = let
-          switchSplitOrientation = helpers.mkOptionalBinds settings [
-            [[mod shift] "r" "switchSplitOrientation"]
-            [[mod shift] "p" "switchSplitOrientation"]
-          ];
+          # switchSplitOrientation = helpers.mkOptionalBinds settings [
+          #   [[mod shift] "r" "switchSplitOrientation"]
+          #   [[mod shift] "p" "switchSplitOrientation"]
+          # ];
           switchLayout = helpers.mkOptionalBinds settings [
             [[mod] "t" "switchLayoutTabbed"]
           ];
@@ -101,7 +101,7 @@
             [[mod] "z" floatingToggle]
             [[alt] tab focusLast]
           ]
-          ++ switchSplitOrientation
+          # ++ switchSplitOrientation
           ++ switchLayout;
 
         focus = helpers.vim [[mod] moveFocus];

@@ -16,7 +16,7 @@
     };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -65,11 +65,6 @@
 
     neovim-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    awww = {
-      type = "git";
-      url = "https://codeberg.org/LGFae/awww";
-    };
-
     schizofox = {
       url = "github:schizofox/schizofox";
       inputs = {
@@ -84,19 +79,6 @@
 
     darkmatter-grub-theme = {
       url = "github:crolbar/darkmatter-grub-theme";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-
-    microfetch = {
-      url = "github:notashelf/microfetch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

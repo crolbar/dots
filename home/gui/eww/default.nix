@@ -1,9 +1,7 @@
 {
   imports = [./scripts];
 
-  programs.eww = {
-    enable = true;
-    enableZshIntegration = true;
-    configDir = ./eww;
-  };
+  xdg.configFile."eww".source = ./eww;
+
+  programs.eww.enable = true;
 }

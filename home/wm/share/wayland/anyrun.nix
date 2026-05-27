@@ -1,8 +1,8 @@
-{inputs', ...}: {
+{pkgs, ...}: {
   programs.anyrun = {
     enable = true;
     config = {
-      plugins = [inputs'.anyrun.packages.applications];
+      plugins = ["${pkgs.anyrun}/lib/libapplications.so"];
 
       x = {fraction = 0.922;};
       width = {absolute = 400;};
