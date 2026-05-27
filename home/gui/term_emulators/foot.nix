@@ -2,7 +2,7 @@
   programs.foot = {
     enable = true;
     settings = {
-      colors = rec {
+      colors-dark = rec {
         alpha = 0.8;
         foreground = "ffffff"; # Text
         background = "000000"; # Base
