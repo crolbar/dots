@@ -18,8 +18,9 @@
       http-connections = 30;
       builders-use-substitutes = true;
       trusted-users = ["root" "@wheel"];
+      always-allow-substitutes = true;
 
-      extra-platforms = ["aarch64_linux"];
+      extra-platforms = ["aarch64_linux" "i686-linux"];
 
       # if any substituters are added they will be available for usage on
       # the next system rebuild and will not be in the system rebuild that they are added

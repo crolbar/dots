@@ -15,7 +15,8 @@
     bluetooth.enable = false;
     nvidia = {
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/os-specific/linux/nvidia-x11/default.nix
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      # package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
       open = false;
       modesetting.enable = true;
       powerManagement.enable = true;

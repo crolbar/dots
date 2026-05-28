@@ -28,14 +28,14 @@ in {
         }
 
         {
-          output = "DP-2";
+          output = "HDMI-A-3";
           mode = "1920x1080@75";
           position = "1080x0";
           scale = 1;
         }
 
         {
-          output = "HDMI-A-1";
+          output = "DP-3";
           mode = "1920x1080@144.00Hz";
           position = "0x600";
           scale = 1;
@@ -82,10 +82,11 @@ in {
       ++ (
         if username == "crolbar"
         then [
-          "LIBVA_DRIVER_NAME,nvidia"
-          "XDG_SESSION_TYPE,wayland"
-          "GBM_BACKEND,nvidia-drm"
-          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+          "AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1"
+          # "LIBVA_DRIVER_NAME,nvidia"
+          # "XDG_SESSION_TYPE,wayland"
+          # "GBM_BACKEND,nvidia-drm"
+          # "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         ]
         else []
       );
