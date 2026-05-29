@@ -32,6 +32,7 @@ in {
           mode = "1920x1080@75";
           position = "1080x0";
           scale = 1;
+          disabled = true;
         }
 
         {
@@ -40,6 +41,7 @@ in {
           position = "0x600";
           scale = 1;
           transform = 3;
+          disabled = true;
         }
       ]
       else [];

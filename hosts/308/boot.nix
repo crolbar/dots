@@ -1,12 +1,13 @@
 {
   darkmatter-grub-theme,
+  config,
   pkgs,
   ...
 }: {
   imports = [darkmatter-grub-theme.nixosModule];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages_zen;
 
     # cachyos tweaks
     kernel.sysctl = {
@@ -40,17 +41,26 @@
       };
     };
 
-    blacklistedKernelModules = [
-      "nouveau"
-      "uvcvideo"
-    ];
     kernelParams = [
       "quiet"
       "nowatchdog"
       "acpi_enforce_resources=lax" # needed for openrgb in aorus MOBOs
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1" # fixes hyprland crash on suspend wakeup
+      "amd_iommu=on" # pcie passthrough
+
+      "pcie_acs_override=downstream,multifunction" # separate iommu groups
+
+      "kvmfr.static_size_mb=128"
+      # "vfio-pci.ids=1002:67b0,1002:aac8,144d:a80a" # use to bind device to vfio drivers
     ];
-    kernelModules = ["kvm-amd"];
+
+    kernelModules = [
+      "vfio_pci"
+      "vfio"
+      "vfio_iommu_type1"
+      "kvmfr" # looking glass
+      "kvm-amd"
+    ];
 
     initrd.availableKernelModules = [
       "nvme"
@@ -59,6 +69,13 @@
       "usbhid"
       "usb_storage"
       "sd_mod"
+    ];
+
+    extraModulePackages = [config.boot.kernelPackages.kvmfr];
+
+    blacklistedKernelModules = [
+      "nouveau"
+      "uvcvideo"
     ];
 
     # cachyos tweaks

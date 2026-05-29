@@ -55,7 +55,17 @@
     # };
 
     udev = {
-      packages = with pkgs; [oversteer];
+      packages = [
+        pkgs.oversteer
+
+        (pkgs.writeTextFile {
+          name = "kvmfr";
+          text = ''
+            SUBSYSTEM=="kvmfr", GROUP="kvm", MODE="0660", TAG+="uaccess"
+          '';
+          destination = "/etc/udev/rules.d/70-kvmfr.rules";
+        })
+      ];
       # cachyos tweaks
       # https://github.com/AniviaFlome/cachy-tweaks-flake/blob/main/modules/udev.nix
       extraRules = ''

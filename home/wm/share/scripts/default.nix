@@ -8,6 +8,7 @@ in {
   imports = [
     ./default-sink.nix
     ./rgb.nix
+    ./wvm.nix
     (import ./volume.nix (args // {inherit browser musicPlayer;}))
     (import ./pulse.nix {inherit pkgs speakerSink;})
   ];

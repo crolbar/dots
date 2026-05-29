@@ -45,11 +45,11 @@
       ];
 
       virtualMachines = let
-        startVm = exec ''bash -c "${clib.mk1lnrCmd scripts.vm.start}"'';
-        stopVm = exec "${scripts.vm.stop}";
+        toggleVM = exec "${scripts.wvm} tvm";
+        toggleGPU = exec "${scripts.wvm} toggle-gpu";
       in [
-        [[mod ctrl alt] "v" startVm]
-        [[mod shift ctrl alt] "v" stopVm]
+        [[mod ctrl alt] "v" toggleVM]
+        [[mod shift ctrl alt] "v" toggleGPU]
       ];
 
       rgb = [
@@ -205,7 +205,7 @@
     anyrun = lib.getExe config.programs.anyrun.package;
     rofi = lib.getExe config.programs.rofi.package;
 
-    brokctl = lib.getExe' inputs'.brok.packages.brokctl "brokctl";
+    brokctl = lib.getExe pkgs.playerctl;
     pamixer = lib.getExe pkgs.pamixer;
 
     emacs = lib.getExe' config.programs.emacs.package "emacsclient";
@@ -226,18 +226,7 @@
     volumeEww = gSP "scripts/eww/volume.sh";
     rgb = gSP "scripts/rgb.sh";
     defaultSink = gSP "scripts/default-sink.sh";
-    vm = let
-      name = "ubuntu23.10";
-      virsh = lib.getExe' pkgs.libvirt "virsh";
-      virt-manager = lib.getExe pkgs.virt-manager;
-    in {
-      start = ''
-        sudo ${virsh} net-start --network default; \
-        sudo ${virsh} start ${name}; \
-        ${virt-manager} --connect qemu:///system --show-domain-console "${name}"
-      '';
-      stop = "sudo ${virsh} shutdown ${name}";
-    };
+    wvm = gSP "scripts/wvm";
   };
 in {
   cbinds.generate = generator;
