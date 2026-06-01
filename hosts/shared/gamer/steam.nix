@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  # environment.defaultPackages = [pkgs.lutris];
+  environment.defaultPackages = [pkgs.lutris];
 
   programs = {
     steam = {

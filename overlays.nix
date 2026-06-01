@@ -14,6 +14,11 @@
     );
 in {
   nixpkgs.overlays = [
+    (_: prev: {
+      openldap = prev.openldap.overrideAttrs {
+        doCheck = !prev.stdenv.hostPlatform.isi686;
+      };
+    })
     (final: prev: ovrls)
     ristate.overlays.default
     rust-overlay.overlays.default
