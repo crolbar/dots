@@ -23,7 +23,7 @@ in {
   "application/x-extension-xhtml" = browser;
   "application/x-extension-xht" = browser;
 
-  "x-scheme-handler/chrome" = ["chromium-browser.desktop"];
+  "x-scheme-handler/chrome" = browser;
 
   "text/xml" = textEditor;
   "text/html" = textEditor;

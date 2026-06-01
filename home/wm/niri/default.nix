@@ -1,11 +1,13 @@
 {
   pkgs,
+  lib,
+  config,
   inputs',
+  username,
   ...
 }: {
   imports = [
     ./binds.nix
-    ./settings.nix
     ./eww
 
     ../share/wayland
@@ -16,24 +18,46 @@
 
   home.packages = with pkgs; [
     xwayland-satellite
+    (pkgs.writers.writeBashBin "ni" ''
+      uwsm start niri
+    '')
   ];
 
-  programs.niri = {
-    enable = true;
-    package = inputs'.niri-master.packages.default;
-  };
-
-  systemd.user.targets.niri-session = {
-    Unit = {
-      Description = "niri compositor session";
-      Documentation = ["man:systemd.special(7)"];
-      BindsTo = ["graphical-session.target"];
-      Wants = [
-        "graphical-session-pre.target"
-        "xdg-desktop-autostart.target"
-      ];
-      After = ["graphical-session-pre.target"];
-      Before = ["xdg-desktop-autostart.target"];
+  xdg.configFile = {
+    "niri/config.kdl" = {
+      source = ./config.kdl;
+      force = true;
     };
+
+    "niri/autostart.kdl".text = let
+      xwayland-satellite = lib.getExe pkgs.xwayland-satellite;
+      eww = lib.getExe pkgs.eww;
+      dunst = lib.getExe pkgs.dunst;
+      wallI = "${config.home.file."scripts/wall.sh".source} i";
+      nm-applet = lib.getExe' pkgs.networkmanagerapplet "nm-applet";
+      awww-daemon = lib.getExe' pkgs.awww "awww-daemon";
+
+      barOpen = let
+        ewwOpen = bar: "${eww} -c ~/.config/niri/eww open ${bar} &";
+      in
+        if username == "plier"
+        then (ewwOpen "tags") + " " + (ewwOpen "btm_tray")
+        else (ewwOpen "bar");
+    in
+      ''
+        spawn-at-startup "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+        spawn-at-startup "sh" "-c" "${eww} -c ~/.config/niri/eww daemon && ${barOpen}"
+
+        spawn-sh-at-startup "dbus-update-activation-environment --all --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_ID"
+        spawn-sh-at-startup "uwsm finalize"
+
+      ''
+      + builtins.concatStringsSep "\n" (map (x: ''spawn-at-startup "${x}"'') [
+        dunst
+        nm-applet
+        awww-daemon
+        wallI
+        xwayland-satellite
+      ]);
   };
 }

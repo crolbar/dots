@@ -1,6 +1,7 @@
 {
   username,
   pkgs,
+  lib,
   ...
 }: {
   services = {
@@ -14,6 +15,7 @@
     tumbler.enable = true;
 
     # playerctld.enable = true;
+    gnome.gnome-keyring.enable = lib.mkForce false;
 
     xserver = {
       enable = true;

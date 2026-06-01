@@ -12,7 +12,7 @@
         runner =
           if has "isX11" settings
           then "${bins.rofi} -show drun -show-icons"
-          else bins.anyrun;
+          else bins.fuzzel;
 
         term =
           if has "isX11" settings
@@ -202,7 +202,7 @@
     ghostty = lib.getExe config.programs.ghostty.package;
     alacritty = lib.getExe config.programs.alacritty.package;
 
-    anyrun = lib.getExe config.programs.anyrun.package;
+    fuzzel = lib.getExe config.programs.fuzzel.package;
     rofi = lib.getExe config.programs.rofi.package;
 
     brokctl = lib.getExe pkgs.playerctl;

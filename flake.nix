@@ -99,7 +99,6 @@
 
     ghostty.url = "github:ghostty-org/ghostty";
 
-    niri.url = "github:sodiboo/niri-flake";
     niri-master.url = "github:YaLTeR/niri";
 
     helix.url = "github:helix-editor/helix";

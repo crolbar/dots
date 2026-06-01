@@ -7,7 +7,7 @@
   hyprpicker = inputs'.hyprpicker.packages.default;
 in {
   imports = [
-    ./anyrun.nix
+    ./fuzzel.nix
   ];
   home.packages = with pkgs; [
     awww

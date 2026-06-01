@@ -9,6 +9,7 @@
     ./dev
     ./wm/i3
     ./wm/hypr
+    ./wm/niri
     ./misc
     ../overlays.nix
     ./misc/mangohud.nix

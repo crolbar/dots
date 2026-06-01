@@ -161,10 +161,10 @@
         binds: combine (map translate binds);
 
       # example what it needs to output
-      # {
-      #   "${modifier}+Shift+x".action.spawn = "foot";
-      #   "${modifier}+f".action.fullscreen-window = {};
-      # }
+      # ''
+      #   ${modifier}+Shift+x { spawn "foot" }
+      #   ${modifier}+f { fullscreen-window }
+      # ''
       niri = let
         translate = b: let
           # the name of the field in the action attrset
@@ -172,24 +172,23 @@
           bind = bindFromListToSet b;
           fmtMods = lib.concatStringsSep "+" bind.mods;
 
-          # mods + keys
-          name =
-            if builtins.length bind.mods > 0
-            then "${fmtMods}+${bind.key}"
-            else bind.key;
+          contents =
+            if builtins.isList bind.cmd
+            then let
+              action = builtins.elemAt bind.cmd 0;
+              args = builtins.elemAt bind.cmd 1;
+              arg =
+                if builtins.isList args
+                then builtins.concatStringsSep " " (map (c: ''"${c}"'') args)
+                else args;
+            in "${action} ${arg}"
+            else "${bind.cmd}";
         in
-          if builtins.isList bind.cmd
-          then let
-            action = builtins.elemAt bind.cmd 0;
-            args = builtins.elemAt bind.cmd 1;
-          in {
-            "${name}".action.${action} = args;
-          }
-          else {
-            "${name}".action."${bind.cmd}" = {};
-          };
+          if (builtins.length bind.mods) > 0
+          then "${fmtMods}+${bind.key} { ${contents}; }"
+          else "${bind.key} { ${contents}; }";
 
-        combine = lib.zipAttrsWith (x: y: lib.head y);
+        combine = binds: "binds {\n  ${builtins.concatStringsSep "\n  " binds}\n}";
       in
         binds: combine (map translate binds);
     };

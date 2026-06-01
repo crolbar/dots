@@ -1,0 +1,150 @@
+environment {
+    "CLUTTER_BACKEND" "wayland"
+    "ELECTRON_OZONE_PLATFORM_HINT" "auto"
+    "GDK_BACKEND" "wayland"
+    "MOZ_ENABLE_WAYLAND" "1"
+    "PROTON_USE_NTSYNC" "1"
+    "QT_WAYLAND_DISABLE_WINDOWDECORATION" "1"
+    "SDL_VIDEODRIVER" "wayland"
+    "XDG_CURRENT_DESKTOP" "niri"
+    "XDG_SESSION_TYPE" "wayland"
+}
+
+output "DP-1" {
+    scale 2.000000
+    transform "normal"
+    position x=1080 y=1080
+    mode "3840x2160@120.000000"
+}
+output "HDMI-A-3" {
+	off
+    transform "normal"
+    position x=1080 y=0
+    mode "1920x1080@60.000000"
+}
+output "DP-3" {
+    transform "270"
+    position x=0 y=230
+    mode "1920x1080@144.000000"
+}
+
+output "eDP-1" {
+    scale 1.500000
+    transform "normal"
+    position x=0 y=0
+    mode "3200x2000@120.000000"
+}
+
+input {
+    keyboard {
+        xkb {
+            layout "us,us,bg"
+            model ""
+            rules ""
+            variant ",dvorak,phonetic"
+            options "grp:win_space_toggle, ctrl:swap_ralt_rctl"
+        }
+        repeat-delay 300
+        repeat-rate 50
+        track-layout "global"
+    }
+
+    touchpad {
+        tap
+        accel-speed -0.400000
+        accel-profile "adaptive"
+    }
+
+	// mouse {
+	// 	accel-profile "adaptive"
+	// 	accel-speed -0.9
+	// }
+
+    focus-follows-mouse
+}
+
+screenshot-path "~/Screenshots/Screenshot-%F_%T.png"
+
+prefer-no-csd
+
+layout {
+    gaps 15
+    struts {
+        left 0
+        right 0
+        top 0
+        bottom 0
+    }
+    focus-ring {
+        width 1
+        active-gradient angle=125 from="#DE64AC" relative-to="window" to="#000000"
+        inactive-color "#000000"
+    }
+    border { off; }
+    background-color "transparent"
+    tab-indicator {
+        gap 1
+        width 15
+        length total-proportion=1.001000
+        position "top"
+        gaps-between-tabs 2
+        corner-radius 0
+        inactive-color "#282828"
+    }
+    insert-hint { color "#909090"; }
+    default-column-width
+    center-focused-column "never"
+}
+
+cursor {
+    xcursor-theme "capitaine-cursors-white"
+    xcursor-size 24
+    hide-after-inactive-ms 5000
+}
+
+hotkey-overlay { skip-at-startup; }
+
+workspace "0"
+workspace "1"
+workspace "2"
+workspace "3"
+workspace "4"
+workspace "5"
+workspace "6"
+workspace "7"
+workspace "8"
+workspace "9"
+workspace "10"
+
+window-rule {
+    match app-id="KeePassXC"
+    block-out-from "screen-capture"
+}
+window-rule {
+    match app-id="steam"
+    open-on-workspace "8"
+}
+window-rule {
+    match title="Select what to share"
+    open-floating true
+}
+window-rule {
+    match app-id="com.mitchellh.ghostty"
+    draw-border-with-background false
+}
+window-rule {
+    match app-id="hooktty"
+    draw-border-with-background false
+}
+
+layer-rule {
+    match namespace="awww-daemon"
+    place-within-backdrop true
+}
+
+recent-windows {
+	off
+}
+
+include "binds.kdl"
+include "autostart.kdl"

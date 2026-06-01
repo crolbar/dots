@@ -47,7 +47,7 @@
           eww = lib.getExe config.programs.eww.package;
           swaylock = lib.getExe config.programs.swaylock.package;
           dunstify = lib.getExe' config.services.dunst.package "dunstify";
-          niri = lib.getExe config.programs.niri.package;
+          niri = lib.getExe pkgs.niri;
           jq = lib.getExe pkgs.jq;
 
           ewwBar =
@@ -57,9 +57,7 @@
         in {
           toggleBar = "${eww} -c ~/.config/niri/eww open ${ewwBar} --toggle";
           lock = "${swaylock} -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3";
-          notifyLayoutSwitch = ''
-            ${dunstify} layout "Changed to: $(${niri} msg -j keyboard-layouts | ${jq} '.names[.current_idx]')"
-          '';
+          notifyLayoutSwitch = "${dunstify} layout \\\"Changed to: $(${niri} msg -j keyboard-layouts | ${jq} '.names[.current_idx]')\\\"";
 
           screenshotRegion = "${niri} msg action screenshot";
           screenshotScreen = "${niri} msg action screenshot-window";
@@ -75,14 +73,14 @@
 
         btmTrayToggle = sh "eww -c ~/.config/niri/eww open btm_tray --toggle";
 
-        upMonBrightness = sh "sudo brightnessctl s 5%+ && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"";
-        downMonBrightness = sh "sudo brightnessctl s 5%- && dunstctl close && dunstify \"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\"";
+        upMonBrightness = sh "sudo brightnessctl s 5%+ && dunstctl close && dunstify \\\"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\\\"";
+        downMonBrightness = sh "sudo brightnessctl s 5%- && dunstctl close && dunstify \\\"Brightness at: $(cat /sys/class/backlight/intel_backlight/brightness)\\\"";
 
         downKeebBrightness = sh "brightnessctl -d asus::kbd_backlight set 33%-";
         upKeebBrightness = sh "brightnessctl -d asus::kbd_backlight set +33%";
 
-        muteAudio = sh "amixer set Master toggle && dunstify \"Volume at: $(pamixer --get-volume-human)\"";
-        muteMic = sh "amixer set Capture toggle && dunstify \"Mic at: $(pamixer --get-volume-human --default-source)\"";
+        muteAudio = sh "amixer set Master toggle && dunstify \\\"Volume at: $(pamixer --get-volume-human)\\\"";
+        muteMic = sh "amixer set Capture toggle && dunstify \\\"Mic at: $(pamixer --get-volume-human --default-source)\\\"";
 
         switchLayoutTabbed = "toggle-column-tabbed-display";
 
@@ -111,14 +109,14 @@
           left = "move-column-left";
         };
         resizeWindow = {
-          up = ["set-window-height" "-10%"];
-          down = ["set-window-height" "+10%"];
-          right = ["set-window-width" "+10%"];
-          left = ["set-window-width" "-10%"];
+          up = ["set-window-height" "\"-10%\""];
+          down = ["set-window-height" "\"+10%\""];
+          right = ["set-window-width" "\"+10%\""];
+          left = ["set-window-width" "\"-10%\""];
         };
         workspace = {
           focus = num: [exec ["sh" "-c" ''niri msg action toggle-overview && sleep 0.04 && niri msg action focus-workspace '${toString ((builtins.fromJSON num) + 1)}' && sleep 0.04 && niri msg action toggle-overview'']];
-          moveWindowTo = num: ["move-window-to-workspace" num];
+          moveWindowTo = num: ["move-window-to-workspace" (toString ((builtins.fromJSON num) + 1))];
         };
       };
     };

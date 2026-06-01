@@ -14,7 +14,14 @@ in {
     dataHome = "${config.home.homeDirectory}/.local/share";
     stateHome = "${config.home.homeDirectory}/.local/state";
 
-    # portal.enable = lib.mkForce false;
+    portal = {
+      enable = true;
+      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+      config.niri = {
+        default = ["hyprland"];
+        "org.freedesktop.impl.portal.ScreenCast" = "hyprland";
+      };
+    };
 
     userDirs = {
       enable = true;
