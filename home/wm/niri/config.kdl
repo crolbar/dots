@@ -13,7 +13,8 @@ environment {
 output "DP-1" {
     scale 2.000000
     transform "normal"
-    position x=1080 y=1080
+    // position x=1080 y=1080
+    position x=0 y=0
     mode "3840x2160@120.000000"
 }
 output "HDMI-A-3" {
@@ -144,6 +145,11 @@ layer-rule {
 
 recent-windows {
 	off
+}
+
+debug {
+    render-drm-device "/dev/dri/renderD128"
+    ignore-drm-device "/dev/dri/renderD129"
 }
 
 include "binds.kdl"
