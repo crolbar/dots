@@ -25,6 +25,7 @@
 │   ├── KeyboardVisualizer.nix
 │   ├── openrgb-9.nix
 │   ├── rmpc.nix
+│   ├── shmooz.nix
 │   └── zohoMail.nix
 ├── home
 │   ├── cli
@@ -468,7 +469,7 @@
 ├── shell.nix
 └── TODO.md
 
-98 directories, 352 files
+98 directories, 353 files
 
 ```
 

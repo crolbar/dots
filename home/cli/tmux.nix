@@ -47,7 +47,7 @@
 
       # create toggle term window for this specific pane
       if ! tmux has -t "$session":"$id" &>/dev/null; then
-          tmux new-window -t "$session" -n "$id" -c "$curr_path" "${command}"
+          tmux new-window -t "$session" -n "$id" -c "$curr_path" "tmux set-option status off; ${command}"
       fi
 
       tmux display-popup -E -w 90% -h 90% -B "tmux a -t $session":"$id" &
@@ -151,7 +151,7 @@ in {
       bind -T copy-mode-vi y send -X copy-pipe-and-cancel "${copyScript}"
       bind -T copy-mode-vi Escape send -X cancel
 
-      bind b set-option -g status
+      bind b set-option status
       bind g run-shell "${gitScript}"
       bind -n M-y run-shell "${fsExScript}"
 
