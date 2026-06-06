@@ -8,7 +8,10 @@
       remotePlay.openFirewall = false;
 
       protontricks.enable = true;
-      extraCompatPackages = [pkgs.proton-ge-bin.steamcompattool];
+      extraCompatPackages = [
+        pkgs.proton-ge-bin.steamcompattool
+        (pkgs.callPackage ../../../derivations/proton-em.nix {})
+      ];
       package = pkgs.steam.override {
         extraEnv = {
           MANGOHUD = true;
