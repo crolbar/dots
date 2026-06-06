@@ -174,7 +174,7 @@
               shebangs = ["php"];
               roots = ["composer.json" "index.php"];
               comment-token = "//";
-              language-servers = ["phpactor"];
+              language-servers = ["phpactor" "intelephense"];
               indent = {
                 tab-width = 4;
                 unit = "    ";

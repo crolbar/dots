@@ -56,10 +56,10 @@ input {
         accel-profile "adaptive"
     }
 
-	// mouse {
-	// 	accel-profile "adaptive"
-	// 	accel-speed -0.9
-	// }
+	mouse {
+		accel-profile "adaptive"
+		accel-speed -0.9
+	}
 
     focus-follows-mouse
 }
@@ -95,6 +95,10 @@ layout {
     insert-hint { color "#909090"; }
     default-column-width
     center-focused-column "never"
+}
+
+overview {
+    zoom 0.40
 }
 
 cursor {

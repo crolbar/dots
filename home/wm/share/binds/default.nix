@@ -8,31 +8,21 @@
 }: let
   generator = settings: let
     binds = {
-      spawners = let
-        runner =
-          if has "isX11" settings
-          then "${bins.rofi} -show drun -show-icons"
-          else bins.fuzzel;
-
-        term =
-          if has "isX11" settings
-          then bins.alacritty
-          else bins.foot;
-
-        toggleVolControl = exec ''pgrep pavucontrol > /dev/null && pkill pavucontrol || ${bins.pavucontrol} &'';
-      in [
-        [[mod] "x" (exec term)]
-        [[mod] "r" (exec runner)]
+      spawners = [
+        [[mod] "x" (exec sb.term)]
+        [[mod] "r" (exec sb.runner)]
         [[mod] "e" (exec "${bins.emacs} -c")]
 
         [[mod] "a" (exec "${scripts.wall} f")]
         [[mod shift] "a" (exec "${scripts.wall} b")]
         [[mod] "c" (exec "${bins.awww} clear")]
 
-        [[mod alt] "q" toggleVolControl]
+        [[mod alt] "q" sb.toggleVolControl]
 
         [[] "${print}" (exec screenshotRegion)]
         [[shift] "${print}" (exec screenshotScreen)]
+
+        [[mod] "i" (exec "${sb.magnifier} --invert-scroll")]
       ];
 
       eww = [
@@ -192,6 +182,25 @@
       else if has "isNiri" settings
       then [settings.cmds.exec ["sh" "-c" shellCmd]]
       else "${settings.cmds.exec} '${shellCmd}'";
+
+    sb = {
+      runner =
+        if has "isX11" settings
+        then "${bins.rofi} -show drun -show-icons"
+        else bins.fuzzel;
+
+      term =
+        if has "isX11" settings
+        then bins.alacritty
+        else bins.foot;
+
+      magnifier =
+        if has "isX11" settings
+        then bins.alacritty # TODO: x11 magnifier util?
+        else bins.shmooz;
+
+      toggleVolControl = exec ''pgrep pavucontrol > /dev/null && pkill pavucontrol || ${bins.pavucontrol} &'';
+    };
   in
     helpers.concatBinds binds;
 
@@ -215,6 +224,8 @@
 
     vbz = lib.getExe' pkgs.vbz "vbz";
     pavucontrol = lib.getExe pkgs.pavucontrol;
+
+    shmooz = lib.getExe' (pkgs.callPackage ../../../../derivations/shmooz.nix {}) "shmooz";
   };
 
   scripts = let

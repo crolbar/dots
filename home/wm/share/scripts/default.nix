@@ -3,7 +3,7 @@
   # musicPlayer = "Music Player Daemon";
   musicPlayer = "spotify";
   browser = "Vivaldi";
-  speakerSink = "GP106";
+  speakerSink = "Navi";
 in {
   imports = [
     ./default-sink.nix
