@@ -18,9 +18,9 @@
     commandLineArgs = [
       "--disable-search-engine-collection"
       "--extension-mime-request-handling=always-prompt-for-install"
-      "--fingerprinting-canvas-image-data-noise"
-      "--fingerprinting-canvas-measuretext-noise"
-      "--fingerprinting-client-rects-noise"
+      # "--fingerprinting-canvas-image-data-noise"
+      # "--fingerprinting-canvas-measuretext-noise"
+      # "--fingerprinting-client-rects-noise"
       "--show-avatar-button=incognito-and-guest"
 
       "--force-dark-mode"
@@ -33,7 +33,7 @@
       "--no-default-browser-check"
       "--no-service-autorun"
       "--disable-features=PreloadMediaEngagementData,MediaEngagementBypassAutoplayPolicies"
-      "--disable-reading-from-canvas"
+      # "--disable-reading-from-canvas"
       "--no-pings"
       "--no-first-run"
       "--no-experiments"
