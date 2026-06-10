@@ -23,6 +23,7 @@
     gdu
     jq
     duf
+    usbutils
     bottom
     ripgrep
     socat

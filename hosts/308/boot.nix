@@ -78,6 +78,8 @@
       "uvcvideo"
     ];
 
+    supportedFilesystems = ["ntfs"];
+
     # cachyos tweaks
     # https://github.com/AniviaFlome/cachy-tweaks-flake/blob/main/modules/modprobe.nix
     extraModprobeConfig = ''
