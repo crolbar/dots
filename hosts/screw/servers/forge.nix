@@ -15,6 +15,7 @@
       type = "tar.xz";
       interval = "14:30"; # usualy this would be at night but I don't sleep at night so..
       backupDir = "/var/backups/forgejo";
+      age = "2w";
     };
 
     settings = {
@@ -32,11 +33,16 @@
         DESCRIPTION = "";
       };
 
-      server = rec {
+      server = let
+        protocol =
+          if config.services.caddy.enable
+          then "https"
+          else "http";
+      in rec {
         HTTP_PORT = 3000;
         PROTOCOL = "http";
         DOMAIN = "screw.rs";
-        ROOT_URL = "${PROTOCOL}://${DOMAIN}:${toString HTTP_PORT}/";
+        ROOT_URL = "${protocol}://${DOMAIN}/";
         ENABLE_ACME = false;
       };
 

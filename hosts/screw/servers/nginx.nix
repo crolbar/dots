@@ -3,7 +3,7 @@
   grafana_port = config.services.grafana.settings.server.http_port;
 in {
   services.nginx = {
-    enable = true;
+    enable = false;
     virtualHosts = let
       root = {
         extraConfig = ''

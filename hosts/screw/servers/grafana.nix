@@ -2,6 +2,9 @@
   services.grafana = {
     enable = true;
     settings = {
+      auth = {
+        disable_login_form = true;
+      };
       server = {
         http_port = 9002;
         http_addr = "0.0.0.0";

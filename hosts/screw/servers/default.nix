@@ -8,5 +8,7 @@
     ./nfs.nix
     ./freshrss.nix
     ./tailscale.nix
+    ./kiwix.nix
+    ./caddy.nix
   ];
 }

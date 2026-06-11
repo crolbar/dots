@@ -50,7 +50,7 @@
 
   screw = [
     ./cli
-    ./editors
+    ./editors/helix
   ];
 
   pvm = [
