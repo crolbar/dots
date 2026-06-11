@@ -2,8 +2,11 @@
   services.grafana = {
     enable = true;
     settings = {
-      auth = {
-        disable_login_form = true;
+      auth.disable_login_form = true;
+      "auth.basic".enabled = false;
+      "auth.anonymous" = {
+        enabled = true;
+        org_role = "Admin";
       };
       server = {
         http_port = 9002;
