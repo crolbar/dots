@@ -94,8 +94,9 @@ in {
     };
   };
 
-  config.xdg.configFile."niri/binds.kdl".text = lib.mkIf cfg.windowManager.niri.enable (gen "niri");
-
+  config.xdg.configFile = lib.mkIf (config.cbinds.windowManager.niri.enable or false) {
+    "niri/binds.kdl".text = gen "niri";
+  };
   config.wayland.windowManager.sway = lib.mkIf config.wayland.windowManager.sway.enable {
     config.keybindings = gen "sway";
   };
