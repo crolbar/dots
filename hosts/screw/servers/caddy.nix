@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   forgejo_port = config.services.forgejo.settings.server.HTTP_PORT;
   grafana_port = config.services.grafana.settings.server.http_port;
   kiwix_port = config.services.kiwix-serve.port;
@@ -37,9 +41,9 @@ in {
       '';
     in {
       "screw.rs screw.sh" = forgejo;
-      "graf.screw.rs" = grafana;
-      "kiwix.screw.rs" = kiwix;
-      "rss.screw.rs" = freshrss;
+      "graf.screw.rs graf.screw.sh" = grafana;
+      "kiwix.screw.rs kiwix.screw.sh" = kiwix;
+      "rss.screw.rs rss.screw.sh" = lib.mkForce freshrss;
     };
   };
 }

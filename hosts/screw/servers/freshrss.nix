@@ -12,5 +12,6 @@ in {
         else "http";
     in "${protocol}://rss.screw.rs";
     authType = "none";
+    virtualHost = "rss.screw.rs rss.screw.sh";
   };
 }

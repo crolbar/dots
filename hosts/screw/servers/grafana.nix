@@ -14,6 +14,8 @@
       };
 
       security.secret_key = "SW2YcwTIb9zpOOhoPsMm";
+
+      log.level = "error";
     };
 
     provision.datasources.settings = {
