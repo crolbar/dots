@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./shell_aliases.nix
-    ./wvm.nix
+    ./wvm
     ./screw-deploy.nix
   ];
 }

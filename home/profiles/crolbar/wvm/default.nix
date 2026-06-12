@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./wvm.nix
+  ];
+}

@@ -2,10 +2,9 @@
   bind-hook = ''
     echo "Binding GPU to vfio"
 
-    source /var/lib/libvirt/win10/conf
     declare -n gpu=''${gpus[$gpu_idx]}
 
-    systemd-run --machine=crolbar@ --user systemctl --user stop hyprland-uwsm
+    systemd-run --machine=crolbar@ --user systemctl --user stop graphical-session.target
     systemctl stop openrgb
 
     sleep 0.8
@@ -34,16 +33,14 @@
     sleep 0.5
 
     systemctl start openrgb
-    systemd-run --machine=crolbar@ --user systemctl --user start hyprland-uwsm
   '';
 
   unbind-hook = ''
     echo "Restoring GPU drivers"
 
-    source /var/lib/libvirt/win10/conf
     declare -n gpu=''${gpus[$gpu_idx]}
 
-    systemd-run --machine=crolbar@ --user systemctl --user stop hyprland-uwsm
+    systemd-run --machine=crolbar@ --user systemctl --user stop graphical-session.target
     systemctl stop openrgb
 
     sleep 0.8
@@ -72,7 +69,6 @@
     sleep 0.5
 
     systemctl start openrgb
-    systemd-run --machine=crolbar@ --user systemctl --user start hyprland-uwsm
   '';
 
   global-hook = ''
@@ -85,12 +81,20 @@
     OP="$2"
     SUBOP="$3"
 
-    if [[ "$VM" == "win10" && "$OP" == "prepare" && "$SUBOP" == "begin" ]]; then
-      ${bind-hook}
-    fi
+    if [[ "$VM" == "win10" ]]; then
+      source /var/lib/libvirt/win10/conf
 
-    if [[ "$VM" == "win10" && "$OP" == "release" && "$SUBOP" == "end" ]]; then
-      ${unbind-hook}
+      if [[ USE_GPU -ne 1 ]]; then
+        exit
+      fi
+
+      if [[ "$OP" == "prepare" && "$SUBOP" == "begin" ]]; then
+        ${bind-hook}
+      fi
+
+      if [[ "$OP" == "release" && "$SUBOP" == "end" ]]; then
+        ${unbind-hook}
+      fi
     fi
   '';
 
@@ -112,6 +116,7 @@
     gpus=(amd nvidia)
 
     gpu_idx=0
+    USE_GPU=1
   '';
 in {
   systemd.tmpfiles.rules = [

@@ -191,10 +191,13 @@
 │   │   └── yazi.nix
 │   ├── profiles
 │   │   ├── crolbar
+│   │   │   ├── wvm
+│   │   │   │   ├── default.nix
+│   │   │   │   ├── win10devices.nix
+│   │   │   │   └── wvm.nix
 │   │   │   ├── default.nix
 │   │   │   ├── screw-deploy.nix
-│   │   │   ├── shell_aliases.nix
-│   │   │   └── wvm.nix
+│   │   │   └── shell_aliases.nix
 │   │   ├── crolchy
 │   │   │   ├── default.nix
 │   │   │   └── shell_aliases.nix
@@ -473,7 +476,7 @@
 ├── shell.nix
 └── TODO.md
 
-98 directories, 357 files
+99 directories, 359 files
 
 ```
 
