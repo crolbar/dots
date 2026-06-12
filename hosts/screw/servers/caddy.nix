@@ -40,7 +40,7 @@ in {
         file_server
       '';
     in {
-      "screw.rs screw.sh" = forgejo;
+      "screw.rs git.screw.rs screw.sh git.screw.sh" = forgejo;
       "graf.screw.rs graf.screw.sh" = grafana;
       "kiwix.screw.rs kiwix.screw.sh" = kiwix;
       "rss.screw.rs rss.screw.sh" = lib.mkForce freshrss;
