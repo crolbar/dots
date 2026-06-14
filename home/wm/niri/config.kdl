@@ -18,7 +18,7 @@ output "DP-1" {
     mode "3840x2160@120.000000"
 }
 output "HDMI-A-3" {
-	off
+	// off
     transform "normal"
     position x=1080 y=0
     mode "1920x1080@60.000000"

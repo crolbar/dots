@@ -19,7 +19,7 @@
     "/mnt/win" = {
       device = "/dev/disk/by-uuid/C88CBD6B8CBD5522";
       fsType = "ntfs-3g";
-      options = ["users" "rw" "uid=1000" "gid=1000"];
+      options = ["users" "rw" "uid=1000" "gid=1000" "exec"];
     };
   };
 }

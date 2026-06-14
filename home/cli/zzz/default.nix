@@ -11,10 +11,10 @@
     brok.homeManagerModules.default
   ];
 
-  services.brok.enable = true;
+  # services.brok.enable = true;
 
   programs.discaml = {
-    enable = true;
+    enable = false;
     scriptPath = let
       date = lib.getExe' pkgs.coreutils "date";
       cat = lib.getExe' pkgs.coreutils "cat";
@@ -27,12 +27,13 @@
       toString (pkgs.writers.writeBash "discaml-up" ''
         os="$(${cat} /etc/os-release | ${grep} PRETTY_NAME | ${cut} -d '"' -f2)"
         remaining_ram=$(printf "%.2f GiB\n" "$(echo "$(${grep} MemAvailable /proc/meminfo | ${awk} '{print $2}').0 / 1024.0 / 1024.0" | ${bc} -l)")
+        remaining_vram=$(/run/current-system/sw/bin/nvidia-smi --query-gpu=memory.total,memory.used --format=csv,noheader,nounits | ${awk} -F',' '{print $1-$2 " MiB"}')
         kernel="$(${uname} -a | ${cut} -d ' ' -f1,2,3)"
 
         echo "\
         name=the.terminal;\
         details=$os | $kernel;\
-        state=remaning ram $remaining_ram;\
+        state=Remaning VRAM: $remaining_vram;\
         image=https://raw.githubusercontent.com/crolbar/dots/master/.github/assets/Screenshot-2024-08-28_11%3A20%3A29.png;\
         type=3;\
         started=$(($(${date} +%s%3N) - 49020000))\
