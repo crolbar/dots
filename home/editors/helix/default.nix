@@ -92,8 +92,8 @@
               a = "no_op";
               e = "no_op";
               E = "no_op";
-              t = "file_explorer";
-              T = "file_explorer_in_current_buffer_directory";
+              T = "file_explorer";
+              t = "file_explorer_in_current_buffer_directory";
             };
 
             esc = "collapse_selection";
