@@ -196,6 +196,7 @@
 │   │   │   │   ├── win10devices.nix
 │   │   │   │   └── wvm.nix
 │   │   │   ├── default.nix
+│   │   │   ├── packages.nix
 │   │   │   ├── screw-deploy.nix
 │   │   │   └── shell_aliases.nix
 │   │   ├── crolchy
@@ -476,7 +477,7 @@
 ├── shell.nix
 └── TODO.md
 
-99 directories, 359 files
+99 directories, 360 files
 
 ```
 
