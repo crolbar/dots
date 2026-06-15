@@ -11,7 +11,7 @@
     brok.homeManagerModules.default
   ];
 
-  # services.brok.enable = true;
+  services.brok.enable = true;
 
   programs.discaml = {
     enable = false;

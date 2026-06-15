@@ -214,7 +214,7 @@
     fuzzel = lib.getExe config.programs.fuzzel.package;
     rofi = lib.getExe config.programs.rofi.package;
 
-    brokctl = lib.getExe pkgs.playerctl;
+    brokctl = lib.getExe' inputs'.brok.packages.brokctl "brokctl";
     pamixer = lib.getExe pkgs.pamixer;
 
     emacs = lib.getExe' config.programs.emacs.package "emacsclient";

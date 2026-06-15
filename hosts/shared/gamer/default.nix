@@ -3,7 +3,8 @@
     ./steam.nix
   ];
 
-  environment.defaultPackages = [
-    pkgs.oversteer
+  environment.defaultPackages = with pkgs; [
+    oversteer
+    lutris
   ];
 }

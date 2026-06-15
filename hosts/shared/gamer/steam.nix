@@ -1,6 +1,4 @@
 {pkgs, ...}: {
-  environment.defaultPackages = [pkgs.lutris];
-
   programs = {
     steam = {
       enable = true;
