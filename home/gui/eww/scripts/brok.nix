@@ -3,9 +3,6 @@
   lib,
   ...
 }: let
-  browser-app_id = "zen-twilight";
-  browser-mpris-id = "firefox";
-
   lswt = lib.getExe pkgs.lswt;
   eww = lib.getExe pkgs.eww;
   jq = lib.getExe pkgs.jq;
@@ -21,20 +18,20 @@
     brokctl sub | while IFS= read -r line; do
       [[ -z "$line" ]] && continue
 
-      json="$line"
+      players=$(${jq} -c -r ".players" <<< "$line")
 
       # replace file://
-      new_json=$(${jq} -c -r '
+      new_players=$(${jq} -c -r '
         map(
           if (.artUri | startswith("file://")) then
               # remove file:// prefix
               .artUri = (.artUri | sub("^file://"; ""))
           end
         )
-      ' <<< "$json")
+      ' <<< "$players")
 
       # fetch https:// images and replace with file paths
-      mapfile -t uris < <(${jq} -r '.[].artUri' <<< "$new_json")
+      mapfile -t uris < <(${jq} -r '.[].artUri' <<< "$new_players")
       for uri in "''${uris[@]}"; do
           if [[ -z "$uri" ]]; then
             continue
@@ -54,28 +51,35 @@
 
 
           # Replace this specific URL with the downloaded file path
-          new_json=$(${jq} -c --arg old "$uri" --arg new "$out" '
+          new_players=$(${jq} -c --arg old "$uri" --arg new "$out" '
               map(if .artUri == $old then .artUri = $new else . end)
-          ' <<< "$new_json")
+          ' <<< "$new_players")
       done
 
       # using this instead of a listener (deflistener does not run when window is closed, this updates it)
-      ${eww} -c ~/.config/eww update brok="$new_json"
+      ${eww} -c ~/.config/eww update brok="$new_players"
 
       #
       # open/closer functionality
       #
 
-      # TODO: add x11 support & other compositors
-      focusedWindow=$(${lswt} -c 'aA' | grep true | cut -d "," -f 1)
-      focusedPlayer=$(${jq} -c -r '.[0].name' <<< $new_json)
+      up=$(${jq} -c -r '."brokctl-update"' <<< "$line")
+      if [[ ''${#up} -le 0 ]]; then
+        # TODO: add x11 support & other compositors
+        focusedWindow=""
+        if pgrep -x niri > /dev/null; then
+          focusedWindow=$(niri msg -j focused-window | jq -c -r '.app_id')
+        else
+          focusedWindow=$(${lswt} -c 'aA' | grep true | cut -d "," -f 1)
+        fi
+        focusedPlayer=$(${jq} -c -r '.[0].name' <<< "$new_players")
 
-      if [[ "$focusedWindow" == "$focusedPlayer" ]]; then
-        continue
-      fi
+        focusedWindow=''${focusedWindow,,}
+        focusedPlayer=''${focusedPlayer,,}
 
-      if [[ "$focusedWindow" == "${browser-app_id}" ]] && [[ "$focusedPlayer" == "${browser-mpris-id}" ]]; then
-        continue
+        if [[ "$focusedPlayer" == *"$focusedWindow"* || "$focusedWindow" == *"$focusedPlayer"* ]]; then
+          continue
+        fi
       fi
 
       if [[ $SECONDS -lt 1 ]]; then
