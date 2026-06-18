@@ -1,9 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   services = {
     sshd.enable = true;
     gvfs.enable = true;
     playerctld.enable = true;
     tailscale.enable = true;
+
+    dbus.implementation = "broker";
 
     xserver = {
       enable = true;
@@ -20,5 +26,6 @@
       enable = true;
       drivers = [pkgs.splix];
     };
+    gnome.gnome-keyring.enable = lib.mkForce false;
   };
 }

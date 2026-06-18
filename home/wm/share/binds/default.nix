@@ -4,6 +4,7 @@
   config,
   clib,
   inputs',
+  username,
   ...
 }: let
   generator = settings: let
@@ -32,14 +33,6 @@
         [[mod shift] "d" (exec "${bins.eww} open set_board --toggle")]
         [[mod] "d" (exec "${bins.eww} open brok --toggle")]
         [[mod] "w" (exec toggleBar)]
-      ];
-
-      virtualMachines = let
-        toggleVM = exec "${scripts.wvm} tvm";
-        toggleGPU = exec "${scripts.wvm} toggle-gpu";
-      in [
-        [[mod ctrl alt] "v" toggleVM]
-        [[mod shift ctrl alt] "v" toggleGPU]
       ];
 
       rgb = [
@@ -117,6 +110,17 @@
           [[[mod shift] "grave" (workspace.moveWindowTo "0")]]
           ++ (helpers.workspaces [[mod shift] workspace.moveWindowTo]);
       };
+
+      virtualMachines =
+        if username == "crolbar"
+        then let
+          toggleVM = exec "${scripts.wvm} tvm";
+          toggleGPU = exec "${scripts.wvm} toggle-gpu";
+        in [
+          [[mod ctrl alt] "v" toggleVM]
+          [[mod shift ctrl alt] "v" toggleGPU]
+        ]
+        else [];
 
       system =
         [

@@ -26,9 +26,9 @@
       libjpeg
       zlib
       fontconfig
-      xorg.libX11
-      xorg.libXrandr
-      xorg.libXext
+      libX11
+      libXrandr
+      libXext
     ];
   };
 }

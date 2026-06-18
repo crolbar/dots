@@ -27,7 +27,7 @@ in {
       hostname = "plier";
       system = "x86_64-linux";
       modules = [
-        ./shared/virt
+        # ./shared/virt
         ./shared/gui
         ./shared/cli
         ../overlays.nix

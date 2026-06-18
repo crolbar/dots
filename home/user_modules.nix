@@ -22,11 +22,11 @@
     ./cli/leetcode_cli.nix
     ./misc/agenix.nix
     ./gui
-    ./editors
+    ./editors/helix
     ./dev
-    ./wm/left
-    ./wm/river
-    ./wm/hypr
+    # ./wm/left
+    # ./wm/river
+    # ./wm/hypr
     ./wm/niri
     ./misc
     ../overlays.nix

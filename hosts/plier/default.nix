@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   imports = [
     ./boot.nix
     ./fs.nix
@@ -11,5 +11,4 @@
     ./servers
     ./programs.nix
   ];
-  environment.defaultPackages = with pkgs; [leftwm];
 }
