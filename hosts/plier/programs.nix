@@ -1,5 +1,8 @@
 {pkgs, ...}: {
-  environment.defaultPackages = with pkgs; [leftwm];
+  environment.defaultPackages = with pkgs; [
+    leftwm
+    nvtopPackages.intel
+  ];
   programs = {
     # hyprland.enable = true;
     # river-classic.enable = true;

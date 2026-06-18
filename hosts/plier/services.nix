@@ -12,13 +12,13 @@
     dbus.implementation = "broker";
 
     xserver = {
-      enable = true;
+      enable = false;
       windowManager = {
-        bspwm.enable = true;
+        bspwm.enable = false;
         leftwm.enable = false; # if I use overlay and enable this it breaks systemd
       };
       displayManager = {
-        startx.enable = true;
+        startx.enable = false;
       };
     };
 

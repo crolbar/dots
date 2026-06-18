@@ -207,6 +207,7 @@
 │   │   │   └── shell_aliases.nix
 │   │   ├── plier
 │   │   │   ├── default.nix
+│   │   │   ├── packages.nix
 │   │   │   └── shell_aliases.nix
 │   │   ├── pvm
 │   │   │   ├── default.nix
@@ -477,7 +478,7 @@
 ├── shell.nix
 └── TODO.md
 
-99 directories, 360 files
+99 directories, 361 files
 
 ```
 
