@@ -18,6 +18,7 @@
 
   home.packages = with pkgs; [
     xwayland-satellite
+    alsa-utils
     (pkgs.callPackage ../../../derivations/shmooz.nix {})
     (pkgs.writers.writeBashBin "ni" ''
       uwsm start niri

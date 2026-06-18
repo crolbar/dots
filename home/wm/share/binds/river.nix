@@ -30,11 +30,11 @@ in [
 
   [[mod] "p" "btmTrayToggle"]
 
-  [[] "XF86MonBrightnessDown" "upMonBrightness"]
-  [[] "XF86MonBrightnessUp" "downMonBrightness"]
+  [[] "XF86MonBrightnessUp" "upMonBrightness"]
+  [[] "XF86MonBrightnessDown" "downMonBrightness"]
 
-  [[mod] "F4" "upMonBrightness"]
-  [[mod] "F5" "downMonBrightness"]
+  [[mod] "F4" "downMonBrightness"]
+  [[mod] "F5" "upMonBrightness"]
 
   [[mod] "F2" "downKeebBrightness"]
   [[mod] "F3" "upKeebBrightness"]
