@@ -30,7 +30,7 @@ output "DP-3" {
 }
 
 output "eDP-1" {
-    scale 1.500000
+    scale 2.000000
     transform "normal"
     position x=0 y=0
     mode "3200x2000@120.000000"

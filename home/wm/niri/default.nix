@@ -14,6 +14,7 @@
     ../share/dunst.nix
     ../share/wall
     ../share/scripts
+    ../share/quickshell
   ];
 
   home.packages = with pkgs; [

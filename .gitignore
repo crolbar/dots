@@ -4,3 +4,4 @@
 *target*
 *~
 .pre-commit-config.yaml
+.qmlls.ini
