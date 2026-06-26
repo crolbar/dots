@@ -2,6 +2,7 @@
   programs = {
     steam = {
       enable = true;
+      gamescopeSession.enable = true;
 
       remotePlay.openFirewall = false;
 
@@ -9,6 +10,7 @@
       extraCompatPackages = [
         pkgs.proton-ge-bin.steamcompattool
         (pkgs.callPackage ../../../derivations/proton-em.nix {})
+        (pkgs.callPackage ../../../derivations/proton-ge-bin.nix {})
       ];
       package = pkgs.steam.override {
         extraEnv = {

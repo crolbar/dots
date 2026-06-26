@@ -15,6 +15,7 @@
       frametime = true;
 
       font_size = 24;
+      font_scale = 2;
       position = "top-right";
 
       engine_version = true;

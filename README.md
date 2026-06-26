@@ -25,6 +25,7 @@
 │   ├── KeyboardVisualizer.nix
 │   ├── openrgb-9.nix
 │   ├── proton-em.nix
+│   ├── proton-ge-bin.nix
 │   ├── rmpc.nix
 │   ├── shmooz.nix
 │   └── zohoMail.nix
@@ -485,7 +486,7 @@
 ├── shell.nix
 └── TODO.md
 
-102 directories, 365 files
+102 directories, 366 files
 
 ```
 
