@@ -133,6 +133,13 @@
           [[mod ctrl] "r" "refreshBinds"]
         ];
 
+      niri =
+        if has "isNiri" settings
+        then [
+          [[mod] "u" (exec "qs ipc call main toggle bar")]
+        ]
+        else [];
+
       # not used only by river
       river = helpers.mkOptionalBinds settings (import ./river.nix settings);
     };

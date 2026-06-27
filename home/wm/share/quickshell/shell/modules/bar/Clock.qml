@@ -4,7 +4,7 @@ import QtQuick
 import QtQuick.Layouts
 import qs.utils
 
-Rectangle {
+Widget {
     id: root
 
     readonly property int padding: 2
