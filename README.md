@@ -321,8 +321,18 @@
 │   │   │   │   └── program.nix
 │   │   │   ├── quickshell
 │   │   │   │   ├── shell
-│   │   │   │   │   ├── niri
-│   │   │   │   │   │   └── Bar.qml
+│   │   │   │   │   ├── modules
+│   │   │   │   │   │   └── bar
+│   │   │   │   │   │       ├── Bar.qml
+│   │   │   │   │   │       ├── BarWindow.qml
+│   │   │   │   │   │       └── Clock.qml
+│   │   │   │   │   ├── utils
+│   │   │   │   │   │   ├── CText.qml
+│   │   │   │   │   │   ├── MaterialIcon.qml
+│   │   │   │   │   │   ├── Theme.qml
+│   │   │   │   │   │   └── Time.qml
+│   │   │   │   │   ├── Anim.qml
+│   │   │   │   │   ├── Ipc.qml
 │   │   │   │   │   ├── shell.qml
 │   │   │   │   │   └── W.qml
 │   │   │   │   └── default.nix
@@ -486,7 +496,7 @@
 ├── shell.nix
 └── TODO.md
 
-102 directories, 366 files
+104 directories, 374 files
 
 ```
 

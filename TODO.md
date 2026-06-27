@@ -63,3 +63,12 @@
 -   [ ] xdg different image viewer for x11 ?
 
 -   [ ] rewrite dunst conf ? (this is never gonna happen)
+
+
+## Quickshell
+-[x] open/close certain windows with cmd
+
+-[ ] sidebar (workspaces, cpu, mem, audio, kb layout, tray)
+-[ ] dashboard (caelestia dots one, + brightness bar, power menu)
+-[ ] media dialog
+-[ ] gruvbox theme

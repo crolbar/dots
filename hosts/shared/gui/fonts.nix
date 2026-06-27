@@ -3,6 +3,7 @@
     packages = with pkgs; [
       hack-font #monospaced
       font-awesome #icon
+      material-symbols #more symbols
       roboto # sans serif
 
       noto-fonts-cjk-sans # cjk
