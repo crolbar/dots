@@ -20,13 +20,25 @@ MouseArea {
             modelData.secondaryActivate();
     }
 
-    // function getTrayIcon(id: string, icon: string): string {
-    //     // if (icon.includes("?path=")) {
-    //     //     const [name, path] = icon.split("?path=");
-    //     //     icon = Qt.resolvedUrl(`${path}/${name.slice(name.lastIndexOf("/") + 1)}`);
-    //     // }
-    //     return icon;
-    // }
+    function getTrayIcon(icon: string): string {
+        if (icon.includes("spotify") && icon.includes("symbolic")) {
+            return null;
+        }
+
+        if (icon.includes("?path=") && !icon.includes("steam")) {
+            const [name, path] = icon.split("?path=");
+            icon = Qt.resolvedUrl(`${path}/${name.slice(name.lastIndexOf("/") + 1)}`);
+        }
+        return icon;
+    }
+
+    property string source: {
+        const symb = root.getTrayIcon(root.modelData.icon + "-symbolic");
+        if (symb != "null") {
+            return symb;
+        }
+        return root.getTrayIcon(root.modelData.icon);
+    }
 
     IconImage {
         id: symbolic
@@ -34,7 +46,7 @@ MouseArea {
 
         visible: status === Image.Ready
         anchors.fill: parent
-        source: root.modelData.icon + "-symbolic"
+        source: root.source
     }
 
     Loader {
@@ -42,7 +54,7 @@ MouseArea {
         anchors.fill: parent
         asynchronous: true
         sourceComponent: IconImage {
-            source: root.modelData.icon
+            source: root.source
         }
     }
 }
