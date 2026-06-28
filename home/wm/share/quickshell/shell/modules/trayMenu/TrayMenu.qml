@@ -12,6 +12,7 @@ StackView {
     property Config config
     required property QsMenuHandle initialHandle
 
+    required property var cb
     property int currentWidth: currentItem.implicitWidth
     property int currentHeight: currentItem.implicitHeight
 
@@ -44,6 +45,19 @@ StackView {
         //     console.log("dest");
         //     destroy();
         // }
+
+        // telling when the whole menu is ready for render
+        // removes flicker of small window
+        Connections {
+            target: root.currentItem
+
+            function onImplicitHeightChanged() {
+                root.cb(true);
+            }
+        }
+        Component.onDestruction: () => {
+            root.cb(false);
+        }
 
         QsMenuOpener {
             id: menuOpener

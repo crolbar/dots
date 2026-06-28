@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 
 import Quickshell
 import Quickshell.Services.SystemTray
+import QtQuick.Shapes
 import QtQuick
 import qs.config
 import qs.utils
@@ -14,87 +15,152 @@ PanelWindow {
     exclusionMode: ExclusionMode.Ignore
 
     margins.bottom: Math.max(config.selected_tray_item_center_y - (root.implicitHeight / 2), 0)
-    margins.left: 30
+    margins.left: 31
 
     anchors.left: true
     anchors.bottom: true
 
     color: "transparent"
 
-    Rectangle {
-        anchors.fill: parent
-        anchors.topMargin: 1
-        color: "transparent"
+    Item {
+        id: content
+        property bool ready: false
+        visible: ready
 
-        Repeater {
-            id: repeater
-            model: SystemTray.items.values
+        Rectangle {
+            id: r
+            property int w: 20
+            property int h: 20
 
-            Loader {
-                id: loader
-                required property SystemTrayItem modelData
-                required property int index
+            implicitWidth: w
+            implicitHeight: h
 
-                active: index == root.config.selected_tray_item
+            color: "transparent"
 
-                sourceComponent: Rectangle {
-                    id: rect
-                    // radius: 10
+            anchors.bottomMargin: 20
+            z: 1
 
-                    bottomRightRadius: 10
-                    topRightRadius: 10
-
-                    anchors.topMargin: 1
-
-                    color: Theme.bg1
-                    implicitHeight: trayMenu.currentHeight
-                    implicitWidth: trayMenu.currentWidth
-                    onImplicitHeightChanged: {
-                        root.implicitHeight = implicitHeight + 2;
+            Shape {
+                ShapePath {
+                    startX: 0
+                    startY: 0
+                    strokeColor: Theme.bg1
+                    strokeWidth: 2
+                    fillColor: Theme.bg1
+                    PathArc {
+                        x: r.w
+                        y: r.h
+                        radiusX: r.w
+                        radiusY: r.h
+                        direction: PathArc.Counterclockwise
                     }
-                    onImplicitWidthChanged: {
-                        root.implicitWidth = implicitWidth + 1;
+                    PathLine {
+                        x: 0
+                        y: r.h
                     }
-
-                    MouseArea {
-                        anchors.fill: parent
-                        hoverEnabled: true
-
-                        onExited: () => {
-                            // moving to bar, don't handle unselecting of tray item, bar will
-                            if (mouseX < 2)
-                                return;
-                            if (root.config.selected_tray_item_noexit)
-                                return;
-                            root.config.selected_tray_item = -1;
-                        }
-
-                        TrayMenu {
-                            id: trayMenu
-                            config: root.config
-                            initialHandle: loader.modelData.menu // qmllint disable unresolved-type
-                        }
+                    PathLine {
+                        x: 0
+                        y: 0
                     }
+                }
 
-                    Rectangle {
-                        z: -1
+                ShapePath {
+                    startX: 0
+                    startY: 0
+                    strokeColor: Theme.yellow0
+                    PathArc {
 
-                        anchors {
-                            // fill: parent
-                            top: parent.top
-                            right: parent.right
-                            bottom: parent.bottom
-                            left: parent.left
+                        x: r.w
+                        y: r.h
+                        radiusX: r.w
+                        radiusY: r.h
+                        direction: PathArc.Counterclockwise
+                    }
+                    PathArc {
+                        x: 0
+                        y: 0
+                        radiusX: r.w
+                        radiusY: r.h
+                        // direction: PathArc.Counterclockwise
+                    }
+                }
+            }
+        }
 
-                            rightMargin: -1
-                            topMargin: -1
-                            bottomMargin: -1
-                        }
+        Rectangle {
+            anchors.fill: parent
+            anchors.topMargin: 21
+            color: "transparent"
+
+            Repeater {
+                id: repeater
+                model: SystemTray.items.values
+
+                Loader {
+                    id: loader
+                    required property SystemTrayItem modelData
+                    required property int index
+
+                    active: index == root.config.selected_tray_item
+
+                    sourceComponent: Rectangle {
+                        id: rect
 
                         bottomRightRadius: 10
                         topRightRadius: 10
 
-                        color: Theme.yellow0
+                        color: Theme.bg1
+                        implicitHeight: trayMenu.currentHeight
+                        implicitWidth: trayMenu.currentWidth
+                        onImplicitHeightChanged: {
+                            root.implicitHeight = implicitHeight + 2 + 20;
+                        }
+                        onImplicitWidthChanged: {
+                            root.implicitWidth = implicitWidth + 1;
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            hoverEnabled: true
+
+                            onExited: () => {
+                                // moving to bar, don't handle unselecting of tray item, bar will
+                                if (mouseX < 2)
+                                    return;
+                                if (root.config.selected_tray_item_noexit)
+                                    return;
+                                root.config.selected_tray_item = -1;
+                            }
+
+                            TrayMenu {
+                                id: trayMenu
+                                config: root.config
+                                initialHandle: loader.modelData.menu // qmllint disable unresolved-type
+                                cb: b => content.ready = b
+                            }
+                        }
+
+                        // border over the tray menu excluding the left one
+                        Rectangle {
+                            z: -1
+
+                            anchors {
+                                // fill: parent
+                                top: parent.top
+                                right: parent.right
+                                bottom: parent.bottom
+                                left: parent.left
+
+                                rightMargin: -1
+                                topMargin: -1
+                                bottomMargin: -1
+                            }
+
+                            bottomRightRadius: 10
+                            topRightRadius: 10
+
+                            color: Theme.yellow0
+                        }
                     }
                 }
             }
