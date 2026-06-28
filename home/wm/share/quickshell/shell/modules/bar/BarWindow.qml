@@ -10,7 +10,7 @@ PanelWindow {
     property string name: "bar"
     property Config config
 
-    color: Theme.bg0
+    color: (config.selected_tray_item == -1 ) ? Theme.bg0: Theme.bg1
 
     anchors {
         top: true

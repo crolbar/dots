@@ -21,75 +21,32 @@ PanelWindow {
     anchors.bottom: true
 
     color: "transparent"
+    onImplicitHeightChanged: () => {
+        console.log(implicitHeight, content.ready);
+    }
 
     Item {
         id: content
         property bool ready: false
         visible: ready
 
-        Rectangle {
-            id: r
-            property int w: 20
-            property int h: 20
+        anchors.fill: parent
+        property int arcHeight: 20
 
-            implicitWidth: w
-            implicitHeight: h
-
-            color: "transparent"
-
-            anchors.bottomMargin: 20
-            z: 1
-
-            Shape {
-                ShapePath {
-                    startX: 0
-                    startY: 0
-                    strokeColor: Theme.bg1
-                    strokeWidth: 2
-                    fillColor: Theme.bg1
-                    PathArc {
-                        x: r.w
-                        y: r.h
-                        radiusX: r.w
-                        radiusY: r.h
-                        direction: PathArc.Counterclockwise
-                    }
-                    PathLine {
-                        x: 0
-                        y: r.h
-                    }
-                    PathLine {
-                        x: 0
-                        y: 0
-                    }
-                }
-
-                ShapePath {
-                    startX: 0
-                    startY: 0
-                    strokeColor: Theme.yellow0
-                    PathArc {
-
-                        x: r.w
-                        y: r.h
-                        radiusX: r.w
-                        radiusY: r.h
-                        direction: PathArc.Counterclockwise
-                    }
-                    PathArc {
-                        x: 0
-                        y: 0
-                        radiusX: r.w
-                        radiusY: r.h
-                        // direction: PathArc.Counterclockwise
-                    }
-                }
-            }
+        Arc {
+            w: content.arcHeight
+            h: content.arcHeight
+            rev: false
+        }
+        Arc {
+            w: content.arcHeight
+            h: content.arcHeight
+            rev: true
         }
 
         Rectangle {
             anchors.fill: parent
-            anchors.topMargin: 21
+            anchors.topMargin: 1 + content.arcHeight
             color: "transparent"
 
             Repeater {
@@ -113,7 +70,7 @@ PanelWindow {
                         implicitHeight: trayMenu.currentHeight
                         implicitWidth: trayMenu.currentWidth
                         onImplicitHeightChanged: {
-                            root.implicitHeight = implicitHeight + 2 + 20;
+                            root.implicitHeight = implicitHeight + 2 + content.arcHeight * 2;
                         }
                         onImplicitWidthChanged: {
                             root.implicitWidth = implicitWidth + 1;
@@ -151,6 +108,7 @@ PanelWindow {
                                 bottom: parent.bottom
                                 left: parent.left
 
+                                leftMargin: 20
                                 rightMargin: -1
                                 topMargin: -1
                                 bottomMargin: -1
@@ -162,6 +120,68 @@ PanelWindow {
                             color: Theme.yellow0
                         }
                     }
+                }
+            }
+        }
+    }
+
+    component Arc: Rectangle {
+        id: r
+        required property int w
+        required property int h
+        property int sx: 0
+        property int sy: 0
+
+        required property bool rev
+        implicitWidth: w
+        implicitHeight: h
+
+        color: "transparent"
+
+        anchors.bottom: (rev) ? parent.bottom : undefined
+        z: 1
+
+        Shape {
+            ShapePath {
+                startX: (r.rev) ? r.w : r.sy
+                startY: r.sy
+                strokeColor: Theme.bg1
+                strokeWidth: 2
+                fillColor: Theme.bg1
+                PathArc {
+                    x: (r.rev) ? r.sx : r.w
+                    y: r.h
+                    radiusX: r.w
+                    radiusY: r.h
+                    direction: PathArc.Counterclockwise
+                }
+                PathLine {
+                    x: r.sx
+                    y: (r.rev) ? r.sy : r.h
+                }
+                PathLine {
+                    x: (r.rev) ? r.w : r.sx
+                    y: r.sy
+                }
+            }
+
+            ShapePath {
+                startX: (r.rev) ? r.w : r.sx
+                startY: r.sy
+                strokeColor: Theme.yellow0
+                PathArc {
+
+                    x: (r.rev) ? r.sx : r.w
+                    y: r.h
+                    radiusX: r.w
+                    radiusY: r.h
+                    direction: PathArc.Counterclockwise
+                }
+                PathArc {
+                    x: (r.rev) ? r.w : r.sx
+                    y: r.sy
+                    radiusX: r.w
+                    radiusY: r.h
                 }
             }
         }

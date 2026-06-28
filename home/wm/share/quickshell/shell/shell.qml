@@ -10,7 +10,7 @@ ShellRoot {
     id: root
     property var windows: ({})
     property Config config: Config {
-        selected_tray_item: 1
+        selected_tray_item: -1
     }
 
     // Variants {
