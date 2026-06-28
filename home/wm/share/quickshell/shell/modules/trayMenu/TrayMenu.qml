@@ -23,6 +23,16 @@ StackView {
         isSubItem: false
     }
 
+    pushEnter: NoAnim {}
+    pushExit: NoAnim {}
+    popEnter: NoAnim {}
+    popExit: NoAnim {}
+    component NoAnim: Transition {
+        NumberAnimation {
+            duration: 0
+        }
+    }
+
     Component {
         id: subItemComp
 
@@ -34,26 +44,13 @@ StackView {
         required property QsMenuHandle handle
         required property bool isSubItem
 
-        padding: 8
+        padding: 16
         spacing: 8
-
-        // property bool shown
-        // Component.onCompleted: shown = true
-        // StackView.onActivating: shown = true
-        // StackView.onDeactivating: shown = false
-        // StackView.onRemoved: {
-        //     console.log("dest");
-        //     destroy();
-        // }
 
         // telling when the whole menu is ready for render
         // removes flicker of small window
-        Connections {
-            target: root.currentItem
-
-            function onImplicitHeightChanged() {
-                root.cb(true);
-            }
+        Component.onCompleted: () => {
+            Func.delay(30, () => root && root.cb(true));
         }
         Component.onDestruction: () => {
             root.cb(false);
@@ -71,15 +68,15 @@ StackView {
                 id: item
                 required property QsMenuEntry modelData
 
-                implicitHeight: modelData.isSeparator ? 1 : children.implicitHeight
+                implicitHeight: modelData && modelData.isSeparator ? 1 : children.implicitHeight
                 implicitWidth: 230
                 radius: 10
 
-                color: modelData.isSeparator ? Theme.yellow0 : Theme.bg1
+                color: modelData && modelData.isSeparator ? Theme.yellow0 : Theme.bg1
 
                 Loader {
                     id: children
-                    active: !item.modelData.isSeparator
+                    active: item.modelData && !item.modelData.isSeparator
 
                     anchors.left: parent.left
                     anchors.right: parent.right
@@ -92,7 +89,7 @@ StackView {
                             anchors.margins: -2
 
                             anchors.fill: parent
-                            enabled: item.modelData.enabled
+                            enabled: item.modelData && item.modelData.enabled
                             hoverEnabled: true
                             cursorShape: !enabled ? undefined : Qt.PointingHandCursor
 
@@ -134,7 +131,7 @@ StackView {
 
                         Text {
                             id: label
-                            color: (item.modelData.enabled) ? Theme.fg1 : Theme.fg4
+                            color: item.modelData && (item.modelData.enabled) ? Theme.fg1 : Theme.fg4
                             anchors.left: icon.right
                             anchors.leftMargin: 4
 
@@ -187,7 +184,12 @@ StackView {
                             hoverEnabled: true
                             cursorShape: !enabled ? undefined : Qt.PointingHandCursor
 
-                            onClicked: root.pop()
+                            onClicked: {
+                                root.pop();
+                                Func.delay(100, function () {
+                                    root.config.selected_tray_item_noexit = false;
+                                });
+                            }
                             Rectangle {
                                 anchors.fill: parent
                                 opacity: (backMouseArea.containsMouse) ? 1 : 0

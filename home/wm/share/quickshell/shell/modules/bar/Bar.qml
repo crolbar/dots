@@ -41,9 +41,6 @@ Item {
     ColumnLayout {
         anchors.right: parent.right
         anchors.left: parent.left
-        Text {
-            text: "yo"
-        }
     }
 
     ColumnLayout {

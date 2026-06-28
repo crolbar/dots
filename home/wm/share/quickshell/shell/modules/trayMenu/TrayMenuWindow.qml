@@ -21,9 +21,6 @@ PanelWindow {
     anchors.bottom: true
 
     color: "transparent"
-    onImplicitHeightChanged: () => {
-        console.log(implicitHeight, content.ready);
-    }
 
     Item {
         id: content
@@ -69,6 +66,13 @@ PanelWindow {
                         color: Theme.bg1
                         implicitHeight: trayMenu.currentHeight
                         implicitWidth: trayMenu.currentWidth
+
+                        Behavior on implicitWidth {
+                            NumberAnimation {
+                                duration: 80
+                            }
+                        }
+
                         onImplicitHeightChanged: {
                             root.implicitHeight = implicitHeight + 2 + content.arcHeight * 2;
                         }
@@ -77,6 +81,7 @@ PanelWindow {
                         }
 
                         MouseArea {
+                            enabled: loader.index == root.config.selected_tray_item
                             anchors.fill: parent
                             hoverEnabled: true
 
@@ -109,9 +114,9 @@ PanelWindow {
                                 left: parent.left
 
                                 leftMargin: 20
-                                rightMargin: -1
-                                topMargin: -1
-                                bottomMargin: -1
+                                rightMargin: -1.5
+                                topMargin: -1.5
+                                bottomMargin: -1.5
                             }
 
                             bottomRightRadius: 10
@@ -169,6 +174,7 @@ PanelWindow {
                 startX: (r.rev) ? r.w : r.sx
                 startY: r.sy
                 strokeColor: Theme.yellow0
+                strokeWidth: 1.5
                 PathArc {
 
                     x: (r.rev) ? r.sx : r.w
