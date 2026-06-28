@@ -50,7 +50,12 @@ StackView {
         // telling when the whole menu is ready for render
         // removes flicker of small window
         Component.onCompleted: () => {
-            Func.delay(30, () => root && root.cb(true));
+            // Func.delay(30, () => root && root.cb(true));
+            const callback = root.cb;
+            Func.delay(30, () => {
+                if (callback)
+                    callback(true);
+            });
         }
         Component.onDestruction: () => {
             root.cb(false);

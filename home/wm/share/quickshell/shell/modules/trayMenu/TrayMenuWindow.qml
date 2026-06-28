@@ -98,7 +98,10 @@ PanelWindow {
                                 id: trayMenu
                                 config: root.config
                                 initialHandle: loader.modelData.menu // qmllint disable unresolved-type
-                                cb: b => content.ready = b
+                                cb: b => {
+                                    if (content)
+                                        content.ready = b;
+                                }
                             }
                         }
 
