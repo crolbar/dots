@@ -1,6 +1,7 @@
 pragma ComponentBehavior: Bound
 
 import Quickshell
+import Quickshell.Io
 import QtQuick
 import qs.utils
 import qs.modules.bar
@@ -32,8 +33,53 @@ PanelWindow {
         anchors.fill: parent
         hoverEnabled: true
 
+        property bool hWheelScrollDir: false
+
+        acceptedButtons: Qt.AllButtons
         onPositionChanged: me => bar.mouseEventHandle(me.y)
-        onWheel: w => bar.mouseWheelHandle(w)
+        onWheel: w => {
+            if (hWheelScrollDir) {
+                move_focus.dir = (w.angleDelta.y > 0) ? "left" : "right";
+                move_focus.running = true;
+                return;
+            }
+            bar.mouseWheelHandle(w);
+        }
+        onClicked: me => {
+            // console.log(me.button == Qt.ForwardButton)
+            if (me.button == Qt.RightButton) {
+                overlay_toggle.running = true;
+            } else if (me.button == Qt.LeftButton) {
+                max_toggle.running = true;
+            } else if (me.button == Qt.BackButton) {
+                hWheelScrollDir = true;
+            } else if (me.button == Qt.ForwardButton) {
+                hWheelScrollDir = false;
+            }
+        }
+
+        Process {
+            id: move_focus
+            property string dir
+            running: false
+            command: {
+                ["sh", "-c", `niri msg action focus-column-` + dir];
+            }
+        }
+        Process {
+            id: max_toggle
+            running: false
+            command: {
+                ["sh", "-c", `niri msg action maximize-window-to-edges`];
+            }
+        }
+        Process {
+            id: overlay_toggle
+            running: false
+            command: {
+                ["sh", "-c", `niri msg action toggle-overview`];
+            }
+        }
 
         Bar {
             id: bar
