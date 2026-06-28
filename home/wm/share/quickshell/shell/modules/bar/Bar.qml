@@ -39,8 +39,17 @@ Item {
     }
 
     ColumnLayout {
-        anchors.right: parent.right
-        anchors.left: parent.left
+        spacing: 2
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+        }
+
+        Workspaces {
+            name: "workspaces"
+        }
     }
 
     ColumnLayout {

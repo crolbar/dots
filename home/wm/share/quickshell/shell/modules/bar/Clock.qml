@@ -37,7 +37,7 @@ Widget {
                 })
             }
 
-            color: Theme.green0
+            color: Theme.green1
 
             TextMetrics {
                 id: hourMetrics
@@ -59,7 +59,7 @@ Widget {
             }
 
             text: root.minuteStr
-            color: Theme.green0
+            color: Theme.green1
 
             TextMetrics {
                 id: minMetrics
