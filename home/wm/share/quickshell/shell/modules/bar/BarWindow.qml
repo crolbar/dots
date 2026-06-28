@@ -24,13 +24,8 @@ PanelWindow {
         anchors.fill: parent
         hoverEnabled: true
 
-        onPositionChanged: me => {
-            bar.mouseEventHandle(me.y);
-        }
-
-        onWheel: e => {
-            console.log(e.angleDelta.y);
-        }
+        onPositionChanged: me => bar.mouseEventHandle(me.y)
+        onWheel: w => bar.mouseWheelHandle(w)
 
         Bar {
             id: bar

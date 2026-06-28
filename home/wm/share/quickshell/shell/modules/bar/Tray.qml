@@ -8,7 +8,7 @@ Widget {
     readonly property alias items: items
 
     readonly property int padding: 4
-    readonly property int spacing: 2
+    readonly property int spacing: 4
 
     property bool expanded
 

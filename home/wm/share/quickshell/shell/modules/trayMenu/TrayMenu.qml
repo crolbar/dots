@@ -1,50 +1,205 @@
 pragma ComponentBehavior: Bound
 
+import Quickshell.Widgets
+import QtQuick.Controls
 import Quickshell
 import QtQuick
-import QtQuick.Layouts
-import Quickshell.Services.SystemTray
 import qs.config
+import qs.utils
 
-PanelWindow {
+StackView {
     id: root
-
     property Config config
+    required property QsMenuHandle initialHandle
 
-    exclusionMode: ExclusionMode.Ignore
-    anchors.left: true
-    anchors.bottom: true
+    property int currentWidth: currentItem.implicitWidth
+    property int currentHeight: currentItem.implicitHeight
 
-    margins.left: 30
+    anchors.fill: parent
 
-    implicitHeight: layout.implicitHeight
-    implicitWidth: layout.implicitWidth
-
-    QsMenuOpener {
-        id: menuOpener
-
-        menu: SystemTray.items.values[root.config.selected_tray_item].menu
+    initialItem: SubItem {
+        handle: root.initialHandle
+        isSubItem: false
     }
 
-    MouseArea {
-        anchors.fill: parent
-        hoverEnabled: true
+    Component {
+        id: subItemComp
 
-        onExited: () => {
-            root.config.selected_tray_item = -1;
+        SubItem {}
+    }
+
+    component SubItem: Column {
+        id: subItem
+        required property QsMenuHandle handle
+        required property bool isSubItem
+
+        padding: 8
+        spacing: 8
+
+        // property bool shown
+        // Component.onCompleted: shown = true
+        // StackView.onActivating: shown = true
+        // StackView.onDeactivating: shown = false
+        // StackView.onRemoved: {
+        //     console.log("dest");
+        //     destroy();
+        // }
+
+        QsMenuOpener {
+            id: menuOpener
+            menu: subItem.handle
         }
 
-        ColumnLayout {
-            id: layout
+        Repeater {
+            model: menuOpener.children
 
-            Repeater {
-                model: menuOpener.children
+            Rectangle {
+                id: item
+                required property QsMenuEntry modelData
 
-                Text {
-                    id: item
-                    required property QsMenuEntry modelData
+                implicitHeight: modelData.isSeparator ? 1 : children.implicitHeight
+                implicitWidth: 230
+                radius: 10
 
-                    text: modelData.text
+                color: modelData.isSeparator ? Theme.yellow0 : Theme.bg1
+
+                Loader {
+                    id: children
+                    active: !item.modelData.isSeparator
+
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+
+                    sourceComponent: Item {
+                        implicitHeight: label.implicitHeight
+
+                        MouseArea {
+                            id: mouseArea
+                            anchors.margins: -2
+
+                            anchors.fill: parent
+                            enabled: item.modelData.enabled
+                            hoverEnabled: true
+                            cursorShape: !enabled ? undefined : Qt.PointingHandCursor
+
+                            onClicked: {
+                                const entry = item.modelData;
+                                if (entry.hasChildren) {
+                                    root.push(subItemComp.createObject(null, {
+                                        handle: entry,
+                                        isSubItem: true
+                                    }));
+                                    root.config.selected_tray_item_noexit = true;
+                                } else {
+                                    item.modelData.triggered();
+                                    root.config.selected_tray_item = -1;
+                                }
+                            }
+                            Rectangle {
+                                anchors.fill: parent
+                                opacity: (mouseArea.containsMouse) ? 1 : 0
+                                color: Theme.bg2
+
+                                radius: 10
+                            }
+                        }
+
+                        Loader {
+                            id: icon
+
+                            anchors.left: parent.left
+
+                            active: item.modelData && item.modelData.icon !== ""
+
+                            sourceComponent: IconImage {
+                                implicitSize: label.implicitHeight
+
+                                source: item.modelData.icon
+                            }
+                        }
+
+                        Text {
+                            id: label
+                            color: (item.modelData.enabled) ? Theme.fg1 : Theme.fg4
+                            anchors.left: icon.right
+                            anchors.leftMargin: 4
+
+                            text: item.modelData && item.modelData.text
+                        }
+
+                        Loader {
+                            id: expand
+
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.right: parent.right
+
+                            active: item.modelData && item.modelData.hasChildren
+
+                            sourceComponent: MaterialIcon {
+                                text: "chevron_right"
+                                color: item.modelData.enabled ? Theme.fg2 : Theme.bg2
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        Loader {
+            asynchronous: true
+            active: subItem.isSubItem
+
+            sourceComponent: Item {
+                implicitWidth: back.implicitWidth
+                implicitHeight: back.implicitHeight
+
+                Item {
+                    anchors.bottom: parent.bottom
+                    implicitWidth: back.implicitWidth
+                    implicitHeight: back.implicitHeight
+
+                    Rectangle {
+                        anchors.fill: parent
+                        anchors.margins: -2
+                        anchors.rightMargin: -8
+
+                        radius: 10
+                        color: Theme.bg2
+
+                        MouseArea {
+                            id: backMouseArea
+
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            cursorShape: !enabled ? undefined : Qt.PointingHandCursor
+
+                            onClicked: root.pop()
+                            Rectangle {
+                                anchors.fill: parent
+                                opacity: (backMouseArea.containsMouse) ? 1 : 0
+                                color: Theme.bg3
+
+                                radius: 10
+                            }
+                        }
+                    }
+
+                    Row {
+                        id: back
+
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        MaterialIcon {
+                            anchors.verticalCenter: parent.verticalCenter
+                            text: "chevron_left"
+                        }
+
+                        Text {
+                            anchors.verticalCenter: parent.verticalCenter
+                            text: "Back"
+                            color: Theme.fg0
+                        }
+                    }
                 }
             }
         }

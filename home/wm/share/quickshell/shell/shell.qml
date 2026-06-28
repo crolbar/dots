@@ -9,7 +9,9 @@ import qs.config
 ShellRoot {
     id: root
     property var windows: ({})
-    property Config config: Config {}
+    property Config config: Config {
+        selected_tray_item: 1
+    }
 
     // Variants {
     //     model: Quickshell.screens
@@ -31,7 +33,7 @@ ShellRoot {
     Loader {
         active: root.config.selected_tray_item != -1
 
-        sourceComponent: TrayMenu {
+        sourceComponent: TrayMenuWindow {
             config: root.config
         }
     }
