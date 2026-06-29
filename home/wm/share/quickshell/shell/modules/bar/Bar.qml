@@ -87,6 +87,16 @@ Item {
             bottom: parent.bottom
         }
 
+        Spacer {
+            name: "spacer"
+        }
+        SysInfo {
+            name: "sysInfo"
+        }
+        Spacer {
+            name: "spacer"
+        }
+
         Audio {
             name: "audio"
         }

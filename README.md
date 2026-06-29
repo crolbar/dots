@@ -334,6 +334,8 @@
 │   │   │   │   │   │   │   ├── Bar.qml
 │   │   │   │   │   │   │   ├── BarWindow.qml
 │   │   │   │   │   │   │   ├── Clock.qml
+│   │   │   │   │   │   │   ├── Spacer.qml
+│   │   │   │   │   │   │   ├── SysInfo.qml
 │   │   │   │   │   │   │   ├── TrayItem.qml
 │   │   │   │   │   │   │   ├── Tray.qml
 │   │   │   │   │   │   │   └── Workspaces.qml
@@ -510,7 +512,7 @@
 ├── shell.nix
 └── TODO.md
 
-107 directories, 385 files
+107 directories, 387 files
 
 ```
 
