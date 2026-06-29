@@ -7,7 +7,9 @@ import qs.utils
 
 Widget {
     id: root
-    property var niri: null
+    property var niri: ({
+            workspaces: []
+        })
     Process {
         id: proc
         command: ["sh", "-c", "~/.config/niri/eww/scripts/niri"]

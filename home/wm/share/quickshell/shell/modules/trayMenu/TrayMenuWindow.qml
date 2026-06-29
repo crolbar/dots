@@ -3,6 +3,7 @@ pragma ComponentBehavior: Bound
 import Quickshell
 import Quickshell.Services.SystemTray
 import QtQuick.Shapes
+import QtQuick.Effects
 import QtQuick
 import qs.config
 import qs.utils
@@ -21,6 +22,12 @@ PanelWindow {
     anchors.bottom: true
 
     color: "transparent"
+
+    MultiEffect {
+        anchors.fill: content
+        source: content
+        shadowEnabled: true
+    }
 
     Item {
         id: content
@@ -69,15 +76,20 @@ PanelWindow {
 
                         Behavior on implicitWidth {
                             NumberAnimation {
-                                duration: 80
+                                duration: 50
                             }
                         }
+                        // Behavior on implicitHeight {
+                        //     NumberAnimation {
+                        //         duration: 100
+                        //     }
+                        // }
 
                         onImplicitHeightChanged: {
                             root.implicitHeight = implicitHeight + 2 + content.arcHeight * 2;
                         }
                         onImplicitWidthChanged: {
-                            root.implicitWidth = implicitWidth + 1;
+                            root.implicitWidth = implicitWidth + 1 + 20; // border + shadow
                         }
 
                         MouseArea {
@@ -146,7 +158,8 @@ PanelWindow {
 
         color: "transparent"
 
-        anchors.bottom: (rev) ? parent.bottom : undefined
+        y: (rev) ? parent.height - h : 0
+
         z: 1
 
         Shape {
