@@ -11,7 +11,7 @@ Rectangle {
     property bool expanded: ma.containsMouse && !anim.running
 
     Layout.alignment: Qt.AlignCenter
-    color: (expanded || anim.running) ? Theme.bg2 : Theme.bg0
+    color: (expanded || anim.running) ? Theme.bg2 : "transparent"
 
     Layout.preferredWidth: implicitWidth + 8
     Layout.preferredHeight: ma.containsMouse ? implicitHeight * 4 : implicitHeight

@@ -46,7 +46,14 @@ AudioDevice {
         }
 
         font.pixelSize: 20
-        color: Theme.blue1
+
+        Behavior on color {
+            ColorAnimation {
+                duration: 250
+            }
+        }
+
+        color: (root.device.audio.muted) ? Theme.yellow0 : Theme.blue1
 
         text: root.icon
     }

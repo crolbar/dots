@@ -21,6 +21,13 @@ AudioDevice {
         }
 
         font.pixelSize: 20
+
+        Behavior on color {
+            ColorAnimation {
+                duration: 250
+            }
+        }
+
         color: (root.device.audio.muted) ? Theme.blue1 : Theme.red0
 
         text: (root.device.audio.muted) ? "mic_off" : "mic"
