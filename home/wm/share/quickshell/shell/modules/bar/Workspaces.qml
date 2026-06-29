@@ -7,21 +7,8 @@ import qs.utils
 
 Widget {
     id: root
-    property var niri: ({
-            workspaces: []
-        })
-    Process {
-        id: proc
-        command: ["sh", "-c", "~/.config/niri/eww/scripts/niri"]
 
-        running: true
-
-        stdout: SplitParser {
-            splitMarker: "\n"
-            onRead: d => root.niri = JSON.parse(d)
-        }
-    }
-
+    required property var workspaces
     implicitWidth: 32
     implicitHeight: layout.implicitHeight
     color: "transparent"
@@ -34,7 +21,7 @@ Widget {
         anchors.top: parent.top
 
         Repeater {
-            model: root.niri.workspaces
+            model: root.workspaces
 
             Rectangle {
                 id: item

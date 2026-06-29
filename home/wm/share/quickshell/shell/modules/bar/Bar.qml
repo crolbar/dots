@@ -30,6 +30,22 @@ Item {
             root.config.selected_tray_item = -1;
     }
 
+    property var niri: ({
+            workspaces: []
+        })
+
+    Process {
+        id: proc
+        command: ["sh", "-c", "~/.config/niri/eww/scripts/niri"]
+
+        running: true
+
+        stdout: SplitParser {
+            splitMarker: "\n"
+            onRead: d => root.niri = JSON.parse(d)
+        }
+    }
+
     Process {
         id: workspace_wheel
         property string dir
@@ -50,6 +66,7 @@ Item {
 
         Workspaces {
             name: "workspaces"
+            workspaces: root.niri.workspaces
         }
     }
 
@@ -87,12 +104,19 @@ Item {
             bottom: parent.bottom
         }
 
+        KeebLayout {
+            name: "keebLayout"
+            layout: root.niri.kb_layout
+        }
+
         Spacer {
             name: "spacer"
         }
+
         SysInfo {
             name: "sysInfo"
         }
+
         Spacer {
             name: "spacer"
         }
