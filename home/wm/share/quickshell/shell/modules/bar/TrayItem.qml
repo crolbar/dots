@@ -3,6 +3,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import Quickshell.Widgets
 import Quickshell.Services.SystemTray
+import qs.utils
 
 MouseArea {
     id: root
@@ -10,8 +11,10 @@ MouseArea {
     required property SystemTrayItem modelData
 
     acceptedButtons: Qt.LeftButton | Qt.RightButton
-    implicitWidth: 22
-    implicitHeight: 22
+    implicitWidth: 32
+    implicitHeight: 32
+
+    hoverEnabled: true
 
     onClicked: event => {
         if (event.button === Qt.LeftButton)
@@ -40,21 +43,20 @@ MouseArea {
         return root.getTrayIcon(root.modelData.icon);
     }
 
+    Rectangle {
+        anchors.fill: parent
+        visible: root.containsMouse
+
+        radius: 10
+        color: Theme.bg0
+    }
+
     IconImage {
         id: symbolic
         asynchronous: true
-
-        visible: status === Image.Ready
-        anchors.fill: parent
+        implicitHeight: 22
+        implicitWidth: 22
+        anchors.centerIn: parent
         source: root.source
-    }
-
-    Loader {
-        active: symbolic.status === Image.Error
-        anchors.fill: parent
-        asynchronous: true
-        sourceComponent: IconImage {
-            source: root.source
-        }
     }
 }
