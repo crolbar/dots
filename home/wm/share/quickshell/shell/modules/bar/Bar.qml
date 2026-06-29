@@ -2,6 +2,7 @@ import Quickshell.Io
 import QtQuick.Layouts
 import QtQuick
 import qs.utils
+import qs.modules.bar.audio
 import qs.config
 
 Item {
@@ -55,6 +56,7 @@ Item {
     ColumnLayout {
         id: widgets
 
+        // TODO: not needed, can use containsMouse on each tray item
         function checkPopout(y: real): void {
             const ch = childAt(16, y) as Widget;
             if (ch == null || ch.name != "tray") {
@@ -77,7 +79,7 @@ Item {
             }
         }
 
-        spacing: 2
+        spacing: 8
 
         anchors {
             left: parent.left
@@ -85,6 +87,9 @@ Item {
             bottom: parent.bottom
         }
 
+        Audio {
+            name: "audio"
+        }
         Tray {
             name: "tray"
         }

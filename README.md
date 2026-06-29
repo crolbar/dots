@@ -325,6 +325,12 @@
 │   │   │   │   │   │   └── Config.qml
 │   │   │   │   │   ├── modules
 │   │   │   │   │   │   ├── bar
+│   │   │   │   │   │   │   ├── audio
+│   │   │   │   │   │   │   │   ├── AudioDevice.qml
+│   │   │   │   │   │   │   │   ├── Audio.qml
+│   │   │   │   │   │   │   │   ├── IconMouseArea.qml
+│   │   │   │   │   │   │   │   ├── Sink.qml
+│   │   │   │   │   │   │   │   └── Source.qml
 │   │   │   │   │   │   │   ├── Bar.qml
 │   │   │   │   │   │   │   ├── BarWindow.qml
 │   │   │   │   │   │   │   ├── Clock.qml
@@ -504,7 +510,7 @@
 ├── shell.nix
 └── TODO.md
 
-106 directories, 380 files
+107 directories, 385 files
 
 ```
 
