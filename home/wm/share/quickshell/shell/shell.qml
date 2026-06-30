@@ -5,6 +5,7 @@ import QtQuick
 import qs.modules.bar
 import qs.modules.trayMenu
 import qs.config
+import qs.utils
 
 ShellRoot {
     id: root
@@ -12,12 +13,6 @@ ShellRoot {
     property Config config: Config {
         selected_tray_item: -1
     }
-
-    // Variants {
-    //     model: Quickshell.screens
-
-    //     Scope {
-    //         property var modelData
 
     BarWindow {
         id: bar
@@ -36,6 +31,17 @@ ShellRoot {
         sourceComponent: TrayMenuWindow {
             config: root.config
         }
+    }
+
+    PopoutWindow {
+        w: 400
+        h: 100
+        side: PopoutWindow.Top
+        shadowEnabled: true
+
+        // anchors.left: true
+        // margins.left: 700
+
     }
 
     Ipc {}
