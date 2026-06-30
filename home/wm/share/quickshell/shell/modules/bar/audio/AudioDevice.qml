@@ -54,8 +54,16 @@ Rectangle {
         }
 
         MouseArea {
+            property double lastPressY: 0.0
             anchors.fill: parent
-            onClicked: me => root.device.audio.volume = (height - me.y) / height
+            onPressed: me => {
+                lastPressY = me.y;
+                root.device.audio.volume = (height - me.y) / height;
+            }
+            onReleased: me => {
+                if (me.y != lastPressY)
+                    root.device.audio.volume = (height - me.y) / height;
+            }
             onWheel: me => root.device.audio.volume = ((Math.floor(root.device.audio.volume * 100) + ((me.angleDelta.y) > 0 ? 5 : -5))) / 100
             cursorShape: Qt.PointingHandCursor
         }

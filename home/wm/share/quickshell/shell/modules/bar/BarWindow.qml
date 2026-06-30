@@ -108,6 +108,13 @@ PanelWindow {
 
                 margins.left: root.implicitWidth
 
+                visible: {
+                    if (root.config.selected_tray_item == -1 && anim.running) {
+                        return true;
+                    }
+                    return root.config.selected_tray_item != -1;
+                }
+
                 MultiEffect {
                     anchors.fill: shadowRect
                     source: shadowRect
@@ -125,6 +132,7 @@ PanelWindow {
                     height: visible ? root.height : 0
                     Behavior on height {
                         NumberAnimation {
+                            id: anim
                             duration: 300
                             easing.type: Easing.BezierSpline
                             easing.bezierCurve: [0.1, 0.12, 0.23, 0.29, 0.41, 0.38, 0.59, 0.48, 0.58, 0.79, 1.0, 1.0]

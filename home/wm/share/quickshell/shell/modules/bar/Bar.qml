@@ -31,7 +31,8 @@ Item {
     }
 
     property var niri: ({
-            workspaces: []
+            workspaces: [],
+            kb_layout: ""
         })
 
     Process {
