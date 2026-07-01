@@ -1,18 +1,25 @@
+pragma ComponentBehavior: Bound
+
 import qs.utils
 import QtQuick.Layouts
 import QtQuick
+import Quickshell.Services.Pipewire
 
 Widget {
     implicitWidth: 32
-    implicitHeight: layout.implicitHeight
+    implicitHeight: loader.implicitHeight
 
     color: "transparent"
 
-    ColumnLayout {
-        id: layout
-        anchors.horizontalCenter: parent.horizontalCenter
+    Loader {
+        id: loader
+        active: Pipewire.ready
+        sourceComponent: ColumnLayout {
+            id: layout
+            anchors.horizontalCenter: parent.horizontalCenter
 
-        Source {}
-        Sink {}
+            Source {}
+            Sink {}
+        }
     }
 }

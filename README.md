@@ -346,6 +346,7 @@
 │   │   │   │   │   ├── utils
 │   │   │   │   │   │   ├── Arc.qml
 │   │   │   │   │   │   ├── CText.qml
+│   │   │   │   │   │   ├── F.qml
 │   │   │   │   │   │   ├── Func.qml
 │   │   │   │   │   │   ├── MaterialIcon.qml
 │   │   │   │   │   │   ├── PopoutWindow.qml
@@ -515,7 +516,7 @@
 ├── shell.nix
 └── TODO.md
 
-107 directories, 390 files
+107 directories, 391 files
 
 ```
 
