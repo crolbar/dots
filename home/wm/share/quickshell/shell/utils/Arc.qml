@@ -41,6 +41,8 @@ Rectangle {
     color: "transparent"
 
     Shape {
+        preferredRendererType: Shape.CurveRenderer
+
         // path is from:
         // angle point
         // start point
