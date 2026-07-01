@@ -21,6 +21,7 @@ Rectangle {
 
     required property color arcColor
     required property color fillColor
+    property color fillColor2: "transparent"
 
     implicitHeight: h
     implicitWidth: w
@@ -63,6 +64,28 @@ Rectangle {
             PathLine {
                 x: a.ax
                 y: a.ay
+            }
+        }
+
+        // start - end
+        // other point
+        // start
+        ShapePath {
+            startX: a.sx
+            startY: a.sy
+
+            strokeColor: "transparent"
+            strokeWidth: 1
+            fillColor: a.fillColor2
+
+            ArcPathing {}
+            PathLine {
+                x: a.sx
+                y: a.ey
+            }
+            PathLine {
+                x: a.sx
+                y: a.sy
             }
         }
 
