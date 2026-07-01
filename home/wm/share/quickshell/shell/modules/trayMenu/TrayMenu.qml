@@ -52,7 +52,7 @@ StackView {
         Component.onCompleted: () => {
             // Func.delay(30, () => root && root.cb(true));
             const callback = root.cb;
-            Func.delay(30, () => {
+            F.delay(30, () => {
                 if (callback)
                     callback(true);
             });
@@ -191,7 +191,7 @@ StackView {
 
                             onClicked: {
                                 root.pop();
-                                Func.delay(100, function () {
+                                F.delay(100, function () {
                                     root.config.selected_tray_item_noexit = false;
                                 });
                             }

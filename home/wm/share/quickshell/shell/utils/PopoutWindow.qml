@@ -6,14 +6,6 @@ import QtQuick.Effects
 import qs.utils
 import QtQuick.Shapes
 
-/* TODO:
-
-- [x] shadow on arcs
-- [x] fix arcs breaking (make border out of shape that connect to arc?)
-arcs working for all sides
-
-*/
-
 // qmllint disable uncreatable-type
 PanelWindow {
     id: root
@@ -37,72 +29,156 @@ PanelWindow {
     property string shadowColor: "black"
     property int shadowSpace: 60
 
-    property int arcHeight: 40
-    property int arcWidth: 40
+    property int arcHeight: 30
+    property int arcWidth: 30
 
     property color bgColor: "#232323"
+
+    property real animationDuration: 250
 
     // visible: expanded
 
     implicitHeight: {
-        const ss = (shadowEnabled) ? ((side == PopoutWindow.Side.Top || side == PopoutWindow.Side.Bottom) ? shadowSpace / 2 : shadowSpace) : 0;
-        // TODO: add arcHeight
-        return h + ss;
+        const ss = (shadowEnabled) ? ((F.isVert(side)) ? shadowSpace / 2 : shadowSpace) : 0;
+        const as = (F.isHori(side)) ? arcHeight * 2 : 0;
+        return h + as + ss;
     }
     implicitWidth: {
-        const ss = (shadowEnabled) ? ((side == PopoutWindow.Side.Left || side == PopoutWindow.Side.Right) ? shadowSpace / 2 : shadowSpace) : 0;
-        return w + (arcWidth * 4) + ss;
+        const ss = (shadowEnabled) ? ((F.isHori(side)) ? shadowSpace / 2 : shadowSpace) : 0;
+        const as = (F.isVert(side)) ? arcWidth * 4 : 0;
+        return w + as + ss;
     }
 
     exclusionMode: ExclusionMode.Ignore
 
-    // color: "black"
     color: "transparent"
 
     anchors {
-        top: (side == PopoutWindow.Side.Top || anchors.top) ? true : false
-        right: (side == PopoutWindow.Side.Right || anchors.right) ? true : false
-        bottom: (side == PopoutWindow.Side.Bottom || anchors.bottom) ? true : false
-        left: (side == PopoutWindow.Side.Left || anchors.left) ? true : false
+        top: (F.isTop(side) || anchors.top) ? true : false
+        right: (F.isRight(side) || anchors.right) ? true : false
+        bottom: (F.isBottom(side) || anchors.bottom) ? true : false
+        left: (F.isLeft(side) || anchors.left) ? true : false
     }
 
     property int arcActualHeight: (contents.height < root.arcHeight * 2) ? contents.height / 2 : root.arcHeight
-    property int arcActualWidth: (contents.width > root.arcWidth) ? root.arcWidth : contents.width
+    property int arcActualWidth: (contents.width > root.arcWidth * 2) ? root.arcWidth : contents.width / 2
     property int arcMargin: shadowSpace / 2
 
     // border
     Arc {
         id: arc1
-        anchors.right: arc3.left
-        anchors.top: contents.top
+        anchors.right: {
+            if (F.isVert(root.side)) {
+                return arc3.left;
+            } else if (F.isRight(root.side)) {
+                return contents.right;
+            }
+            return undefined;
+        }
+        anchors.top: F.isTop(root.side) ? contents.top : undefined
+        anchors.bottom: {
+            if (F.isBottom(root.side)) {
+                return contents.bottom;
+            } else if (F.isLeft(root.side)) {
+                return arc3.top;
+            }
+            return undefined;
+        }
+
         h: root.arcActualHeight
         w: root.arcActualWidth
+        z: 1
 
-        side: Arc.Side.TopRight
+        side: {
+            switch (root.side) {
+            case PopoutWindow.Side.Top:
+                return Arc.Side.TopRight;
+            case PopoutWindow.Side.Bottom:
+                return Arc.Side.BottomRight;
+            case PopoutWindow.Side.Left:
+                return Arc.Side.BottomLeft;
+            case PopoutWindow.Side.Right:
+                return Arc.Side.BottomRight;
+            }
+        }
 
         arcColor: Theme.orange0
         fillColor: root.bgColor
     }
     Arc {
         id: arc2
-        anchors.left: arc4.right
-        anchors.top: contents.top
+
+        anchors.left: F.isVert(root.side) ? arc4.right : undefined
+        anchors.right: F.isRight(root.side) ? contents.right : undefined
+        anchors.top: {
+            if (F.isTop(root.side)) {
+                return contents.top;
+            } else if (F.isLeft(root.side)) {
+                return arc4.bottom;
+            } else if (F.isRight(root.side)) {
+                return arc4.bottom;
+            }
+            return undefined;
+        }
+        anchors.bottom: F.isBottom(root.side) ? contents.bottom : undefined
+
         h: root.arcActualHeight
         w: root.arcActualWidth
+        z: 1
 
-        side: Arc.Side.TopLeft
+        side: {
+            switch (root.side) {
+            case PopoutWindow.Side.Top:
+                return Arc.Side.TopLeft;
+            case PopoutWindow.Side.Bottom:
+                return Arc.Side.BottomLeft;
+            case PopoutWindow.Side.Left:
+                return Arc.Side.TopLeft;
+            case PopoutWindow.Side.Right:
+                return Arc.Side.TopRight;
+            }
+        }
 
         arcColor: Theme.orange0
         fillColor: root.bgColor
     }
     Arc {
         id: arc3
-        anchors.right: contents.left
-        anchors.bottom: contents.bottom
+
+        anchors.right: {
+            if (F.isVert(root.side)) {
+                return contents.left;
+            } else if (F.isLeft(root.side)) {
+                return contents.right;
+            }
+            return undefined;
+        }
+        anchors.left: (F.isRight(root.side)) ? contents.left : undefined
+        anchors.bottom: {
+            if (F.isTop(root.side)) {
+                return contents.bottom;
+            } else if (F.isHori(root.side)) {
+                return contents.top;
+            }
+            return undefined;
+        }
+        anchors.top: F.isBottom(root.side) ? contents.top : undefined
+
         h: root.arcActualHeight
         w: root.arcActualWidth
 
-        side: Arc.Side.BottomLeft
+        side: {
+            switch (root.side) {
+            case PopoutWindow.Side.Top:
+                return Arc.Side.BottomLeft;
+            case PopoutWindow.Side.Bottom:
+                return Arc.Side.TopLeft;
+            case PopoutWindow.Side.Left:
+                return Arc.Side.TopRight;
+            case PopoutWindow.Side.Right:
+                return Arc.Side.TopLeft;
+            }
+        }
 
         arcColor: Theme.orange0
         fillColor: "transparent"
@@ -110,67 +186,204 @@ PanelWindow {
     }
     Arc {
         id: arc4
-        anchors.left: contents.right
-        anchors.bottom: contents.bottom
+
+        anchors.left: {
+            if (F.isVert(root.side)) {
+                return contents.right;
+            } else if (F.isRight(root.side)) {
+                return contents.left;
+            }
+            return undefined;
+        }
+        anchors.right: (F.isLeft(root.side)) ? contents.right : undefined
+        anchors.bottom: (F.isTop(root.side)) ? contents.bottom : undefined
+        anchors.top: {
+            if (F.isBottom(root.side)) {
+                return contents.top;
+            } else if (F.isHori(root.side)) {
+                return contents.bottom;
+            }
+            return undefined;
+        }
+
         h: root.arcActualHeight
         w: root.arcActualWidth
 
-        side: Arc.Side.BottomRight
+        side: {
+            switch (root.side) {
+            case PopoutWindow.Side.Top:
+                return Arc.Side.BottomRight;
+            case PopoutWindow.Side.Bottom:
+                return Arc.Side.TopRight;
+            case PopoutWindow.Side.Left:
+                return Arc.Side.BottomRight;
+            case PopoutWindow.Side.Right:
+                return Arc.Side.BottomLeft;
+            }
+        }
 
         arcColor: Theme.orange0
         fillColor: "transparent"
         fillColor2: root.bgColor
     }
     LineLink {
-        z: 1
-        sx: arc3.x
-        sy: {
-            // small fixup to cover the ends of arcs
-            const fixup = ((root.arcHeight * 2 < contents.height) ? 4 : 0);
-            return (arc1.y + arc1.height) - fixup;
+        sx: {
+            if (F.isVert(root.side)) {
+                return arc3.x;
+            } else if (F.isLeft(root.side)) {
+                return arc1.x + arc1.width;
+            } else if (F.isRight(root.side)) {
+                return arc1.x;
+            }
         }
-        ex: arc3.x
-        ey: arc3.y
+        sy: {
+            if (F.isTop(root.side)) {
+                return arc1.y + arc1.height;
+            } else if (F.isBottom(root.side)) {
+                return arc1.y;
+            } else if (F.isHori(root.side)) {
+                return arc3.y;
+            }
+        }
+        ex: (F.isRight(root.side)) ? arc3.x + arc3.width : arc3.x
+        ey: {
+            if (F.isTop(root.side)) {
+                return arc3.y;
+            } else if (F.isBottom(root.side)) {
+                return arc3.y + arc3.height;
+            } else if (F.isHori(root.side)) {
+                return arc3.y;
+            }
+        }
         lineColor: Theme.orange0
+        z: 1
     }
     LineLink {
-        z: 1
-        sx: arc4.x + arc4.width
-        sy: {
-            const fixup = ((root.arcHeight * 2 < contents.height) ? 4 : 0);
-            return (arc2.y + arc2.height) - fixup;
+        sx: (F.isLeft(root.side)) ? arc2.x + arc2.width : arc2.x
+        sy: (F.isTop(root.side)) ? arc2.y + arc2.height : arc2.y
+        ex: {
+            if (F.isVert(root.side)) {
+                return arc2.x;
+            } else if (F.isLeft(root.side)) {
+                return arc4.x;
+            } else if (F.isRight(root.side)) {
+                return arc4.x + arc4.width;
+            }
         }
-        ex: arc4.x + arc4.width
-        ey: arc4.y
+        ey: {
+            if (F.isTop(root.side)) {
+                return arc4.y;
+            } else if (F.isBottom(root.side)) {
+                return arc4.y + arc4.height;
+            } else if (F.isHori(root.side)) {
+                return arc2.y;
+            }
+        }
         lineColor: Theme.orange0
+        z: 1
     }
     LineLink {
-        visible: contents.height > 0
-        z: 1
-        sx: arc3.x + arc3.width
-        sy: arc3.y + arc3.height
-        ex: arc4.x
-        ey: arc4.y + arc4.height
+        visible: contents.height > 0 && contents.width > 0
+        sx: (F.isRight(root.side)) ? arc3.x : arc3.x + arc3.width
+        sy: {
+            if (F.isTop(root.side)) {
+                return arc3.y + arc3.height;
+            } else if (F.isBottom(root.side)) {
+                return arc3.y;
+            } else if (F.isLeft(root.side)) {
+                return arc3.y + arc3.height;
+            } else if (F.isRight(root.side)) {
+                return arc3.y + arc3.height;
+            }
+        }
+        ex: (F.isLeft(root.side)) ? arc4.x + arc4.width : arc4.x
+        ey: (F.isTop(root.side)) ? arc4.y + arc4.height : arc4.y
+
         lineColor: Theme.orange0
+        z: 1
     }
     Rectangle {
         id: fillerRect1
         color: root.bgColor
         anchors {
-            left: arc1.right
-            right: contents.left
-            top: contents.top
-            bottom: arc3.top
+            left: {
+                if (F.isLeft(root.side)) {
+                    return arc1.left;
+                } else if (F.isRight(root.side)) {
+                    return arc3.right;
+                } else if (F.isVert(root.side)) {
+                    return arc1.right;
+                }
+            }
+            right: {
+                if (F.isLeft(root.side)) {
+                    return arc3.left;
+                } else if (F.isRight(root.side)) {
+                    return arc1.right;
+                } else if (F.isVert(root.side)) {
+                    return arc3.right;
+                }
+            }
+            top: {
+                if (F.isTop(root.side)) {
+                    return contents.top;
+                } else if (F.isBottom(root.side)) {
+                    return arc3.bottom;
+                } else if (F.isHori(root.side)) {
+                    return arc1.bottom;
+                }
+            }
+            bottom: {
+                if (F.isTop(root.side)) {
+                    return arc3.top;
+                } else if (F.isBottom(root.side)) {
+                    return contents.bottom;
+                } else if (F.isHori(root.side)) {
+                    return arc3.bottom;
+                }
+            }
         }
     }
     Rectangle {
         id: fillerRect2
         color: root.bgColor
         anchors {
-            right: arc2.left
-            left: contents.right
-            top: contents.top
-            bottom: arc4.top
+            left: {
+                if (F.isLeft(root.side)) {
+                    return arc2.left;
+                } else if (F.isRight(root.side)) {
+                    return arc3.right;
+                } else if (F.isVert(root.side)) {
+                    return arc4.left;
+                }
+            }
+            right: {
+                if (F.isLeft(root.side)) {
+                    return arc4.left;
+                } else if (F.isRight(root.side)) {
+                    return arc2.right;
+                } else if (F.isVert(root.side)) {
+                    return arc2.left;
+                }
+            }
+            top: {
+                if (F.isTop(root.side)) {
+                    return arc2.top;
+                } else if (F.isBottom(root.side)) {
+                    return arc4.bottom;
+                } else if (F.isHori(root.side)) {
+                    return arc4.top;
+                }
+            }
+            bottom: {
+                if (F.isTop(root.side)) {
+                    return arc4.top;
+                } else if (F.isBottom(root.side)) {
+                    return arc2.bottom;
+                } else if (F.isHori(root.side)) {
+                    return arc2.top;
+                }
+            }
         }
     }
 
@@ -216,16 +429,19 @@ PanelWindow {
 
     Rectangle {
         id: contents
-        visible: height > 0
+        visible: height > 0 && width > 0
         implicitWidth: root.w
         implicitHeight: root.h
 
-        anchors.horizontalCenter: parent.horizontalCenter
-        color: root.bgColor
-
-        onHeightChanged: {
-            console.log(height, width);
+        anchors {
+            horizontalCenter: (F.isVert(root.side)) ? parent.horizontalCenter : undefined
+            verticalCenter: (F.isHori(root.side)) ? parent.verticalCenter : undefined
+            bottom: F.isBottom(root.side) ? parent.bottom : undefined
+            // qmllint disable Quick.anchor-combinations
+            left: F.isLeft(root.side) ? parent.left : undefined
+            right: F.isRight(root.side) ? parent.right : undefined
         }
+        color: root.bgColor
 
         Loader {
             anchors.fill: parent
@@ -245,12 +461,12 @@ PanelWindow {
 
         Behavior on height {
             NumberAnimation {
-                duration: 1000
+                duration: root.animationDuration
             }
         }
         Behavior on width {
             NumberAnimation {
-                duration: 2000
+                duration: root.animationDuration
             }
         }
     }
