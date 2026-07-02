@@ -11,4 +11,6 @@ QtObject {
     property int selected_tray_item_center_y: 0
     property bool selected_tray_item_noexit: false
     property bool bar_popout_border_visible: false
+    property bool bar_popout_audio_ctl_open: false
+    property int bar_popout_audio_ctl_center_y: 0
 }

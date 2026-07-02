@@ -28,33 +28,11 @@ AudioDevice {
         "volume_up";
     }
 
-    implicitHeight: icon.height
-    implicitWidth: icon.width
-
     PwObjectTracker {
         objects: [Pipewire.defaultAudioSink]
     }
     device: Pipewire.defaultAudioSink
 
-    MaterialIcon {
-        id: icon
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-
-        IconMouseArea {
-            device: root.device
-        }
-
-        font.pixelSize: 20
-
-        Behavior on color {
-            ColorAnimation {
-                duration: 250
-            }
-        }
-
-        color: (root.device.audio.muted) ? Theme.yellow0 : Theme.blue1
-
-        text: root.icon
-    }
+    iconText: icon
+    iconColor: (root.device.audio.muted) ? Theme.yellow0 : Theme.blue1
 }

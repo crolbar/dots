@@ -19,8 +19,7 @@ Widget {
     implicitWidth: 32
     implicitHeight: nonAnimHeight
 
-    radius: 8
-    color: Theme.bg1
+    color: "transparent"
 
     Column {
         id: layout

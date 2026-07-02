@@ -6,6 +6,8 @@ import Quickshell.Services.Pipewire
 Rectangle {
     id: root
     required property PwNode device
+    required property string iconText
+    required property color iconColor
     property int level: (expanded) ? root.device.audio.volume * 100 : 0
 
     property bool expanded: ma.containsMouse && !anim.running
@@ -13,7 +15,8 @@ Rectangle {
     Layout.alignment: Qt.AlignCenter
     color: (expanded || anim.running) ? Theme.bg2 : "transparent"
 
-    Layout.preferredWidth: implicitWidth + 8
+    implicitHeight: iconItem.height
+    Layout.preferredWidth: 32
     Layout.preferredHeight: ma.containsMouse ? implicitHeight * 4 : implicitHeight
     Layout.minimumHeight: Layout.preferredHeight
     Layout.maximumHeight: Layout.preferredHeight
@@ -103,5 +106,33 @@ Rectangle {
         font.bold: true
         color: Theme.blue0
         text: root.level
+    }
+
+    Item {
+        id: iconItem
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        implicitHeight: icon.height + 12
+
+        IconMouseArea {
+            device: root.device
+        }
+        MaterialIcon {
+            id: icon
+            anchors.centerIn: parent
+
+            font.pixelSize: 20
+
+            Behavior on color {
+                ColorAnimation {
+                    duration: 250
+                }
+            }
+
+            color: root.iconColor
+
+            text: root.iconText
+        }
     }
 }

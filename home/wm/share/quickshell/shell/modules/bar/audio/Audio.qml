@@ -6,6 +6,7 @@ import QtQuick
 import Quickshell.Services.Pipewire
 
 Widget {
+    id: root
     implicitWidth: 32
     implicitHeight: loader.implicitHeight
 
@@ -17,6 +18,8 @@ Widget {
         sourceComponent: ColumnLayout {
             id: layout
             anchors.horizontalCenter: parent.horizontalCenter
+            width: root.implicitWidth
+            spacing: 0
 
             Source {}
             Sink {}

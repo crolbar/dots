@@ -4,7 +4,8 @@ import Quickshell
 import Quickshell.Io
 import QtQuick
 import qs.modules.bar
-import qs.modules.trayMenu
+import qs.modules.bar.trayMenu
+import qs.modules.bar.audio
 import qs.config
 
 ShellRoot {
@@ -49,6 +50,10 @@ ShellRoot {
 
     TrayMenuWindow {
         id: tmw
+        config: root.config
+    }
+
+    AudioCtlWindow {
         config: root.config
     }
 
