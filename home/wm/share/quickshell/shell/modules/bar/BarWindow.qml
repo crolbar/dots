@@ -108,12 +108,7 @@ PanelWindow {
 
                 margins.left: root.implicitWidth
 
-                visible: {
-                    if (root.config.selected_tray_item == -1 && anim.running) {
-                        return true;
-                    }
-                    return root.config.selected_tray_item != -1;
-                }
+                visible: root.config.bar_popout_border_visible
 
                 MultiEffect {
                     anchors.fill: shadowRect

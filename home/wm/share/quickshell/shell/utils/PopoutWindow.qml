@@ -10,8 +10,8 @@ import QtQuick.Shapes
 PanelWindow {
     id: root
     // fully expanded dimentions
-    required property int w
-    required property int h
+    property int w: loader.width
+    property int h: loader.height
     // side from which the window should popout
     enum Side {
         Top,
@@ -454,8 +454,9 @@ PanelWindow {
     Rectangle {
         id: contents
         visible: height > 0 && width > 0
-        implicitWidth: root.w
-        implicitHeight: root.h
+        implicitWidth: loader.width
+        implicitHeight: loader.height
+        clip: true
 
         anchors {
             horizontalCenter: (F.isVert(root.side)) ? parent.horizontalCenter : undefined
@@ -469,8 +470,6 @@ PanelWindow {
 
         Loader {
             id: loader
-            height: root.h
-            width: root.w
 
             y: {
                 if (F.isTop(root.side)) {

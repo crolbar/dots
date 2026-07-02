@@ -5,43 +5,33 @@ import QtQuick
 import qs.modules.bar
 import qs.modules.trayMenu
 import qs.config
-import qs.utils
 
 ShellRoot {
     id: root
     property var windows: ({})
     property Config config: Config {
         selected_tray_item: -1
-    }
-
-    BarWindow {
-        id: bar
-        config: root.config
-        Component.onCompleted: {
-            root.windows[this.name] = this;
-        }
-        onClosed: {
-            visible = false;
-        }
+        last_selected_tray_item: 0
+        bar_popout_border_visible: false
     }
 
     Loader {
-        active: root.config.selected_tray_item != -1
-
-        sourceComponent: TrayMenuWindow {
+        // TODO: add when !fullscreen
+        active: true
+        property string name: "bar"
+        Component.onCompleted: {
+            root.windows[this.name] = this;
+        }
+        property string ipcToggle: "active"
+        sourceComponent: BarWindow {
+            id: bar
             config: root.config
         }
     }
 
-    PopoutWindow {
-        w: 400
-        h: 100
-        side: PopoutWindow.Top
-        shadowEnabled: true
-
-        // anchors.left: true
-        // margins.left: 700
-
+    TrayMenuWindow {
+        id: tmw
+        config: root.config
     }
 
     Ipc {}

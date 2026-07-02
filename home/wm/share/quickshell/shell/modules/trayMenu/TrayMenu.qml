@@ -1,5 +1,6 @@
 pragma ComponentBehavior: Bound
 
+import QtQuick.Layouts
 import Quickshell.Widgets
 import QtQuick.Controls
 import Quickshell
@@ -11,12 +12,6 @@ StackView {
     id: root
     property Config config
     required property QsMenuHandle initialHandle
-
-    required property var cb
-    property int currentWidth: currentItem.implicitWidth
-    property int currentHeight: currentItem.implicitHeight
-
-    anchors.fill: parent
 
     initialItem: SubItem {
         handle: root.initialHandle
@@ -39,27 +34,18 @@ StackView {
         SubItem {}
     }
 
+    onInitialHandleChanged: {
+        console.log(depth);
+        if (depth > 1)
+            pop();
+    }
+
     component SubItem: Column {
         id: subItem
         required property QsMenuHandle handle
         required property bool isSubItem
 
-        padding: 16
         spacing: 8
-
-        // telling when the whole menu is ready for render
-        // removes flicker of small window
-        Component.onCompleted: () => {
-            // Func.delay(30, () => root && root.cb(true));
-            const callback = root.cb;
-            F.delay(30, () => {
-                if (callback)
-                    callback(true);
-            });
-        }
-        Component.onDestruction: () => {
-            root.cb(false);
-        }
 
         QsMenuOpener {
             id: menuOpener
@@ -73,27 +59,33 @@ StackView {
                 id: item
                 required property QsMenuEntry modelData
 
-                implicitHeight: modelData && modelData.isSeparator ? 1 : children.implicitHeight
-                implicitWidth: 230
+                implicitHeight: {
+                    modelData && modelData.isSeparator ? 1 : child.implicitHeight;
+                }
+                implicitWidth: modelData && modelData.isSeparator ? subItem.width : child.implicitWidth
                 radius: 10
 
                 color: modelData && modelData.isSeparator ? Theme.yellow0 : Theme.bg1
 
                 Loader {
-                    id: children
+                    id: child
                     active: item.modelData && !item.modelData.isSeparator
-
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-
+                    anchors.fill: parent
                     sourceComponent: Item {
-                        implicitHeight: label.implicitHeight
+                        implicitHeight: row.implicitHeight
+                        implicitWidth: row.implicitWidth
 
                         MouseArea {
                             id: mouseArea
-                            anchors.margins: -2
+                            anchors.margins: -4
 
-                            anchors.fill: parent
+                            anchors {
+                                top: parent.top
+                                bottom: parent.bottom
+                                left: parent.left
+                            }
+                            implicitWidth: subItem.implicitWidth + 40
+
                             enabled: item.modelData && item.modelData.enabled
                             hoverEnabled: true
                             cursorShape: !enabled ? undefined : Qt.PointingHandCursor
@@ -108,6 +100,9 @@ StackView {
                                     root.config.selected_tray_item_noexit = true;
                                 } else {
                                     item.modelData.triggered();
+                                    if (subItem.isSubItem) {
+                                        root.pop();
+                                    }
                                     root.config.selected_tray_item = -1;
                                 }
                             }
@@ -120,40 +115,36 @@ StackView {
                             }
                         }
 
-                        Loader {
-                            id: icon
+                        RowLayout {
+                            id: row
+                            spacing: 4
 
-                            anchors.left: parent.left
+                            Loader {
+                                id: icon
 
-                            active: item.modelData && item.modelData.icon !== ""
+                                active: item.modelData && item.modelData.icon !== ""
 
-                            sourceComponent: IconImage {
-                                implicitSize: label.implicitHeight
+                                sourceComponent: IconImage {
+                                    implicitSize: label.implicitHeight
 
-                                source: item.modelData.icon
+                                    source: item.modelData.icon
+                                }
                             }
-                        }
 
-                        Text {
-                            id: label
-                            color: item.modelData && (item.modelData.enabled) ? Theme.fg1 : Theme.fg4
-                            anchors.left: icon.right
-                            anchors.leftMargin: 4
+                            Text {
+                                id: label
+                                color: item.modelData && (item.modelData.enabled) ? Theme.fg1 : Theme.fg4
 
-                            text: item.modelData && item.modelData.text
-                        }
+                                text: item.modelData && item.modelData.text
+                            }
 
-                        Loader {
-                            id: expand
-
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.right: parent.right
-
-                            active: item.modelData && item.modelData.hasChildren
-
-                            sourceComponent: MaterialIcon {
-                                text: "chevron_right"
-                                color: item.modelData.enabled ? Theme.fg2 : Theme.bg2
+                            Loader {
+                                id: expand
+                                active: item.modelData && item.modelData.hasChildren
+                                sourceComponent: MaterialIcon {
+                                    text: "chevron_right"
+                                    color: item.modelData.enabled ? Theme.fg2 : Theme.bg2
+                                }
                             }
                         }
                     }
