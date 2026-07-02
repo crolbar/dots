@@ -59,7 +59,7 @@ Item {
     ColumnLayout {
         id: widgets
 
-        // TODO: not needed, can use containsMouse on each tray item
+        // NOTE: not needed, can use containsMouse on each tray item
         function checkPopout(y: real): void {
             const ch = childAt(16, y) as Widget;
             if (ch == null || ch.name != "tray") {

@@ -2,8 +2,8 @@ import qs.utils
 import QtQuick.Layouts
 import QtQuick
 import Quickshell.Io
+import qs.modules.bar
 
-// TODO: add more. temperature
 Widget {
     id: root
     implicitWidth: 32
@@ -12,14 +12,19 @@ Widget {
 
     color: "transparent"
 
+    // GB
+    property double memUsage: 0
     // %
     property real cpuUsage: lastCpuTotal
     property real lastCpuTotal: 0
     property real lastCpuIdle: 0
+    property real cpuTemp: 0
+
     // GB
-    property double memUsage: 0
-    // GB
-    property double vramUsage: 5.2
+    property double vramUsage: 0
+    // %
+    property real gpuUtil: 0
+    property real gpuTemp: 0
 
     Process {
         id: cpuProc
@@ -57,14 +62,31 @@ Widget {
     }
 
     Process {
-        id: vramProc
-        command: ["sh", "-c", `nvtop -s | jq -r '.[] | select(.device_name == "AMD Radeon RX 9060 XT") | .mem_used'`]
+        id: tempProc
+        command: ["sh", "-c", "cat /sys/class/hwmon/hwmon5/temp3_input"]
         stdout: SplitParser {
             onRead: data => {
                 if (!data)
                     return;
-                var used = parseInt(data) || 0;
+                root.cpuTemp = Math.floor((parseInt(data) || 0) / 1000);
+            }
+        }
+        Component.onCompleted: running = true
+    }
+
+    Process {
+        id: gpuProc
+        command: ["sh", "-c", `nvtop -s | jq -r -c '.[] | select(.device_name == "AMD Radeon RX 9060 XT") | {mem_used, temp, gpu_util}'`]
+        stdout: SplitParser {
+            onRead: data => {
+                if (!data)
+                    return;
+                const json = JSON.parse(data);
+                var used = parseInt(json.mem_used) || 0;
                 root.vramUsage = Math.round((used) / 1024 / 1024 / 1024);
+
+                root.gpuUtil = json.gpu_util.replace('%', '');
+                root.gpuTemp = json.temp.replace('C', '');
             }
         }
         Component.onCompleted: running = true
@@ -77,7 +99,8 @@ Widget {
         onTriggered: {
             cpuProc.running = true;
             memProc.running = true;
-            vramProc.running = true;
+            gpuProc.running = true;
+            tempProc.running = true;
         }
     }
 
@@ -97,7 +120,28 @@ Widget {
         Text {
             Layout.alignment: Qt.AlignCenter
             color: Theme.purple0
+            text: `${root.gpuUtil}`
+        }
+
+        Text {
+            Layout.alignment: Qt.AlignCenter
+            color: (root.vramUsage > 13) ? Theme.red1 : Theme.yellow0
             text: `${root.vramUsage}`
+        }
+
+        Text {
+            Layout.alignment: Qt.AlignCenter
+            color: ((root.gpuTemp) > 65) ? Theme.red1 : Theme.green0
+            text: `${root.gpuTemp}`
+        }
+
+        Spacer {}
+
+        Text {
+            Layout.alignment: Qt.AlignCenter
+            visible: (root.cpuUsage) < 100
+            color: Theme.orange0
+            text: `${root.cpuUsage}`
         }
 
         Text {
@@ -108,9 +152,8 @@ Widget {
 
         Text {
             Layout.alignment: Qt.AlignCenter
-            visible: (root.cpuUsage) < 100
-            color: Theme.orange0
-            text: `${root.cpuUsage}`
+            color: (root.cpuTemp > 68) ? Theme.red1 : Theme.green0
+            text: `${root.cpuTemp}`
         }
     }
 }
