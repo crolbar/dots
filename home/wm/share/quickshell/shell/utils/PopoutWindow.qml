@@ -25,14 +25,19 @@ PanelWindow {
 
     property bool expanded: true
 
-    property bool shadowEnabled: false
+    property bool shadowEnabled: true
     property string shadowColor: "black"
     property int shadowSpace: 60
 
     property int arcHeight: 30
     property int arcWidth: 30
 
-    property color bgColor: "#232323"
+    // arc3,4
+    property int arc2Height: arcHeight
+    property int arc2Width: arcWidth
+
+    property color bgColor: "black"
+    property color borderColor: "black"
 
     property real animationDuration: 250
 
@@ -40,13 +45,13 @@ PanelWindow {
 
     implicitHeight: {
         const ss = (shadowEnabled) ? ((F.isVert(side)) ? shadowSpace / 2 : shadowSpace) : 0;
-        const as = (F.isHori(side)) ? arcHeight * 2 : 0;
-        return h + as + ss;
+        const as = (F.isHori(side)) ? (arcHeight + arc2Height) * 2 : 0;
+        return h + as + ((as > ss) ? 0 : ss);
     }
     implicitWidth: {
         const ss = (shadowEnabled) ? ((F.isHori(side)) ? shadowSpace / 2 : shadowSpace) : 0;
-        const as = (F.isVert(side)) ? arcWidth * 4 : 0;
-        return w + as + ss;
+        const as = (F.isVert(side)) ? (arcWidth + arc2Width) * 2 : 0;
+        return w + as + ((as > ss) ? 0 : ss);
     }
 
     exclusionMode: ExclusionMode.Ignore
@@ -62,6 +67,8 @@ PanelWindow {
 
     property int arcActualHeight: (contents.height < root.arcHeight * 2) ? contents.height / 2 : root.arcHeight
     property int arcActualWidth: (contents.width > root.arcWidth * 2) ? root.arcWidth : contents.width / 2
+    property int arc2ActualHeight: (contents.height < root.arc2Height * 2) ? contents.height / 2 : root.arc2Height
+    property int arc2ActualWidth: (contents.width > root.arc2Width * 2) ? root.arc2Width : contents.width / 2
     property int arcMargin: shadowSpace / 2
 
     // border
@@ -80,6 +87,8 @@ PanelWindow {
             if (F.isBottom(root.side)) {
                 return contents.bottom;
             } else if (F.isLeft(root.side)) {
+                return arc3.top;
+            } else if (F.isRight(root.side)) {
                 return arc3.top;
             }
             return undefined;
@@ -102,7 +111,7 @@ PanelWindow {
             }
         }
 
-        arcColor: Theme.orange0
+        arcColor: root.borderColor
         fillColor: root.bgColor
     }
     Arc {
@@ -139,7 +148,7 @@ PanelWindow {
             }
         }
 
-        arcColor: Theme.orange0
+        arcColor: root.borderColor
         fillColor: root.bgColor
     }
     Arc {
@@ -164,8 +173,8 @@ PanelWindow {
         }
         anchors.top: F.isBottom(root.side) ? contents.top : undefined
 
-        h: root.arcActualHeight
-        w: root.arcActualWidth
+        h: root.arc2ActualHeight
+        w: root.arc2ActualWidth
 
         side: {
             switch (root.side) {
@@ -180,7 +189,7 @@ PanelWindow {
             }
         }
 
-        arcColor: Theme.orange0
+        arcColor: root.borderColor
         fillColor: "transparent"
         fillColor2: root.bgColor
     }
@@ -206,8 +215,8 @@ PanelWindow {
             return undefined;
         }
 
-        h: root.arcActualHeight
-        w: root.arcActualWidth
+        h: root.arc2ActualHeight
+        w: root.arc2ActualWidth
 
         side: {
             switch (root.side) {
@@ -222,11 +231,12 @@ PanelWindow {
             }
         }
 
-        arcColor: Theme.orange0
+        arcColor: root.borderColor
         fillColor: "transparent"
         fillColor2: root.bgColor
     }
     LineLink {
+        visible: root.arcHeight > 0 && root.arcWidth > 0
         sx: {
             if (F.isVert(root.side)) {
                 return arc3.x;
@@ -255,10 +265,11 @@ PanelWindow {
                 return arc3.y;
             }
         }
-        lineColor: Theme.orange0
+        lineColor: root.borderColor
         z: 1
     }
     LineLink {
+        visible: root.arcHeight > 0 && root.arcWidth > 0
         sx: (F.isLeft(root.side)) ? arc2.x + arc2.width : arc2.x
         sy: (F.isTop(root.side)) ? arc2.y + arc2.height : arc2.y
         ex: {
@@ -279,11 +290,11 @@ PanelWindow {
                 return arc2.y;
             }
         }
-        lineColor: Theme.orange0
+        lineColor: root.borderColor
         z: 1
     }
     LineLink {
-        visible: contents.height > 0 && contents.width > 0
+        visible: root.arcHeight > 0 && root.arcWidth > 0 && contents.height > 0 && contents.width > 0
         sx: (F.isRight(root.side)) ? arc3.x : arc3.x + arc3.width
         sy: {
             if (F.isTop(root.side)) {
@@ -299,7 +310,7 @@ PanelWindow {
         ex: (F.isLeft(root.side)) ? arc4.x + arc4.width : arc4.x
         ey: (F.isTop(root.side)) ? arc4.y + arc4.height : arc4.y
 
-        lineColor: Theme.orange0
+        lineColor: root.borderColor
         z: 1
     }
     Rectangle {
@@ -449,18 +460,16 @@ PanelWindow {
             width: root.w
 
             y: {
-                if (F.isBottom(root.side)) {
-                    return 0;
-                } else if (F.isTop(root.side)) {
+                if (F.isTop(root.side)) {
                     return contents.height - root.h;
                 }
+                0;
             }
             x: {
                 if (F.isLeft(root.side)) {
                     return contents.width - root.w;
-                } else if (F.isRight(root.side)) {
-                    return 0;
                 }
+                0;
             }
 
             sourceComponent: root.comp
