@@ -3,7 +3,7 @@ import Quickshell.Io
 IpcHandler {
     target: "main"
 
-    function getWindows(): string {
+    function wins(): string {
         let result = "";
 
         for (let key in root.windows) {
@@ -39,6 +39,12 @@ IpcHandler {
             var s = "win: " + win + " not defined";
             console.warn("win:", win, "not defined");
             return s;
+        }
+
+        if (root.windows[win].ipcToggle != undefined) {
+            const t = root.windows[win].ipcToggle;
+            root.windows[win][t] = !(root.windows[win][t]);
+            return "ok";
         }
 
         root.windows[win].visible = !(root.windows[win].visible);

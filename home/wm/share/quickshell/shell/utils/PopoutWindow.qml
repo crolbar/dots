@@ -23,7 +23,13 @@ PanelWindow {
 
     required property Component comp
 
-    property bool expanded: true
+    property string ipcToggle: "expanded"
+    property bool expanded: false
+    onExpandedChanged: {
+        if (expanded) {
+            visible = true;
+        }
+    }
 
     property bool shadowEnabled: true
     property string shadowColor: "black"
@@ -41,17 +47,21 @@ PanelWindow {
 
     property real animationDuration: 250
 
-    // visible: expanded
+    property bool debugMouseAreaEnable: false
+
+    // true when expanded false -> true
+    // false when animation is finished after expanded true -> false
+    visible: debugMouseAreaEnable
 
     implicitHeight: {
         const ss = (shadowEnabled) ? ((F.isVert(side)) ? shadowSpace / 2 : shadowSpace) : 0;
         const as = (F.isHori(side)) ? (arcHeight + arc2Height) * 2 : 0;
-        return h + as + ((as > ss) ? 0 : ss);
+        return h + as + ((as > ss) ? 0 : ss - as);
     }
     implicitWidth: {
         const ss = (shadowEnabled) ? ((F.isHori(side)) ? shadowSpace / 2 : shadowSpace) : 0;
         const as = (F.isVert(side)) ? (arcWidth + arc2Width) * 2 : 0;
-        return w + as + ((as > ss) ? 0 : ss);
+        return w + as + ((as > ss) ? 0 : ss - as);
     }
 
     exclusionMode: ExclusionMode.Ignore
@@ -398,14 +408,17 @@ PanelWindow {
         }
     }
 
-    MouseArea {
+    Loader {
+        active: root.debugMouseAreaEnable
         anchors.fill: parent
-        hoverEnabled: true
-        onEntered: () => {
-            root.expanded = true;
-        }
-        onExited: () => {
-            root.expanded = false;
+        sourceComponent: MouseArea {
+            hoverEnabled: true
+            onEntered: () => {
+                root.expanded = true;
+            }
+            onExited: () => {
+                root.expanded = false;
+            }
         }
     }
 
@@ -489,11 +502,25 @@ PanelWindow {
         Behavior on height {
             NumberAnimation {
                 duration: root.animationDuration
+                onRunningChanged: {
+                    if (root.debugMouseAreaEnable)
+                        return;
+                    if (!running && !root.expanded) {
+                        root.visible = false;
+                    }
+                }
             }
         }
         Behavior on width {
             NumberAnimation {
                 duration: root.animationDuration
+                onRunningChanged: {
+                    if (root.debugMouseAreaEnable)
+                        return;
+                    if (!running && !root.expanded) {
+                        root.visible = false;
+                    }
+                }
             }
         }
     }
