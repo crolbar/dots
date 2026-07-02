@@ -444,7 +444,25 @@ PanelWindow {
         color: root.bgColor
 
         Loader {
-            anchors.fill: parent
+            id: loader
+            height: root.h
+            width: root.w
+
+            y: {
+                if (F.isBottom(root.side)) {
+                    return 0;
+                } else if (F.isTop(root.side)) {
+                    return contents.height - root.h;
+                }
+            }
+            x: {
+                if (F.isLeft(root.side)) {
+                    return contents.width - root.w;
+                } else if (F.isRight(root.side)) {
+                    return 0;
+                }
+            }
+
             sourceComponent: root.comp
         }
 

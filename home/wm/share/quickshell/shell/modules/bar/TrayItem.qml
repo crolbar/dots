@@ -16,6 +16,8 @@ MouseArea {
 
     hoverEnabled: true
 
+    cursorShape: Qt.PointingHandCursor
+
     onClicked: event => {
         if (event.button === Qt.LeftButton)
             modelData.activate();
