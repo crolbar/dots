@@ -12,7 +12,8 @@ import qs.config
 PanelWindow {
     id: root
     property string name: "bar"
-    property Config config
+    required property Config config
+    required property var niri
 
     anchors {
         top: true
@@ -91,6 +92,7 @@ PanelWindow {
             Bar {
                 id: bar
                 config: root.config
+                niri: root.niri
             }
 
             // Border on popout

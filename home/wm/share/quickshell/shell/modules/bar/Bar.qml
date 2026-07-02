@@ -7,7 +7,8 @@ import qs.config
 
 Item {
     id: root
-    property Config config
+    required property Config config
+    required property var niri
 
     implicitWidth: parent.width
     implicitHeight: parent.height
@@ -30,22 +31,6 @@ Item {
             root.config.selected_tray_item = -1;
     }
 
-    property var niri: ({
-            workspaces: [],
-            kb_layout: ""
-        })
-
-    Process {
-        id: proc
-        command: ["sh", "-c", "~/.config/niri/eww/scripts/niri"]
-
-        running: true
-
-        stdout: SplitParser {
-            splitMarker: "\n"
-            onRead: d => root.niri = JSON.parse(d)
-        }
-    }
 
     Process {
         id: workspace_wheel

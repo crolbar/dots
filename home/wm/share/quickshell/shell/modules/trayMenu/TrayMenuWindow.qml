@@ -41,17 +41,18 @@ PopoutWindow {
         property int padding: 12
 
         implicitHeight: {
-            if (trayMenu.currentItem.implicitHeight <= 0)
+            if (!loader.item || loader.item.currentItem.implicitHeight <= 0)
                 return implicitHeight;
-            return trayMenu.currentItem.implicitHeight + padding*2;
+            return loader.item.currentItem.implicitHeight + padding * 2;
         }
         implicitWidth: {
-            if (trayMenu.currentItem.implicitWidth <= 0)
+            if (!loader.item || loader.item.currentItem.implicitWidth <= 0)
                 return implicitWidth;
-            return trayMenu.currentItem.implicitWidth + padding*2 + 40;
+            return loader.item.currentItem.implicitWidth + padding * 2 + 40;
         }
 
         MouseArea {
+            id: ma
             anchors.fill: parent
             hoverEnabled: true
 
@@ -64,14 +65,21 @@ PopoutWindow {
                 root.config.selected_tray_item = -1;
             }
 
-            TrayMenu {
-                id: trayMenu
-                anchors.top: parent.top
-                anchors.left: parent.left
+            Loader {
+                id: loader
+                property var selItem: SystemTray.items.values[root.config.last_selected_tray_item]
+                active: selItem != undefined
+
+                anchors.top: ma.top
+                anchors.left: ma.left
                 anchors.leftMargin: contents.padding
                 anchors.topMargin: contents.padding
-                config: root.config
-                initialHandle: SystemTray.items.values[root.config.last_selected_tray_item].menu // qmllint disable unresolved-type
+
+                sourceComponent: TrayMenu {
+                    id: trayMenu
+                    config: root.config
+                    initialHandle: loader.selItem.menu // qmllint disable unresolved-type
+                }
             }
         }
     }

@@ -35,7 +35,6 @@ StackView {
     }
 
     onInitialHandleChanged: {
-        console.log(depth);
         if (depth > 1)
             pop();
     }
