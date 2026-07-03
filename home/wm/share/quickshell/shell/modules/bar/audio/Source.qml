@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell.Services.Pipewire
 import qs.utils
+import qs.config
 
 AudioDevice {
     id: root

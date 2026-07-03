@@ -5,7 +5,7 @@ import Quickshell.Io
 import QtQuick
 import qs.modules.bar
 import qs.modules.bar.trayMenu
-import qs.modules.bar.audio
+import qs.modules.bar.audio.audioCtl
 import qs.config
 
 ShellRoot {

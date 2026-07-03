@@ -1,19 +1,22 @@
 import qs.utils
 import QtQuick
+import QtQuick.Effects
 import QtQuick.Layouts
 import Quickshell.Services.Pipewire
+import qs.config
 
 Rectangle {
     id: root
     required property PwNode device
     required property string iconText
     required property color iconColor
+    required property Config config
     property int level: (expanded) ? root.device.audio.volume * 100 : 0
 
     property bool expanded: ma.containsMouse && !anim.running
 
     Layout.alignment: Qt.AlignCenter
-    color: (expanded || anim.running) ? Theme.bg2 : "transparent"
+    color: (expanded || anim.running) ? Theme.bg0 : "transparent"
 
     implicitHeight: iconItem.height
     Layout.preferredWidth: 32
@@ -73,7 +76,15 @@ Rectangle {
 
         color: Theme.bg1
 
+        MultiEffect {
+            visible: root.expanded
+            anchors.fill: colRect
+            source: colRect
+            shadowEnabled: true
+        }
+
         Rectangle {
+            id: colRect
             anchors {
                 right: parent.right
                 bottom: parent.bottom
@@ -117,6 +128,7 @@ Rectangle {
 
         IconMouseArea {
             device: root.device
+            config: root.config
         }
         MaterialIcon {
             id: icon

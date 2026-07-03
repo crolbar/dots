@@ -13,4 +13,5 @@ QtObject {
     property bool bar_popout_border_visible: false
     property bool bar_popout_audio_ctl_open: false
     property int bar_popout_audio_ctl_center_y: 0
+    property int bar_height: 0
 }

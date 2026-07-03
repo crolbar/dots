@@ -19,7 +19,6 @@ Item {
             return;
         }
         root.closeTrayMenu();
-        root.closeAudioCtl();
     }
 
     function mouseWheelHandle(we: WheelEvent): void {
@@ -30,9 +29,6 @@ Item {
     function closeTrayMenu() {
         if (!root.config.selected_tray_item_noexit)
             root.config.selected_tray_item = -1;
-    }
-    function closeAudioCtl() {
-        root.config.bar_popout_audio_ctl_open = false;
     }
 
     Process {
@@ -72,14 +68,6 @@ Item {
                 return;
             }
 
-            if (ch.name == "audio") {
-                const audio = ch as Audio;
-                if (!root.config.bar_popout_audio_ctl_open) {
-                    root.config.bar_popout_audio_ctl_open = true;
-                    root.config.bar_popout_audio_ctl_center_y = root.implicitHeight - audio.mapToItem(root, 0, audio.implicitHeight / 2).y;
-                }
-            }
-
             if (ch.name == "tray") {
                 const tray = ch as Tray;
 
@@ -96,11 +84,6 @@ Item {
                 }
             }
 
-            if (ch.name != "audio") {
-                if (root.config.bar_popout_audio_ctl_open)
-                    root.closeAudioCtl();
-                return;
-            }
             if (ch.name != "tray") {
                 if (root.config.selected_tray_item != -1)
                     root.closeTrayMenu();
@@ -123,6 +106,7 @@ Item {
 
         Audio {
             name: "audio"
+            config: root.config
         }
 
         Spacer {

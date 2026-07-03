@@ -22,6 +22,9 @@ PanelWindow {
     }
 
     implicitWidth: 32
+    onHeightChanged: {
+        config.bar_height = height;
+    }
 
     color: "transparent"
 
