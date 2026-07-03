@@ -26,4 +26,9 @@ Widget {
             root.layout.slice(i, i + 2);
         }
     }
+
+    Spacer {
+        visible: root.layout != "English (US)"
+        anchors.bottom: parent.bottom
+    }
 }

@@ -21,6 +21,15 @@ PopoutWindow {
     bgColor: Theme.bg0
     borderColor: Theme.bg0
 
+    animationDuration: 150
+
+    MouseArea {
+        anchors.fill: parent
+        z: -1
+        acceptedButtons: Qt.RightButton
+        onClicked: root.config.bar_popout_audio_ctl_open = false
+    }
+
     comp: Item {
         id: i
         property int padding: 32

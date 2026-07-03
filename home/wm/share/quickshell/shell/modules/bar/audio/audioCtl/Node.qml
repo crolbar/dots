@@ -4,18 +4,19 @@ import qs.utils
 import Quickshell.Services.Pipewire
 import QtQuick
 
-Item {
+Loader {
     id: root
-    implicitWidth: col.width
-    implicitHeight: col.height
-    property real vol: Math.floor(node.audio.volume * 100)
     required property PwNode node
-    PwObjectTracker {
-        objects: [root.node]
-    }
 
-    Column {
+    active: node != null
+    sourceComponent: Column {
         id: col
+
+        PwObjectTracker {
+            objects: [root.node]
+        }
+        property real vol: Math.floor(root.node.audio.volume * 100)
+
         spacing: 4
         clip: true
         Item {
