@@ -68,7 +68,7 @@
 ## Quickshell
 -[x] open/close certain windows with cmd
 
--[ ] sidebar (workspaces, cpu, mem, audio, kb layout, tray)
+-[x] sidebar (workspaces, cpu, mem, audio, kb layout, tray)
 -[ ] dashboard (caelestia dots one, + brightness bar, power menu)
 -[ ] media dialog
--[ ] gruvbox theme
+-[x] gruvbox theme
