@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
 
 import qs.utils
 import Quickshell.Services.Pipewire
+import Quickshell.Widgets
 import QtQuick
 
 Loader {
@@ -19,13 +20,24 @@ Loader {
 
         spacing: 4
         clip: true
+
         Item {
             implicitWidth: volBar.width
             implicitHeight: nameText.height
+            Loader {
+                id: icon
+                active: root.node.properties && "application.icon-name" in root.node.properties
+                sourceComponent: IconImage {
+                    implicitHeight: nameText.height
+                    implicitWidth: nameText.height
+                    source: `image://icon/${root.node.properties["application.icon-name"]}`
+                }
+            }
             Text {
                 id: nameText
                 color: Theme.fg0
-                width: row.implicitWidth
+                anchors.left: icon.right
+                anchors.leftMargin: 4
                 text: (root.node.isStream) ? root.node.name : root.node.nickname
             }
             Text {
