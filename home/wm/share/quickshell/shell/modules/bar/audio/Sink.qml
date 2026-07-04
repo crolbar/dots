@@ -34,5 +34,5 @@ AudioDevice {
     device: Pipewire.defaultAudioSink
 
     iconText: icon
-    iconColor: (root.device.audio.muted) ? Theme.yellow0 : Theme.blue1
+    iconColor: (root.device.audio.muted) ? Theme.yellow0 : Theme.blue0
 }

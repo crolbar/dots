@@ -1,118 +1,68 @@
 import qs.utils
 import QtQuick
-import QtQuick.Effects
 import QtQuick.Layouts
 import Quickshell.Services.Pipewire
 import qs.config
 
-Rectangle {
+Item {
     id: root
     required property PwNode device
     required property string iconText
     required property color iconColor
     required property Config config
-    property int level: (expanded) ? root.device.audio.volume * 100 : 0
-
-    property bool expanded: ma.containsMouse && !anim.running
-
-    Layout.alignment: Qt.AlignCenter
-    color: (expanded || anim.running) ? Theme.bg0 : "transparent"
+    property int level: root.device.audio.volume * 100
+    property bool levelVisible: false
 
     implicitHeight: iconItem.height
     Layout.preferredWidth: 32
-    Layout.preferredHeight: ma.containsMouse ? implicitHeight * 4 : implicitHeight
     Layout.minimumHeight: Layout.preferredHeight
     Layout.maximumHeight: Layout.preferredHeight
 
-    radius: 5
-
-    Behavior on Layout.preferredHeight {
-        NumberAnimation {
-            id: anim
-            duration: 170
+    NumberAnimation {
+        id: showLevelAnim
+        target: root
+        property: "implicitHeight"
+        to: iconItem.height + levelText.height * 2
+        duration: 850
+        easing.type: Easing.OutQuad
+        onFinished: {
+            console.log("finish");
+        }
+    }
+    NumberAnimation {
+        id: hideLevelAnim
+        target: root
+        property: "implicitHeight"
+        to: iconItem.height
+        duration: 450
+        easing.type: Easing.InQuad
+        onFinished: {
+            root.levelVisible = false;
+        }
+    }
+    onLevelChanged: {
+        showLevelAnim.start();
+        levelVisible = true;
+        if (timer.running) {
+            timer.restart();
+        } else {
+            timer.running = true;
         }
     }
 
-    MouseArea {
-        id: ma
-        anchors.fill: parent
-        hoverEnabled: true
-    }
-
-    Rectangle {
-        id: slider
-        property int padding: 4
-        property int fullExpandedHeight: (root.implicitHeight * 3 - padding * 2)
-
-        visible: root.expanded
-
-        implicitHeight: fullExpandedHeight
-        radius: 8
-
-        anchors {
-            right: parent.right
-            bottom: parent.bottom
-            left: parent.left
-            bottomMargin: root.implicitHeight
-
-            leftMargin: padding
-            rightMargin: padding
-        }
-
-        MouseArea {
-            property double lastPressY: 0.0
-            anchors.fill: parent
-            onPressed: me => {
-                lastPressY = me.y;
-                root.device.audio.volume = (height - me.y) / height;
-            }
-            onReleased: me => {
-                if (me.y != lastPressY)
-                    root.device.audio.volume = (height - me.y) / height;
-            }
-            onWheel: me => root.device.audio.volume = ((Math.floor(root.device.audio.volume * 100) + ((me.angleDelta.y) > 0 ? 5 : -5))) / 100
-            cursorShape: Qt.PointingHandCursor
-        }
-
-        color: Theme.bg1
-
-        MultiEffect {
-            visible: root.expanded
-            anchors.fill: colRect
-            source: colRect
-            shadowEnabled: true
-        }
-
-        Rectangle {
-            id: colRect
-            anchors {
-                right: parent.right
-                bottom: parent.bottom
-                left: parent.left
-            }
-
-            implicitHeight: (root.expanded) ? slider.fullExpandedHeight * root.device.audio.volume : 0
-
-            Behavior on implicitHeight {
-                NumberAnimation {
-                    duration: 140
-                }
-            }
-
-            radius: slider.radius
-            color: Theme.blue1
-        }
-    }
-
-    Behavior on level {
-        NumberAnimation {
-            duration: 340
+    Timer {
+        id: timer
+        interval: 1000
+        onTriggered: {
+            hideLevelAnim.start();
         }
     }
 
     Text {
-        visible: root.expanded
+        id: levelText
         anchors.centerIn: parent
+        anchors.top: parent.top
+        visible: root.levelVisible
         font.pixelSize: 14
         font.bold: true
         color: Theme.blue0

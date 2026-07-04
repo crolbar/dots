@@ -11,7 +11,7 @@ Widget {
     required property Config config
 
     implicitWidth: 32
-    implicitHeight: loader.implicitHeight + 8
+    implicitHeight: loader.implicitHeight
 
     color: "transparent"
 
