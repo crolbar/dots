@@ -33,18 +33,16 @@ PopoutWindow {
     comp: Item {
         id: i
         property int padding: 32
-        implicitHeight: layout.height + padding
-        implicitWidth: layout.width + padding
+        implicitHeight: loader.height + padding
+        implicitWidth: loader.width + padding
+        x: i.padding / 2
+        y: i.padding / 2
 
         Loader {
-            anchors {
-                fill: parent
-                topMargin: i.padding / 2
-                leftMargin: i.padding / 2
-            }
+            id: loader
             active: Pipewire.ready
 
-            Column {
+            sourceComponent: Column {
                 id: layout
 
                 spacing: 8

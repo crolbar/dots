@@ -25,9 +25,6 @@ Item {
         to: iconItem.height + levelText.height * 2
         duration: 850
         easing.type: Easing.OutQuad
-        onFinished: {
-            console.log("finish");
-        }
     }
     NumberAnimation {
         id: hideLevelAnim
