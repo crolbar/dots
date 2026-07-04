@@ -119,7 +119,7 @@ PanelWindow {
                     anchors.fill: shadowRect
                     source: shadowRect
                     shadowEnabled: true
-                    shadowHorizontalOffset: 8
+                    shadowHorizontalOffset: 2
                 }
                 Rectangle {
                     id: shadowRect
@@ -127,9 +127,9 @@ PanelWindow {
                     anchors.bottom: parent.bottom
                     implicitWidth: 3
 
-                    visible: root.config.selected_tray_item != -1
+                    property bool expand: root.config.bar_popout_audio_ctl_open || root.config.selected_tray_item != -1
 
-                    height: visible ? root.height : 0
+                    height: expand ? root.height : 0
                     Behavior on height {
                         NumberAnimation {
                             id: anim
@@ -139,7 +139,7 @@ PanelWindow {
                         }
                     }
 
-                    color: Theme.yellow0
+                    color: (root.config.bar_popout_border_visible_for == "audio") ? Theme.bg0 : Theme.yellow0
                 }
             }
         }

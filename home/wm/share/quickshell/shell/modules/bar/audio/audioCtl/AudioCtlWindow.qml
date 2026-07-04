@@ -22,6 +22,14 @@ PopoutWindow {
     borderColor: Theme.bg0
 
     animationDuration: 150
+    onVisibleChanged: {
+        if (root.config.bar_popout_border_visible_for == "audio") {
+            if (!visible) {
+                root.config.bar_popout_border_visible_for = "";
+            }
+            root.config.bar_popout_border_visible = visible;
+        }
+    }
 
     HoverHandler {
         onHoveredChanged: {

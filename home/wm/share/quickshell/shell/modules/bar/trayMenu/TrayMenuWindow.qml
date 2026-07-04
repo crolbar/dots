@@ -23,7 +23,13 @@ PopoutWindow {
     }
 
     expanded: config.selected_tray_item != -1
-    onVisibleChanged: root.config.bar_popout_border_visible = visible
+    onVisibleChanged: {
+        if (root.config.bar_popout_border_visible_for == "tray") {
+            if (!visible)
+                root.config.bar_popout_border_visible_for = "";
+            root.config.bar_popout_border_visible = visible;
+        }
+    }
 
     borderColor: Theme.yellow0
     bgColor: Theme.bg1
