@@ -36,6 +36,22 @@ PopoutWindow {
 
     animationDuration: 150
 
+    HoverHandler {
+        onHoveredChanged: {
+            // don't care about enter
+            if (hovered)
+                return;
+
+            const x = point.position.x;
+            // moving to bar, don't handle unselecting of tray item, bar will
+            if (x < 2)
+                return;
+            if (root.config.selected_tray_item_noexit)
+                return;
+            root.config.selected_tray_item = -1;
+        }
+    }
+
     comp: Item {
         id: contents
         property int padding: 12
@@ -51,35 +67,20 @@ PopoutWindow {
             return loader.item.currentItem.implicitWidth + padding * 2 + 40;
         }
 
-        MouseArea {
-            id: ma
-            anchors.fill: parent
-            hoverEnabled: true
+        Loader {
+            id: loader
+            property var selItem: SystemTray.items.values[root.config.last_selected_tray_item]
+            active: selItem != undefined
 
-            onExited: () => {
-                // moving to bar, don't handle unselecting of tray item, bar will
-                if (mouseX < 2)
-                    return;
-                if (root.config.selected_tray_item_noexit)
-                    return;
-                root.config.selected_tray_item = -1;
-            }
+            anchors.top: contents.top
+            anchors.left: contents.left
+            anchors.leftMargin: contents.padding
+            anchors.topMargin: contents.padding
 
-            Loader {
-                id: loader
-                property var selItem: SystemTray.items.values[root.config.last_selected_tray_item]
-                active: selItem != undefined
-
-                anchors.top: ma.top
-                anchors.left: ma.left
-                anchors.leftMargin: contents.padding
-                anchors.topMargin: contents.padding
-
-                sourceComponent: TrayMenu {
-                    id: trayMenu
-                    config: root.config
-                    initialHandle: loader.selItem.menu // qmllint disable unresolved-type
-                }
+            sourceComponent: TrayMenu {
+                id: trayMenu
+                config: root.config
+                initialHandle: loader.selItem.menu // qmllint disable unresolved-type
             }
         }
     }

@@ -5,9 +5,11 @@ import Quickshell.Services.Pipewire
 import Quickshell.Widgets
 import QtQuick
 
+// qmllint disable unresolved-type
 Loader {
     id: root
     required property PwNode node
+    // node.type 21 -> app, 17 -> sink, 9 -> source
 
     active: node != null
     sourceComponent: Column {
@@ -38,11 +40,11 @@ Loader {
                 color: Theme.fg0
                 anchors.left: icon.right
                 anchors.leftMargin: 4
-                text: (root.node.isStream) ? root.node.name : root.node.nickname
+                text: `${(root.node.isStream) ? root.node.name : root.node.nickname}`
             }
             Text {
                 anchors.right: parent.right
-                color: Theme.bg2
+                color: Theme.fg2
                 font.bold: true
                 text: {
                     Math.floor(root.node.audio.volume * 100);
@@ -63,7 +65,15 @@ Loader {
 
                 Slider {
                     volume: root.node.audio.volume
-                    siliderColor: Theme.aqua0
+                    sliderColor: {
+                        switch (root.node.type) {
+                        case 9:
+                            return Theme.purple0;
+                        case 17:
+                            return Theme.blue0;
+                        }
+                        return Theme.aqua0;
+                    }
                     handlePressed: me => {
                         lastPressX = me.x;
                         root.node.audio.volume = me.x / width;
@@ -107,7 +117,7 @@ Loader {
                     anchors.top: parent.top
                     anchors.right: muteIconRect.left
                     anchors.rightMargin: 8
-                    active: Pipewire.defaultAudioSink && !root.node.isStream
+                    active: !root.node.isStream
 
                     sourceComponent: Button {
                         property string defaultName: (root.node.type == 9 ? Pipewire.defaultAudioSource.name : Pipewire.defaultAudioSink.name)

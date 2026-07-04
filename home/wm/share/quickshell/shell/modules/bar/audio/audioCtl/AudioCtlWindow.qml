@@ -23,11 +23,16 @@ PopoutWindow {
 
     animationDuration: 150
 
-    MouseArea {
-        anchors.fill: parent
-        z: -1
-        acceptedButtons: Qt.RightButton
-        onClicked: root.config.bar_popout_audio_ctl_open = false
+    HoverHandler {
+        onHoveredChanged: {
+            if (hovered)
+                return;
+
+            const x = point.position.x;
+            if (x < 2)
+                return;
+            root.config.bar_popout_audio_ctl_open = false;
+        }
     }
 
     comp: Item {
@@ -49,11 +54,6 @@ PopoutWindow {
 
                 NamedSeparator {
                     name: "Streams"
-                    Text {
-                        text: Pipewire.defaultAudioSink.nickname
-                        anchors.right: parent.right
-                        color: Theme.bg2
-                    }
                 }
 
                 Repeater {
@@ -117,7 +117,7 @@ PopoutWindow {
 
         Text {
             text: sep.name
-            color: Theme.bg2
+            color: Theme.aqua1
         }
 
         Rectangle {

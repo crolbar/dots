@@ -29,34 +29,10 @@ Widget {
         anchors.topMargin: root.padding
         spacing: root.spacing
 
-        // add: Transition {
-        //     Anim {
-        //         properties: "scale"
-        //         from: 0
-        //         to: 1
-        //         easing: Tokens.anim.standardDecel
-        //     }
-        // }
-
-        // move: Transition {
-        //     Anim {
-        //         properties: "scale"
-        //         to: 1
-        //         easing: Tokens.anim.standardDecel
-        //     }
-        //     Anim {
-        //         properties: "x,y"
-        //     }
-        // }
-
         Repeater {
             id: items
             model: SystemTray.items.values
             TrayItem {}
         }
     }
-
-    // Behavior on implicitHeight {
-    //     Anim {}
-    // }
 }
