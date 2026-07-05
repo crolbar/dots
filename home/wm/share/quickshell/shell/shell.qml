@@ -6,6 +6,7 @@ import QtQuick
 import qs.modules.bar
 import qs.modules.bar.trayMenu
 import qs.modules.bar.audio.audioCtl
+import qs.modules.dashboard
 import qs.config
 
 ShellRoot {
@@ -35,7 +36,7 @@ ShellRoot {
 
     Loader {
         // NOTE: add when !fullscreen (or wait untill niri adds fullscreen state in ipc... https://github.com/niri-wm/niri/discussions/1843)
-        id: l
+        id: barLoader
         property string name: "bar"
         Component.onCompleted: {
             root.windows[this.name] = this;
@@ -48,13 +49,55 @@ ShellRoot {
         }
     }
 
-    TrayMenuWindow {
-        id: tmw
-        config: root.config
+    Loader {
+        active: barLoader.active
+        sourceComponent: TrayMenuWindow {
+            id: tmw
+            config: root.config
+        }
     }
 
-    AudioCtlWindow {
-        config: root.config
+    Loader {
+        active: barLoader.active
+        sourceComponent: AudioCtlWindow {
+            config: root.config
+        }
+    }
+
+    Loader {
+        id: dashBoardLoader
+        property string name: "dashboard"
+        Component.onCompleted: {
+            root.windows[this.name] = this;
+        }
+        property string ipcToggle: "shown"
+
+        // active: false
+
+        // on true: active = true -> item.expanded = true
+        // on false: expanded = false -> on item.visible == false -> active = false
+        property bool shown: false
+        onShownChanged: {
+            if (shown) {
+                active = true;
+                return;
+            }
+
+            item.expanded = false;
+        }
+        onActiveChanged: {
+            console.log("active", active);
+            if (active)
+                item.expanded = true;
+        }
+        sourceComponent: DashBoard {
+            config: root.config
+            expanded: true
+            onVisibleChanged: {
+                if (!visible)
+                    dashBoardLoader.active = false;
+            }
+        }
     }
 
     Ipc {}

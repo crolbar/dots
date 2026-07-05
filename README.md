@@ -324,30 +324,32 @@
 │   │   │   │   │   ├── config
 │   │   │   │   │   │   └── Config.qml
 │   │   │   │   │   ├── modules
-│   │   │   │   │   │   └── bar
-│   │   │   │   │   │       ├── audio
-│   │   │   │   │   │       │   ├── audioCtl
-│   │   │   │   │   │       │   │   ├── AudioCtlWindow.qml
-│   │   │   │   │   │       │   │   ├── Button.qml
-│   │   │   │   │   │       │   │   ├── Node.qml
-│   │   │   │   │   │       │   │   └── Slider.qml
-│   │   │   │   │   │       │   ├── AudioDevice.qml
-│   │   │   │   │   │       │   ├── Audio.qml
-│   │   │   │   │   │       │   ├── IconMouseArea.qml
-│   │   │   │   │   │       │   ├── Sink.qml
-│   │   │   │   │   │       │   └── Source.qml
-│   │   │   │   │   │       ├── trayMenu
-│   │   │   │   │   │       │   ├── TrayMenu.qml
-│   │   │   │   │   │       │   └── TrayMenuWindow.qml
-│   │   │   │   │   │       ├── Bar.qml
-│   │   │   │   │   │       ├── BarWindow.qml
-│   │   │   │   │   │       ├── Clock.qml
-│   │   │   │   │   │       ├── KeebLayout.qml
-│   │   │   │   │   │       ├── Spacer.qml
-│   │   │   │   │   │       ├── SysInfo.qml
-│   │   │   │   │   │       ├── TrayItem.qml
-│   │   │   │   │   │       ├── Tray.qml
-│   │   │   │   │   │       └── Workspaces.qml
+│   │   │   │   │   │   ├── bar
+│   │   │   │   │   │   │   ├── audio
+│   │   │   │   │   │   │   │   ├── audioCtl
+│   │   │   │   │   │   │   │   │   ├── AudioCtlWindow.qml
+│   │   │   │   │   │   │   │   │   ├── Button.qml
+│   │   │   │   │   │   │   │   │   ├── Node.qml
+│   │   │   │   │   │   │   │   │   └── Slider.qml
+│   │   │   │   │   │   │   │   ├── AudioDevice.qml
+│   │   │   │   │   │   │   │   ├── Audio.qml
+│   │   │   │   │   │   │   │   ├── IconMouseArea.qml
+│   │   │   │   │   │   │   │   ├── Sink.qml
+│   │   │   │   │   │   │   │   └── Source.qml
+│   │   │   │   │   │   │   ├── trayMenu
+│   │   │   │   │   │   │   │   ├── TrayMenu.qml
+│   │   │   │   │   │   │   │   └── TrayMenuWindow.qml
+│   │   │   │   │   │   │   ├── Bar.qml
+│   │   │   │   │   │   │   ├── BarWindow.qml
+│   │   │   │   │   │   │   ├── Clock.qml
+│   │   │   │   │   │   │   ├── KeebLayout.qml
+│   │   │   │   │   │   │   ├── Spacer.qml
+│   │   │   │   │   │   │   ├── SysInfo.qml
+│   │   │   │   │   │   │   ├── TrayItem.qml
+│   │   │   │   │   │   │   ├── Tray.qml
+│   │   │   │   │   │   │   └── Workspaces.qml
+│   │   │   │   │   │   └── dashboard
+│   │   │   │   │   │       └── DashBoard.qml
 │   │   │   │   │   ├── utils
 │   │   │   │   │   │   ├── Arc.qml
 │   │   │   │   │   │   ├── CText.qml
@@ -521,7 +523,7 @@
 ├── shell.nix
 └── TODO.md
 
-108 directories, 395 files
+109 directories, 396 files
 
 ```
 
