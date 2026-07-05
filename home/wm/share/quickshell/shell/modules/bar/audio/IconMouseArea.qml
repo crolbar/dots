@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell.Services.Pipewire
 import qs.config
+import qs.utils
 
 MouseArea {
     id: root
@@ -23,5 +24,6 @@ MouseArea {
         }
     }
 
+    onWheel: me => root.device.audio.volume = ((Math.floor(root.device.audio.volume * 100) + ((me.angleDelta.y) > 0 ? 5 : -5))) / 100
     cursorShape: Qt.PointingHandCursor
 }

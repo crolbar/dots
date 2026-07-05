@@ -86,11 +86,10 @@ ShellRoot {
             item.expanded = false;
         }
         onActiveChanged: {
-            console.log("active", active);
             if (active)
                 item.expanded = true;
         }
-        sourceComponent: DashBoard {
+        sourceComponent: DashBoardWindow {
             config: root.config
             expanded: true
             onVisibleChanged: {
