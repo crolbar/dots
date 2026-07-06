@@ -38,7 +38,7 @@ GridLayout {
         Layout.rowSpan: 1
         Layout.maximumHeight: 120
 
-        Date {}
+        DateComp {}
     }
 
     Rect {
@@ -56,10 +56,7 @@ GridLayout {
         Layout.columnSpan: 2
         Layout.rowSpan: 2
 
-        Text {
-            color: Theme.fg1
-            text: "calendar"
-        }
+        Calendar {}
     }
 
     ColumnLayout {
