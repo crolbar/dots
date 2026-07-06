@@ -7,8 +7,8 @@ import qs.utils
 
 Item {
     id: root
-    implicitHeight: 150
-    implicitWidth: 350
+    implicitHeight: 400
+    implicitWidth: 650
 
     property int padding: 8
     property int focusedTab: 0
@@ -86,7 +86,7 @@ Item {
         anchors.margins: root.padding
 
         radius: 10
-        color: Theme.bg1
+        color: Theme.bg0
 
         Flickable {
             readonly property Item currentItem: repeater.itemAt(root.focusedTab)
@@ -102,7 +102,7 @@ Item {
             Behavior on contentX {
                 NumberAnimation {
                     duration: 500
-                    
+
                     easing.type: Easing.BezierSpline
                     easing.bezierCurve: [0.38, 1.21, 0.22, 1, 1, 1]
                 }
@@ -115,6 +115,8 @@ Item {
                     id: repeater
                     model: root.dashboardTabs
                     Loader {
+                        Layout.preferredWidth: view.width
+                        Layout.preferredHeight: view.height
                         Layout.alignment: Qt.AlignTop
                         required property var modelData
                         sourceComponent: modelData.comp
@@ -123,24 +125,15 @@ Item {
 
                 Component {
                     id: dash
-                    Dash {
-                        implicitWidth: view.width
-                        implicitHeight: view.height
-                    }
+                    Dash {}
                 }
                 Component {
                     id: performance
-                    Performance {
-                        implicitWidth: view.width
-                        implicitHeight: view.height
-                    }
+                    Performance {}
                 }
                 Component {
                     id: weather
-                    Weather {
-                        implicitWidth: view.width
-                        implicitHeight: view.height
-                    }
+                    Weather {}
                 }
             }
         }

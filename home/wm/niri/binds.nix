@@ -44,18 +44,14 @@
         focusLast = "focus-window-previous";
 
         bin = let
-          eww = lib.getExe config.programs.eww.package;
           swaylock = lib.getExe config.programs.swaylock.package;
           dunstify = lib.getExe' config.services.dunst.package "dunstify";
+
+          quickshell = lib.getExe pkgs.quickshell;
           niri = lib.getExe pkgs.niri;
           jq = lib.getExe pkgs.jq;
-
-          ewwBar =
-            if username == "plier"
-            then "tags"
-            else "bar";
         in {
-          toggleBar = "${eww} -c ~/.config/niri/eww open ${ewwBar} --toggle";
+          toggleBar = "${quickshell} ipc call main toggle bar";
           lock = "${swaylock} -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3";
           notifyLayoutSwitch = "${dunstify} layout \\\"Changed to: $(${niri} msg -j keyboard-layouts | ${jq} '.names[.current_idx]')\\\"";
 

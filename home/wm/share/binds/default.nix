@@ -136,7 +136,7 @@
       niri =
         if has "isNiri" settings
         then [
-          [[mod] "u" (exec "qs ipc call main toggle bar")]
+          [[mod] "u" (exec "qs ipc call main toggle dashboard")]
         ]
         else [];
 
