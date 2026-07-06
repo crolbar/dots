@@ -33,4 +33,24 @@ QtObject {
     function isHori(side: int): bool {
         return side == PopoutWindow.Side.Right || side == PopoutWindow.Side.Left;
     }
+
+    function sendRequest(url, callback) {
+        let request = new XMLHttpRequest();
+
+        request.onreadystatechange = function () {
+            if (request.readyState === XMLHttpRequest.DONE) {
+                let response = {
+                    status: request.status,
+                    headers: request.getAllResponseHeaders(),
+                    contentType: request.responseType,
+                    body: request.response
+                };
+
+                callback(response);
+            }
+        };
+
+        request.open("GET", url);
+        request.send();
+    }
 }
