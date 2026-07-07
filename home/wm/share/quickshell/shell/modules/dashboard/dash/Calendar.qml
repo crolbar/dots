@@ -15,10 +15,7 @@ MouseArea {
             prev: now
         })
 
-    readonly property int animDirection: {
-        console.log(selectedDate.prev, selectedDate.curr);
-        return selectedDate.prev > selectedDate.curr ? -1 : 1;
-    }
+    readonly property int animDirection: selectedDate.prev > selectedDate.curr ? -1 : 1
     readonly property int selectedMonth: selectedDate.curr.getMonth()
     readonly property int selectedYear: selectedDate.curr.getFullYear()
     readonly property int currentMonth: now.getMonth()

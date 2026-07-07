@@ -1,6 +1,7 @@
 import "dash"
 import QtQuick
 import QtQuick.Layouts
+import qs.modules.media
 import qs.utils
 
 GridLayout {
@@ -14,11 +15,7 @@ GridLayout {
         Layout.column: 0
         Layout.rowSpan: 2
 
-        Text {
-            anchors.centerIn: parent
-            color: Theme.fg1
-            text: "media"
-        }
+        Media {}
     }
 
     Rect {

@@ -348,19 +348,23 @@
 │   │   │   │   │   │   │   ├── TrayItem.qml
 │   │   │   │   │   │   │   ├── Tray.qml
 │   │   │   │   │   │   │   └── Workspaces.qml
-│   │   │   │   │   │   └── dashboard
-│   │   │   │   │   │       ├── dash
-│   │   │   │   │   │       │   ├── Calendar.qml
-│   │   │   │   │   │       │   ├── DateComp.qml
-│   │   │   │   │   │       │   └── Weather.qml
-│   │   │   │   │   │       ├── Button.qml
-│   │   │   │   │   │       ├── DashBoard.qml
-│   │   │   │   │   │       ├── DashBoardWindow.qml
-│   │   │   │   │   │       ├── Dash.qml
-│   │   │   │   │   │       ├── Performance.qml
-│   │   │   │   │   │       └── Weather.qml
+│   │   │   │   │   │   ├── dashboard
+│   │   │   │   │   │   │   ├── dash
+│   │   │   │   │   │   │   │   ├── Calendar.qml
+│   │   │   │   │   │   │   │   ├── DateComp.qml
+│   │   │   │   │   │   │   │   └── Weather.qml
+│   │   │   │   │   │   │   ├── Button.qml
+│   │   │   │   │   │   │   ├── DashBoard.qml
+│   │   │   │   │   │   │   ├── DashBoardWindow.qml
+│   │   │   │   │   │   │   ├── Dash.qml
+│   │   │   │   │   │   │   ├── Performance.qml
+│   │   │   │   │   │   │   └── Weather.qml
+│   │   │   │   │   │   └── media
+│   │   │   │   │   │       └── Media.qml
 │   │   │   │   │   ├── utils
 │   │   │   │   │   │   ├── Arc.qml
+│   │   │   │   │   │   ├── BrokPlayer.qml
+│   │   │   │   │   │   ├── Brok.qml
 │   │   │   │   │   │   ├── CText.qml
 │   │   │   │   │   │   ├── F.qml
 │   │   │   │   │   │   ├── Func.qml
@@ -533,7 +537,7 @@
 ├── shell.nix
 └── TODO.md
 
-110 directories, 405 files
+111 directories, 408 files
 
 ```
 
