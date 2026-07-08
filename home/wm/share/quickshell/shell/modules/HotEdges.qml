@@ -22,7 +22,6 @@ Item {
         property int entryX: -1
         HoverHandler {
             onHoveredChanged: {
-                console.log(point.position.x);
                 if (hovered) {
                     dashboard.entryX = point.position.x;
                 } else {

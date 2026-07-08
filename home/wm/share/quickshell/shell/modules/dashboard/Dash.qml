@@ -28,11 +28,9 @@ GridLayout {
         Layout.row: 2
         Layout.column: 0
         Layout.maximumHeight: 60
+        color: "transparent"
 
-        Text {
-            color: Theme.fg1
-            text: "Apps"
-        }
+        Apps {}
     }
 
     Rect {
@@ -40,6 +38,7 @@ GridLayout {
         Layout.column: 2
         Layout.rowSpan: 1
         Layout.maximumHeight: 120
+        color: "transparent"
 
         DateComp {}
     }

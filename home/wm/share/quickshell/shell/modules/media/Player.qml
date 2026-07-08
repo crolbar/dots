@@ -176,9 +176,17 @@ Item {
                 Layout.fillWidth: true
                 radius: 10
                 color: (hovered) ? Theme.aqua1 : Theme.aqua0
+
                 onClick: () => {
                     root.runBrok("play-pause");
                 }
+
+                layer.enabled: true
+                layer.effect: MultiEffect {
+                    shadowEnabled: true
+                    shadowOpacity: 0.4
+                }
+
                 MaterialIcon {
                     id: playIcon
                     anchors.centerIn: parent
