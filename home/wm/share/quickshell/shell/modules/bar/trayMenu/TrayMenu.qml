@@ -58,13 +58,10 @@ StackView {
                 id: item
                 required property QsMenuEntry modelData
 
-                implicitHeight: {
-                    modelData && modelData.isSeparator ? 1 : child.implicitHeight;
-                }
-                implicitWidth: modelData && modelData.isSeparator ? subItem.width : child.implicitWidth
-                radius: 10
+                implicitHeight: (modelData && modelData.isSeparator) ? 1 : child.implicitHeight
+                implicitWidth: (modelData && modelData.isSeparator) ? subItem.implicitWidth : child.implicitWidth
 
-                color: modelData && modelData.isSeparator ? Theme.yellow0 : Theme.bg1
+                color: (modelData && modelData.isSeparator) ? Theme.yellow0 : Theme.bg1
 
                 Loader {
                     id: child
