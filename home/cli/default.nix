@@ -28,6 +28,7 @@
     ripgrep
     socat
     ddccontrol
+    ddcutil
     exiftool
     trash-cli
     pulseaudioFull # for pactl

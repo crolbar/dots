@@ -69,20 +69,19 @@ GridLayout {
         Layout.maximumWidth: 60
 
         Rect {
-            Text {
-                anchors.centerIn: parent
-                color: Theme.fg1
-                text: "brightness"
-            }
+            color: "transparent"
+            BrightnessBar {}
         }
 
         Rect {
             Layout.maximumHeight: 60
+            color: "transparent"
 
-            Text {
+            MaterialIcon {
                 anchors.centerIn: parent
-                color: Theme.fg1
-                text: "power"
+                color: Theme.red0
+                text: "power_settings_new"
+                font.pixelSize: 32
             }
         }
     }
