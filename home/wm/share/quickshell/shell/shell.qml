@@ -8,6 +8,7 @@ import qs.modules.bar.trayMenu
 import qs.modules.bar.audio.audioCtl
 import qs.modules.dashboard
 import qs.modules.media
+import qs.modules
 import qs.config
 
 ShellRoot {
@@ -65,6 +66,11 @@ ShellRoot {
         }
     }
 
+    HotEdges {
+        config: root.config
+        onDashBoard: () => dashBoardLoader.shown = true
+    }
+
     Loader {
         id: dashBoardLoader
         property string name: "dashboard"
@@ -73,7 +79,7 @@ ShellRoot {
         }
         property string ipcToggle: "shown"
 
-        // active: false
+        active: false
 
         // on true: active = true -> item.expanded = true
         // on false: expanded = false -> on item.visible == false -> active = false
@@ -84,7 +90,8 @@ ShellRoot {
                 return;
             }
 
-            item.expanded = false;
+            if (item)
+                item.expanded = false;
         }
         onActiveChanged: {
             if (active)
@@ -92,10 +99,13 @@ ShellRoot {
         }
         sourceComponent: DashBoardWindow {
             config: root.config
-            expanded: true
+            // called after expanded == false
             onVisibleChanged: {
-                if (!visible)
-                    dashBoardLoader.active = false;
+                if (visible)
+                    return;
+
+                dashBoardLoader.active = false;
+                dashBoardLoader.shown = false;
             }
         }
     }

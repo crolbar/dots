@@ -61,24 +61,6 @@ Item {
         }
     }
 
-    component TabButton: Button {
-        id: tabButton
-        required property string tab
-        required property int tabIdx
-        onClick: () => {
-            root.focusedTab = tabIdx;
-        }
-
-        color: (hovered) ? Theme.bg2 : Theme.bg1
-        radius: 5
-        Text {
-            id: text
-            anchors.centerIn: parent
-            color: Theme.fg0
-            text: tabButton.tab
-        }
-    }
-
     ClippingRectangle {
         id: view
 
@@ -141,6 +123,24 @@ Item {
                     Weather {}
                 }
             }
+        }
+    }
+
+    component TabButton: Button {
+        id: tabButton
+        required property string tab
+        required property int tabIdx
+        onClick: () => {
+            root.focusedTab = tabIdx;
+        }
+
+        color: (hovered) ? Theme.bg2 : Theme.bg1
+        radius: 5
+        Text {
+            id: text
+            anchors.centerIn: parent
+            color: Theme.fg0
+            text: tabButton.tab
         }
     }
 }

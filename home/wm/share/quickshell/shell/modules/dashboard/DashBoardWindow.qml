@@ -14,6 +14,18 @@ PopoutWindow {
 
     animationDuration: 200
 
+    HoverHandler {
+        onHoveredChanged: {
+            if (hovered)
+                return;
+
+            if (root.config.media_popout_open)
+                return;
+
+            root.expanded = false;
+        }
+    }
+
     comp: DashBoard {
         config: root.config
     }
