@@ -20,7 +20,7 @@ Item {
         anchors.left: parent.left
 
         text: WeatherData.icon
-        color: Theme.blue0
+        color: Theme.fg3
         font.pixelSize: 72
     }
 
@@ -35,7 +35,7 @@ Item {
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: WeatherData.temp
-            color: Theme.blue0
+            color: Theme.fg1
             font.pixelSize: 32
             font.weight: Font.DemiBold
         }

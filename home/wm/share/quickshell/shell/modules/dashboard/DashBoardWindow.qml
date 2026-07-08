@@ -11,6 +11,7 @@ PopoutWindow {
     side: PopoutWindow.Side.Top
 
     bgColor: Theme.bg0
+    borderColor: Theme.bg0
 
     animationDuration: 200
 
@@ -20,6 +21,9 @@ PopoutWindow {
                 return;
 
             if (root.config.media_popout_open)
+                return;
+
+            if (root.config.power_popout_open)
                 return;
 
             root.expanded = false;

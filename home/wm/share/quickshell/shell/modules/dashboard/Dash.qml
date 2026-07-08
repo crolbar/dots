@@ -77,11 +77,8 @@ GridLayout {
             Layout.maximumHeight: 60
             color: "transparent"
 
-            MaterialIcon {
-                anchors.centerIn: parent
-                color: Theme.red0
-                text: "power_settings_new"
-                font.pixelSize: 32
+            PowerButton {
+                config: root.config
             }
         }
     }

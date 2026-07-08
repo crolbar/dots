@@ -34,7 +34,7 @@ Item {
 
             DateText {
                 text: root.hourStr
-                color: Theme.yellow0
+                color: Theme.fg1
             }
 
             DateText {
@@ -42,7 +42,7 @@ Item {
             }
 
             DateText {
-                color: Theme.yellow0
+                color: Theme.fg1
                 text: root.minuteStr
             }
         }
@@ -51,7 +51,7 @@ Item {
         DateText {
             Layout.alignment: Qt.AlignHCenter
             text: root.weekDayStr
-            color: Theme.yellow0
+            color: Theme.fg2
         }
 
         RowLayout {
@@ -59,7 +59,7 @@ Item {
 
             spacing: 2
             DateText {
-                color: Theme.orange0
+                color: Theme.fg2
                 text: root.dayStr
             }
 
@@ -68,7 +68,7 @@ Item {
             }
 
             DateText {
-                color: Theme.orange0
+                color: Theme.fg2
                 text: root.mounthStr
             }
 
@@ -77,7 +77,7 @@ Item {
             }
 
             DateText {
-                color: Theme.orange0
+                color: Theme.fg2
                 text: root.yearStr
             }
         }

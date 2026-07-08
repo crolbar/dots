@@ -25,4 +25,7 @@ QtObject {
 
     property bool media_popout_open: false
     property int media_popout_y: 0
+
+    property bool power_popout_open: false
+    property int power_popout_x: 0
 }

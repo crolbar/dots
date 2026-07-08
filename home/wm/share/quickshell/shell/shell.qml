@@ -117,5 +117,12 @@ ShellRoot {
         }
     }
 
+    Loader {
+        active: dashBoardLoader.active
+        sourceComponent: PowerWindow {
+            config: root.config
+        }
+    }
+
     Ipc {}
 }
