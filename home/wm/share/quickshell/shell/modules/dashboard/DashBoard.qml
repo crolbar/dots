@@ -4,9 +4,12 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell.Widgets
 import qs.utils
+import qs.config
 
 Item {
     id: root
+    required property Config config
+
     implicitHeight: 400
     implicitWidth: 650
 
@@ -125,7 +128,9 @@ Item {
 
                 Component {
                     id: dash
-                    Dash {}
+                    Dash {
+                        config: root.config
+                    }
                 }
                 Component {
                     id: performance

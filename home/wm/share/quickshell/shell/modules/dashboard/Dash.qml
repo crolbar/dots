@@ -3,8 +3,12 @@ import QtQuick
 import QtQuick.Layouts
 import qs.modules.media
 import qs.utils
+import qs.config
 
 GridLayout {
+    id: root
+    required property Config config
+
     columns: 5
     rows: 3
     rowSpacing: 8
@@ -15,7 +19,9 @@ GridLayout {
         Layout.column: 0
         Layout.rowSpan: 2
 
-        Media {}
+        Media {
+            config: root.config
+        }
     }
 
     Rect {

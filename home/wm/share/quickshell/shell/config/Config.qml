@@ -22,4 +22,7 @@ QtObject {
     }
     property int bar_popout_audio_ctl_center_y: 0
     property int bar_height: 0
+
+    property bool media_popout_open: false
+    property int media_popout_y: 0
 }

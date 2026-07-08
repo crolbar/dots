@@ -7,6 +7,7 @@ import qs.modules.bar
 import qs.modules.bar.trayMenu
 import qs.modules.bar.audio.audioCtl
 import qs.modules.dashboard
+import qs.modules.media
 import qs.config
 
 ShellRoot {
@@ -96,6 +97,13 @@ ShellRoot {
                 if (!visible)
                     dashBoardLoader.active = false;
             }
+        }
+    }
+
+    Loader {
+        active: dashBoardLoader.active
+        sourceComponent: PlayersWindow {
+            config: root.config
         }
     }
 

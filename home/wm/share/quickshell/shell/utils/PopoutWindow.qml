@@ -46,6 +46,8 @@ PanelWindow {
     property color borderColor: "black"
 
     property real animationDuration: 250
+    property var animationType: Easing.Linear
+    property list<real> animationCurve: []
 
     property bool debugMouseAreaEnable: false
 
@@ -508,6 +510,8 @@ PanelWindow {
                         root.visible = false;
                     }
                 }
+                easing.type: root.animationType
+                easing.bezierCurve: root.animationCurve
             }
         }
         Behavior on width {
@@ -520,6 +524,8 @@ PanelWindow {
                         root.visible = false;
                     }
                 }
+                easing.type: root.animationType
+                easing.bezierCurve: root.animationCurve
             }
         }
     }

@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import qs.utils
 import qs.config
@@ -12,5 +14,7 @@ PopoutWindow {
 
     animationDuration: 200
 
-    comp: DashBoard {}
+    comp: DashBoard {
+        config: root.config
+    }
 }
