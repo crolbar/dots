@@ -78,7 +78,8 @@ layout {
     }
     focus-ring {
         width 1
-        active-gradient angle=125 from="#DE64AC" relative-to="window" to="#000000"
+        // active-gradient angle=125 from="#d79921" relative-to="window" to="#000000"
+        active-color "#d79921"
         inactive-color "#000000"
     }
     border { off; }

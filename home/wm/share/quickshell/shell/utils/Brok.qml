@@ -30,17 +30,16 @@ Singleton {
     }
 
     function cb(focusedWindow) {
-        const focusedPlayer = players[0].name ?? "";
-
+        // ignoring focused window if we have send a msg to brok
         if (!brokctlUpdate)
-            if (focusedWindow.toLowerCase().includes(focusedPlayer))
+            // don't open / close when we are focusing the player*
+            if (focusedWindow.toLowerCase().includes(players[0].name ?? ""))
                 return;
 
         // if its open restart close timer, else open
         if (config.media_popout_open) {
-            const timer = config.media_popout_closing_timer;
-            if (timer && timer.running)
-                timer.restart();
+            if (config.media_popout_closing_timer)
+                config.media_popout_closing_timer.restart();
         } else
             config.media_popout_open = true;
     }

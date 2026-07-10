@@ -67,9 +67,18 @@ ShellRoot {
         }
     }
 
-    HotEdges {
-        config: root.config
-        onDashBoard: () => dashBoardLoader.shown = true
+    Loader {
+        property string name: "hotEdges"
+        Component.onCompleted: {
+            root.windows[this.name] = this;
+        }
+        property string ipcToggle: "active"
+        active: true
+        sourceComponent:
+        HotEdges {
+            config: root.config
+            onDashBoard: () => dashBoardLoader.shown = true
+        }
     }
 
     Loader {
