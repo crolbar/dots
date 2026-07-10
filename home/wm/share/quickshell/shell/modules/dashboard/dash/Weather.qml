@@ -20,8 +20,8 @@ Item {
         anchors.left: parent.left
 
         text: WeatherData.icon
-        color: Theme.fg3
-        font.pixelSize: 72
+        color: Theme.bg0
+        font.pixelSize: 82
     }
 
     Column {
@@ -35,7 +35,29 @@ Item {
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: WeatherData.temp
-            color: Theme.fg1
+            // season changing
+            color: {
+                const m = Time.format("MM");
+                switch (parseInt(m)) {
+                case 11:
+                case 12:
+                case 1:
+                case 2:
+                    return Theme.blue1;
+                case 3:
+                case 4:
+                case 5:
+                    return Theme.green1;
+                case 6:
+                case 7:
+                case 8:
+                    return Theme.yellow1;
+                case 9:
+                case 10:
+                    return Theme.orange1;
+                }
+            }
+            opacity: 0.7
             font.pixelSize: 32
             font.weight: Font.DemiBold
         }
@@ -44,8 +66,9 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
 
             text: WeatherData.description
-            color: Theme.fg2
+            color: Theme.fg3
             font.pixelSize: 14
+            font.weight: 500
         }
     }
 }

@@ -103,11 +103,11 @@ Singleton {
 
     function reload(): void {
         if (!loc) {
-            F.sendRequest("https://ipinfo.io/json", resp => {
+            F.sendRequest("https://ipwho.is", resp => {
                 const response = JSON.parse(resp.body);
                 console.log("fetched loc", response.city);
-                if (response.loc) {
-                    loc = response.loc;
+                if (response.success === true) {
+                    loc = `${response.latitude},${response.longitude}`;
                     city = response.city ?? "";
                     timer.restart();
                 }
@@ -121,7 +121,6 @@ Singleton {
             return "";
 
         const [lat, lon] = loc.split(",").map(s => s.trim());
-        console.log(lat, lon)
         const baseUrl = "https://api.open-meteo.com/v1/forecast";
         const params = ["latitude=" + lat, "longitude=" + lon, "hourly=weather_code,temperature_2m,precipitation_probability", "daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset", "current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,wind_speed_10m", "timezone=auto", "forecast_days=7"];
 
@@ -130,7 +129,7 @@ Singleton {
 
     function fetchWeatherData(): void {
         const url = getWeatherUrl();
-        console.log("fetching with", url);
+        console.log("fetching open meteo");
         if (url === "")
             return;
 

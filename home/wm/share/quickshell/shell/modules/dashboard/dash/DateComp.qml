@@ -19,14 +19,14 @@ Item {
     readonly property string hourStr: timeComponents[0] ?? ""
     readonly property string minuteStr: timeComponents[1] ?? ""
 
-    readonly property int fontSize: 26
-    readonly property int fontWeight: Font.DemiBold
+    readonly property int fontSize: 32
+    readonly property int fontWeight: 550
 
     ColumnLayout {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        spacing: 0
+        spacing: 8
 
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
@@ -47,19 +47,11 @@ Item {
             }
         }
 
-
-        DateText {
-            Layout.alignment: Qt.AlignHCenter
-            text: root.weekDayStr
-            color: Theme.fg2
-        }
-
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
 
             spacing: 2
             DateText {
-                color: Theme.fg2
                 text: root.dayStr
             }
 
@@ -68,7 +60,6 @@ Item {
             }
 
             DateText {
-                color: Theme.fg2
                 text: root.mounthStr
             }
 
@@ -77,14 +68,13 @@ Item {
             }
 
             DateText {
-                color: Theme.fg2
                 text: root.yearStr
             }
         }
     }
 
     component DateText: Text {
-        color: Theme.fg4
+        color: Theme.fg2
         font.pixelSize: root.fontSize
         font.weight: root.fontWeight
     }

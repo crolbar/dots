@@ -127,7 +127,7 @@ MouseArea {
                     id: iconLeft
                     anchors.centerIn: parent
                     text: "chevron_left"
-                    font.pixelSize: 22
+                    font.pixelSize: 24
                     font.bold: true
                 }
             }
@@ -172,8 +172,9 @@ MouseArea {
 
                     anchors.centerIn: parent
                     text: grid.title
-                    color: Theme.fg1
+                    color: Theme.fg2
                     font.pixelSize: 18
+                    font.weight: 500
                 }
             }
 
@@ -200,7 +201,7 @@ MouseArea {
                     id: iconRight
                     anchors.centerIn: parent
                     text: "chevron_right"
-                    font.pixelSize: 22
+                    font.pixelSize: 24
                     font.bold: true
                 }
             }
@@ -219,7 +220,7 @@ MouseArea {
                 text: model.shortName
                 font.pixelSize: 16
                 font.weight: Font.Medium
-                color: Theme.fg2
+                color: Theme.fg1
             }
         }
 
@@ -258,8 +259,8 @@ MouseArea {
 
                         horizontalAlignment: Text.AlignHCenter
                         text: grid.locale.toString(dayItem.model.day)
-                        color: Theme.fg1
-                        opacity: dayItem.model.today || dayItem.model.month === grid.month ? 1 : 0.4
+                        color: Theme.fg2
+                        opacity: dayItem.model.today || dayItem.model.month === grid.month ? 1 : 0.3
                         font.pixelSize: 16
                     }
                 }
@@ -271,25 +272,25 @@ MouseArea {
                 visible: todayItem
 
                 implicitHeight: implicitWidth
-                implicitWidth: todayItem?.implicitHeight ?? 0
+                implicitWidth: todayItem?.implicitHeight + 4 ?? 0
 
                 x: todayItem ? todayItem.x + (todayItem.width - implicitWidth) / 2 : 0
-                y: todayItem ? todayItem.y : 0
+                y: todayItem ? todayItem.y - 2 : 0
                 z: -1
 
-                radius: 7
+                radius: 8
                 opacity: 0.8
-                color: Theme.purple1
+                color: Theme.purple0
 
                 Behavior on x {
                     NumberAnimation {
-                        duration: 150
+                        duration: 120
                     }
                 }
 
                 Behavior on y {
                     NumberAnimation {
-                        duration: 150
+                        duration: 120
                     }
                 }
             }
