@@ -187,17 +187,18 @@ Singleton {
                 root._uploadSpeed = txDelta / timeDelta;
 
                 if (root._downloadSpeed >= 0 && isFinite(root._downloadSpeed)) {
-                    root.downloadBuffer.push(root._downloadSpeed);
-
                     if (root.downloadBuffer.length > root.historyLength)
                         root.downloadBuffer.shift();
+
+                    root.downloadBuffer.push(root._downloadSpeed);
                     root.downloadBufferChanged();
                 }
 
                 if (root._uploadSpeed >= 0 && isFinite(root._uploadSpeed)) {
-                    root.uploadBuffer.push(root._uploadSpeed);
                     if (root.uploadBuffer.length > root.historyLength)
                         root.uploadBuffer.shift();
+
+                    root.uploadBuffer.push(root._uploadSpeed);
                     root.uploadBufferChanged();
                 }
             }

@@ -49,6 +49,9 @@ Item {
             if (root.historyLength < 2)
                 return;
 
+            ctx.lineWidth = root.lineWidth;
+            ctx.strokeStyle = color;
+
             var w = width;
             var h = height;
             var len = buffer.length;
@@ -68,15 +71,12 @@ Item {
             ctx.moveTo(px(0), py(buffer[0]));
             for (var i = 1; i < len; i++)
                 ctx.lineTo(px(i), py(buffer[i]));
-
-            ctx.lineWidth = root.lineWidth;
-            ctx.strokeStyle = color;
             ctx.stroke();
 
+            // fill under line
             ctx.lineTo(px(len - 1), h);
             ctx.lineTo(px(0), h);
             ctx.closePath();
-
             ctx.fillStyle = Qt.rgba(color.r, color.g, color.b, fillAlpha);
             ctx.fill();
         }

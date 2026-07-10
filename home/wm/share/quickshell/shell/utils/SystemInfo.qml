@@ -8,9 +8,9 @@ Singleton {
     id: root
 
     // GB
-    property double memCap: 0
+    property double memCap: 1
     property double memUsage: 0
-    property string cpuName: ""
+    property string cpuName: "AMD Ryzen 5 3600"
     // %
     property real cpuUsage: lastCpuTotal
     property real lastCpuTotal: 0
@@ -24,18 +24,18 @@ Singleton {
     property real gpuUtil: 0
     property real gpuTemp: 0
 
-    Process {
-        id: cpuNameProc
-        command: ["sh", "-c", "lscpu | sed -n 's/^Model name:[[:space:]]*//p'"]
-        stdout: SplitParser {
-            onRead: data => {
-                if (!data)
-                    return;
-                root.cpuName = data;
-            }
-        }
-        Component.onCompleted: running = true
-    }
+    // Process {
+    //     id: cpuNameProc
+    //     command: ["sh", "-c", "lscpu | sed -n 's/^Model name:[[:space:]]*//p'"]
+    //     stdout: SplitParser {
+    //         onRead: data => {
+    //             if (!data)
+    //                 return;
+    //             root.cpuName = data;
+    //         }
+    //     }
+    //     Component.onCompleted: running = true
+    // }
 
     Process {
         id: cpuProc

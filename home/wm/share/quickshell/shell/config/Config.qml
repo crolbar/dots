@@ -28,4 +28,6 @@ QtObject {
 
     property bool power_popout_open: false
     property int power_popout_x: 0
+
+    property int dashboard_focused_tab: 0
 }

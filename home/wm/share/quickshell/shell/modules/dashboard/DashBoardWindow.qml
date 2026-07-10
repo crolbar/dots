@@ -14,6 +14,8 @@ PopoutWindow {
     borderColor: Theme.bg0
 
     animationDuration: 200
+    animationType: Easing.BezierSpline
+    animationCurve: [0.38, 1.21, 0.22, 1, 1, 1]
 
     HoverHandler {
         onHoveredChanged: {

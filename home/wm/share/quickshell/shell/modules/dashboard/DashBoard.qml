@@ -14,7 +14,10 @@ Item {
     implicitWidth: 650
 
     property int padding: 8
-    property int focusedTab: 0
+    property int focused_tab: 0
+    Component.onCompleted: {
+        focused_tab = Qt.binding(() => config.dashboard_focused_tab);
+    }
 
     readonly property var dashboardTabs: [
         {
@@ -74,19 +77,22 @@ Item {
         color: Theme.bg0
 
         Flickable {
-            readonly property Item currentItem: repeater.itemAt(root.focusedTab)
+            id: flickable
+            readonly property Item currentItem: repeater.itemAt(root.focused_tab)
             contentX: currentItem?.x || 0
 
             anchors.fill: parent
 
             flickableDirection: Flickable.HorizontalFlick
 
+            acceptedButtons: Qt.NoButton
+
             contentWidth: layout.implicitWidth
             contentHeight: layout.implicitHeight
 
             Behavior on contentX {
                 NumberAnimation {
-                    duration: 500
+                    duration: 100
 
                     easing.type: Easing.BezierSpline
                     easing.bezierCurve: [0.38, 1.21, 0.22, 1, 1, 1]
@@ -100,10 +106,16 @@ Item {
                     id: repeater
                     model: root.dashboardTabs
                     Loader {
+                        id: loader
+                        required property var modelData
+                        required property int index
+
                         Layout.preferredWidth: view.width
                         Layout.preferredHeight: view.height
                         Layout.alignment: Qt.AlignTop
-                        required property var modelData
+
+                        active: root.config.dashboard_focused_tab == index
+
                         sourceComponent: modelData.comp
                     }
                 }
@@ -131,7 +143,7 @@ Item {
         required property string tab
         required property int tabIdx
         onClick: () => {
-            root.focusedTab = tabIdx;
+            root.config.dashboard_focused_tab = tabIdx;
         }
 
         color: (hovered) ? Theme.bg2 : Theme.bg1
