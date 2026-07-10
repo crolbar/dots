@@ -44,7 +44,6 @@ ShellRoot {
         Component.onCompleted: {
             root.windows[this.name] = this;
         }
-        active: false
         property string ipcToggle: "active"
         sourceComponent: BarWindow {
             id: bar
@@ -158,12 +157,12 @@ ShellRoot {
     }
 
     Component.onCompleted: {
-        Brok.config = root.config
-        Brok.start()
+        Brok.config = root.config;
+        Brok.start();
     }
 
     Component.onDestruction: {
-        Brok.stop()
+        Brok.stop();
     }
 
     Ipc {}

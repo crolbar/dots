@@ -31,6 +31,6 @@ QtObject {
 
     property int dashboard_focused_tab: 0
 
-    property bool media_popout_open: true
+    property bool media_popout_open: false
     property var media_popout_closing_timer: undefined
 }
