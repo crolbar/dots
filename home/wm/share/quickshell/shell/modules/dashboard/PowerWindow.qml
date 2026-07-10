@@ -106,7 +106,10 @@ PopoutWindow {
             hoverEnabled: true
             anchors.fill: parent
             cursorShape: Qt.PointingHandCursor
-            onClicked: pib.onClicked()
+            onClicked: {
+                pib.onClicked();
+                root.config.power_popout_open = false;
+            }
         }
 
         MaterialIcon {
