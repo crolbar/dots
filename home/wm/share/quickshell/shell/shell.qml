@@ -10,6 +10,7 @@ import qs.modules.dashboard
 import qs.modules.media
 import qs.modules
 import qs.config
+import qs.utils
 
 ShellRoot {
     id: root
@@ -43,6 +44,7 @@ ShellRoot {
         Component.onCompleted: {
             root.windows[this.name] = this;
         }
+        active: false
         property string ipcToggle: "active"
         sourceComponent: BarWindow {
             id: bar
@@ -112,16 +114,56 @@ ShellRoot {
 
     Loader {
         active: dashBoardLoader.active
-        sourceComponent: PlayersWindow {
+        sourceComponent: PowerWindow {
             config: root.config
         }
     }
 
     Loader {
-        active: dashBoardLoader.active
-        sourceComponent: PowerWindow {
+        id: mediaLoader
+        property string name: "media"
+        Component.onCompleted: {
+            root.windows[this.name] = this;
+        }
+        property string ipcToggle: "show"
+
+        property bool show: root.config.media_popout_open
+        onShowChanged: {
+            if (show) {
+                active = true;
+                if (!root.config.media_popout_open)
+                    root.config.media_popout_open = true;
+                return;
+            }
+
+            if (root.config.media_popout_open)
+                root.config.media_popout_open = false;
+        }
+
+        active: false
+        sourceComponent: MediaWindow {
+            config: root.config
+            onVisibleChanged: {
+                if (!visible)
+                    mediaLoader.active = false;
+            }
+        }
+    }
+
+    Loader {
+        active: dashBoardLoader.active || root.config.media_popout_open
+        sourceComponent: PlayersWindow {
             config: root.config
         }
+    }
+
+    Component.onCompleted: {
+        Brok.config = root.config
+        Brok.start()
+    }
+
+    Component.onDestruction: {
+        Brok.stop()
     }
 
     Ipc {}

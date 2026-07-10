@@ -23,11 +23,14 @@ QtObject {
     property int bar_popout_audio_ctl_center_y: 0
     property int bar_height: 0
 
-    property bool media_popout_open: false
-    property int media_popout_y: 0
+    property bool media_focus_popout_open: false
+    property int media_focus_popout_y: 0
 
     property bool power_popout_open: false
     property int power_popout_x: 0
 
     property int dashboard_focused_tab: 0
+
+    property bool media_popout_open: true
+    property var media_popout_closing_timer: undefined
 }

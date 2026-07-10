@@ -3,10 +3,12 @@ pragma Singleton
 import QtQuick
 import Quickshell
 import Quickshell.Io
+import qs.config
 
 Singleton {
     id: root
 
+    property Config config
     property list<BrokPlayer> players
     property string brokctlUpdate
 
@@ -15,6 +17,32 @@ Singleton {
     }
     function stop(): void {
         proc.running = false;
+    }
+
+    Process {
+        id: cbProc
+        command: ["sh", "-c", "niri msg -j focused-window | jq -c -r '.app_id'"]
+        stdout: StdioCollector {
+            onStreamFinished: {
+                root.cb(text.trim());
+            }
+        }
+    }
+
+    function cb(focusedWindow) {
+        const focusedPlayer = players[0].name ?? "";
+
+        if (!brokctlUpdate)
+            if (focusedWindow.toLowerCase().includes(focusedPlayer))
+                return;
+
+        // if its open restart close timer, else open
+        if (config.media_popout_open) {
+            const timer = config.media_popout_closing_timer;
+            if (timer && timer.running)
+                timer.restart();
+        } else
+            config.media_popout_open = true;
     }
 
     Process {
@@ -41,6 +69,8 @@ Singleton {
                 root.players = l;
 
                 root.brokctlUpdate = json["brokctl-update"];
+
+                cbProc.running = true;
             }
         }
     }

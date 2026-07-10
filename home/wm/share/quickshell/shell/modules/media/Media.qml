@@ -8,9 +8,6 @@ Loader {
     id: root
     required property Config config
 
-    Component.onCompleted: Brok.start()
-    Component.onDestruction: Brok.stop()
-
     anchors.fill: parent
 
     active: Brok.players[0] != undefined

@@ -57,7 +57,6 @@ PanelWindow {
                 bar.mouseWheelHandle(w);
             }
             onClicked: me => {
-                // console.log(me.button == Qt.ForwardButton)
                 if (me.button == Qt.RightButton) {
                     overlay_toggle.running = true;
                 } else if (me.button == Qt.LeftButton) {

@@ -22,7 +22,7 @@ PopoutWindow {
             if (hovered)
                 return;
 
-            if (root.config.media_popout_open)
+            if (root.config.media_focus_popout_open)
                 return;
 
             if (root.config.power_popout_open)

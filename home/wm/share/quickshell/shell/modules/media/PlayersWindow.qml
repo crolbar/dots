@@ -12,12 +12,20 @@ PopoutWindow {
 
     anchors.top: true
 
+    property bool opened_for_dashboard: false
+    Component.onCompleted: {
+        opened_for_dashboard = !config.media_popout_open;
+    }
+
     margins {
-        top: Math.max(config.media_popout_y - height / 2, 0)
+        top: Math.max(config.media_focus_popout_y - height / 2, 0)
         right: {
-            return (screen.width / 2) + // middle of screen
-            (650 / 2) - // start of dashboard
-            8 - 1; // padding
+            if (opened_for_dashboard)
+                return (screen.width / 2) + // middle of screen
+                (650 / 2) - // start of dashboard
+                8 - 1; // padding
+
+            return 180;
         }
     }
 
@@ -26,14 +34,14 @@ PopoutWindow {
     arc2Height: 10
     arc2Width: 10
 
-    bgColor: Theme.bg1
-    borderColor: Theme.bg1
+    bgColor: (opened_for_dashboard) ? Theme.bg1 : Theme.bg0
+    borderColor: (opened_for_dashboard) ? Theme.bg1 : Theme.bg0
 
     animationDuration: 300
     animationType: Easing.BezierSpline
     animationCurve: [0.38, 1.21, 0.22, 1, 1, 1]
 
-    expanded: config.media_popout_open
+    expanded: config.media_focus_popout_open
 
     comp: Item {
         implicitHeight: 200

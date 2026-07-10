@@ -55,12 +55,15 @@ Item {
         cursorShape: (root.isFocused) ? undefined : Qt.PointingHandCursor
         onClicked: {
             if (root.isFocused) {
-                root.config.media_popout_open = !root.config.media_popout_open;
+                root.config.media_focus_popout_open = !root.config.media_focus_popout_open;
                 const topLeftCorner = root.mapToItem(null, 0, 0);
-                root.config.media_popout_y = topLeftCorner.y + root.height / 2;
+                root.config.media_focus_popout_y = topLeftCorner.y + root.height / 2;
             } else {
                 root.runBrok(`focus ${root.player.id}`);
-                root.config.media_popout_open = false;
+                root.config.media_focus_popout_open = false;
+
+                if (root.config.media_popout_closing_timer)
+                    root.config.media_popout_closing_timer.restart();
             }
         }
     }

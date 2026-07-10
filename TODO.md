@@ -69,6 +69,6 @@
 -[x] open/close certain windows with cmd
 
 -[x] sidebar (workspaces, cpu, mem, audio, kb layout, tray)
--[ ] dashboard (caelestia dots one, + brightness bar, power menu)
--[ ] media dialog
+-[x] dashboard (caelestia dots one, + brightness bar, power menu)
+-[x] media dialog
 -[x] gruvbox theme
