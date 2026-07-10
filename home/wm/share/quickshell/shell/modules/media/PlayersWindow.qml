@@ -13,8 +13,9 @@ PopoutWindow {
     anchors.top: true
 
     property bool opened_for_dashboard: false
-    Component.onCompleted: {
-        opened_for_dashboard = !config.media_popout_open;
+    onExpandedChanged: {
+        if (expanded)
+            opened_for_dashboard = !config.media_popout_open;
     }
 
     margins {
