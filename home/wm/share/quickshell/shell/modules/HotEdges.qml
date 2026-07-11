@@ -4,13 +4,16 @@ import Quickshell
 import QtQuick
 import qs.config
 
-// qmllint disable uncreatable-type
-Item {
+Loader {
     id: root
     required property Config config
+    required property var niri
     required property var onDashBoard
 
-    PanelWindow {
+    active: !root.niri.is_fullscreen
+
+    // qmllint disable uncreatable-type
+    sourceComponent: PanelWindow {
         id: dashboard
         exclusionMode: ExclusionMode.Ignore
         anchors.top: true

@@ -1,0 +1,147 @@
+From 4576049b15df79100c71e005af54fe1135439b18 Mon Sep 17 00:00:00 2001
+From: crolbar <crolbar@crolbar.com>
+Date: Sat, 11 Jul 2026 18:23:54 +0300
+Subject: [PATCH] is_fullscreen ipc window state
+
+---
+ niri-ipc/src/lib.rs   |  5 +++++
+ niri-ipc/src/state.rs |  8 ++++++++
+ src/ipc/client.rs     |  3 +++
+ src/ipc/server.rs     |  6 ++++++
+ src/window/mapped.rs  | 12 ++++++++++++
+ 5 files changed, 34 insertions(+)
+
+diff --git a/niri-ipc/src/lib.rs b/niri-ipc/src/lib.rs
+index 0aa3cb4f..a9749264 100644
+--- a/niri-ipc/src/lib.rs
++++ b/niri-ipc/src/lib.rs
+@@ -1324,6 +1324,7 @@ pub struct Window {
+     pub is_floating: bool,
+     /// Whether this window requests your attention.
+     pub is_urgent: bool,
++    pub is_fullscreen: bool,
+     /// Position- and size-related properties of the window.
+     pub layout: WindowLayout,
+     /// Timestamp when the window was most recently focused.
+@@ -1649,6 +1650,10 @@ pub enum Event {
+         /// The new urgency state of the window.
+         urgent: bool,
+     },
++    WindowFullscreenChanged {
++        id: u64,
++        fullscreen: bool,
++    },
+     /// The layout of one or more windows has changed.
+     WindowLayoutsChanged {
+         /// Pairs consisting of a window id and new layout information for the window.
+diff --git a/niri-ipc/src/state.rs b/niri-ipc/src/state.rs
+index b603dfc6..b9c4746a 100644
+--- a/niri-ipc/src/state.rs
++++ b/niri-ipc/src/state.rs
+@@ -216,6 +216,14 @@ impl EventStreamStatePart for WindowsState {
+                     }
+                 }
+             }
++            Event::WindowFullscreenChanged { id, fullscreen } => {
++                for win in self.windows.values_mut() {
++                    if win.id == id {
++                        win.is_fullscreen = fullscreen;
++                        break;
++                    }
++                }
++            }
+             Event::WindowUrgencyChanged { id, urgent } => {
+                 for win in self.windows.values_mut() {
+                     if win.id == id {
+diff --git a/src/ipc/client.rs b/src/ipc/client.rs
+index 40a58efa..de7a8607 100644
+--- a/src/ipc/client.rs
++++ b/src/ipc/client.rs
+@@ -465,6 +465,9 @@ pub fn handle_msg(mut msg: Msg, json: bool) -> anyhow::Result<()> {
+                     } => {
+                         println!("Window {id}: focus timestamp changed to {focus_timestamp:?}");
+                     }
++                    Event::WindowFullscreenChanged { id, fullscreen } => {
++                        println!("Window {id}: fullscreen changed to {fullscreen}");
++                    }
+                     Event::WindowUrgencyChanged { id, urgent } => {
+                         println!("Window {id}: urgency changed to {urgent}");
+                     }
+diff --git a/src/ipc/server.rs b/src/ipc/server.rs
+index db71da6d..09e0edec 100644
+--- a/src/ipc/server.rs
++++ b/src/ipc/server.rs
+@@ -526,6 +526,7 @@ fn make_ipc_window(
+         is_focused: mapped.is_focused(),
+         is_floating: mapped.is_floating(),
+         is_urgent: mapped.is_urgent(),
++        is_fullscreen: mapped.is_fullscreen(),
+         layout,
+         focus_timestamp: mapped.get_focus_timestamp().map(Timestamp::from),
+     })
+@@ -739,6 +740,11 @@ impl State {
+                 events.push(Event::WindowFocusChanged { id: Some(id) });
+             }
+ 
++            let fullscreen = mapped.is_fullscreen();
++            if fullscreen != ipc_win.is_fullscreen {
++                events.push(Event::WindowFullscreenChanged { id, fullscreen });
++            }
++
+             let focus_timestamp = mapped.get_focus_timestamp().map(Timestamp::from);
+             if focus_timestamp != ipc_win.focus_timestamp {
+                 events.push(Event::WindowFocusTimestampChanged {
+diff --git a/src/window/mapped.rs b/src/window/mapped.rs
+index 3db1f66c..69d60eec 100644
+--- a/src/window/mapped.rs
++++ b/src/window/mapped.rs
+@@ -166,6 +166,8 @@ pub struct Mapped {
+     /// flickering.
+     is_pending_windowed_fullscreen: bool,
+ 
++    is_fullscreen: bool,
++
+     /// Pending windowed fullscreen updates.
+     ///
+     /// These have been "sent" to the window in form of configures, but the window hadn't committed
+@@ -287,6 +289,7 @@ impl Mapped {
+             offscreen_data: RefCell::new(None),
+             is_urgent: false,
+             is_focused: false,
++            is_fullscreen: false,
+             is_active_in_column: true,
+             is_floating: false,
+             is_window_cast_target: false,
+@@ -371,6 +374,10 @@ impl Mapped {
+         self.is_focused
+     }
+ 
++    pub fn is_fullscreen(&self) -> bool {
++        self.is_fullscreen
++    }
++
+     pub fn is_active_in_column(&self) -> bool {
+         self.is_active_in_column
+     }
+@@ -397,6 +404,10 @@ impl Mapped {
+         self.need_to_recompute_rules = true;
+     }
+ 
++    pub fn set_is_fullscreen(&mut self, mode: SizingMode) {
++        self.is_fullscreen = mode == SizingMode::Fullscreen;
++    }
++
+     pub fn set_is_window_cast_target(&mut self, value: bool) {
+         if self.is_window_cast_target == value {
+             return;
+@@ -774,6 +785,7 @@ impl LayoutElement for Mapped {
+         animate: bool,
+         transaction: Option<Transaction>,
+     ) {
++        self.set_is_fullscreen(mode);
+         // Going into real fullscreen resets windowed fullscreen.
+         if mode == SizingMode::Fullscreen {
+             self.is_pending_windowed_fullscreen = false;
+-- 
+2.54.0
+

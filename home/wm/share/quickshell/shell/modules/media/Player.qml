@@ -3,6 +3,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Effects
+import QtQuick.Controls
 import Quickshell.Io
 import qs.utils
 import qs.config
@@ -119,6 +120,24 @@ Item {
         color: Theme.fg1
         font.pixelSize: 14
         font.weight: Font.DemiBold
+
+        HoverHandler {
+            id: titleHh
+            enabled: title.truncated
+        }
+        ToolTip {
+            visible: titleHh.hovered
+            contentItem: Text {
+                text: root.player.title
+                color: Theme.fg1
+            }
+            background: Rectangle {
+                color: Theme.bg1
+                radius: 10
+            }
+
+            y: 20
+        }
 
         width: parent.width - 16
         elide: Text.ElideRight

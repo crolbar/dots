@@ -17,6 +17,8 @@ PopoutWindow {
     animationType: Easing.BezierSpline
     animationCurve: [0.38, 1.21, 0.22, 1, 1, 1]
 
+    expanded: root.config.dashboard_open
+
     HoverHandler {
         onHoveredChanged: {
             if (hovered)

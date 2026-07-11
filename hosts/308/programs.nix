@@ -5,7 +5,10 @@
     #   withUWSM = true;
     # };
     sway.enable = true;
-    niri.enable = true;
+    niri = {
+      enable = true;
+      package = pkgs.callPackage ../../derivations/niri.nix {};
+    };
     dconf.enable = true;
     uwsm = {
       enable = true;

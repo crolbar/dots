@@ -5,10 +5,10 @@
 
         currwin=$(niri msg -j focused-window | jq -r ".title")
         kb_layout=$(niri msg -j keyboard-layouts | jq -r ".names[.current_idx]")
-
+        is_fullscreen=$( niri msg -j focused-window | jq -r ".is_fullscreen")
         currwin=''${currwin//\"/\\\"}
 
-        echo "{\"workspaces\": $workspaces, \"currwin\": \"$currwin\", \"kb_layout\": \"$kb_layout\"}"
+        echo "{\"workspaces\": $workspaces, \"currwin\": \"$currwin\", \"kb_layout\": \"$kb_layout\", \"is_fullscreen\": $is_fullscreen}"
     }
     up
 
