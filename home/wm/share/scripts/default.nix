@@ -10,5 +10,7 @@ in {
     ./rgb.nix
     (import ./volume.nix (args // {inherit browser musicPlayer;}))
     (import ./pulse.nix {inherit pkgs speakerSink;})
+    ./niri.nix
+    ./niri_workspace_scroll.nix
   ];
 }

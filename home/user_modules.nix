@@ -36,7 +36,6 @@
 
     ./gui/term_emulators/alacritty.nix
     ./gui/zathura.nix
-    ./gui/eww
     ./gui/browsers/zen-browser.nix
 
     ./wm/bsp
@@ -70,7 +69,6 @@
     ./gui/zathura.nix
 
     # ./wm/niri
-    ./gui/eww
     ./gui/spotify.nix
     ./gui/browsers/zen-browser.nix
   ];

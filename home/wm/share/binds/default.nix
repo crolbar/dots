@@ -26,12 +26,11 @@
         [[mod] "i" (exec "${sb.magnifier} --invert-scroll")]
       ];
 
-      eww = [
-        # needs ../../../gui/eww/eww
-        [[mod] "s" (exec "${bins.eww} open board --toggle")]
-        [[mod shift] "s" (exec "pkill eww")]
-        [[mod shift] "d" (exec "${bins.eww} open set_board --toggle")]
-        [[mod] "d" (exec "${bins.eww} open brok --toggle")]
+      quickshell = [
+        # needs ../quickshell
+        [[mod] "s" (exec "${bins.quickshell} ipc call main toggle dashboard")]
+        [[mod shift] "s" (exec "systemctl restart --user quickshell")]
+        [[mod] "d" (exec "${bins.quickshell} ipc call main toggle media")]
         [[mod] "w" (exec toggleBar)]
       ];
 
@@ -45,14 +44,14 @@
         music = [
           [[mod shift alt] "F11" (exec "${scripts.volume} md")]
           [[mod shift alt] "F12" (exec "${scripts.volume} mu")]
-          [[mod shift alt] "F7" (exec "${scripts.volumeEww} music mute")]
+          # [[mod shift alt] "F7" (exec "")]
         ];
 
         # (browser defined in ../scripts/default.nix)
         browser = [
           [[mod shift alt] "F9" (exec "${scripts.volume} bd")]
           [[mod shift alt] "F10" (exec "${scripts.volume} bu")]
-          [[mod shift alt] "F8" (exec "${scripts.volumeEww} browser mute")]
+          [[mod shift alt] "F8" (exec "${bins.pamixer} -t")]
         ];
 
         system = [
@@ -70,10 +69,6 @@
       window = {
         # window control
         control = let
-          # switchSplitOrientation = helpers.mkOptionalBinds settings [
-          #   [[mod shift] "r" "switchSplitOrientation"]
-          #   [[mod shift] "p" "switchSplitOrientation"]
-          # ];
           switchLayout = helpers.mkOptionalBinds settings [
             [[mod] "t" "switchLayoutTabbed"]
           ];
@@ -84,7 +79,6 @@
             [[mod] "z" floatingToggle]
             [[alt] tab focusLast]
           ]
-          # ++ switchSplitOrientation
           ++ switchLayout;
 
         focus = helpers.vim [[mod] moveFocus];
@@ -136,7 +130,7 @@
       niri =
         if has "isNiri" settings
         then [
-          [[mod] "u" (exec "qs ipc call main toggle dashboard")]
+          # [[mod] "u" (exec "qs ipc call main toggle dashboard")]
         ]
         else [];
 
@@ -230,7 +224,7 @@
 
     emacs = lib.getExe' config.programs.emacs.package "emacsclient";
 
-    eww = lib.getExe config.programs.eww.package;
+    quickshell = lib.getExe pkgs.quickshell;
     awww = lib.getExe pkgs.awww;
 
     vbz = lib.getExe' pkgs.vbz "vbz";
@@ -245,7 +239,6 @@
   in {
     wall = gSP "scripts/wall.sh";
     volume = gSP "scripts/volume";
-    volumeEww = gSP "scripts/eww/volume.sh";
     rgb = gSP "scripts/rgb.sh";
     defaultSink = gSP "scripts/default-sink.sh";
     wvm = gSP "scripts/wvm";

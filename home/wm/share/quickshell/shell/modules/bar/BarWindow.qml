@@ -54,7 +54,8 @@ PanelWindow {
                     move_focus.running = true;
                     return;
                 }
-                bar.mouseWheelHandle(w);
+                workspace_wheel.dir = (w.angleDelta.y > 0) ? "up" : "down";
+                workspace_wheel.running = true;
             }
             onClicked: me => {
                 if (me.button == Qt.RightButton) {
@@ -68,6 +69,14 @@ PanelWindow {
                 }
             }
 
+            Process {
+                id: workspace_wheel
+                property string dir
+                running: false
+                command: {
+                    ["sh", "-c", `~/scripts/niri_workspace_scroll.sh ${dir}`];
+                }
+            }
             Process {
                 id: move_focus
                 property string dir

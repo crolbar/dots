@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./zathura.nix
-    ./eww
     ./spotify.nix
     ./browsers
     ./obs.nix
@@ -35,5 +34,6 @@
     xfce4-dict
     # kicad
     blueman
+    eww
   ];
 }

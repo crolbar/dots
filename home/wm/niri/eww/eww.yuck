@@ -1,4 +1,0 @@
-(deflisten niri "./scripts/niri")
-(include "./tags/tags.yuck")
-(include "./btm_tray/btm_tray.yuck")
-(include "./bar/bar.yuck")

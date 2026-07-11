@@ -1,5 +1,14 @@
 pragma ComponentBehavior: Bound
 
+/*
+
+Structure of windows:
+modules/*       directory that containts files associated with that window, it most likely will contain these main files:
+ *Loader        controlling whether the window is loaded in memory, also likely registers in `windows` for ipc control
+ *Window        *Window type containing basic properties, hover handlers...
+ *              should be the root component in the window, containing all the contents visible in the window
+*/
+
 import Quickshell
 import Quickshell.Io
 import QtQuick
@@ -47,7 +56,7 @@ ShellRoot {
 
     Process {
         id: proc
-        command: ["sh", "-c", "~/.config/niri/eww/scripts/niri"]
+        command: ["sh", "-c", "~/scripts/niri.sh"]
 
         running: true
 

@@ -8,7 +8,6 @@
 }: {
   imports = [
     ./binds.nix
-    ./eww
 
     ../share/wayland
     ../share/dunst.nix

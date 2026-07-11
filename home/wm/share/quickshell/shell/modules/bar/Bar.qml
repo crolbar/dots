@@ -1,4 +1,3 @@
-import Quickshell.Io
 import QtQuick.Layouts
 import QtQuick
 import qs.utils
@@ -22,26 +21,12 @@ Item {
         root.closeAudioCtl();
     }
 
-    function mouseWheelHandle(we: WheelEvent): void {
-        workspace_wheel.dir = (we.angleDelta.y > 0) ? "up" : "down";
-        workspace_wheel.running = true;
-    }
-
     function closeTrayMenu() {
         if (!root.config.selected_tray_item_noexit)
             root.config.selected_tray_item = -1;
     }
     function closeAudioCtl() {
         root.config.bar_popout_audio_ctl_open = false;
-    }
-
-    Process {
-        id: workspace_wheel
-        property string dir
-        running: false
-        command: {
-            ["sh", "-c", `~/.config/niri/eww/scripts/workspace_scroll.sh ${dir}`];
-        }
     }
 
     ColumnLayout {
