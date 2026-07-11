@@ -77,10 +77,10 @@ in {
 
     terminal = "tmux-256color";
     extraConfig = let
-      bg = "black";
-      fg = "gray";
-      ac = "color244";
-      un = "color236";
+      bg = "#282828";
+      fg = "#ebdbb2";
+      ac = "#bdae93";
+      un = "#504945";
     in ''
       set -sg terminal-overrides ",*:RGB"
 
@@ -106,13 +106,13 @@ in {
 
       # status bar
 
-      set-option -g status-bg ${bg}
-      set-option -g status-fg ${fg}
+      set-option -g status-bg '${bg}'
+      set-option -g status-fg '${fg}'
 
       set -g window-status-format "#{?window_last_flag,#[fg=${bg}]\uE0B0 #[fg=${bg}]#I #W #[bg=${bg}]#[fg=${un}]\uE0B0, #I #W }"
       set -g window-status-current-format "#[fg=${bg},bg=${ac}]\uE0B0 #[fg=${bg},bg=${ac}]#I #W #[fg=${ac},bg=${bg}]\uE0B0"
 
-      set -g window-status-activity-style "fg=${fg},bg=#{?window_last_flag,${un},${bg}},underscore"
+      set -g window-status-activity-style "fg=${fg},bg=#{?window_last_flag,${un},${bg}}"
       set -g window-status-last-style fg=${bg},bg=${un},bold
 
 
