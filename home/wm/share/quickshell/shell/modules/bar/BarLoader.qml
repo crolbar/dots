@@ -19,7 +19,7 @@ Loader {
 
     property bool show: true
 
-    active: !root.niri.is_fullscreen && show
+    active: !niri.is_fullscreen && show
 
     sourceComponent: Item {
         BarWindow {

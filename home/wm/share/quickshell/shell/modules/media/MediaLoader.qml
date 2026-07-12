@@ -32,7 +32,7 @@ Loader {
     }
 
     active: {
-        if (root.niri.is_fullscreen)
+        if (niri.is_fullscreen)
             return false;
 
         if (show)

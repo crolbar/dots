@@ -10,7 +10,7 @@ Loader {
     required property var niri
     required property var onDashBoard
 
-    active: !root.niri.is_fullscreen
+    active: !niri.is_fullscreen
 
     // qmllint disable uncreatable-type
     sourceComponent: PanelWindow {

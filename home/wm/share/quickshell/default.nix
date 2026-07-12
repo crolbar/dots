@@ -23,7 +23,6 @@
       RestartSec = "5s";
       TimeoutStopSec = "5s";
       Environment = ["QT_QPA_PLATFORM=wayland"];
-      KillMode = "process"; # don't kill detached processes
 
       Slice = "session.slice";
     };

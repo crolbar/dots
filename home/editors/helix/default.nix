@@ -69,11 +69,13 @@
               C-c = ":sh hx-compile";
               C-r = ":sh hx-recompile";
               C-b = "buffer_picker";
+              C-t = "file_picker_in_current_buffer_directory";
             };
             G = "goto_last_line";
 
             Z.Q = ":q!";
             C-t = "file_picker";
+            C-n = "jump_forward";
             C-r = "redo";
             s = "goto_word";
 
@@ -95,6 +97,9 @@
               T = "file_explorer";
               t = "file_explorer_in_current_buffer_directory";
             };
+
+            # unbinds C-i
+            tab ="no_op";
 
             esc = "collapse_selection";
           }
