@@ -1,11 +1,4 @@
-{
-  pkgs,
-  inputs',
-  lib,
-  ...
-}: let
-  hyprpicker = inputs'.hyprpicker.packages.default;
-in {
+{pkgs, ...}: {
   imports = [
     ./fuzzel.nix
   ];
@@ -19,16 +12,6 @@ in {
 
     nwg-look # maybe unneeded
   ];
-
-  xdg.desktopEntries = {
-    hyprpicker = {
-      name = "HyprPicker";
-      genericName = "Terminal";
-      exec = "sh -c \"wl-copy \\$(${lib.getExe hyprpicker})\"";
-      terminal = false;
-      icon = "xcolor";
-    };
-  };
 
   programs = {
     swaylock.enable = true;

@@ -1,8 +1,8 @@
 {
   inputs',
-  rust-overlay,
+  # rust-overlay,
   ristate,
-  emacs-overlay,
+  # emacs-overlay,
   ...
 }: let
   ovrls =
@@ -21,7 +21,7 @@ in {
     })
     (final: prev: ovrls)
     ristate.overlays.default
-    rust-overlay.overlays.default
-    emacs-overlay.overlays.default
+    # rust-overlay.overlays.default
+    # emacs-overlay.overlays.default
   ];
 }

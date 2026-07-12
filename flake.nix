@@ -18,24 +18,14 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-
     hm = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-    };
-
-    hyprpicker = {
-      type = "git";
-      url = "https://github.com/hyprwm/hyprpicker";
-      rev = "444c40e5e3dc4058a6a762ba5e73ada6d6469055";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
     # not sure how caching works exacly but with my testing I find out that:
@@ -58,33 +48,30 @@
     discaml.url = "github:crolbar/discaml";
     brok.url = "github:crolbar/brok";
 
+    leftwm-flake.url = "github:crolbar/leftwm-flake";
+    ristate.url = "github:crolbar/ristate";
+
     nvim_conf = {
       url = "git+file:./home/editors/neovim/nvim";
       flake = false;
     };
 
-    neovim-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    # neovim-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    # emacs-overlay.url = "github:nix-community/emacs-overlay";
 
-    schizofox = {
-      url = "github:schizofox/schizofox";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-    };
+    # schizofox = {
+    #   url = "github:schizofox/schizofox";
+    #   inputs = {
+    #     nixpkgs.follows = "nixpkgs";
+    #     flake-parts.follows = "flake-parts";
+    #   };
+    # };
+    # zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     darkmatter-grub-theme = {
       url = "github:crolbar/darkmatter-grub-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    leftwm-flake.url = "github:crolbar/leftwm-flake";
-
-    ristate.url = "github:crolbar/ristate";
 
     agenix = {
       url = "github:ryantm/agenix";
@@ -95,10 +82,6 @@
       };
     };
 
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
-
-    ghostty.url = "github:ghostty-org/ghostty";
-
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 }
