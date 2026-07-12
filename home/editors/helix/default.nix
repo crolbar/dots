@@ -1,12 +1,5 @@
-{
-  inputs',
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = [
-    # :s/find/rep/g alternative
-    (pkgs.writers.writeBashBin "s" ''sed "s/$1/g" '')
-
     (pkgs.writers.writeBashBin "hx-compile" "$HOME/scripts/toggle-term && tmux send-keys -t __toggle-term:$(tmux display-message -p \\#D) up")
     (pkgs.writers.writeBashBin "hx-recompile" "$HOME/scripts/toggle-term && tmux send-keys -t __toggle-term:$(tmux display-message -p \\#D) up Enter")
   ];
@@ -14,7 +7,6 @@
   programs.helix = {
     enable = true;
     defaultEditor = false;
-    # package = inputs'.helix.packages.default;
 
     settings = {
       theme = "gruvbox";
@@ -99,7 +91,7 @@
             };
 
             # unbinds C-i
-            tab ="no_op";
+            tab = "no_op";
 
             esc = "collapse_selection";
           }
@@ -168,6 +160,11 @@
               "--name=foo.ml"
               "-"
             ])
+          ]
+
+          [
+            (lang "markdown")
+            (fmt "deno" ["fmt" "-" "--ext" "md"])
           ]
 
           [

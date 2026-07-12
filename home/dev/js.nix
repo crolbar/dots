@@ -5,5 +5,6 @@
     typescript-language-server
     prettier
     typescript
+    deno
   ];
 }

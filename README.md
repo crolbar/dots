@@ -1,7 +1,7 @@
 <h1 align="center"> NixOS - Home Manager - Flakes config </h1>
 
 <div align="center">
-    This <a href="https://nixos.wiki/wiki/Flakes ">nix flake</a> contains NixOS configurations for all of my <a href="#Hosts" />systems</a> and with the help of <a href="https://github.com/nix-community/home-manager">Home Manager</a> for all of the <a href="#Software" >software</a> that I'm using. 
+    This <a href="https://nixos.wiki/wiki/Flakes ">nix flake</a> contains NixOS configurations for all of my <a href="#Hosts" />systems</a> and with the help of <a href="https://github.com/nix-community/home-manager">Home Manager</a> for all of the <a href="#Software" >software</a> that I'm using.
 </div><br/><br/>
 
 ![](.github/assets/Screenshot-2024-08-28_11:20:29.png)
@@ -11,7 +11,6 @@
 ![](.github/assets/Screenshot-2024-09-03_15:17:15.png)
 
 </details>
-
 
 <details>
     <summary><h1>Repository Tree</h1></summary>
@@ -499,10 +498,14 @@
 
 # Hosts
 
--   **308**: Desktop PC with a Ryzen 5 3600 and a 1060 3bg (old but does the job for me). Running Hyprland.
--   **plier**: ASUS Vivobook with an Intel i5-1235U (got it mainly for the OLED display). Running river.
--   **screw**: Raspbery Pi 4B as an home server (until I make a proper one). Running [blocky](https://github.com/0xERR0R/blocky) & a [forgejo](https://forgejo.org/) instance.
--   **vm**: Basic VM config for testing.
+- **308**: Desktop PC with a Ryzen 5 3600 and a 1060 3bg (old but does the job
+  for me). Running Hyprland.
+- **plier**: ASUS Vivobook with an Intel i5-1235U (got it mainly for the OLED
+  display). Running river.
+- **screw**: Raspbery Pi 4B as an home server (until I make a proper one).
+  Running [blocky](https://github.com/0xERR0R/blocky) & a
+  [forgejo](https://forgejo.org/) instance.
+- **vm**: Basic VM config for testing.
 
 Don't even ask me about the names.. (I have an weird naming convention I know)
 
@@ -512,13 +515,18 @@ The software I use across my systems is:
 
 ### Wayland compositors
 
--   [Hyprland](https://github.com/hyprwm/Hyprland) - (config: [home/wm/hypr](home/wm/hypr))
--   [river](https://isaacfreund.com/software/river/) - (config: [home/wm/river](home/wm/river)) (status cilent - [ristate](https://github.com/crolbar/ristate))
+- [Hyprland](https://github.com/hyprwm/Hyprland) - (config:
+  [home/wm/hypr](home/wm/hypr))
+- [river](https://isaacfreund.com/software/river/) - (config:
+  [home/wm/river](home/wm/river)) (status cilent -
+  [ristate](https://github.com/crolbar/ristate))
 
 ### Window managers
 
--   [LeftWM](https://github.com/leftwm/leftwm) - for when something doesn't work on river (config: [home/wm/left](home/wm/left))
--   [bspwm](https://github.com/baskerville/bspwm) - for when something doesn't work on Hyprland (config: [home/wm/bsp](home/wm/bsp))
+- [LeftWM](https://github.com/leftwm/leftwm) - for when something doesn't work
+  on river (config: [home/wm/left](home/wm/left))
+- [bspwm](https://github.com/baskerville/bspwm) - for when something doesn't
+  work on Hyprland (config: [home/wm/bsp](home/wm/bsp))
 
 ### Terminal
 
@@ -546,4 +554,8 @@ The software I use across my systems is:
 
 # Credits
 
-**BIG** help in the making of this flake were [NotAShelf's](https://github.com/NotAShelf) [nyx](https://github.com/NotAShelf/nyx) and [fufexan's](https://github.com/fufexan) [dotfiles](https://github.com/fufexan/dotfiles).
+**BIG** help in the making of this flake were
+[NotAShelf's](https://github.com/NotAShelf)
+[nyx](https://github.com/NotAShelf/nyx) and
+[fufexan's](https://github.com/fufexan)
+[dotfiles](https://github.com/fufexan/dotfiles).
