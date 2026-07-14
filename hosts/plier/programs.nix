@@ -6,7 +6,10 @@
   programs = {
     # hyprland.enable = true;
     # river-classic.enable = true;
-    niri.enable = true;
+    niri = {
+      enable = true;
+      package = pkgs.callPackage ../../derivations/niri.nix {};
+    };
     uwsm = {
       enable = true;
 
