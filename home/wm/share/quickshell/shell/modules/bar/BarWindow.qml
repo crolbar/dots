@@ -110,7 +110,7 @@ PanelWindow {
             PanelWindow {
                 id: shadowWindow
                 exclusionMode: ExclusionMode.Ignore
-                implicitWidth: 20
+                implicitWidth: 30
 
                 anchors {
                     top: true
@@ -128,12 +128,12 @@ PanelWindow {
                     source: shadowRect
                     shadowEnabled: true
                     shadowHorizontalOffset: 2
+                    shadowScale: 4
                 }
                 Rectangle {
                     id: shadowRect
-                    // anchors.top: parent.top
                     anchors.bottom: parent.bottom
-                    implicitWidth: 3
+                    implicitWidth: 1
 
                     property bool expand: root.config.bar_popout_audio_ctl_open || root.config.selected_tray_item != -1
 

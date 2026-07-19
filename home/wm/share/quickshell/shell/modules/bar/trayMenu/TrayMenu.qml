@@ -44,7 +44,7 @@ StackView {
         required property QsMenuHandle handle
         required property bool isSubItem
 
-        spacing: 8
+        spacing: 10
 
         QsMenuOpener {
             id: menuOpener

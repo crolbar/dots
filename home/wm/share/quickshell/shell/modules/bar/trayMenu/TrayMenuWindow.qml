@@ -31,11 +31,12 @@ PopoutWindow {
         }
     }
 
-    borderColor: Theme.yellow0
     bgColor: Theme.bg1
+    borderColor: Theme.yellow0
+    shadowColor: "#101010"
 
-    arcWidth: 25
-    arcHeight: 25
+    arcWidth: 20
+    arcHeight: 20
 
     arc2Width: 15
     arc2Height: 15

@@ -32,7 +32,7 @@ PanelWindow {
     }
 
     property bool shadowEnabled: true
-    property string shadowColor: "black"
+    property color shadowColor: "black"
     property int shadowSpace: 60
 
     property int arcHeight: 30

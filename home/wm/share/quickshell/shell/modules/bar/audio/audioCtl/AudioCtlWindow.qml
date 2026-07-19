@@ -14,9 +14,11 @@ PopoutWindow {
     // qmllint disable missing-property unresolved-type unqualified
     margins {
         bottom: Math.max(config.bar_popout_audio_ctl_center_y - (root.implicitHeight / 2), 0)
-        left: 31
+        left: 32
     }
     expanded: config.bar_popout_audio_ctl_open
+
+    shadowColor: "#101010"
 
     bgColor: Theme.bg0
     borderColor: Theme.bg0
