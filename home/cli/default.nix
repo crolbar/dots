@@ -41,5 +41,6 @@
     openssl
     sqlite
     onefetch
+    pciutils
   ];
 }

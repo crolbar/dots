@@ -125,7 +125,14 @@
       foldAll = langs: map (lang: fold lang) langs;
     in {
       language = let
-        clang-format = fmt "clang-format" ["--style={\"BasedOnStyle\": \"Mozilla\", \"IndentWidth\": 4}"];
+        clang-format = fmt "clang-format" [
+          ("-style={"
+            + "\"BasedOnStyle\": \"Mozilla\","
+            + "\"IndentWidth\": 4,"
+            + "\"AlignConsecutiveAssignments\": true,"
+            + "\"AlignConsecutiveDeclarations\": true"
+            + "}")
+        ];
       in
         foldAll
         [
