@@ -22,10 +22,15 @@
           "*" = "white";
         };
         theme = {
-          selectedLineBgColor = ["#393939"];
-          activeBorderColor = ["#999999" "bold"];
-          inactiveBorderColor = ["#393939"];
-          optionsTextColor = ["#797979"];
+          activeBorderColor = ["#ebdbb2" "bold"];
+          inactiveBorderColor = ["#928374"];
+          optionsTextColor = ["#fabd2f"];
+          selectedLineBgColor = ["#5a524c"];
+          cherryPickedCommitBgColor = ["#5a524c"];
+          cherryPickedCommitFgColor = ["#fe8019" "bold" "reverse"];
+          unstagedChangesColor = ["#cc241d"];
+          defaultFgColor = ["#ebdbb2"];
+          searchingActiveBorderColor = ["#cc241d"];
         };
       };
       git = {

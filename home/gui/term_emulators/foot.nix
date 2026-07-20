@@ -27,10 +27,10 @@
         regular6 = "689d6a"; # cyan
         regular7 = "ebdbb2"; # white
 
-        selection-background = "525252";
-        selection-foreground = regular7;
+        selection-background = "5a524c";
+        selection-foreground = foreground;
 
-        cursor = "000000 ff7eb6";
+        cursor = "000000 bdae93";
       };
 
       main = {
