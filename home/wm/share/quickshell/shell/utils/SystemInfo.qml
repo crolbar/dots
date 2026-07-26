@@ -76,7 +76,7 @@ Singleton {
 
     Process {
         id: tempProc
-        command: ["sh", "-c", "cat /sys/class/hwmon/hwmon5/temp3_input"]
+        command: ["sh", "-c", 'for d in /sys/class/hwmon/hwmon*; do [ "$(cat "$d/name" 2>/dev/null)" = "k10temp" ] && cat "$d/temp3_input"; done']
         stdout: SplitParser {
             onRead: data => {
                 if (!data)

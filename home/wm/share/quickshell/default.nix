@@ -32,5 +32,6 @@
     };
   };
 
+  # currently doing a plain `ln -s ~/Github/dots/home/wm/share/quickshell/shell ~/.config/quickshell`
   # xdg.configFile."quickshell".source = ./shell;
 }

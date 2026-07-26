@@ -130,7 +130,8 @@
             + "\"BasedOnStyle\": \"Mozilla\","
             + "\"IndentWidth\": 4,"
             + "\"AlignConsecutiveAssignments\": true,"
-            + "\"AlignConsecutiveDeclarations\": true"
+            + "\"AlignConsecutiveDeclarations\": true,"
+            + "\"AlignConsecutiveMacros\": true"
             + "}")
         ];
       in
