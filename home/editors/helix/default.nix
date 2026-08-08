@@ -76,6 +76,9 @@
             A-K = "jump_view_up";
             A-L = "jump_view_right";
 
+            C-j = "goto_next_change";
+            C-k = "goto_prev_change";
+
             A-b = "buffer_picker";
 
             A-f = ":format";
