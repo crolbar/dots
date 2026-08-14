@@ -56,7 +56,11 @@ ShellRoot {
 
     Process {
         id: proc
-        command: ["sh", "-c", "~/scripts/niri.sh"]
+        command: {
+            const niri_cmd = `~/scripts/niri.sh`;
+            const red_cmd = `~/scripts/red.sh`;
+            ["sh", "-c", (Quickshell.env("RED_SOCKET")) ? red_cmd : niri_cmd];
+        }
 
         running: true
 

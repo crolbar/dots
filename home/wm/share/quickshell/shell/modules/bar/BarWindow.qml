@@ -54,7 +54,7 @@ PanelWindow {
                     move_focus.running = true;
                     return;
                 }
-                workspace_wheel.dir = (w.angleDelta.y > 0) ? "up" : "down";
+                workspace_wheel.dir = (w.angleDelta.y > 0) ? "prev" : "next";
                 workspace_wheel.running = true;
             }
             onClicked: me => {
@@ -74,7 +74,7 @@ PanelWindow {
                 property string dir
                 running: false
                 command: {
-                    ["sh", "-c", `~/scripts/niri_workspace_scroll.sh ${dir}`];
+                    ["sh", "-c", `echo "focus_${dir}" | socat - UNIX-CONNECT:$RED_SOCKET&`];
                 }
             }
             Process {

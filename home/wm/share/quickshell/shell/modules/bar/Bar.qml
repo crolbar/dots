@@ -104,7 +104,7 @@ Item {
 
         KeebLayout {
             name: "keebLayout"
-            layout: root.niri.kb_layout
+            layout: (root.niri.kb_layout) ? root.niri.kb_layout : ""
         }
 
         Audio {

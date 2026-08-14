@@ -339,6 +339,7 @@
 │   │   │   │   ├── niri.nix
 │   │   │   │   ├── niri_workspace_scroll.nix
 │   │   │   │   ├── pulse.nix
+│   │   │   │   ├── red.nix
 │   │   │   │   ├── rgb.nix
 │   │   │   │   ├── volSock.nix
 │   │   │   │   └── volume.nix
@@ -490,7 +491,7 @@
 ├── shell.nix
 └── TODO.md
 
-99 directories, 374 files
+99 directories, 375 files
 
 ```
 

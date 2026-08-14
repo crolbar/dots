@@ -1,5 +1,6 @@
 pragma ComponentBehavior: Bound
 
+import Quickshell
 import QtQuick
 import Quickshell.Io
 import QtQuick.Layouts
@@ -43,7 +44,9 @@ Widget {
                         running: false
                         property int idx
                         command: {
-                            ["sh", "-c", `niri msg action focus-workspace ${idx}`];
+                            const niri_cmd = `niri msg action focus-workspace ${idx}`;
+                            const red_cmd = `echo "focus_n ${idx}" | socat -u - UNIX-CONNECT:$RED_SOCKET`;
+                            ["sh", "-c", (Quickshell.env("RED_SOCKET")) ? red_cmd : niri_cmd];
                         }
                     }
                     hoverEnabled: true
@@ -57,7 +60,12 @@ Widget {
                         font.pixelSize: 16
                         font.bold: true
 
-                        text: item.modelData.name
+                        text: {
+                            if (Quickshell.env("RED_SOCKET")) {
+                                return parseInt(item.modelData.idx) + 1;
+                            }
+                            return item.modelData.name;
+                        }
                     }
                 }
             }
