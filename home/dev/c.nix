@@ -3,5 +3,6 @@
     clang-tools
     gcc
     gnumake
+    valgrind
   ];
 }
