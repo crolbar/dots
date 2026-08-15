@@ -21,7 +21,12 @@ Singleton {
 
     Process {
         id: cbProc
-        command: ["sh", "-c", "niri msg -j focused-window | jq -c -r '.app_id'"]
+        command: {
+            const d = Quickshell.env("XDG_CURRENT_DESKTOP");
+            const red_cmd = "echo windows | socat - UNIX-CONNECT:$RED_SOCKET | jq -r '.[] | select(.is_focused == true) | .app_id'";
+            const niri_cmd = "niri msg -j focused-window | jq -c -r '.app_id'";
+            ["sh", "-c", (d == "red") ? red_cmd : niri_cmd];
+        }
         stdout: StdioCollector {
             onStreamFinished: {
                 root.cb(text.trim());
