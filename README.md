@@ -29,7 +29,8 @@
 │   ├── proton-ge-bin.nix
 │   ├── rmpc.nix
 │   ├── shmooz.nix
-│   └── zohoMail.nix
+│   ├── zohoMail.nix
+│   └── zoomer.nix
 ├── home
 │   ├── cli
 │   │   ├── zzz
@@ -491,7 +492,7 @@
 ├── shell.nix
 └── TODO.md
 
-99 directories, 375 files
+99 directories, 376 files
 
 ```
 

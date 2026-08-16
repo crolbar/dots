@@ -9,6 +9,7 @@
     grim
     slurp
     wayland-utils
+    (pkgs.callPackage ../../../../derivations/zoomer.nix {})
 
     nwg-look # maybe unneeded
   ];
