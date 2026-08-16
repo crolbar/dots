@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 } @ attr: let
   associations = import ./associations.nix attr;
@@ -16,10 +17,16 @@ in {
 
     portal = {
       enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
-      config.niri = {
-        default = ["hyprland"];
-        "org.freedesktop.impl.portal.ScreenCast" = "hyprland";
+      extraPortals = lib.mkForce [pkgs.xdg-desktop-portal-hyprland];
+      config = let
+        def = {
+          default = ["hyprland"];
+          "org.freedesktop.impl.portal.ScreenCast" = "hyprland";
+        };
+      in {
+        niri = def;
+        hyprland = def;
+        red = def;
       };
     };
 
