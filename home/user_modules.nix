@@ -26,6 +26,7 @@
     ./editors/helix
     ./dev
     ./wm/niri
+    ./wm/red
     ./misc
     ../overlays.nix
   ];
