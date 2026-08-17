@@ -47,6 +47,7 @@
     clare.url = "github:crolbar/clare";
     discaml.url = "github:crolbar/discaml";
     brok.url = "github:crolbar/brok";
+    red.url = "github:crolbar/red";
 
     leftwm-flake.url = "github:crolbar/leftwm-flake";
     ristate.url = "github:crolbar/ristate";

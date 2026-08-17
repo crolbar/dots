@@ -229,6 +229,8 @@
 │   │   │   ├── binds.nix
 │   │   │   ├── config.kdl
 │   │   │   └── default.nix
+│   │   ├── red
+│   │   │   └── default.nix
 │   │   ├── river
 │   │   │   ├── eww
 │   │   │   │   ├── btm_tray
@@ -492,7 +494,7 @@
 ├── shell.nix
 └── TODO.md
 
-99 directories, 376 files
+100 directories, 377 files
 
 ```
 

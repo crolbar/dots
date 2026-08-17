@@ -1,25 +1,19 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  red,
+  ...
+}: {
+  imports = [red.nixosModules.default];
+
   programs = {
-    # hyprland = {
-    #   enable = true;
-    #   withUWSM = true;
-    # };
+    red.enable = true;
     sway.enable = true;
     niri = {
       enable = true;
       package = pkgs.callPackage ../../derivations/niri.nix {};
     };
     dconf.enable = true;
-    uwsm = {
-      enable = true;
-
-      waylandCompositors.niri = {
-        binPath = "/run/current-system/sw/bin/niri";
-        comment = "Niri (UWSM)";
-        extraArgs = ["--session"];
-        prettyName = "Niri";
-      };
-    };
+    uwsm.enable = true;
   };
   services.dbus.implementation = "broker";
 
@@ -29,6 +23,10 @@
       looking-glass-client
 
       # xfce.xfce4-systemload-plugin
+
+      (pkgs.writers.writeBashBin "wms" ''
+        uwsm start -- select
+      '')
     ];
   };
 }

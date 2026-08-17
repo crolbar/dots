@@ -16,10 +16,10 @@
       options = ["rw"];
     };
 
-    "/mnt/win" = {
-      device = "/dev/disk/by-uuid/C88CBD6B8CBD5522";
-      fsType = "ntfs3";
-      options = ["rw" "uid=1000" "gid=1000" "exec" "nofail" "umask=022"];
-    };
+    # "/mnt/win" = {
+    #   device = "/dev/disk/by-uuid/C88CBD6B8CBD5522";
+    #   fsType = "ntfs3";
+    #   options = ["rw" "uid=1000" "gid=1000" "exec" "nofail" "umask=022"];
+    # };
   };
 }

@@ -10,6 +10,7 @@
     ./wm/i3
     ./wm/hypr
     ./wm/niri
+    ./wm/red
     ./misc
     ../overlays.nix
     ./misc/mangohud.nix

@@ -14,7 +14,7 @@
   home.packages = [
     pkgs.polkit_gnome
     (pkgs.writers.writeBashBin "hypr" ''
-      systemctl --user start hyprland-uwsm
+      uwsm start hyprland
     '')
   ];
 
@@ -23,14 +23,5 @@
     systemd.enable = false;
     configType = "hyprlang";
     # portalPackage = null;
-  };
-
-  systemd.user.services.hyprland-uwsm = {
-    Service = {
-      ExecStart = "${pkgs.uwsm}/bin/uwsm start hyprland.desktop";
-      Type = "simple";
-      Restart = "no";
-      KillMode = "process";
-    };
   };
 }
