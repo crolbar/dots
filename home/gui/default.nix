@@ -22,12 +22,11 @@
     qbittorrent
     gnome-disk-utility
     polkit_gnome
-    qemu # maybe make virt category ?
-    arduino-ide
+    qemu
     obsidian
     networkmanagerapplet
     vesktop
-    pwvucontrol # go to audio
+    pwvucontrol
     celluloid
     ristretto
     calibre

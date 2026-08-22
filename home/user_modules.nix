@@ -36,10 +36,6 @@
     ./dev
     ./editors
 
-    ./gui/term_emulators/alacritty.nix
-    ./gui/zathura.nix
-    ./gui/browsers/zen-browser.nix
-
     ./wm/bsp
     ./wm/hypr
     ./misc

@@ -89,14 +89,18 @@ PanelWindow {
                 id: max_toggle
                 running: false
                 command: {
-                    ["sh", "-c", `niri msg action maximize-window-to-edges`];
+                    const niri_cmd = `niri msg action maximize-window-to-edges`;
+                    const red_cmd = `echo "overlay_surface" | socat - UNIX-CONNECT:$RED_SOCKET`;
+                    ["sh", "-c", (Quickshell.env("RED_SOCKET")) ? red_cmd : niri_cmd];
                 }
             }
             Process {
                 id: overlay_toggle
                 running: false
                 command: {
-                    ["sh", "-c", `niri msg action toggle-overview`];
+                    const niri_cmd = `niri msg action toggle-overview`;
+                    const red_cmd = `qs -c rt_switcher ipc call main toggle`;
+                    ["sh", "-c", (Quickshell.env("RED_SOCKET")) ? red_cmd : niri_cmd];
                 }
             }
 

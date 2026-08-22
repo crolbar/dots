@@ -33,7 +33,6 @@
     trash-cli
     pulseaudioFull # for pactl
     cachix
-    yt-dlp
     license-generator
     gocryptfs
     direnv
