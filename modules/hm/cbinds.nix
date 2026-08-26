@@ -94,8 +94,12 @@ in {
     };
   };
 
-  config.xdg.configFile = lib.mkIf (config.cbinds.windowManager.niri.enable or false) {
-    "niri/binds.kdl".text = gen "niri";
+  config.xdg.configFile."red/start.sh" = lib.mkIf (config.cbinds.windowManager.red.enable or false) {
+    text = gen "red";
+    executable = true;
+  };
+  config.xdg.configFile."niri/binds.kdl" = lib.mkIf (config.cbinds.windowManager.niri.enable or false) {
+    text = gen "niri";
   };
   config.wayland.windowManager.sway = lib.mkIf config.wayland.windowManager.sway.enable {
     config.keybindings = gen "sway";

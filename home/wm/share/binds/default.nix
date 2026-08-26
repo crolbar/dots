@@ -23,7 +23,7 @@
         [[] "${print}" (exec screenshotRegion)]
         [[shift] "${print}" (exec screenshotScreen)]
 
-        [[mod] "i" (exec "${sb.magnifier} --invert-scroll")]
+        [[mod] "i" (exec sb.magnifier)]
       ];
 
       quickshell = [
@@ -98,7 +98,11 @@
 
       workspaces = {
         focus =
-          [[[mod] "grave" (workspace.focus "0")]]
+          (
+            if (has "isRed" settings)
+            then []
+            else [[[mod] "grave" (workspace.focus "0")]]
+          )
           ++ (helpers.workspaces [[mod] workspace.focus]);
         move =
           [[[mod shift] "grave" (workspace.moveWindowTo "0")]]
@@ -202,7 +206,7 @@
       magnifier =
         if has "isX11" settings
         then bins.alacritty # TODO: x11 magnifier util?
-        else bins.shmooz;
+        else bins.zoomer;
 
       toggleVolControl = exec ''pgrep pavucontrol > /dev/null && pkill pavucontrol || ${bins.pavucontrol} &'';
     };
@@ -231,6 +235,7 @@
     pavucontrol = lib.getExe pkgs.pavucontrol;
 
     shmooz = lib.getExe' (pkgs.callPackage ../../../../derivations/shmooz.nix {}) "shmooz";
+    zoomer = lib.getExe' (pkgs.callPackage ../../../../derivations/zoomer.nix {}) "zoomer";
   };
 
   scripts = let

@@ -230,6 +230,7 @@
 │   │   │   ├── config.kdl
 │   │   │   └── default.nix
 │   │   ├── red
+│   │   │   ├── binds.nix
 │   │   │   └── default.nix
 │   │   ├── river
 │   │   │   ├── eww
@@ -494,7 +495,7 @@
 ├── shell.nix
 └── TODO.md
 
-100 directories, 377 files
+100 directories, 378 files
 
 ```
 

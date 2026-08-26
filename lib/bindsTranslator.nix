@@ -191,6 +191,29 @@
         combine = binds: "binds {\n  ${builtins.concatStringsSep "\n  " binds}\n}";
       in
         binds: combine (map translate binds);
+
+      # example what it needs to output
+      # ''
+      #   redctl add_bind x RED_MOD_SUPER spawn foot
+      #   redctl add_bind Q RED_MOD_SUPER+RED_MOD_SHIFT close
+      # ''
+      red = let
+        translate = b: let
+          bind = bindFromListToSet b;
+          fmtMods = lib.concatStringsSep "+" bind.mods;
+          key =
+            if lib.strings.hasInfix "SHIFT" fmtMods
+            then lib.toUpper bind.key
+            else bind.key;
+        in "redctl add_bind ${key} ${
+          if (builtins.length bind.mods) > 0
+          then fmtMods
+          else "RED_MOD_NO_MODS"
+        } ${bind.cmd}";
+
+        combine = binds: "#!/usr/bin/env bash\n${builtins.concatStringsSep "\n" binds}\n";
+      in
+        binds: combine (map translate binds);
     };
   in
     lib.getAttr wm wm_translators;
