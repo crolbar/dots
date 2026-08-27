@@ -36,12 +36,12 @@ in {
         }
 
         {
-          output = "DP-3";
+          output = "HDMI-A-1";
           mode = "1920x1080@144.00Hz";
           position = "0x600";
           scale = 1;
           transform = 3;
-          disabled = true;
+          # disabled = true;
         }
       ]
       else [];

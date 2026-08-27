@@ -43,11 +43,10 @@ Widget {
                         id: focus
                         running: false
                         property int idx
-                        command: {
-                            const niri_cmd = `niri msg action focus-workspace ${idx}`;
-                            const red_cmd = `echo "focus_n ${idx}" | socat -u - UNIX-CONNECT:$RED_SOCKET`;
-                            ["sh", "-c", (Quickshell.env("RED_SOCKET")) ? red_cmd : niri_cmd];
-                        }
+                        command: ["sh", "-c", ({
+                                    red: `redctl focus_n ${idx}`,
+                                    niri: `niri msg action focus-workspace ${idx}`
+                                }[Quickshell.env("XDG_CURRENT_DESKTOP")] ?? "")]
                     }
                     hoverEnabled: true
 
@@ -61,7 +60,7 @@ Widget {
                         font.bold: true
 
                         text: {
-                            if (Quickshell.env("RED_SOCKET")) {
+                            if (Quickshell.env("XDG_CURRENT_DESKTOP") == "red") {
                                 return parseInt(item.modelData.idx) + 1;
                             }
                             return item.modelData.name;

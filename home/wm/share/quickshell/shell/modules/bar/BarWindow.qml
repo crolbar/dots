@@ -54,7 +54,10 @@ PanelWindow {
                     move_focus.running = true;
                     return;
                 }
-                workspace_wheel.dir = (w.angleDelta.y > 0) ? "prev" : "next";
+                if (Quickshell.env("XDG_CURRENT_DESKTOP") == "red")
+                    workspace_wheel.dir = (w.angleDelta.y > 0) ? "prev" : "next";
+                else
+                    workspace_wheel.dir = (w.angleDelta.y > 0) ? "up" : "down";
                 workspace_wheel.running = true;
             }
             onClicked: me => {
@@ -73,9 +76,10 @@ PanelWindow {
                 id: workspace_wheel
                 property string dir
                 running: false
-                command: {
-                    ["sh", "-c", `echo "focus_${dir}" | socat - UNIX-CONNECT:$RED_SOCKET&`];
-                }
+                command: ["sh", "-c", ({
+                            red: `redctl focus_${dir}`,
+                            niri: `~/scripts/niri_workspace_scroll.sh ${dir}`
+                        }[Quickshell.env("XDG_CURRENT_DESKTOP")] ?? "")]
             }
             Process {
                 id: move_focus
@@ -88,20 +92,18 @@ PanelWindow {
             Process {
                 id: max_toggle
                 running: false
-                command: {
-                    const niri_cmd = `niri msg action maximize-window-to-edges`;
-                    const red_cmd = `echo "overlay_surface" | socat - UNIX-CONNECT:$RED_SOCKET`;
-                    ["sh", "-c", (Quickshell.env("RED_SOCKET")) ? red_cmd : niri_cmd];
-                }
+                command: ["sh", "-c", ({
+                            red: `redctl overlay_surface`,
+                            niri: `niri msg action maximize-window-to-edges`
+                        }[Quickshell.env("XDG_CURRENT_DESKTOP")] ?? "")]
             }
             Process {
                 id: overlay_toggle
                 running: false
-                command: {
-                    const niri_cmd = `niri msg action toggle-overview`;
-                    const red_cmd = `qs -c rt_switcher ipc call main toggle`;
-                    ["sh", "-c", (Quickshell.env("RED_SOCKET")) ? red_cmd : niri_cmd];
-                }
+                command: ["sh", "-c", ({
+                            red: `qs -c rt_switcher ipc call main toggle`,
+                            niri: `niri msg action toggle-overview`
+                        }[Quickshell.env("XDG_CURRENT_DESKTOP")] ?? "")]
             }
 
             Bar {
