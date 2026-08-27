@@ -1,16 +1,106 @@
-<h1 align="center"> NixOS - Home Manager - Flakes config </h1>
+<h1 align="center"> Nix Dotfiles </h1>
+<div align=center>
 
+![created_at](https://img.shields.io/github/created-at/crolbar/dots?style=for-the-badge&color=blue)
+![size](https://img.shields.io/github/languages/code-size/crolbar/dots?style=for-the-badge)
+![loc](https://img.shields.io/badge/lines%20of%20code-15786-blue?style=for-the-badge)
+
+</div>
 <div align="center">
-    This <a href="https://nixos.wiki/wiki/Flakes ">nix flake</a> contains NixOS configurations for all of my <a href="#Hosts" />systems</a> and with the help of <a href="https://github.com/nix-community/home-manager">Home Manager</a> for all of the <a href="#Software" >software</a> that I'm using.
+  Nix <a href="https://nixos.wiki/wiki/Flakes ">flake</a> configuration of all the personal computer systems I use, with <a href="https://github.com/nix-community/home-manager">Home Manager</a> managing my <b>$HOME</b>.
 </div><br/><br/>
 
-![](.github/assets/Screenshot-2024-08-28_11:20:29.png)
+https://github.com/user-attachments/assets/91080132-1318-4580-bd34-b0051e98a246
 
-<details><summary><b>river</summary>
+> What is nix? Nix mainly refers to the package manager, which uses the nix
+> language, used to build the opearating system NixOS.
 
-![](.github/assets/Screenshot-2024-09-03_15:17:15.png)
+# Hardware
 
-</details>
+- [308](hosts/308): Desktop PC running an AMD Ryzen 5 3600 CPU with AMD Radeon
+  9060XT GPU
+- [plier](hosts/plier): ASUS laptop running an Intel i5-1235U with a 16" 3K OLED
+- [screw](hosts/screw): Raspbery Pi 4B home server
+
+# Software
+
+The software I use across my systems
+
+### Display Servers
+
+| Name                                             | Architecture | Configuration                  |
+| :----------------------------------------------- | :----------- | :----------------------------- |
+| [Hyprland](https://github.com/hyprwm/Hyprland)   | Wayland      | [home/wm/hypr](home/wm/hypr)   |
+| [niri](https://github.com/niri-wm/niri)          | Wayland      | [home/wm/niri](home/wm/niri)   |
+| [red](https://github.com/crolbar/red)            | Wayland      | [home/wm/red](home/wm/red)     |
+| [i3](https://github.com/i3/i3)                   | X11          | [home/wm/i3](home/wm/i3)       |
+| [river](https://isaacfreund.com/software/river/) | Wayland      | [home/wm/river](home/wm/river) |
+| [bsp](https://github.com/baskerville/bspwm)      | X11          | [home/wm/bsp](home/wm/bsp)     |
+| [sway](https://github.com/swaywm/sway)           | Wayland      | [home/wm/sway](home/wm/sway)   |
+| [leftwm](https://github.com/leftwm/leftwm)       | X11          | [home/wm/left](home/wm/left)   |
+
+in someway sorted by usetime from top to bottom
+
+> Why so many? I like trying out different software, to get new ideas for
+> improving my workflow.
+
+### Terminal
+
+| Name                                                | Description          | Configuration                                                                       |
+| :-------------------------------------------------- | :------------------- | :---------------------------------------------------------------------------------- |
+| Zsh                                                 | Shell                | [home/cil/zsh](home/cli/zsh.nix) & [hosts/shared/cil/zsh](hosts/shared/cli/zsh.nix) |
+| [Helix](https://github.com/helix-editor/helix)      | IDE                  | [home/editors/helix](home/editors/helix)                                            |
+| [lazygit](https://github.com/jesseduffield/lazygit) | Git Frontend         | [home/cli/lazygit](home/cli/lazygit.nix)                                            |
+| [yazi](https://github.com/sxyazi/yazi)              | File Manager         | [hosts/shared/cli/yazi](hosts/shared/cli/yazi.nix)                                  |
+| [tmux](https://github.com/tmux/tmux)                | Terminal Multiplexer | [home/cli/tmux](home/cli/tmux.nix)                                                  |
+| [Starship](https://github.com/starship/starship)    | Prompt               | [home/cli/starship](home/cli/starship.nix)                                          |
+| [Gitui](https://github.com/extrawurst/gitui)        | Git Frontend         | [home/cli/gitui](home/cli/gitui.nix)                                                |
+| [neovim](https://github.com/neovim/neovim)          | Text Editor          | [home/editors/neovim](home/editors/neovim)                                          |
+| [Emacs](https://www.gnu.org/software/emacs/)        | Operating System     | [home/editors/emacs](home/editors/emacs)                                            |
+
+### Graphical
+
+| Name                                            | Description                    | Configuration                                                    |
+| :---------------------------------------------- | :----------------------------- | :--------------------------------------------------------------- |
+| [foot](https://codeberg.org/dnkl/foot)          | Terminal Emulator              | [home/gui/term_emulators/foot](home/gui/term_emulators/foot.nix) |
+| [zathura](https://github.com/pwmt/zathura)      | PDF Viewer                     | [home/gui/zathura](home/gui/zathura.nix)                         |
+| [mpv](https://mpv.io)                           | Media Player                   | [home/gui/mpv](home/gui/mpv.nix)                                 |
+| [quickshell](https://quickshell.org)            | Desktop shell                  | [home/wm/share/quickshell](home/wm/share/quickshell)             |
+| [fuzzel](https://codeberg.org/dnkl/fuzzel)      | Application launcher (Wayland) | [home/wm/share/wayland/fuzzel](home/wm/share/wayland/fuzzel.nix) |
+| [rofi](https://github.com/davatorium/rofi)      | Application launcher (X11)     | [home/wm/share/rofi](home/wm/share/rofi)                         |
+| [awww](https://codeberg.org/LGFae/awww)         | Wallpaper (Wayland)            | [home/wm/share/wall](home/wm/share/wall)                         |
+| [feh](https://github.com/derf/feh)              | Wallpaper (x11)                | [home/wm/share/wall](home/wm/share/wall)                         |
+| [dunst](https://github.com/dunst-project/dunst) | Notification Daemon            | [home/wm/share/dunst](home/wm/share/dunst.nix)                   |
+| [Vivaldi](https://vivaldi.com/download/)        | Browser                        | [home/gui/browsers/vivaldi](home/gui/browsers/vivaldi.nix)       |
+
+## Binds
+
+Becasue I use a number of display servers - and I want to have the same
+keybindings in all of them - I had to make a way to define the binds once and
+use them across all.
+
+To solve this issue I use:
+
+- [home/wm/share/binds/default.nix](home/wm/share/binds/default.nix) defining a
+  function that takes settings and generates me list of binds with a simple
+  format
+
+```
+[[mods] key cmd]
+```
+
+- [lib/bindsTranslator.nix](lib/bindsTranslator.nix) defining multiple functions
+  used to translate this format into what ever the format of the display server
+  is.
+
+- [modules/hm/cbinds.nix](modules/hm/cbinds.nix) home manager module that
+  exposes this functionality in a nice way. (example:
+  [home/wm/niri/binds.nix](home/wm/niri/binds.nix))
+
+<br/>
+
+This way, when I'm configuring a new display server, I only have to define the
+differences, like action or key names.
 
 <details>
     <summary><h1>Repository Tree</h1></summary>
@@ -493,74 +583,24 @@
 ├── overlays.nix
 ├── README.md
 ├── shell.nix
+├── tmp.md
 └── TODO.md
 
-100 directories, 378 files
+100 directories, 379 files
 
 ```
 
 </details>
 
-# Hosts
+# Resources
 
-- **308**: Desktop PC with a Ryzen 5 3600 and a 1060 3bg (old but does the job
-  for me). Running Hyprland.
-- **plier**: ASUS Vivobook with an Intel i5-1235U (got it mainly for the OLED
-  display). Running river.
-- **screw**: Raspbery Pi 4B as an home server (until I make a proper one).
-  Running [blocky](https://github.com/0xERR0R/blocky) & a
-  [forgejo](https://forgejo.org/) instance.
-- **vm**: Basic VM config for testing.
+Resources used in the learning process of making this flake:
 
-Don't even ask me about the names.. (I have an weird naming convention I know)
-
-# Software
-
-The software I use across my systems is:
-
-### Wayland compositors
-
-- [Hyprland](https://github.com/hyprwm/Hyprland) - (config:
-  [home/wm/hypr](home/wm/hypr))
-- [river](https://isaacfreund.com/software/river/) - (config:
-  [home/wm/river](home/wm/river)) (status cilent -
-  [ristate](https://github.com/crolbar/ristate))
-
-### Window managers
-
-- [LeftWM](https://github.com/leftwm/leftwm) - for when something doesn't work
-  on river (config: [home/wm/left](home/wm/left))
-- [bspwm](https://github.com/baskerville/bspwm) - for when something doesn't
-  work on Hyprland (config: [home/wm/bsp](home/wm/bsp))
-
-### Terminal
-
-| Name                                             | Description                                                                                   | Configuration                                                                               |
-| :----------------------------------------------- | :-------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------ |
-| Zsh                                              | shell                                                                                         | [home/cil/zsh.nix](home/cli/zsh.nix) & [hosts/shared/cil/zsh.nix](hosts/shared/cli/zsh.nix) |
-| [yazi](https://github.com/sxyazi/yazi)           | file manager                                                                                  | [hosts/shared/cli/yazi](hosts/shared/cli/yazi.nix)                                          |
-| [Starship](https://github.com/starship/starship) | easy and useful prompt                                                                        | [home/cli/starship](home/cli/starship.nix)                                                  |
-| [tmux](https://github.com/tmux/tmux)             | terminal multiplexer (maybe switching to [zellij](https://github.com/zellij-org/zellij) soon) | [home/cli/tmux](home/cli/tmux.nix)                                                          |
-| [Gitui](https://github.com/extrawurst/gitui)     | git frontend                                                                                  | [home/cli/gitui](home/cli/gitui.nix)                                                        |
-| [neovim](https://github.com/neovim/neovim)       | text editor                                                                                   | [home/cli/neovim](home/cli/neovim)                                                          |
-
-### GUI
-
-| Name                                                | Description                                   | Configuration                                                                                                                        |
-| :-------------------------------------------------- | :-------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
-| [Alacritty](https://github.com/alacritty/alacritty) | terminal emulator                             | [home/cli/alacritty](home/gui/term_emulators/alacritty.nix)                                                                          |
-| [Schizofox](https://github.com/schizofox/schizofox) | easy way for a daly-drivable hardened firefox | [home/cli/schizofox](home/gui/schizofox.nix)                                                                                         |
-| [Zathura](https://github.com/pwmt/zathura)          | simple document viewer with vim bindings      | [home/gui/zathura](home/gui/zathura.nix)                                                                                             |
-| [eww](https://github.com/elkowar/eww)               | widget system used mainly for bars            | [home/gui/eww](home/gui/eww) & [home/wm/hypr/eww](home/wm/hypr/eww) & [home/wm/left/leftwm/right/eww](home/wm/left/leftwm/right/eww) |
-| [rofi](https://github.com/davatorium/rofi)          | launcher for x11                              | [home/wm/share/rofi](home/wm/share/rofi)                                                                                             |
-| [anyrun](https://github.com/anyrun-org/anyrun)      | launcher for wayland                          | [home/wm/share/wayland/anyrun.nix](home/wm/share/wayland/anyrun.nix)                                                                 |
-| [awww](https://codeberg.org/LGFae/awww)             | wallpaper answer for wayland                  | [home/wm/share/wall](home/wm/share/wall)                                                                                             |
-| [feh](https://github.com/derf/feh)                  | wallpaper solution for x11                    | [home/wm/share/wall](home/wm/share/wall)                                                                                             |
-
-# Credits
-
-**BIG** help in the making of this flake were
-[NotAShelf's](https://github.com/NotAShelf)
-[nyx](https://github.com/NotAShelf/nyx) and
-[fufexan's](https://github.com/fufexan)
-[dotfiles](https://github.com/fufexan/dotfiles).
+- [nyx](https://github.com/NotAShelf/nyx)
+- [dotfiles](https://github.com/fufexan/dotfiles)
+- [nixpkgs](https://github.com/NixOS/nixpkgs)
+- [nix.dev](https://nix.dev)
+- [NixOS Options](https://search.nixos.org/options?channel=unstable&type=options)
+- [NixOS Packages](https://search.nixos.org/packages?channel=unstable&type=options)
+- [Home Manager Options](https://home-manager-options.extranix.com)
+- [Nix Function Search](https://noogle.dev)

@@ -47,7 +47,6 @@
           # [[mod shift alt] "F7" (exec "")]
         ];
 
-        # (browser defined in ../scripts/default.nix)
         browser = [
           [[mod shift alt] "F9" (exec "${scripts.volume} bd")]
           [[mod shift alt] "F10" (exec "${scripts.volume} bu")]
