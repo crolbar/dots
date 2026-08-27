@@ -774,11 +774,11 @@
         "nixpkgs": "nixpkgs_13"
       },
       "locked": {
-        "lastModified": 1787269724,
-        "narHash": "sha256-r9U25gFWEm4pvFnQGevv25ezmHNDaO76phUtGO+SNBU=",
+        "lastModified": 1787837645,
+        "narHash": "sha256-Yv1+tEw7+bg8fZAq2WP3bHNWJ8W5dys+lABZsQ4kUIk=",
         "owner": "crolbar",
         "repo": "red",
-        "rev": "06cea776dabaa4371c38a8bb61eeeef4a415fc99",
+        "rev": "c62cf97fb33a24933a59430389db0e440a4a14cb",
         "type": "github"
       },
       "original": {

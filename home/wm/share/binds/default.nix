@@ -21,7 +21,7 @@
         [[mod alt] "q" sb.toggleVolControl]
 
         [[] "${print}" (exec screenshotRegion)]
-        [[shift] "${print}" (exec screenshotScreen)]
+        [[ctrl] "${print}" (exec screenshotScreen)]
 
         [[mod] "i" (exec sb.magnifier)]
       ];

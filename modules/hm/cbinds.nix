@@ -94,7 +94,7 @@ in {
     };
   };
 
-  config.xdg.configFile."red/start.sh" = lib.mkIf (config.cbinds.windowManager.red.enable or false) {
+  config.xdg.configFile."red/binds.sh" = lib.mkIf (config.cbinds.windowManager.red.enable or false) {
     text = gen "red";
     executable = true;
   };

@@ -40,32 +40,38 @@
           dunstify = lib.getExe' config.services.dunst.package "dunstify";
 
           quickshell = lib.getExe pkgs.quickshell;
+
+          screenshotRegion = pkgs.writers.writeBash "screenshot-region.sh" ''
+            grim -g "$(slurp)" - | wl-copy && wl-paste -n > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of the region taken\" -t 1000
+          '';
+          screenshotScreen = pkgs.writers.writeBash "screenshot-region.sh" ''
+            grim - | wl-copy && wl-paste -n > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify "Screenshot of whole screen taken" -t 1000
+          '';
         in {
           toggleBar = "${quickshell} ipc call main toggle bar";
           lock = "${swaylock} -c 000000 -l --ring-color 8e6e9c --key-hl-color dba8f3";
           notifyLayoutSwitch = "${dunstify} layout changed";
 
-          screenshotRegion = "";
-          screenshotScreen = "";
+          inherit screenshotRegion screenshotScreen;
         };
 
         moveFocus = {
-          up = "";
-          down = "";
-          right = "";
-          left = "";
+          up = "focus_prev";
+          down = "focus_next";
+          right = "focus_next";
+          left = "focus_prev";
         };
         moveWindow = {
-          up = "overlay_set_y -10";
-          down = "overlay_set_y +10";
-          right = "";
-          left = "";
+          up = "overlay_set_y -50";
+          down = "overlay_set_y +50";
+          right = "overlay_set_x +50";
+          left = "overlay_set_x -50";
         };
         resizeWindow = {
-          up = "";
-          down = "";
-          right = "";
-          left = "";
+          up = "overlay_set_height -150";
+          down = "overlay_set_height +150";
+          right = "overlay_set_width +150";
+          left = "overlay_set_width -150";
         };
         workspace = {
           focus = num: "focus_n ${toString ((lib.toInt num) - 1)}";
