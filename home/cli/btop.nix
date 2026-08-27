@@ -6,6 +6,7 @@
       proc_gradient = false;
       proc_sorting = "cpu direct";
       update_ms = 1000;
+      color_theme = "gruvbox_dark_v2";
     };
   };
 }
