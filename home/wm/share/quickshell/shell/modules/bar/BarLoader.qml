@@ -26,6 +26,7 @@ Loader {
             id: bar
             config: root.config
             niri: root.niri
+            onExited: () => root.show = false
         }
 
         TrayMenuWindow {

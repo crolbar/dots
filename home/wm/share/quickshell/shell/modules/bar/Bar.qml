@@ -38,6 +38,10 @@ Item {
             top: parent.top
         }
 
+        PinButton {
+            name: "pinbutton"
+            config: root.config
+        }
         Workspaces {
             name: "workspaces"
             workspaces: root.niri.workspaces

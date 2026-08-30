@@ -7,6 +7,7 @@ modules/*       directory that containts files associated with that window, it m
  *Loader        controlling whether the window is loaded in memory, also likely registers in `windows` for ipc control
  *Window        *Window type containing basic properties, hover handlers...
  *              should be the root component in the window, containing all the contents visible in the window
+
 */
 
 import Quickshell
@@ -52,6 +53,7 @@ ShellRoot {
         config: root.config
         niri: root.niri
         onDashBoard: () => dashBoardLoader.shown = true
+        onBar: () => barLoader.show = true
     }
 
     Process {

@@ -9,35 +9,62 @@ Loader {
     required property Config config
     required property var niri
     required property var onDashBoard
+    required property var onBar
 
     active: !niri.is_fullscreen
 
     // qmllint disable uncreatable-type
-    sourceComponent: PanelWindow {
-        id: dashboard
-        exclusionMode: ExclusionMode.Ignore
-        anchors.top: true
-        implicitWidth: 100
-        implicitHeight: 2
+    sourceComponent: Item {
+        PanelWindow {
+            id: bar
+            exclusionMode: ExclusionMode.Ignore
+            anchors.left: true
+            anchors.top: true
+            anchors.bottom: true
+            implicitWidth: 1
 
-        color: "transparent"
+            color: "transparent"
 
-        property int entryX: -1
-        HoverHandler {
-            onHoveredChanged: {
-                if (hovered) {
-                    dashboard.entryX = point.position.x;
-                } else {
-                    if (dashboard.entryX == -1)
+            HoverHandler {
+                id: barhh
+                onHoveredChanged: {
+                    if (root.config.bar_pinned)
                         return;
 
-                    // right swipe
-                    if (dashboard.entryX < 5 && point.position.x > 95)
-                        root.onDashBoard();
+                    if (hovered) {
+                        root.onBar();
+                    }
+                }
+            }
+        }
 
-                    // left swipe
-                    if (dashboard.entryX > 95 && point.position.x < 5)
-                        root.onDashBoard();
+        PanelWindow {
+            id: dashboard
+            exclusionMode: ExclusionMode.Ignore
+            anchors.top: true
+            implicitWidth: 100
+            implicitHeight: 2
+
+            color: dasdboardhh.hovered ? "#70e03232" : "transparent"
+
+            property int entryX: -1
+            HoverHandler {
+                id: dasdboardhh
+                onHoveredChanged: {
+                    if (hovered) {
+                        dashboard.entryX = point.position.x;
+                    } else {
+                        if (dashboard.entryX == -1)
+                            return;
+
+                        // right swipe
+                        if (dashboard.entryX < 5 && point.position.x > 95)
+                            root.onDashBoard();
+
+                        // left swipe
+                        if (dashboard.entryX > 95 && point.position.x < 5)
+                            root.onDashBoard();
+                    }
                 }
             }
         }

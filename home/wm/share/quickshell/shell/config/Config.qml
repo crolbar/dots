@@ -1,6 +1,7 @@
 import QtQuick
 
 QtObject {
+    property bool bar_pinned: true
     property int selected_tray_item: -1
     onSelected_tray_itemChanged: {
         const tray_open = selected_tray_item != -1;

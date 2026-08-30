@@ -375,6 +375,7 @@ differences, like action or key names.
 │   │   │   │   │   │   │   ├── BarWindow.qml
 │   │   │   │   │   │   │   ├── Clock.qml
 │   │   │   │   │   │   │   ├── KeebLayout.qml
+│   │   │   │   │   │   │   ├── PinButton.qml
 │   │   │   │   │   │   │   ├── Spacer.qml
 │   │   │   │   │   │   │   ├── SysInfo.qml
 │   │   │   │   │   │   │   ├── TrayItem.qml
@@ -585,7 +586,7 @@ differences, like action or key names.
 ├── shell.nix
 └── TODO.md
 
-100 directories, 378 files
+100 directories, 379 files
 
 ```
 

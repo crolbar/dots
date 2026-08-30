@@ -14,6 +14,7 @@ PanelWindow {
     property string name: "bar"
     required property Config config
     required property var niri
+    required property var onExited
 
     anchors {
         top: true
@@ -70,6 +71,17 @@ PanelWindow {
                 } else if (me.button == Qt.ForwardButton) {
                     hWheelScrollDir = false;
                 }
+            }
+
+            onExited: {
+                if (root.config.selected_tray_item != -1)
+                    return;
+                if (root.config.bar_popout_audio_ctl_open)
+                    return;
+                if (root.config.bar_pinned)
+                    return;
+
+                root.onExited();
             }
 
             Process {
