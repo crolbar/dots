@@ -5,6 +5,7 @@
   lib,
   ...
 }: let
+  # TODO: replace pactl
   pactl = lib.getExe' pkgs.pulseaudioFull "pactl";
 in ''
   package main
@@ -98,8 +99,6 @@ in ''
   func handleMessage(ch chan string) {
   	var err error
   	for msg := range ch {
-  		fmt.Println("recived", msg)
-
   		if msg[0] == 'b' && len(browserIds) == 0 {
   			updateIndexes()
   		}
