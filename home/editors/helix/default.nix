@@ -62,6 +62,7 @@
               C-r = ":sh hx-recompile";
               C-b = "buffer_picker";
               C-t = "file_picker_in_current_buffer_directory";
+              C-e = ":pipe-to bash";
             };
             G = "goto_last_line";
 
