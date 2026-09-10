@@ -1,5 +1,5 @@
 {config, ...}: let
-  browser = ["vivaldi.desktop"];
+  browser = ["vivaldi-stable.desktop"];
   thunar = ["thunar.desktop"];
   risteretto = ["org.xfce.ristretto.desktop"];
   mpv = ["mpv.desktop"];
