@@ -565,6 +565,17 @@ differences, like action or key names.
 │   │   └── flake.nix
 │   ├── bbe
 │   │   └── flake.nix
+│   ├── cf-astro
+│   │   ├── public
+│   │   │   └── favicon.ico
+│   │   ├── src
+│   │   │   ├── layouts
+│   │   │   │   └── Root.astro
+│   │   │   └── pages
+│   │   │       └── index.astro
+│   │   ├── flake.nix
+│   │   ├── package.json
+│   │   └── wrangler.jsonc
 │   ├── c-make
 │   │   ├── flake.nix
 │   │   ├── main.c
@@ -586,7 +597,7 @@ differences, like action or key names.
 ├── shell.nix
 └── TODO.md
 
-100 directories, 379 files
+105 directories, 385 files
 
 ```
 

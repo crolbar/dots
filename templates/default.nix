@@ -27,5 +27,11 @@ in {
       inherit welcomeText;
       path = ./c-make;
     };
+
+    cf-astro = {
+      description = "cloudflare + astro web site template";
+      inherit welcomeText;
+      path = ./cf-astro;
+    };
   };
 }
