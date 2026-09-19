@@ -10,7 +10,7 @@
   Nix <a href="https://nixos.wiki/wiki/Flakes ">flake</a> configuration of all the personal computer systems I use, with <a href="https://github.com/nix-community/home-manager">Home Manager</a> managing my <b>$HOME</b>.
 </div><br/><br/>
 
-https://github.com/user-attachments/assets/91080132-1318-4580-bd34-b0051e98a246
+https://github.com/user-attachments/assets/79d8e03e-1bbd-4967-8151-4e8fb3cbea7e
 
 > What is nix? Nix mainly refers to the package manager, which uses the nix
 > language, used to build the opearating system NixOS.
