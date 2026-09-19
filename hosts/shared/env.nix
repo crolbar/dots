@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   environment = {
     variables = {
-      EDITOR = "nvim";
+      EDITOR = "hx";
       XDG_UTILS_DEFAULT_BROWSER = "zen-twilight";
       XDG_UTILS_DEFAULT_TERMINAL = "foot";
       XDG_UTILS_DEFAULT_FILE_MANAGER = "yazi";
