@@ -106,6 +106,10 @@ Item {
             bottom: parent.bottom
         }
 
+        Battery {
+            name: "battery"
+        }
+
         KeebLayout {
             name: "keebLayout"
             layout: (root.niri.kb_layout) ? root.niri.kb_layout : ""
