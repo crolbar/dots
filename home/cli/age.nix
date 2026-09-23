@@ -35,6 +35,11 @@
         name=$(basename "$2")
         tmpDir=/tmp/ageh-"$d"
         tmpFile=/tmp/ageh-"$d"/"$name"
+        ageRecipients=${agehRePath}
+
+        if [ -n $AGEH_REC_FILE ]; then
+            ageRecipients="$AGEH_REC_FILE"
+        fi
 
         mkdir $tmpDir
 
@@ -54,7 +59,7 @@
             exit
         fi
 
-        ${age} -R ${agehRePath} -o "$2" $tmpFile
+        ${age} -R "$ageRecipients" -o "$2" $tmpFile
 
         if [ $? -ne 0 ]; then
             printf "\e[31mFailed to encrypt file: $tmpFile to $2 with ${agehRePath}.\e[0m\n"
@@ -85,7 +90,7 @@
         exit
     fi
 
-    printf "ageh {-e,-d} [PATH] \n\nARGS: \n-d     decrypt the file at the given PATH to STDOUT \n-e     create/edit the file at PATH and encrypt after.\n"
+    printf "ageh {-e,-d} [PATH] \n\nENV_VARS: \nAGEH_REC_FILE     can be set to provide recipients file for encryptionn\n\nARGS: \n-d     decrypt the file at the given PATH to STDOUT \n-e     create/edit the file at PATH and encrypt after.\n"
   '';
 in {
   home.packages = [pkgs.age ageh];
