@@ -29,5 +29,7 @@
     kernelModules = ["kvm-intel"];
 
     initrd.availableKernelModules = ["vmd" "xhci_pci" "nvme" "usb_storage" "sd_mod"];
+
+    binfmt.emulatedSystems = ["aarch64-linux"];
   };
 }

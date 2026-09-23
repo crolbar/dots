@@ -22,8 +22,17 @@
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [22 53 80 9002 2049 443];
-      allowedUDPPorts = [53 2049 41641];
+      allowedTCPPorts = [
+        22 # WARN DO NOT REMOVE
+        53 # dns
+        2049 # nfs
+        443 # caddy
+      ];
+      allowedUDPPorts = [
+        53 # dns
+        2049 # nfs
+        41641 # tailscale
+      ];
     };
   };
 }

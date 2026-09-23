@@ -6,6 +6,7 @@
   forgejo_port = config.services.forgejo.settings.server.HTTP_PORT;
   grafana_port = config.services.grafana.settings.server.http_port;
   kiwix_port = config.services.kiwix-serve.port;
+  code_port = config.services.code-server.port;
 in {
   services.caddy = {
     enable = true;
@@ -39,11 +40,18 @@ in {
         }
         file_server
       '';
+      code.extraConfig = ''
+        tls internal
+        reverse_proxy localhost:${toString code_port} {
+          header_up Host {host}
+        }
+      '';
     in {
       "screw.rs git.screw.rs screw.sh git.screw.sh" = forgejo;
       "graf.screw.rs graf.screw.sh" = grafana;
       "kiwix.screw.rs kiwix.screw.sh" = kiwix;
       "rss.screw.rs rss.screw.sh" = lib.mkForce freshrss;
+      "code.screw.rs code.screw.sh" = code;
     };
   };
 }

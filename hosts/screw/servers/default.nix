@@ -10,5 +10,6 @@
     ./tailscale.nix
     ./kiwix.nix
     ./caddy.nix
+    ./code.nix
   ];
 }

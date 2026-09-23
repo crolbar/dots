@@ -493,6 +493,7 @@ differences, like action or key names.
 │   │   ├── servers
 │   │   │   ├── blocky.nix
 │   │   │   ├── caddy.nix
+│   │   │   ├── code.nix
 │   │   │   ├── default.nix
 │   │   │   ├── forge.nix
 │   │   │   ├── freshrss.nix
@@ -598,7 +599,7 @@ differences, like action or key names.
 ├── shell.nix
 └── TODO.md
 
-105 directories, 386 files
+105 directories, 387 files
 
 ```
 
