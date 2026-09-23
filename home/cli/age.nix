@@ -37,7 +37,7 @@
         tmpFile=/tmp/ageh-"$d"/"$name"
         ageRecipients=${agehRePath}
 
-        if [ -n $AGEH_REC_FILE ]; then
+        if [ ! -z "''${AGEH_REC_FILE+x}" ]; then
             ageRecipients="$AGEH_REC_FILE"
         fi
 
