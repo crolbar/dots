@@ -7,8 +7,9 @@
   in {
     devShells.${system}.default = pkgs.mkShellNoCC {
       packages = with pkgs; [
+        # `npm i` to install ts, for this to work
         astro-language-server
-        nodejs
+        nodejs-slim
       ];
     };
   };
