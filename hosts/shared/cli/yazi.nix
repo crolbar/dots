@@ -45,7 +45,7 @@
               run = ''${lib.getExe pkgs.gimp} "$0"'';
               block = false;
               orphan = true;
-              desc = "edit";
+              desc = "Edit";
             }
           ];
           set_as_wall = [
@@ -60,13 +60,32 @@
               desc = "SetAsWallFit";
             }
           ];
+          run_sh = [
+            {
+              run = ''${lib.getExe pkgs.bash} "$1"'';
+              desc = "RunSh";
+              orphan = true;
+            }
+          ];
+          steam_run_sh = [
+            {
+              run = ''nohup setsid ${lib.getExe pkgs.steam-run} "$1" >/dev/null'';
+              desc = "SteamRunSh";
+              orphan = true;
+              block = false;
+            }
+          ];
         };
 
         open = {
           rules = [
             {
-              mime = "text/*";
+              mime = "text/plain";
               use = ["edit" "open" "reveal"];
+            }
+            {
+              mime = "text/shellscript";
+              use = ["edit" "run_sh" "steam_run_sh" "reveal"];
             }
             {
               mime = "image/*";

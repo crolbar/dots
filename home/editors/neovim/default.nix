@@ -30,7 +30,7 @@
 
   programs.neovim = {
     enable = true;
-    defaultEditor = true;
+    defaultEditor = false;
     # package = inputs'.neovim-overlay.packages.default;
 
     withRuby = false;
