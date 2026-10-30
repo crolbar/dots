@@ -100,6 +100,12 @@ layout {
     center-focused-column "never"
 }
 
+gestures {
+    hot-corners {
+        bottom-left
+    }
+}
+
 overview {
     zoom 0.40
 }
