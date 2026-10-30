@@ -18,6 +18,7 @@ in {
       system = "x86_64-linux";
       modules = [
         ./shared
+        ./shared/gamer/nix-ld.nix
         ../overlays.nix
       ];
     };
