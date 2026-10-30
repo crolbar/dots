@@ -46,12 +46,18 @@ in {
           header_up Host {host}
         }
       '';
+      fs.extraConfig = ''
+        tls internal
+        root /var/www
+        file_server
+      '';
     in {
       "screw.rs git.screw.rs screw.sh git.screw.sh" = forgejo;
       "graf.screw.rs graf.screw.sh" = grafana;
       "kiwix.screw.rs kiwix.screw.sh" = kiwix;
       "rss.screw.rs rss.screw.sh" = lib.mkForce freshrss;
       "code.screw.rs code.screw.sh" = code;
+      "fs.screw.rs fs.screw.sh" = fs;
     };
   };
 }

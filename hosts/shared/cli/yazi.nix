@@ -69,7 +69,7 @@
           ];
           steam_run_sh = [
             {
-              run = ''nohup setsid ${lib.getExe pkgs.steam-run} "$1" >/dev/null'';
+              run = ''nohup setsid steam-run "$1" >/dev/null'';
               desc = "SteamRunSh";
               orphan = true;
               block = false;
