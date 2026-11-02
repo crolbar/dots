@@ -46,9 +46,17 @@ in {
           header_up Host {host}
         }
       '';
+      # TODO: run one more phpfpm?
       fs.extraConfig = ''
         tls internal
         root /var/www
+
+        handle /api/* {
+          header Access-Control-Allow-Origin http://localhost:4321
+          rewrite * /backend.php
+          php_fastcgi unix/${config.services.phpfpm.pools.freshrss.socket}
+        }
+
         file_server
       '';
     in {
